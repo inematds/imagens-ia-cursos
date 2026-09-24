@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+<head>
+<script>(function () {
+  try {
+    var html = document.documentElement;
+    var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+    function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+    var p = clone(DEF);
+    try {
+      var raw = localStorage.getItem('inema.prefs');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k];
+        }
+      } else {
+        // fallback ao tema legado do v1
+        var legacy = localStorage.getItem('theme');
+        if (legacy === 'light') p.theme = 'claro';
+        else if (legacy === 'dark') p.theme = 'inema-dark';
+      }
+    } catch (e) { p = clone(DEF); }
+
+    // mapa tema -> (.dark on/off, data-theme, color-scheme)
+    var THEMES = {
+      'inema-dark': { dark: true,  attr: null,        cs: 'dark'  },
+      'claro':      { dark: false, attr: null,        cs: 'light' },
+      'sepia':      { dark: false, attr: 'sepia',     cs: 'light' },
+      'foco':       { dark: null,  attr: 'foco',      cs: null    },  // herda eixo atual
+      'contraste':  { dark: true,  attr: 'contraste', cs: 'dark'  }
+    };
+    var t = THEMES[p.theme] || THEMES['inema-dark'];
+
+    if (t.dark === true) html.classList.add('dark');
+    else if (t.dark === false) html.classList.remove('dark');
+    // 'foco' (null) preserva o que ja houver no atributo class do <html>
+
+    if (t.attr) html.setAttribute('data-theme', t.attr);
+    else html.removeAttribute('data-theme');
+
+    html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+
+    html.setAttribute('data-font', p.font || 'inter');
+    html.setAttribute('data-accent', p.accent || 'emerald');
+
+    // variaveis de leitura (espelham learn.js / learn.css) ANTES do paint
+    var s = html.style;
+    var scale = (+p.fontScale || 100);
+    s.setProperty('--inema-font-scale', (scale / 100).toString());
+    s.setProperty('font-size', scale + '%');               // :root em %, nunca px
+    s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+    s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+    var fam = p.font === 'system'
+      ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+      : (p.font === 'leitura'
+        ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif'
+        : '"Inter", system-ui, sans-serif');
+    s.setProperty('--font-body', fam);
+
+    var ACC = {
+      emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66],
+      amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60]
+    };
+    var a = ACC[p.accent] || ACC.emerald;
+    s.setProperty('--accent-h', a[0] + '');
+    s.setProperty('--accent-s', a[1] + '%');
+    s.setProperty('--accent-l', a[2] + '%');
+    s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+  } catch (err) {
+    // qualquer falha => default dark, preserva a marca
+    try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {}
+  }
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="inema-course" content="nano-banana-pro">
+<meta name="description" content="Organize referências, preserve o produto e construa uma campanha com linguagem visual coerente. Aprenda a gerar, editar e conferir cada peça.">
+<title>Projeto final: campanha Aurora · INEMA.CLUB</title>
+<link rel="stylesheet" href="../../assets/learn.css">
+<link rel="stylesheet" href="../../assets/course.css">
+<script type="application/json" data-inema-manifest>{"course": "nano-banana-pro", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Prepare o modelo, o briefing e as referências", "topics": 6, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "Produto e personagem: uma base consistente", "topics": 6, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controle de marca: cor, texto e hierarquia", "topics": 6, "href": "curso/trilha2/modulo-2-1.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Exploração criativa e storyboard", "topics": 6, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Edições, referências múltiplas e adaptações", "topics": 6, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: campanha Aurora", "topics": 6, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="topbar">
+<div class="nav-inner">
+<a class="brand" href="../../index.html" aria-label="Início do curso">
+<svg viewBox="0 0 32 32" aria-hidden="true">
+<path d="M4 6h24v20H4zM10 6v20M22 6v20" fill="none" stroke="currentColor" stroke-width="2"/>
+<circle cx="16" cy="16" r="4" fill="currentColor"/>
+</svg>
+<span class="wide-only">Imagem com IA</span>
+</a>
+<a class="text-sky-400" href="https://inema.club">INEMA.CLUB</a>
+<span>–</span>
+<a class="pro" href="https://inema.pro">PRO</a>
+<nav class="tracks" aria-label="Trilhas">
+<a href="../../curso/trilha1/index.html">1. Fundamentos</a>
+<a href="../../curso/trilha2/index.html">2. Direção visual</a>
+<a href="../../curso/trilha3/index.html">3. Produção</a>
+<a href="../../curso/trilha4/index.html" aria-current="page">4. Projeto</a>
+</nav>
+<div class="tools">
+<button data-inema-journey-open>Minha jornada</button>
+<button data-inema-appearance-toggle="[data-inema-appearance]" aria-expanded="false">Aparência</button>
+</div>
+</div>
+<div data-inema-appearance class="inema-appearance-pop">
+<div class="inema-segment">
+<button data-inema-set-theme="inema-dark">Escuro</button>
+<button data-inema-set-theme="claro">Claro</button>
+<button data-inema-set-theme="sepia">Sépia</button>
+<button data-inema-set-theme="foco">Foco</button>
+<button data-inema-set-theme="contraste">Alto contraste</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-fontscale="100">Texto padrão</button>
+<button data-inema-set-fontscale="112">Texto maior</button>
+<button data-inema-set-fontscale="125">Texto amplo</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-font="system">Fonte do sistema</button>
+<button data-inema-set-font="leitura">Fonte de leitura</button>
+<button data-inema-set-linewidth="60">Coluna estreita</button>
+<button data-inema-set-linewidth="75">Coluna larga</button>
+</div>
+</div>
+</header>
+<main id="conteudo" class="wrap">
+<div class="breadcrumb">
+<a href="../../index.html">Nano Banana Pro</a> / <a href="index.html">Projeto</a> / Módulo 4-1</div>
+<header class="intro">
+<h1>Projeto final: campanha Aurora</h1>
+<p>Você vai reunir as peças, conferir continuidade e apresentar o processo com clareza.</p>
+<p class="meta">6 tópicos · explicação, observação e prática · avance no seu ritmo</p>
+<div data-inema-meter="modulo:4-1">
+<span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span>
+<div class="inema-bar">
+<div class="inema-bar__fill" data-inema-meter-fill>
+</div>
+</div>
+</div>
+</header>
+<div class="reading-layout">
+<nav class="toc" data-inema-toc aria-label="Tópicos deste módulo">
+<strong>Nesta aula</strong>
+<ol>
+<li>
+<a href="#topico-1">Confira a lista de entregas</a>
+</li>
+<li>
+<a href="#topico-2">Faça uma revisão de identidade</a>
+</li>
+<li>
+<a href="#topico-3">Revise texto e informação</a>
+</li>
+<li>
+<a href="#topico-4">Apresente o antes e depois</a>
+</li>
+<li>
+<a href="#topico-5">Organize e exporte</a>
+</li>
+<li>
+<a href="#topico-6">Avalie a capacidade adquirida</a>
+</li>
+</ol>
+<a href="#pratica">Prática do módulo</a>
+<a href="#checagem">Teste sua decisão</a>
+</nav>
+<article class="lesson" data-inema-module="4-1" data-inema-track="4">
+<section class="topic" id="topico-1" data-inema-topic="modulo-4-1#topico-1">
+<h2 class="text-2xl font-bold">
+<span class="number">1</span>Confira a lista de entregas</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m4-1-t1-concept">A entrega inclui três imagens de produto, três cenas com personagem, uma peça com texto, um infográfico de partes e um storyboard de seis quadros. Algumas peças podem reutilizar bases aprovadas.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m4-1-t1-why">Uma lista explícita permite concluir o projeto e avaliar se cada parte tem função. Reutilização planejada evita gerar material sem necessidade.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m4-1-t1-svgtitle" class="w-full h-auto">
+<title id="m4-1-t1-svgtitle">Confira a lista de entregas — A aprovação deve considerar forma, coerência e adequação ao uso.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Forma</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Coerência</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Uso final</text>
+</svg>
+<figcaption>A aprovação deve considerar forma, coerência e adequação ao uso.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m4-1-t1-practice">Marque quais bases já existem. Associe cada uma a uma entrega. Só gere o que falta ou precisa de correção; mantenha o storyboard como planejamento identificado.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m4-1-t1-caution">Não conte arquivos duplicados com nomes diferentes como novas peças. Explique quando uma imagem-base sustenta mais de um layout.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-2" data-inema-topic="modulo-4-1#topico-2">
+<h2 class="text-2xl font-bold">
+<span class="number">2</span>Faça uma revisão de identidade</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m4-1-t2-concept">A revisão compara cada peça com as referências aprovadas. Produto e personagem devem permanecer reconhecíveis, mesmo com mudanças de ação ou enquadramento.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m4-1-t2-why">Uma campanha pode ter paleta consistente e ainda mostrar produtos diferentes. A identidade precisa de atenção própria.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 310" role="img" aria-labelledby="m4-1-t2-svgtitle" class="w-full h-auto">
+<title id="m4-1-t2-svgtitle">Faça uma revisão de identidade — Cada quadro tem uma função. Aqui a repetição do produto é esquemática; no seu trabalho, varie a cena e confira os invariantes.</title>
+<rect x="12" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(76 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="24" y="136" font-size="15" fill="currentColor">1. Apresentar</text>
+<rect x="222" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(286 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="234" y="136" font-size="15" fill="currentColor">2. Aproximar</text>
+<rect x="432" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(496 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="444" y="136" font-size="15" fill="currentColor">3. Detalhar</text>
+<rect x="12" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(76 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="24" y="284" font-size="15" fill="currentColor">4. Contextualizar</text>
+<rect x="222" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(286 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="234" y="284" font-size="15" fill="currentColor">5. Usar</text>
+<rect x="432" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(496 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="444" y="284" font-size="15" fill="currentColor">6. Concluir</text>
+</svg>
+<figcaption>Cada quadro tem uma função. Aqui a repetição do produto é esquemática; no seu trabalho, varie a cena e confira os invariantes.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m4-1-t2-practice">Use a folha de contato e amplie os pontos críticos: rosto, cabelo, alça e borda. Marque desvios por escrito e corrija os que impedem o reconhecimento.</p>
+<div class="compare-grid">
+<div>
+<h3>✓ Faça a verificação</h3>
+<p>Use a folha de contato e amplie os pontos críticos: rosto, cabelo, alça e borda. Marque desvios por escrito e corrija os que impedem o reconhecimento.</p>
+</div>
+<div>
+<h3>✗ Evite a conclusão automática</h3>
+<p>Uma imagem impactante não compensa uma alteração do produto que o briefing mandou preservar. Corrija antes de apresentar.</p>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-3" data-inema-topic="modulo-4-1#topico-3">
+<h2 class="text-2xl font-bold">
+<span class="number">3</span>Revise texto e informação</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m4-1-t3-concept">A revisão editorial confere grafia, pontuação, dados, rótulos e relação entre legenda e imagem. No infográfico, cada seta deve apontar para a parte indicada.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m4-1-t3-why">Erros de texto podem sobreviver à revisão visual quando o foco está nas fotos. A conferência precisa ser uma etapa deliberada.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m4-1-t3-svgtitle" class="w-full h-auto">
+<title id="m4-1-t3-svgtitle">Revise texto e informação — Tamanho e posição estabelecem ordem de leitura. Reduza a peça para conferir se a mensagem principal continua clara.</title>
+<rect x="20" y="20" width="600" height="190" rx="12" fill="var(--surface-2)"/>
+<text x="50" y="78" font-size="30" fill="currentColor">UMA IDEIA PRINCIPAL</text>
+<text x="50" y="125" font-size="19" fill="currentColor">Uma explicação que ajuda a entender</text>
+<text x="50" y="170" font-size="14" fill="currentColor">Detalhe de apoio com menor destaque</text>
+</svg>
+<figcaption>Tamanho e posição estabelecem ordem de leitura. Reduza a peça para conferir se a mensagem principal continua clara.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m4-1-t3-practice">Leia a peça com texto em voz alta. Confira a frase contra o briefing, depois examine o infográfico. Verifique se não surgiram selos ou promessas não solicitadas.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m4-1-t3-caution">Uma aparência profissional não torna uma informação verdadeira. Remova dados inventados e preserve apenas o que foi fornecido ou observado.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-4" data-inema-topic="modulo-4-1#topico-4">
+<h2 class="text-2xl font-bold">
+<span class="number">4</span>Apresente o antes e depois</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m4-1-t4-concept">O estudo de caso explica uma decisão e mostra a diferença produzida. Um bom par mantém escala comparável e identifica o problema resolvido.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m4-1-t4-why">A apresentação de processo torna o aprendizado demonstrável. Ela mostra como você escolheu, não apenas que conseguiu gerar imagens.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m4-1-t4-svgtitle" class="w-full h-auto">
+<title id="m4-1-t4-svgtitle">Apresente o antes e depois — Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</title>
+<rect x="20" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
+<rect x="335" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
+<g transform="translate(110 80) scale(0.8)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<g transform="translate(430 80) scale(0.8)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<path d="M48 55L225 175" stroke="var(--accent-2)" stroke-dasharray="5 5"/>
+<path d="M358 55H570" stroke="var(--primary)" stroke-dasharray="5 5"/>
+<text x="30" y="227" font-size="17" fill="currentColor">A · versão de referência</text>
+<text x="345" y="227" font-size="17" fill="currentColor">B · hipótese de mudança</text>
+</svg>
+<figcaption>Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m4-1-t4-practice">Escolha uma correção relevante, como limpar o fundo ou preservar a alça. Mostre base, intervenção e final com uma frase de evidência. Identifique a marca como fictícia.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m4-1-t4-caution">Não invente aprovação de cliente, alcance ou conversão. Apresente o projeto como exercício autoral com IA.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-5" data-inema-topic="modulo-4-1#topico-5">
+<h2 class="text-2xl font-bold">
+<span class="number">5</span>Organize e exporte</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m4-1-t5-concept">A entrega precisa de nomes claros, dimensões verificadas e uma separação entre arquivos finais e fontes editáveis. Um README explica o conteúdo do pacote.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m4-1-t5-why">Um trabalho difícil de encontrar ou revisar gera retrabalho, mesmo quando as imagens estão boas. Organização é parte da produção.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m4-1-t5-svgtitle" class="w-full h-auto">
+<title id="m4-1-t5-svgtitle">Organize e exporte — Guarde o arquivo original, as decisões da receita e a versão aprovada como itens separados.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Original</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Receita</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Aprovada</text>
+</svg>
+<figcaption>Guarde o arquivo original, as decisões da receita e a versão aprovada como itens separados.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m4-1-t5-practice">Exporte peças finais, abra cada uma e confira dimensões. Inclua fontes de diagramação, prompts e referências autorizadas. Guarde uma cópia das bases sem texto.</p>
+<div class="compare-grid">
+<div>
+<h3>✓ Faça a verificação</h3>
+<p>Exporte peças finais, abra cada uma e confira dimensões. Inclua fontes de diagramação, prompts e referências autorizadas. Guarde uma cópia das bases sem texto.</p>
+</div>
+<div>
+<h3>✗ Evite a conclusão automática</h3>
+<p>Não entregue arquivos de teste junto dos finais sem identificação. Não substitua o arquivo editável pela única exportação achatada.</p>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-6" data-inema-topic="modulo-4-1#topico-6">
+<h2 class="text-2xl font-bold">
+<span class="number">6</span>Avalie a capacidade adquirida</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m4-1-t6-concept">O objetivo é conseguir transformar briefing em série, preservar identidade, editar desvios e explicar decisões. Uma nota de leitura não comprova essas capacidades.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m4-1-t6-why">Repetir o método em outro produto mostra se você aprendeu o processo ou apenas seguiu um exemplo. A reflexão define a próxima prática.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m4-1-t6-svgtitle" class="w-full h-auto">
+<title id="m4-1-t6-svgtitle">Avalie a capacidade adquirida — Cada rodada responde a um problema observado e termina com uma nova conferência.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Observar</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Ajustar</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Conferir</text>
+</svg>
+<figcaption>Cada rodada responde a um problema observado e termina com uma nova conferência.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m4-1-t6-practice">Troque mentalmente a caneca por uma luminária e descreva o que muda na ficha de produto, nos reflexos e nos planos. Liste uma etapa que consegue executar e outra que precisa repetir.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m4-1-t6-caution">A qualidade do curso não foi medida em um teste com alunos. Use sua entrega e as evidências do processo para avaliar o próprio avanço.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section id="pratica" class="codebox">
+<h2>Prática: um pedido completo</h2>
+<p>
+<strong>Objetivo:</strong> Você vai reunir as peças, conferir continuidade e apresentar o processo com clareza.</p>
+<p>Use o texto abaixo na sua ferramenta de imagens. Quando houver referência, anexe o arquivo indicado antes de gerar.</p>
+<pre id="prompt-4-1">Crie uma única imagem final da campanha fictícia Aurora. Use as referências aprovadas do produto e da ceramista. A personagem está junto à mesa do ateliê, com a caneca visível em primeiro plano e espaço livre à esquerda para uma mensagem adicionada depois. Preserve figurino azul e bege, caneca terracota e luz suave à esquerda. A cena deve comunicar uma pausa tranquila. Sem texto, selos ou informações comerciais.</pre>
+<button data-copy="prompt-4-1">Copiar prompt</button>
+<h3>Como verificar</h3>
+<p>Confira a imagem com a folha de contato. Depois acrescente o texto em camada editável e exporte no formato escolhido. Guarde a base sem texto.</p>
+<ol class="timeline">
+<li>Prepare o arquivo ou briefing necessário.</li>
+<li>Faça uma tentativa e salve o resultado com as configurações.</li>
+<li>Compare com os critérios acima e localize um desvio.</li>
+<li>Corrija uma decisão e registre o efeito na nova versão.</li>
+</ol>
+</section>
+<section id="checagem" class="quiz" data-quiz="modulo-4-1#q1" data-correct="0" data-explain="A aparência de um infográfico não valida sua informação. Use apenas dados fornecidos ou observações compatíveis com o exercício.">
+<h2>Teste sua decisão</h2>
+<p>Um infográfico gerado inventou a capacidade da caneca. O que fazer?</p>
+<button data-answer="0" aria-pressed="false">Remover o dado não fornecido</button>
+<button data-answer="1" aria-pressed="false">Manter porque parece tecnicamente correto</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>A aparência de um infográfico não valida sua informação. Use apenas dados fornecidos ou observações compatíveis com o exercício.</p>
+</details>
+<p class="fine">Responder não marca a leitura nem bloqueia o próximo módulo.</p>
+</section>
+<section>
+<h2>O que levar desta aula</h2>
+<ul>
+<li>Confira a lista de entregas</li>
+<li>Faça uma revisão de identidade</li>
+<li>Revise texto e informação</li>
+<li>Apresente o antes e depois</li>
+<li>Organize e exporte</li>
+<li>Avalie a capacidade adquirida</li>
+</ul>
+<p>Escolha uma decisão que você consegue explicar sem consultar o texto. Se ainda houver dúvida, marque o tópico e volte a ele pela jornada.</p>
+<div class="actions">
+<a class="button" href="index.html">Voltar para a trilha</a>
+<a class="button primary" href="../../materiais.html">Revisar e guardar o projeto</a>
+</div>
+</section>
+</article>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<span>Curso gratuito · INEMA.CLUB · v1.0.0</span>
+<a href="../../materiais.html">Materiais e referências</a>
+<a href="../../../index.html">Os três cursos</a>
+<a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>
+<a href="https://www.inema.club/cursos/">Todos os cursos</a>
+</div>
+</footer>
+<script src="../../assets/learn.js">
+</script>
+<script src="../../assets/course.js">
+</script>
+</body>
+</html>

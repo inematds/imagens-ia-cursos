@@ -1,0 +1,65 @@
+{
+  "course": "nano-banana-pro",
+  "tracks": [
+    {
+      "n": "1",
+      "title": "Fundamentos",
+      "modules": [
+        {
+          "id": "1-1",
+          "title": "Prepare o modelo, o briefing e as referências",
+          "topics": 6,
+          "href": "curso/trilha1/modulo-1-1.html"
+        },
+        {
+          "id": "1-2",
+          "title": "Produto e personagem: uma base consistente",
+          "topics": 6,
+          "href": "curso/trilha1/modulo-1-2.html"
+        }
+      ]
+    },
+    {
+      "n": "2",
+      "title": "Direção visual",
+      "modules": [
+        {
+          "id": "2-1",
+          "title": "Controle de marca: cor, texto e hierarquia",
+          "topics": 6,
+          "href": "curso/trilha2/modulo-2-1.html"
+        }
+      ]
+    },
+    {
+      "n": "3",
+      "title": "Produção",
+      "modules": [
+        {
+          "id": "3-1",
+          "title": "Exploração criativa e storyboard",
+          "topics": 6,
+          "href": "curso/trilha3/modulo-3-1.html"
+        },
+        {
+          "id": "3-2",
+          "title": "Edições, referências múltiplas e adaptações",
+          "topics": 6,
+          "href": "curso/trilha3/modulo-3-2.html"
+        }
+      ]
+    },
+    {
+      "n": "4",
+      "title": "Projeto",
+      "modules": [
+        {
+          "id": "4-1",
+          "title": "Projeto final: campanha Aurora",
+          "topics": 6,
+          "href": "curso/trilha4/modulo-4-1.html"
+        }
+      ]
+    }
+  ]
+}

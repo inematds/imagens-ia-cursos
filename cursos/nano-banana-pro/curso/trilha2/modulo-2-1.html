@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+<head>
+<script>(function () {
+  try {
+    var html = document.documentElement;
+    var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+    function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+    var p = clone(DEF);
+    try {
+      var raw = localStorage.getItem('inema.prefs');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k];
+        }
+      } else {
+        // fallback ao tema legado do v1
+        var legacy = localStorage.getItem('theme');
+        if (legacy === 'light') p.theme = 'claro';
+        else if (legacy === 'dark') p.theme = 'inema-dark';
+      }
+    } catch (e) { p = clone(DEF); }
+
+    // mapa tema -> (.dark on/off, data-theme, color-scheme)
+    var THEMES = {
+      'inema-dark': { dark: true,  attr: null,        cs: 'dark'  },
+      'claro':      { dark: false, attr: null,        cs: 'light' },
+      'sepia':      { dark: false, attr: 'sepia',     cs: 'light' },
+      'foco':       { dark: null,  attr: 'foco',      cs: null    },  // herda eixo atual
+      'contraste':  { dark: true,  attr: 'contraste', cs: 'dark'  }
+    };
+    var t = THEMES[p.theme] || THEMES['inema-dark'];
+
+    if (t.dark === true) html.classList.add('dark');
+    else if (t.dark === false) html.classList.remove('dark');
+    // 'foco' (null) preserva o que ja houver no atributo class do <html>
+
+    if (t.attr) html.setAttribute('data-theme', t.attr);
+    else html.removeAttribute('data-theme');
+
+    html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+
+    html.setAttribute('data-font', p.font || 'inter');
+    html.setAttribute('data-accent', p.accent || 'emerald');
+
+    // variaveis de leitura (espelham learn.js / learn.css) ANTES do paint
+    var s = html.style;
+    var scale = (+p.fontScale || 100);
+    s.setProperty('--inema-font-scale', (scale / 100).toString());
+    s.setProperty('font-size', scale + '%');               // :root em %, nunca px
+    s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+    s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+    var fam = p.font === 'system'
+      ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+      : (p.font === 'leitura'
+        ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif'
+        : '"Inter", system-ui, sans-serif');
+    s.setProperty('--font-body', fam);
+
+    var ACC = {
+      emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66],
+      amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60]
+    };
+    var a = ACC[p.accent] || ACC.emerald;
+    s.setProperty('--accent-h', a[0] + '');
+    s.setProperty('--accent-s', a[1] + '%');
+    s.setProperty('--accent-l', a[2] + '%');
+    s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+  } catch (err) {
+    // qualquer falha => default dark, preserva a marca
+    try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {}
+  }
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="inema-course" content="nano-banana-pro">
+<meta name="description" content="Organize referências, preserve o produto e construa uma campanha com linguagem visual coerente. Aprenda a gerar, editar e conferir cada peça.">
+<title>Controle de marca: cor, texto e hierarquia · INEMA.CLUB</title>
+<link rel="stylesheet" href="../../assets/learn.css">
+<link rel="stylesheet" href="../../assets/course.css">
+<script type="application/json" data-inema-manifest>{"course": "nano-banana-pro", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Prepare o modelo, o briefing e as referências", "topics": 6, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "Produto e personagem: uma base consistente", "topics": 6, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controle de marca: cor, texto e hierarquia", "topics": 6, "href": "curso/trilha2/modulo-2-1.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Exploração criativa e storyboard", "topics": 6, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Edições, referências múltiplas e adaptações", "topics": 6, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: campanha Aurora", "topics": 6, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="topbar">
+<div class="nav-inner">
+<a class="brand" href="../../index.html" aria-label="Início do curso">
+<svg viewBox="0 0 32 32" aria-hidden="true">
+<path d="M4 6h24v20H4zM10 6v20M22 6v20" fill="none" stroke="currentColor" stroke-width="2"/>
+<circle cx="16" cy="16" r="4" fill="currentColor"/>
+</svg>
+<span class="wide-only">Imagem com IA</span>
+</a>
+<a class="text-sky-400" href="https://inema.club">INEMA.CLUB</a>
+<span>–</span>
+<a class="pro" href="https://inema.pro">PRO</a>
+<nav class="tracks" aria-label="Trilhas">
+<a href="../../curso/trilha1/index.html">1. Fundamentos</a>
+<a href="../../curso/trilha2/index.html" aria-current="page">2. Direção visual</a>
+<a href="../../curso/trilha3/index.html">3. Produção</a>
+<a href="../../curso/trilha4/index.html">4. Projeto</a>
+</nav>
+<div class="tools">
+<button data-inema-journey-open>Minha jornada</button>
+<button data-inema-appearance-toggle="[data-inema-appearance]" aria-expanded="false">Aparência</button>
+</div>
+</div>
+<div data-inema-appearance class="inema-appearance-pop">
+<div class="inema-segment">
+<button data-inema-set-theme="inema-dark">Escuro</button>
+<button data-inema-set-theme="claro">Claro</button>
+<button data-inema-set-theme="sepia">Sépia</button>
+<button data-inema-set-theme="foco">Foco</button>
+<button data-inema-set-theme="contraste">Alto contraste</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-fontscale="100">Texto padrão</button>
+<button data-inema-set-fontscale="112">Texto maior</button>
+<button data-inema-set-fontscale="125">Texto amplo</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-font="system">Fonte do sistema</button>
+<button data-inema-set-font="leitura">Fonte de leitura</button>
+<button data-inema-set-linewidth="60">Coluna estreita</button>
+<button data-inema-set-linewidth="75">Coluna larga</button>
+</div>
+</div>
+</header>
+<main id="conteudo" class="wrap">
+<div class="breadcrumb">
+<a href="../../index.html">Nano Banana Pro</a> / <a href="index.html">Direção visual</a> / Módulo 2-1</div>
+<header class="intro">
+<h1>Controle de marca: cor, texto e hierarquia</h1>
+<p>Você vai separar geração visual de acabamento exato e montar uma peça de marca legível.</p>
+<p class="meta">6 tópicos · explicação, observação e prática · avance no seu ritmo</p>
+<div data-inema-meter="modulo:2-1">
+<span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span>
+<div class="inema-bar">
+<div class="inema-bar__fill" data-inema-meter-fill>
+</div>
+</div>
+</div>
+</header>
+<div class="reading-layout">
+<nav class="toc" data-inema-toc aria-label="Tópicos deste módulo">
+<strong>Nesta aula</strong>
+<ol>
+<li>
+<a href="#topico-1">Um guia de marca enxuto</a>
+</li>
+<li>
+<a href="#topico-2">Cores: intenção e conferência</a>
+</li>
+<li>
+<a href="#topico-3">Texto gerado precisa de revisão</a>
+</li>
+<li>
+<a href="#topico-4">Hierarquia: uma mensagem principal</a>
+</li>
+<li>
+<a href="#topico-5">Infográfico com dados fornecidos</a>
+</li>
+<li>
+<a href="#topico-6">Finalize em camadas</a>
+</li>
+</ol>
+<a href="#pratica">Prática do módulo</a>
+<a href="#checagem">Teste sua decisão</a>
+</nav>
+<article class="lesson" data-inema-module="2-1" data-inema-track="2">
+<section class="topic" id="topico-1" data-inema-topic="modulo-2-1#topico-1">
+<h2 class="text-2xl font-bold">
+<span class="number">1</span>Um guia de marca enxuto</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-1-t1-concept">Guia de marca é um documento que registra escolhas recorrentes: cores, tipografia, uso do nome, linguagem de imagem e restrições. Ele orienta o conjunto e reduz decisões contraditórias.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-1-t1-why">Sem guia, cada geração pode sugerir uma marca diferente. Um sistema simples já permite avaliar se uma peça pertence à campanha.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t1-svgtitle" class="w-full h-auto">
+<title id="m2-1-t1-svgtitle">Um guia de marca enxuto — Comece pelo objetivo, explicite as restrições e só então defina o que será entregue.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Objetivo</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Restrições</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Entrega</text>
+</svg>
+<figcaption>Comece pelo objetivo, explicite as restrições e só então defina o que será entregue.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-1-t1-practice">Monte uma página com paleta, nome Aurora, frase principal, exemplo aprovado e três restrições. Inclua fundo simples, produto legível e ausência de promessas inventadas.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m2-1-t1-caution">Não transforme o guia numa lista de referências incompatíveis. Comece com poucas regras que possam ser demonstradas visualmente.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-2" data-inema-topic="modulo-2-1#topico-2">
+<h2 class="text-2xl font-bold">
+<span class="number">2</span>Cores: intenção e conferência</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-1-t2-concept">HEX é uma notação de cor digital. Pedir um código no prompt orienta a geração, mas iluminação, textura e interpretação podem mudar a cor aparente. Uma área sólida diagramada permite controle mais direto.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-1-t2-why">Uma campanha pode parecer coerente sem cada pixel ter o mesmo valor. Já um fundo de marca ou um logo pode precisar do código exato definido no editor.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t2-svgtitle" class="w-full h-auto">
+<title id="m2-1-t2-svgtitle">Cores: intenção e conferência — Uma paleta é uma relação entre cores. Observe proporções e contraste, além dos códigos isolados.</title>
+<rect x="20" y="35" width="112" height="140" rx="10" fill="#b97050"/>
+<text x="20" y="210" font-size="15" fill="currentColor">#b97050</text>
+<rect x="144" y="35" width="112" height="140" rx="10" fill="#efe4d3"/>
+<text x="144" y="210" font-size="15" fill="currentColor">#efe4d3</text>
+<rect x="268" y="35" width="112" height="140" rx="10" fill="#274654"/>
+<text x="268" y="210" font-size="15" fill="currentColor">#274654</text>
+<rect x="392" y="35" width="112" height="140" rx="10" fill="#75958a"/>
+<text x="392" y="210" font-size="15" fill="currentColor">#75958a</text>
+<rect x="516" y="35" width="112" height="140" rx="10" fill="#353631"/>
+<text x="516" y="210" font-size="15" fill="currentColor">#353631</text>
+</svg>
+<figcaption>Uma paleta é uma relação entre cores. Observe proporções e contraste, além dos códigos isolados.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-1-t2-practice">Use a paleta Aurora no gerador como direção. Depois defina as cores de texto, formas e fundos sólidos no editor. Compare a imagem e o layout no dispositivo de uso.</p>
+<div class="compare-grid">
+<div>
+<h3>✓ Faça a verificação</h3>
+<p>Use a paleta Aurora no gerador como direção. Depois defina as cores de texto, formas e fundos sólidos no editor. Compare a imagem e o layout no dispositivo de uso.</p>
+</div>
+<div>
+<h3>✗ Evite a conclusão automática</h3>
+<p>Não amostre um reflexo do produto e conclua que toda a cor da marca está errada. Diferencie superfície iluminada de elemento gráfico sólido.</p>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-3" data-inema-topic="modulo-2-1#topico-3">
+<h2 class="text-2xl font-bold">
+<span class="number">3</span>Texto gerado precisa de revisão</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-1-t3-concept">Renderização de texto é a capacidade de desenhar letras dentro da imagem. Mesmo modelos capazes de produzir palavras legíveis podem errar grafia, acentos, repetição ou distribuição.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-1-t3-why">Uma frase curta pode parecer certa numa miniatura e estar errada na ampliação. O processo precisa prever leitura humana de cada palavra.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t3-svgtitle" class="w-full h-auto">
+<title id="m2-1-t3-svgtitle">Texto gerado precisa de revisão — Tamanho e posição estabelecem ordem de leitura. Reduza a peça para conferir se a mensagem principal continua clara.</title>
+<rect x="20" y="20" width="600" height="190" rx="12" fill="var(--surface-2)"/>
+<text x="50" y="78" font-size="30" fill="currentColor">UMA IDEIA PRINCIPAL</text>
+<text x="50" y="125" font-size="19" fill="currentColor">Uma explicação que ajuda a entender</text>
+<text x="50" y="170" font-size="14" fill="currentColor">Detalhe de apoio com menor destaque</text>
+</svg>
+<figcaption>Tamanho e posição estabelecem ordem de leitura. Reduza a peça para conferir se a mensagem principal continua clara.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-1-t3-practice">Teste o prompt do módulo. Leia caractere por caractere, confira acentos e compare com o texto solicitado. Se houver erro, remova o texto da imagem e reponha no editor.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m2-1-t3-caution">Não repita promessas do acervo como texto perfeito. A conferência é parte da produção, inclusive quando a primeira tentativa parece correta.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-4" data-inema-topic="modulo-2-1#topico-4">
+<h2 class="text-2xl font-bold">
+<span class="number">4</span>Hierarquia: uma mensagem principal</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-1-t4-concept">Hierarquia visual é a ordem em que os elementos atraem atenção. Tamanho, contraste, posição e espaço ajudam a criar uma entrada clara, uma explicação e um detalhe secundário.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-1-t4-why">Quando tudo compete, nada orienta a leitura. Uma peça de produto precisa decidir se começa pelo objeto ou pela mensagem, conforme seu objetivo.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t4-svgtitle" class="w-full h-auto">
+<title id="m2-1-t4-svgtitle">Hierarquia: uma mensagem principal — Tamanho e posição estabelecem ordem de leitura. Reduza a peça para conferir se a mensagem principal continua clara.</title>
+<rect x="20" y="20" width="600" height="190" rx="12" fill="var(--surface-2)"/>
+<text x="50" y="78" font-size="30" fill="currentColor">UMA IDEIA PRINCIPAL</text>
+<text x="50" y="125" font-size="19" fill="currentColor">Uma explicação que ajuda a entender</text>
+<text x="50" y="170" font-size="14" fill="currentColor">Detalhe de apoio com menor destaque</text>
+</svg>
+<figcaption>Tamanho e posição estabelecem ordem de leitura. Reduza a peça para conferir se a mensagem principal continua clara.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-1-t4-practice">Faça duas versões com o mesmo conteúdo: título dominante e produto dominante. Observe em miniatura. Escolha a que comunica melhor a intenção do briefing.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m2-1-t4-caution">Não use apenas cor para distinguir importância. Tamanho, espaçamento e posição também precisam sustentar a leitura.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-5" data-inema-topic="modulo-2-1#topico-5">
+<h2 class="text-2xl font-bold">
+<span class="number">5</span>Infográfico com dados fornecidos</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-1-t5-concept">Infográfico organiza informação por relações visuais. O gerador pode ajudar a compor, mas não deve inventar medidas, propriedades ou fatos do produto.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-1-t5-why">Uma ilustração de aparência técnica pode dar credibilidade a algo falso. Separar dados fornecidos de elementos decorativos evita essa confusão.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t5-svgtitle" class="w-full h-auto">
+<title id="m2-1-t5-svgtitle">Infográfico com dados fornecidos — Use características observáveis para descrever e conferir a identidade do produto fictício Aurora.</title>
+<rect x="15" y="25" width="610" height="182" rx="12" fill="var(--surface-2)"/>
+<g transform="translate(80 90) scale(0.95)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="280" y="80" font-size="17" fill="currentColor">1  Uma alça oval</text>
+<text x="280" y="120" font-size="17" fill="currentColor">2  Corpo terracota</text>
+<text x="280" y="160" font-size="17" fill="currentColor">3  Borda contínua</text>
+</svg>
+<figcaption>Use características observáveis para descrever e conferir a identidade do produto fictício Aurora.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-1-t5-practice">Crie um infográfico didático com três partes observáveis: borda, corpo e alça. Faça as setas apontarem para regiões corretas. Acrescente rótulos no editor se a geração errar.</p>
+<div class="compare-grid">
+<div>
+<h3>✓ Faça a verificação</h3>
+<p>Crie um infográfico didático com três partes observáveis: borda, corpo e alça. Faça as setas apontarem para regiões corretas. Acrescente rótulos no editor se a geração errar.</p>
+</div>
+<div>
+<h3>✗ Evite a conclusão automática</h3>
+<p>Não gere capacidade, temperatura suportada ou tempo de fabricação sem dados reais. O exercício trabalha anatomia visual do objeto, não especificação técnica.</p>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-6" data-inema-topic="modulo-2-1#topico-6">
+<h2 class="text-2xl font-bold">
+<span class="number">6</span>Finalize em camadas</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-1-t6-concept">Camadas separam fotografia, texto, logo, fundo e elementos gráficos. Essa organização permite ajustes de formato e revisão sem destruir o material aprovado.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-1-t6-why">Uma composição gerada numa imagem única pode ser difícil de adaptar. Manter elementos editáveis facilita corrigir letras e ampliar margens.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t6-svgtitle" class="w-full h-auto">
+<title id="m2-1-t6-svgtitle">Finalize em camadas — Planeje o espaço de texto e mantenha a tipografia em camada editável. A imagem do produto não precisa conter as letras.</title>
+<rect x="25" y="20" width="590" height="180" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<text x="57" y="75" font-size="29" fill="currentColor">AURORA</text>
+<text x="57" y="113" font-size="16" fill="currentColor">Uma pausa à sua maneira</text>
+<g transform="translate(420 75) scale(0.85)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<rect x="50" y="145" width="160" height="25" rx="4" fill="var(--primary)"/>
+<text x="25" y="231" font-size="14" fill="currentColor">Diagrama de composição — exemplo autoral</text>
+</svg>
+<figcaption>Planeje o espaço de texto e mantenha a tipografia em camada editável. A imagem do produto não precisa conter as letras.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-1-t6-practice">Monte uma peça com imagem-base, título e frase em camadas. Exporte uma cópia e abra no celular. Verifique se o título continua legível e se o produto está livre de sobreposição.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m2-1-t6-caution">Guarde o arquivo editável além da exportação. Uma imagem final achatada não substitui a fonte de trabalho.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section id="pratica" class="codebox">
+<h2>Prática: um pedido completo</h2>
+<p>
+<strong>Objetivo:</strong> Você vai separar geração visual de acabamento exato e montar uma peça de marca legível.</p>
+<p>Use o texto abaixo na sua ferramenta de imagens. Quando houver referência, anexe o arquivo indicado antes de gerar.</p>
+<pre id="prompt-2-1">Crie uma proposta de composição para a marca fictícia Aurora usando a imagem do produto anexada. Produto no terço direito, fundo creme, luz suave, área livre à esquerda. Inclua apenas o título “AURORA” e a frase “Uma pausa à sua maneira”, com letras grandes e legíveis. Paleta de referência: terracota #B97050, creme #EFE4D3 e azul #274654. Não acrescente benefícios, selos, números ou informações comerciais.</pre>
+<button data-copy="prompt-2-1">Copiar prompt</button>
+<h3>Como verificar</h3>
+<p>Confira toda letra, pontuação e contraste. O pedido de HEX e fonte não garante precisão. Para a entrega, reconstrua texto e marca em camadas editáveis.</p>
+<ol class="timeline">
+<li>Prepare o arquivo ou briefing necessário.</li>
+<li>Faça uma tentativa e salve o resultado com as configurações.</li>
+<li>Compare com os critérios acima e localize um desvio.</li>
+<li>Corrija uma decisão e registre o efeito na nova versão.</li>
+</ol>
+</section>
+<section id="checagem" class="quiz" data-quiz="modulo-2-1#q1" data-correct="0" data-explain="O código no prompt orienta, mas não garante precisão. Elementos gráficos sólidos e texto devem ser controlados na diagramação.">
+<h2>Teste sua decisão</h2>
+<p>O prompt pediu uma cor HEX. Como assegurar a cor de um bloco gráfico final?</p>
+<button data-answer="0" aria-pressed="false">Configurar o código no editor e conferir a exportação</button>
+<button data-answer="1" aria-pressed="false">Aceitar qualquer cor gerada porque o código estava no prompt</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>O código no prompt orienta, mas não garante precisão. Elementos gráficos sólidos e texto devem ser controlados na diagramação.</p>
+</details>
+<p class="fine">Responder não marca a leitura nem bloqueia o próximo módulo.</p>
+</section>
+<section>
+<h2>O que levar desta aula</h2>
+<ul>
+<li>Um guia de marca enxuto</li>
+<li>Cores: intenção e conferência</li>
+<li>Texto gerado precisa de revisão</li>
+<li>Hierarquia: uma mensagem principal</li>
+<li>Infográfico com dados fornecidos</li>
+<li>Finalize em camadas</li>
+</ul>
+<p>Escolha uma decisão que você consegue explicar sem consultar o texto. Se ainda houver dúvida, marque o tópico e volte a ele pela jornada.</p>
+<div class="actions">
+<a class="button" href="index.html">Voltar para a trilha</a>
+<a class="button primary" href="../../curso/trilha3/modulo-3-1.html">Próximo módulo: Exploração criativa e storyboard</a>
+</div>
+</section>
+</article>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<span>Curso gratuito · INEMA.CLUB · v1.0.0</span>
+<a href="../../materiais.html">Materiais e referências</a>
+<a href="../../../index.html">Os três cursos</a>
+<a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>
+<a href="https://www.inema.club/cursos/">Todos os cursos</a>
+</div>
+</footer>
+<script src="../../assets/learn.js">
+</script>
+<script src="../../assets/course.js">
+</script>
+</body>
+</html>

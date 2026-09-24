@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+<head>
+<script>(function () {
+  try {
+    var html = document.documentElement;
+    var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+    function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+    var p = clone(DEF);
+    try {
+      var raw = localStorage.getItem('inema.prefs');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k];
+        }
+      } else {
+        // fallback ao tema legado do v1
+        var legacy = localStorage.getItem('theme');
+        if (legacy === 'light') p.theme = 'claro';
+        else if (legacy === 'dark') p.theme = 'inema-dark';
+      }
+    } catch (e) { p = clone(DEF); }
+
+    // mapa tema -> (.dark on/off, data-theme, color-scheme)
+    var THEMES = {
+      'inema-dark': { dark: true,  attr: null,        cs: 'dark'  },
+      'claro':      { dark: false, attr: null,        cs: 'light' },
+      'sepia':      { dark: false, attr: 'sepia',     cs: 'light' },
+      'foco':       { dark: null,  attr: 'foco',      cs: null    },  // herda eixo atual
+      'contraste':  { dark: true,  attr: 'contraste', cs: 'dark'  }
+    };
+    var t = THEMES[p.theme] || THEMES['inema-dark'];
+
+    if (t.dark === true) html.classList.add('dark');
+    else if (t.dark === false) html.classList.remove('dark');
+    // 'foco' (null) preserva o que ja houver no atributo class do <html>
+
+    if (t.attr) html.setAttribute('data-theme', t.attr);
+    else html.removeAttribute('data-theme');
+
+    html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+
+    html.setAttribute('data-font', p.font || 'inter');
+    html.setAttribute('data-accent', p.accent || 'emerald');
+
+    // variaveis de leitura (espelham learn.js / learn.css) ANTES do paint
+    var s = html.style;
+    var scale = (+p.fontScale || 100);
+    s.setProperty('--inema-font-scale', (scale / 100).toString());
+    s.setProperty('font-size', scale + '%');               // :root em %, nunca px
+    s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+    s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+    var fam = p.font === 'system'
+      ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+      : (p.font === 'leitura'
+        ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif'
+        : '"Inter", system-ui, sans-serif');
+    s.setProperty('--font-body', fam);
+
+    var ACC = {
+      emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66],
+      amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60]
+    };
+    var a = ACC[p.accent] || ACC.emerald;
+    s.setProperty('--accent-h', a[0] + '');
+    s.setProperty('--accent-s', a[1] + '%');
+    s.setProperty('--accent-l', a[2] + '%');
+    s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+  } catch (err) {
+    // qualquer falha => default dark, preserva a marca
+    try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {}
+  }
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="inema-course" content="nano-banana-pro">
+<meta name="description" content="Organize referências, preserve o produto e construa uma campanha com linguagem visual coerente. Aprenda a gerar, editar e conferir cada peça.">
+<title>Prepare o modelo, o briefing e as referências · INEMA.CLUB</title>
+<link rel="stylesheet" href="../../assets/learn.css">
+<link rel="stylesheet" href="../../assets/course.css">
+<script type="application/json" data-inema-manifest>{"course": "nano-banana-pro", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Prepare o modelo, o briefing e as referências", "topics": 6, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "Produto e personagem: uma base consistente", "topics": 6, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controle de marca: cor, texto e hierarquia", "topics": 6, "href": "curso/trilha2/modulo-2-1.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Exploração criativa e storyboard", "topics": 6, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Edições, referências múltiplas e adaptações", "topics": 6, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: campanha Aurora", "topics": 6, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="topbar">
+<div class="nav-inner">
+<a class="brand" href="../../index.html" aria-label="Início do curso">
+<svg viewBox="0 0 32 32" aria-hidden="true">
+<path d="M4 6h24v20H4zM10 6v20M22 6v20" fill="none" stroke="currentColor" stroke-width="2"/>
+<circle cx="16" cy="16" r="4" fill="currentColor"/>
+</svg>
+<span class="wide-only">Imagem com IA</span>
+</a>
+<a class="text-sky-400" href="https://inema.club">INEMA.CLUB</a>
+<span>–</span>
+<a class="pro" href="https://inema.pro">PRO</a>
+<nav class="tracks" aria-label="Trilhas">
+<a href="../../curso/trilha1/index.html" aria-current="page">1. Fundamentos</a>
+<a href="../../curso/trilha2/index.html">2. Direção visual</a>
+<a href="../../curso/trilha3/index.html">3. Produção</a>
+<a href="../../curso/trilha4/index.html">4. Projeto</a>
+</nav>
+<div class="tools">
+<button data-inema-journey-open>Minha jornada</button>
+<button data-inema-appearance-toggle="[data-inema-appearance]" aria-expanded="false">Aparência</button>
+</div>
+</div>
+<div data-inema-appearance class="inema-appearance-pop">
+<div class="inema-segment">
+<button data-inema-set-theme="inema-dark">Escuro</button>
+<button data-inema-set-theme="claro">Claro</button>
+<button data-inema-set-theme="sepia">Sépia</button>
+<button data-inema-set-theme="foco">Foco</button>
+<button data-inema-set-theme="contraste">Alto contraste</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-fontscale="100">Texto padrão</button>
+<button data-inema-set-fontscale="112">Texto maior</button>
+<button data-inema-set-fontscale="125">Texto amplo</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-font="system">Fonte do sistema</button>
+<button data-inema-set-font="leitura">Fonte de leitura</button>
+<button data-inema-set-linewidth="60">Coluna estreita</button>
+<button data-inema-set-linewidth="75">Coluna larga</button>
+</div>
+</div>
+</header>
+<main id="conteudo" class="wrap">
+<div class="breadcrumb">
+<a href="../../index.html">Nano Banana Pro</a> / <a href="index.html">Fundamentos</a> / Módulo 1-1</div>
+<header class="intro">
+<h1>Prepare o modelo, o briefing e as referências</h1>
+<p>Você vai configurar um teste de campanha com papéis claros para cada referência.</p>
+<p class="meta">6 tópicos · explicação, observação e prática · avance no seu ritmo</p>
+<div data-inema-meter="modulo:1-1">
+<span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span>
+<div class="inema-bar">
+<div class="inema-bar__fill" data-inema-meter-fill>
+</div>
+</div>
+</div>
+</header>
+<div class="reading-layout">
+<nav class="toc" data-inema-toc aria-label="Tópicos deste módulo">
+<strong>Nesta aula</strong>
+<ol>
+<li>
+<a href="#topico-1">Nano Banana é uma família</a>
+</li>
+<li>
+<a href="#topico-2">Objeto, contexto e técnica</a>
+</li>
+<li>
+<a href="#topico-3">O briefing da campanha Aurora</a>
+</li>
+<li>
+<a href="#topico-4">Monte um pequeno kit de referências</a>
+</li>
+<li>
+<a href="#topico-5">Faça uma rodada de diagnóstico</a>
+</li>
+<li>
+<a href="#topico-6">Planeje tentativas e arquivos</a>
+</li>
+</ol>
+<a href="#pratica">Prática do módulo</a>
+<a href="#checagem">Teste sua decisão</a>
+</nav>
+<article class="lesson" data-inema-module="1-1" data-inema-track="1">
+<section class="topic" id="topico-1" data-inema-topic="modulo-1-1#topico-1">
+<h2 class="text-2xl font-bold">
+<span class="number">1</span>Nano Banana é uma família</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m1-1-t1-concept">Nano Banana é o nome associado à geração de imagens do Gemini. A documentação oficial identifica Nano Banana Pro como Gemini 3 Pro Image e Nano Banana 2 como Gemini 3.1 Flash Image. Modelo é o sistema; aplicativo é a interface de acesso.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m1-1-t1-why">Uma aula sobre Pro não autoriza assumir que qualquer opção Nano Banana tem o mesmo comportamento. O acesso e os controles da API também podem diferir do aplicativo.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m1-1-t1-svgtitle" class="w-full h-auto">
+<title id="m1-1-t1-svgtitle">Nano Banana é uma família — Siga a sequência e registre as decisões entre as etapas. O diagrama organiza o processo, não automatiza a avaliação.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Pedido</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Geração</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Revisão</text>
+</svg>
+<figcaption>Siga a sequência e registre as decisões entre as etapas. O diagrama organiza o processo, não automatiza a avaliação.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m1-1-t1-practice">Confira o nome da opção de imagem disponível na sua conta. Registre a versão que realmente usou. Se Pro não estiver disponível, os exercícios de direção podem ser feitos em outro modelo, com essa diferença anotada.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m1-1-t1-caution">Não atribua um resultado de outro modelo ao Pro. Não há promessa de plano gratuito ou quantidade fixa de créditos neste curso. Veja a documentação nos materiais.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-2" data-inema-topic="modulo-1-1#topico-2">
+<h2 class="text-2xl font-bold">
+<span class="number">2</span>Objeto, contexto e técnica</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m1-1-t2-concept">Objeto é o assunto que deve permanecer reconhecível. Contexto é o ambiente e a ação. Técnica reúne escolhas de enquadramento, luz, formato e acabamento. Essa ordem ajuda a organizar o pedido sem uma lista desordenada de adjetivos.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m1-1-t2-why">O objeto pode ficar bonito e ainda assim perder características importantes. Começar por identidade e função deixa explícito o que não pode ser sacrificado pelo estilo.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m1-1-t2-svgtitle" class="w-full h-auto">
+<title id="m1-1-t2-svgtitle">Objeto, contexto e técnica — O pedido cresce em camadas que descrevem elementos observáveis.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Sujeito</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Luz / câmera</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Composição</text>
+</svg>
+<figcaption>O pedido cresce em camadas que descrevem elementos observáveis.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m1-1-t2-practice">Descreva a caneca em uma frase, a situação em outra e a luz em uma terceira. Faça uma primeira tentativa simples antes de acrescentar personagem, texto ou cenário complexo.</p>
+<div class="compare-grid">
+<div>
+<h3>✓ Faça a verificação</h3>
+<p>Descreva a caneca em uma frase, a situação em outra e a luz em uma terceira. Faça uma primeira tentativa simples antes de acrescentar personagem, texto ou cenário complexo.</p>
+</div>
+<div>
+<h3>✗ Evite a conclusão automática</h3>
+<p>A ordem do prompt organiza sua intenção, mas não é um algoritmo de prioridade garantido. Confira o resultado em vez de confiar no comprimento da instrução.</p>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-3" data-inema-topic="modulo-1-1#topico-3">
+<h2 class="text-2xl font-bold">
+<span class="number">3</span>O briefing da campanha Aurora</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m1-1-t3-concept">Campanha é um conjunto de peças ligadas por uma ideia. Nosso conceito é uma pausa cotidiana com cerâmica artesanal. Público, finalidade, linguagem e lista de entregas precisam estar claros antes da geração.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m1-1-t3-why">Uma imagem avulsa pode explorar livremente. Uma campanha precisa continuar reconhecível quando mudar de formato ou de cena.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m1-1-t3-svgtitle" class="w-full h-auto">
+<title id="m1-1-t3-svgtitle">O briefing da campanha Aurora — Comece pelo objetivo, explicite as restrições e só então defina o que será entregue.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Objetivo</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Restrições</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Entrega</text>
+</svg>
+<figcaption>Comece pelo objetivo, explicite as restrições e só então defina o que será entregue.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m1-1-t3-practice">Escreva os invariantes: caneca terracota de uma alça, creme como base, azul discreto no figurino, luz suave. Defina o que cada peça vai comunicar: forma, material, uso ou narrativa.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m1-1-t3-caution">Aurora é um exercício fictício. Não acrescente promessas de capacidade, origem ou benefícios físicos que o briefing não informou.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-4" data-inema-topic="modulo-1-1#topico-4">
+<h2 class="text-2xl font-bold">
+<span class="number">4</span>Monte um pequeno kit de referências</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m1-1-t4-concept">Kit é um conjunto organizado de arquivos com papéis distintos: produto, personagem, ambiente e direção visual. Imagens nítidas e recortes claros ajudam a indicar o que aproveitar.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m1-1-t4-why">Enviar tudo de uma vez pode misturar responsabilidades. Começar com poucas referências facilita perceber qual delas está levando o resultado para outra direção.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m1-1-t4-svgtitle" class="w-full h-auto">
+<title id="m1-1-t4-svgtitle">Monte um pequeno kit de referências — Atribua um papel a cada referência para evitar que produto, cenário e estilo se misturem.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Produto</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Luz / estilo</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Cena</text>
+</svg>
+<figcaption>Atribua um papel a cada referência para evitar que produto, cenário e estilo se misturem.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m1-1-t4-practice">Salve a imagem-base do produto e uma ficha de paleta. Nomeie os arquivos. Antes de gerar, escreva qual imagem define forma e qual define apenas luz ou composição.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m1-1-t4-caution">Se a plataforma usar nomes como imagem 1 ou referências anexadas, adapte o texto ao mecanismo real. Não invente um marcador que a ferramenta não reconhece.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-5" data-inema-topic="modulo-1-1#topico-5">
+<h2 class="text-2xl font-bold">
+<span class="number">5</span>Faça uma rodada de diagnóstico</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m1-1-t5-concept">Diagnóstico é uma tentativa curta para descobrir como a ferramenta lida com a tarefa. O objetivo inicial é observar aderência e capacidade de edição, não entregar a peça final.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m1-1-t5-why">Detectar cedo uma dificuldade de forma ou referência evita construir uma campanha inteira em cima de uma base instável.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m1-1-t5-svgtitle" class="w-full h-auto">
+<title id="m1-1-t5-svgtitle">Faça uma rodada de diagnóstico — Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</title>
+<rect x="20" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
+<rect x="335" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
+<g transform="translate(110 80) scale(0.8)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<g transform="translate(430 80) scale(0.8)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<path d="M48 55L225 175" stroke="var(--accent-2)" stroke-dasharray="5 5"/>
+<path d="M358 55H570" stroke="var(--primary)" stroke-dasharray="5 5"/>
+<text x="30" y="227" font-size="17" fill="currentColor">A · versão de referência</text>
+<text x="345" y="227" font-size="17" fill="currentColor">B · hipótese de mudança</text>
+</svg>
+<figcaption>Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m1-1-t5-practice">Gere o produto simples e peça uma pequena edição no fundo. Compare a caneca nas duas versões. Registre o que mudou fora da região solicitada e se a ferramenta permite continuar a edição.</p>
+<div class="compare-grid">
+<div>
+<h3>✓ Faça a verificação</h3>
+<p>Gere o produto simples e peça uma pequena edição no fundo. Compare a caneca nas duas versões. Registre o que mudou fora da região solicitada e se a ferramenta permite continuar a edição.</p>
+</div>
+<div>
+<h3>✗ Evite a conclusão automática</h3>
+<p>Não confunda uma única tentativa boa com confiabilidade universal. Guarde também o desvio observado; ele orientará suas revisões posteriores.</p>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-6" data-inema-topic="modulo-1-1#topico-6">
+<h2 class="text-2xl font-bold">
+<span class="number">6</span>Planeje tentativas e arquivos</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m1-1-t6-concept">Um orçamento de tentativas define quantas explorações você fará antes de rever a estratégia. O custo real depende do serviço e do plano. Uma pasta de aprovadas evita usar versões antigas por engano.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m1-1-t6-why">A campanha exige repetição, e refazer tudo sem registro aumenta o trabalho. Separar exploração e produção final torna cada rodada mais objetiva.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m1-1-t6-svgtitle" class="w-full h-auto">
+<title id="m1-1-t6-svgtitle">Planeje tentativas e arquivos — Guarde o arquivo original, as decisões da receita e a versão aprovada como itens separados.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Original</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Receita</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Aprovada</text>
+</svg>
+<figcaption>Guarde o arquivo original, as decisões da receita e a versão aprovada como itens separados.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m1-1-t6-practice">Para o exercício, planeje três hipóteses de composição e uma rodada de revisão para a escolhida. Registre tentativas e consumo mostrado pela ferramenta. Salve originais e aprovadas em pastas separadas.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m1-1-t6-caution">Se uma hipótese falhar repetidamente, simplifique o pedido ou troque a referência. Não transforme o número sugerido de tentativas em gasto obrigatório.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section id="pratica" class="codebox">
+<h2>Prática: um pedido completo</h2>
+<p>
+<strong>Objetivo:</strong> Você vai configurar um teste de campanha com papéis claros para cada referência.</p>
+<p>Use o texto abaixo na sua ferramenta de imagens. Quando houver referência, anexe o arquivo indicado antes de gerar.</p>
+<pre id="prompt-1-1">Crie uma fotografia de uma caneca artesanal terracota com alça oval à direita, sobre uma mesa creme. A marca fictícia Aurora quer comunicar uma pausa tranquila no cotidiano. Mostre o produto inteiro, com luz suave de janela à esquerda e fundo simples. Preserve espaço livre para texto acrescentado depois. Formato 4:3. Não inclua letras nem outros produtos.</pre>
+<button data-copy="prompt-1-1">Copiar prompt</button>
+<h3>Como verificar</h3>
+<p>Confira a seleção do modelo na interface. Registre o nome e a data; baixe a imagem-base e verifique a forma antes de criar variações.</p>
+<ol class="timeline">
+<li>Prepare o arquivo ou briefing necessário.</li>
+<li>Faça uma tentativa e salve o resultado com as configurações.</li>
+<li>Compare com os critérios acima e localize um desvio.</li>
+<li>Corrija uma decisão e registre o efeito na nova versão.</li>
+</ol>
+</section>
+<section id="checagem" class="quiz" data-quiz="modulo-1-1#q1" data-correct="1" data-explain="O nome do modelo faz parte do registro. O raciocínio de direção pode ser praticado em outra ferramenta, mas o resultado deve ser atribuído corretamente.">
+<h2>Teste sua decisão</h2>
+<p>Na interface aparece Nano Banana 2, mas você estudou Pro. Como registrar o exercício?</p>
+<button data-answer="0" aria-pressed="false">Como Pro, pois o nome é parecido</button>
+<button data-answer="1" aria-pressed="false">Com o modelo realmente usado e a diferença anotada</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>O nome do modelo faz parte do registro. O raciocínio de direção pode ser praticado em outra ferramenta, mas o resultado deve ser atribuído corretamente.</p>
+</details>
+<p class="fine">Responder não marca a leitura nem bloqueia o próximo módulo.</p>
+</section>
+<section>
+<h2>O que levar desta aula</h2>
+<ul>
+<li>Nano Banana é uma família</li>
+<li>Objeto, contexto e técnica</li>
+<li>O briefing da campanha Aurora</li>
+<li>Monte um pequeno kit de referências</li>
+<li>Faça uma rodada de diagnóstico</li>
+<li>Planeje tentativas e arquivos</li>
+</ul>
+<p>Escolha uma decisão que você consegue explicar sem consultar o texto. Se ainda houver dúvida, marque o tópico e volte a ele pela jornada.</p>
+<div class="actions">
+<a class="button" href="index.html">Voltar para a trilha</a>
+<a class="button primary" href="../../curso/trilha1/modulo-1-2.html">Próximo módulo: Produto e personagem: uma base consistente</a>
+</div>
+</section>
+</article>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<span>Curso gratuito · INEMA.CLUB · v1.0.0</span>
+<a href="../../materiais.html">Materiais e referências</a>
+<a href="../../../index.html">Os três cursos</a>
+<a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>
+<a href="https://www.inema.club/cursos/">Todos os cursos</a>
+</div>
+</footer>
+<script src="../../assets/learn.js">
+</script>
+<script src="../../assets/course.js">
+</script>
+</body>
+</html>

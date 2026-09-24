@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR" class="dark"><head><script>(function () {
+  try {
+    var html = document.documentElement;
+    var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+    function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+    var p = clone(DEF);
+    try {
+      var raw = localStorage.getItem('inema.prefs');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k];
+        }
+      } else {
+        // fallback ao tema legado do v1
+        var legacy = localStorage.getItem('theme');
+        if (legacy === 'light') p.theme = 'claro';
+        else if (legacy === 'dark') p.theme = 'inema-dark';
+      }
+    } catch (e) { p = clone(DEF); }
+
+    // mapa tema -> (.dark on/off, data-theme, color-scheme)
+    var THEMES = {
+      'inema-dark': { dark: true,  attr: null,        cs: 'dark'  },
+      'claro':      { dark: false, attr: null,        cs: 'light' },
+      'sepia':      { dark: false, attr: 'sepia',     cs: 'light' },
+      'foco':       { dark: null,  attr: 'foco',      cs: null    },  // herda eixo atual
+      'contraste':  { dark: true,  attr: 'contraste', cs: 'dark'  }
+    };
+    var t = THEMES[p.theme] || THEMES['inema-dark'];
+
+    if (t.dark === true) html.classList.add('dark');
+    else if (t.dark === false) html.classList.remove('dark');
+    // 'foco' (null) preserva o que ja houver no atributo class do <html>
+
+    if (t.attr) html.setAttribute('data-theme', t.attr);
+    else html.removeAttribute('data-theme');
+
+    html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+
+    html.setAttribute('data-font', p.font || 'inter');
+    html.setAttribute('data-accent', p.accent || 'emerald');
+
+    // variaveis de leitura (espelham learn.js / learn.css) ANTES do paint
+    var s = html.style;
+    var scale = (+p.fontScale || 100);
+    s.setProperty('--inema-font-scale', (scale / 100).toString());
+    s.setProperty('font-size', scale + '%');               // :root em %, nunca px
+    s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+    s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+    var fam = p.font === 'system'
+      ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+      : (p.font === 'leitura'
+        ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif'
+        : '"Inter", system-ui, sans-serif');
+    s.setProperty('--font-body', fam);
+
+    var ACC = {
+      emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66],
+      amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60]
+    };
+    var a = ACC[p.accent] || ACC.emerald;
+    s.setProperty('--accent-h', a[0] + '');
+    s.setProperty('--accent-s', a[1] + '%');
+    s.setProperty('--accent-l', a[2] + '%');
+    s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+  } catch (err) {
+    // qualquer falha => default dark, preserva a marca
+    try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {}
+  }
+})();
+</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="inema-course" content="nano-banana-pro"><meta name="description" content="Organize referências, preserve o produto e construa uma campanha com linguagem visual coerente. Aprenda a gerar, editar e conferir cada peça."><title>Projeto · INEMA.CLUB</title><link rel="stylesheet" href="../../assets/learn.css"><link rel="stylesheet" href="../../assets/course.css"><script type="application/json" data-inema-manifest>{"course": "nano-banana-pro", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Prepare o modelo, o briefing e as referências", "topics": 6, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "Produto e personagem: uma base consistente", "topics": 6, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controle de marca: cor, texto e hierarquia", "topics": 6, "href": "curso/trilha2/modulo-2-1.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Exploração criativa e storyboard", "topics": 6, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Edições, referências múltiplas e adaptações", "topics": 6, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: campanha Aurora", "topics": 6, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script></head>
+<body><a class="skip" href="#conteudo">Pular para o conteúdo</a><header class="topbar"><div class="nav-inner"><a class="brand" href="../../index.html" aria-label="Início do curso"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 6h24v20H4zM10 6v20M22 6v20" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="currentColor"/></svg><span class="wide-only">Imagem com IA</span></a><a class="text-sky-400" href="https://inema.club">INEMA.CLUB</a><span>–</span><a class="pro" href="https://inema.pro">PRO</a><nav class="tracks" aria-label="Trilhas"><a href="../../curso/trilha1/index.html">1. Fundamentos</a><a href="../../curso/trilha2/index.html">2. Direção visual</a><a href="../../curso/trilha3/index.html">3. Produção</a><a href="../../curso/trilha4/index.html" aria-current="page">4. Projeto</a></nav><div class="tools"><button data-inema-journey-open>Minha jornada</button><button data-inema-appearance-toggle="[data-inema-appearance]" aria-expanded="false">Aparência</button></div></div><div data-inema-appearance class="inema-appearance-pop"><div class="inema-segment"><button data-inema-set-theme="inema-dark">Escuro</button><button data-inema-set-theme="claro">Claro</button><button data-inema-set-theme="sepia">Sépia</button><button data-inema-set-theme="foco">Foco</button><button data-inema-set-theme="contraste">Alto contraste</button></div><div class="inema-segment"><button data-inema-set-fontscale="100">Texto padrão</button><button data-inema-set-fontscale="112">Texto maior</button><button data-inema-set-fontscale="125">Texto amplo</button></div><div class="inema-segment"><button data-inema-set-font="system">Fonte do sistema</button><button data-inema-set-font="leitura">Fonte de leitura</button><button data-inema-set-linewidth="60">Coluna estreita</button><button data-inema-set-linewidth="75">Coluna larga</button></div></div></header><main id="conteudo" class="wrap"><header class="intro"><p class="breadcrumb"><a href="../../index.html">Nano Banana Pro</a> / Trilha 4</p><h1>Projeto</h1><p>Explore os módulos desta etapa e acompanhe seu progresso.</p><div data-inema-meter="trilha:4"><span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span><div class="inema-bar"><div class="inema-bar__fill" data-inema-meter-fill></div></div></div></header><figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário"><p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p><svg viewBox="0 0 640 240" role="img" aria-labelledby="t4-svgtitle" class="w-full h-auto"><title id="t4-svgtitle">Percurso de aprendizagem — Siga a sequência e registre as decisões entre as etapas. O diagrama organiza o processo, não automatiza a avaliação.</title><rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/><text x="35" y="104" font-size="15" fill="currentColor">1</text><text x="35" y="132" font-size="17" fill="currentColor">Pedido</text><path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/><rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/><text x="245" y="104" font-size="15" fill="currentColor">2</text><text x="245" y="132" font-size="17" fill="currentColor">Geração</text><path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/><rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/><text x="455" y="104" font-size="15" fill="currentColor">3</text><text x="455" y="132" font-size="17" fill="currentColor">Revisão</text></svg><figcaption>Siga a sequência e registre as decisões entre as etapas. O diagrama organiza o processo, não automatiza a avaliação.</figcaption></figure><h2>Mapa da trilha</h2><div class="module-grid"><a class="module-card" href="#modulo-4-1"><div class="card-top"><span>Módulo 4-1</span><span>6 tópicos + prática</span></div><h3>◉ Projeto final: campanha Aurora</h3><p>Você vai reunir as peças, conferir continuidade e apresentar o processo com clareza.</p></a></div><h2>Conteúdo detalhado</h2><article class="module-detail" id="modulo-4-1"><h2>Projeto final: campanha Aurora</h2><p>Você vai reunir as peças, conferir continuidade e apresentar o processo com clareza.</p><button class="topic-button" aria-expanded="true" aria-controls="sum-4-1-1" onclick="toggleTopic(this)"><span class="number">1</span>Confira a lista de entregas</button><div class="topic-explanation" id="sum-4-1-1"><h3>O que é</h3><p>A entrega inclui três imagens de produto, três cenas com personagem, uma peça com texto, um infográfico de partes e um storyboard de seis quadros. Algumas peças podem reutilizar bases aprovadas.</p><h3>Por que aprender</h3><p>Uma lista explícita permite concluir o projeto e avaliar se cada parte tem função. Reutilização planejada evita gerar material sem necessidade.</p><h3>Conceitos-chave</h3><p>Confira a lista de entregas. Marque quais bases já existem. Associe cada uma a uma entrega. Só gere o que falta ou precisa de correção; mantenha o storyboard como planejamento identificado.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-4-1-2" onclick="toggleTopic(this)"><span class="number">2</span>Faça uma revisão de identidade</button><div class="topic-explanation" id="sum-4-1-2"><h3>O que é</h3><p>A revisão compara cada peça com as referências aprovadas. Produto e personagem devem permanecer reconhecíveis, mesmo com mudanças de ação ou enquadramento.</p><h3>Por que aprender</h3><p>Uma campanha pode ter paleta consistente e ainda mostrar produtos diferentes. A identidade precisa de atenção própria.</p><h3>Conceitos-chave</h3><p>Faça uma revisão de identidade. Use a folha de contato e amplie os pontos críticos: rosto, cabelo, alça e borda. Marque desvios por escrito e corrija os que impedem o reconhecimento.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-4-1-3" onclick="toggleTopic(this)"><span class="number">3</span>Revise texto e informação</button><div class="topic-explanation" id="sum-4-1-3"><h3>O que é</h3><p>A revisão editorial confere grafia, pontuação, dados, rótulos e relação entre legenda e imagem. No infográfico, cada seta deve apontar para a parte indicada.</p><h3>Por que aprender</h3><p>Erros de texto podem sobreviver à revisão visual quando o foco está nas fotos. A conferência precisa ser uma etapa deliberada.</p><h3>Conceitos-chave</h3><p>Revise texto e informação. Leia a peça com texto em voz alta. Confira a frase contra o briefing, depois examine o infográfico. Verifique se não surgiram selos ou promessas não solicitadas.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-4-1-4" onclick="toggleTopic(this)"><span class="number">4</span>Apresente o antes e depois</button><div class="topic-explanation" id="sum-4-1-4"><h3>O que é</h3><p>O estudo de caso explica uma decisão e mostra a diferença produzida. Um bom par mantém escala comparável e identifica o problema resolvido.</p><h3>Por que aprender</h3><p>A apresentação de processo torna o aprendizado demonstrável. Ela mostra como você escolheu, não apenas que conseguiu gerar imagens.</p><h3>Conceitos-chave</h3><p>Apresente o antes e depois. Escolha uma correção relevante, como limpar o fundo ou preservar a alça. Mostre base, intervenção e final com uma frase de evidência. Identifique a marca como fictícia.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-4-1-5" onclick="toggleTopic(this)"><span class="number">5</span>Organize e exporte</button><div class="topic-explanation" id="sum-4-1-5"><h3>O que é</h3><p>A entrega precisa de nomes claros, dimensões verificadas e uma separação entre arquivos finais e fontes editáveis. Um README explica o conteúdo do pacote.</p><h3>Por que aprender</h3><p>Um trabalho difícil de encontrar ou revisar gera retrabalho, mesmo quando as imagens estão boas. Organização é parte da produção.</p><h3>Conceitos-chave</h3><p>Organize e exporte. Exporte peças finais, abra cada uma e confira dimensões. Inclua fontes de diagramação, prompts e referências autorizadas. Guarde uma cópia das bases sem texto.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-4-1-6" onclick="toggleTopic(this)"><span class="number">6</span>Avalie a capacidade adquirida</button><div class="topic-explanation" id="sum-4-1-6"><h3>O que é</h3><p>O objetivo é conseguir transformar briefing em série, preservar identidade, editar desvios e explicar decisões. Uma nota de leitura não comprova essas capacidades.</p><h3>Por que aprender</h3><p>Repetir o método em outro produto mostra se você aprendeu o processo ou apenas seguiu um exemplo. A reflexão define a próxima prática.</p><h3>Conceitos-chave</h3><p>Avalie a capacidade adquirida. Troque mentalmente a caneca por uma luminária e descreva o que muda na ficha de produto, nos reflexos e nos planos. Liste uma etapa que consegue executar e outra que precisa repetir.</p></div><div class="actions"><a class="button primary" href="modulo-4-1.html">Ver Completo</a><button onclick="openModule('modulo-4-1.html')">Ver em Modal</button></div></article><dialog id="module-dialog" aria-label="Leitura do módulo"><button data-close>Fechar leitura</button><iframe title="Módulo completo"></iframe></dialog></main><footer class="footer"><div class="wrap"><span>Curso gratuito · INEMA.CLUB · v1.0.0</span><a href="../../materiais.html">Materiais e referências</a><a href="../../../index.html">Os três cursos</a><a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a><a href="https://www.inema.club/cursos/">Todos os cursos</a></div></footer><script src="../../assets/learn.js"></script><script src="../../assets/course.js"></script></body></html>

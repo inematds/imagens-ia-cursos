@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR" class="dark"><head><script>(function () {
+  try {
+    var html = document.documentElement;
+    var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+    function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+    var p = clone(DEF);
+    try {
+      var raw = localStorage.getItem('inema.prefs');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k];
+        }
+      } else {
+        // fallback ao tema legado do v1
+        var legacy = localStorage.getItem('theme');
+        if (legacy === 'light') p.theme = 'claro';
+        else if (legacy === 'dark') p.theme = 'inema-dark';
+      }
+    } catch (e) { p = clone(DEF); }
+
+    // mapa tema -> (.dark on/off, data-theme, color-scheme)
+    var THEMES = {
+      'inema-dark': { dark: true,  attr: null,        cs: 'dark'  },
+      'claro':      { dark: false, attr: null,        cs: 'light' },
+      'sepia':      { dark: false, attr: 'sepia',     cs: 'light' },
+      'foco':       { dark: null,  attr: 'foco',      cs: null    },  // herda eixo atual
+      'contraste':  { dark: true,  attr: 'contraste', cs: 'dark'  }
+    };
+    var t = THEMES[p.theme] || THEMES['inema-dark'];
+
+    if (t.dark === true) html.classList.add('dark');
+    else if (t.dark === false) html.classList.remove('dark');
+    // 'foco' (null) preserva o que ja houver no atributo class do <html>
+
+    if (t.attr) html.setAttribute('data-theme', t.attr);
+    else html.removeAttribute('data-theme');
+
+    html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+
+    html.setAttribute('data-font', p.font || 'inter');
+    html.setAttribute('data-accent', p.accent || 'emerald');
+
+    // variaveis de leitura (espelham learn.js / learn.css) ANTES do paint
+    var s = html.style;
+    var scale = (+p.fontScale || 100);
+    s.setProperty('--inema-font-scale', (scale / 100).toString());
+    s.setProperty('font-size', scale + '%');               // :root em %, nunca px
+    s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+    s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+    var fam = p.font === 'system'
+      ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+      : (p.font === 'leitura'
+        ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif'
+        : '"Inter", system-ui, sans-serif');
+    s.setProperty('--font-body', fam);
+
+    var ACC = {
+      emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66],
+      amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60]
+    };
+    var a = ACC[p.accent] || ACC.emerald;
+    s.setProperty('--accent-h', a[0] + '');
+    s.setProperty('--accent-s', a[1] + '%');
+    s.setProperty('--accent-l', a[2] + '%');
+    s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+  } catch (err) {
+    // qualquer falha => default dark, preserva a marca
+    try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {}
+  }
+})();
+</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="inema-course" content="nano-banana-pro"><meta name="description" content="Organize referências, preserve o produto e construa uma campanha com linguagem visual coerente. Aprenda a gerar, editar e conferir cada peça."><title>Direção visual · INEMA.CLUB</title><link rel="stylesheet" href="../../assets/learn.css"><link rel="stylesheet" href="../../assets/course.css"><script type="application/json" data-inema-manifest>{"course": "nano-banana-pro", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Prepare o modelo, o briefing e as referências", "topics": 6, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "Produto e personagem: uma base consistente", "topics": 6, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controle de marca: cor, texto e hierarquia", "topics": 6, "href": "curso/trilha2/modulo-2-1.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Exploração criativa e storyboard", "topics": 6, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Edições, referências múltiplas e adaptações", "topics": 6, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: campanha Aurora", "topics": 6, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script></head>
+<body><a class="skip" href="#conteudo">Pular para o conteúdo</a><header class="topbar"><div class="nav-inner"><a class="brand" href="../../index.html" aria-label="Início do curso"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 6h24v20H4zM10 6v20M22 6v20" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="currentColor"/></svg><span class="wide-only">Imagem com IA</span></a><a class="text-sky-400" href="https://inema.club">INEMA.CLUB</a><span>–</span><a class="pro" href="https://inema.pro">PRO</a><nav class="tracks" aria-label="Trilhas"><a href="../../curso/trilha1/index.html">1. Fundamentos</a><a href="../../curso/trilha2/index.html" aria-current="page">2. Direção visual</a><a href="../../curso/trilha3/index.html">3. Produção</a><a href="../../curso/trilha4/index.html">4. Projeto</a></nav><div class="tools"><button data-inema-journey-open>Minha jornada</button><button data-inema-appearance-toggle="[data-inema-appearance]" aria-expanded="false">Aparência</button></div></div><div data-inema-appearance class="inema-appearance-pop"><div class="inema-segment"><button data-inema-set-theme="inema-dark">Escuro</button><button data-inema-set-theme="claro">Claro</button><button data-inema-set-theme="sepia">Sépia</button><button data-inema-set-theme="foco">Foco</button><button data-inema-set-theme="contraste">Alto contraste</button></div><div class="inema-segment"><button data-inema-set-fontscale="100">Texto padrão</button><button data-inema-set-fontscale="112">Texto maior</button><button data-inema-set-fontscale="125">Texto amplo</button></div><div class="inema-segment"><button data-inema-set-font="system">Fonte do sistema</button><button data-inema-set-font="leitura">Fonte de leitura</button><button data-inema-set-linewidth="60">Coluna estreita</button><button data-inema-set-linewidth="75">Coluna larga</button></div></div></header><main id="conteudo" class="wrap"><header class="intro"><p class="breadcrumb"><a href="../../index.html">Nano Banana Pro</a> / Trilha 2</p><h1>Direção visual</h1><p>Explore os módulos desta etapa e acompanhe seu progresso.</p><div data-inema-meter="trilha:2"><span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span><div class="inema-bar"><div class="inema-bar__fill" data-inema-meter-fill></div></div></div></header><figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário"><p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p><svg viewBox="0 0 640 240" role="img" aria-labelledby="t2-svgtitle" class="w-full h-auto"><title id="t2-svgtitle">Percurso de aprendizagem — Siga a sequência e registre as decisões entre as etapas. O diagrama organiza o processo, não automatiza a avaliação.</title><rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/><text x="35" y="104" font-size="15" fill="currentColor">1</text><text x="35" y="132" font-size="17" fill="currentColor">Pedido</text><path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/><rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/><text x="245" y="104" font-size="15" fill="currentColor">2</text><text x="245" y="132" font-size="17" fill="currentColor">Geração</text><path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/><rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/><text x="455" y="104" font-size="15" fill="currentColor">3</text><text x="455" y="132" font-size="17" fill="currentColor">Revisão</text></svg><figcaption>Siga a sequência e registre as decisões entre as etapas. O diagrama organiza o processo, não automatiza a avaliação.</figcaption></figure><h2>Mapa da trilha</h2><div class="module-grid"><a class="module-card" href="#modulo-2-1"><div class="card-top"><span>Módulo 2-1</span><span>6 tópicos + prática</span></div><h3>◉ Controle de marca: cor, texto e hierarquia</h3><p>Você vai separar geração visual de acabamento exato e montar uma peça de marca legível.</p></a></div><h2>Conteúdo detalhado</h2><article class="module-detail" id="modulo-2-1"><h2>Controle de marca: cor, texto e hierarquia</h2><p>Você vai separar geração visual de acabamento exato e montar uma peça de marca legível.</p><button class="topic-button" aria-expanded="true" aria-controls="sum-2-1-1" onclick="toggleTopic(this)"><span class="number">1</span>Um guia de marca enxuto</button><div class="topic-explanation" id="sum-2-1-1"><h3>O que é</h3><p>Guia de marca é um documento que registra escolhas recorrentes: cores, tipografia, uso do nome, linguagem de imagem e restrições. Ele orienta o conjunto e reduz decisões contraditórias.</p><h3>Por que aprender</h3><p>Sem guia, cada geração pode sugerir uma marca diferente. Um sistema simples já permite avaliar se uma peça pertence à campanha.</p><h3>Conceitos-chave</h3><p>Um guia de marca enxuto. Monte uma página com paleta, nome Aurora, frase principal, exemplo aprovado e três restrições. Inclua fundo simples, produto legível e ausência de promessas inventadas.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-2-1-2" onclick="toggleTopic(this)"><span class="number">2</span>Cores: intenção e conferência</button><div class="topic-explanation" id="sum-2-1-2"><h3>O que é</h3><p>HEX é uma notação de cor digital. Pedir um código no prompt orienta a geração, mas iluminação, textura e interpretação podem mudar a cor aparente. Uma área sólida diagramada permite controle mais direto.</p><h3>Por que aprender</h3><p>Uma campanha pode parecer coerente sem cada pixel ter o mesmo valor. Já um fundo de marca ou um logo pode precisar do código exato definido no editor.</p><h3>Conceitos-chave</h3><p>Cores: intenção e conferência. Use a paleta Aurora no gerador como direção. Depois defina as cores de texto, formas e fundos sólidos no editor. Compare a imagem e o layout no dispositivo de uso.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-2-1-3" onclick="toggleTopic(this)"><span class="number">3</span>Texto gerado precisa de revisão</button><div class="topic-explanation" id="sum-2-1-3"><h3>O que é</h3><p>Renderização de texto é a capacidade de desenhar letras dentro da imagem. Mesmo modelos capazes de produzir palavras legíveis podem errar grafia, acentos, repetição ou distribuição.</p><h3>Por que aprender</h3><p>Uma frase curta pode parecer certa numa miniatura e estar errada na ampliação. O processo precisa prever leitura humana de cada palavra.</p><h3>Conceitos-chave</h3><p>Texto gerado precisa de revisão. Teste o prompt do módulo. Leia caractere por caractere, confira acentos e compare com o texto solicitado. Se houver erro, remova o texto da imagem e reponha no editor.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-2-1-4" onclick="toggleTopic(this)"><span class="number">4</span>Hierarquia: uma mensagem principal</button><div class="topic-explanation" id="sum-2-1-4"><h3>O que é</h3><p>Hierarquia visual é a ordem em que os elementos atraem atenção. Tamanho, contraste, posição e espaço ajudam a criar uma entrada clara, uma explicação e um detalhe secundário.</p><h3>Por que aprender</h3><p>Quando tudo compete, nada orienta a leitura. Uma peça de produto precisa decidir se começa pelo objeto ou pela mensagem, conforme seu objetivo.</p><h3>Conceitos-chave</h3><p>Hierarquia: uma mensagem principal. Faça duas versões com o mesmo conteúdo: título dominante e produto dominante. Observe em miniatura. Escolha a que comunica melhor a intenção do briefing.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-2-1-5" onclick="toggleTopic(this)"><span class="number">5</span>Infográfico com dados fornecidos</button><div class="topic-explanation" id="sum-2-1-5"><h3>O que é</h3><p>Infográfico organiza informação por relações visuais. O gerador pode ajudar a compor, mas não deve inventar medidas, propriedades ou fatos do produto.</p><h3>Por que aprender</h3><p>Uma ilustração de aparência técnica pode dar credibilidade a algo falso. Separar dados fornecidos de elementos decorativos evita essa confusão.</p><h3>Conceitos-chave</h3><p>Infográfico com dados fornecidos. Crie um infográfico didático com três partes observáveis: borda, corpo e alça. Faça as setas apontarem para regiões corretas. Acrescente rótulos no editor se a geração errar.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-2-1-6" onclick="toggleTopic(this)"><span class="number">6</span>Finalize em camadas</button><div class="topic-explanation" id="sum-2-1-6"><h3>O que é</h3><p>Camadas separam fotografia, texto, logo, fundo e elementos gráficos. Essa organização permite ajustes de formato e revisão sem destruir o material aprovado.</p><h3>Por que aprender</h3><p>Uma composição gerada numa imagem única pode ser difícil de adaptar. Manter elementos editáveis facilita corrigir letras e ampliar margens.</p><h3>Conceitos-chave</h3><p>Finalize em camadas. Monte uma peça com imagem-base, título e frase em camadas. Exporte uma cópia e abra no celular. Verifique se o título continua legível e se o produto está livre de sobreposição.</p></div><div class="actions"><a class="button primary" href="modulo-2-1.html">Ver Completo</a><button onclick="openModule('modulo-2-1.html')">Ver em Modal</button></div></article><dialog id="module-dialog" aria-label="Leitura do módulo"><button data-close>Fechar leitura</button><iframe title="Módulo completo"></iframe></dialog></main><footer class="footer"><div class="wrap"><span>Curso gratuito · INEMA.CLUB · v1.0.0</span><a href="../../materiais.html">Materiais e referências</a><a href="../../../index.html">Os três cursos</a><a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a><a href="https://www.inema.club/cursos/">Todos os cursos</a></div></footer><script src="../../assets/learn.js"></script><script src="../../assets/course.js"></script></body></html>

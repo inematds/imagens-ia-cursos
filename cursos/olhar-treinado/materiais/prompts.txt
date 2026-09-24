@@ -1,0 +1,23 @@
+# Observe, selecione e descreva
+
+Analise as referências que anexei. Para cada imagem, descreva apenas características visíveis de paleta, direção da luz, composição e textura. Separe observação de interpretação. Depois identifique três padrões recorrentes e proponha dez expressões concretas que eu possa usar para orientar imagens próprias. Não invente autoria, equipamento fotográfico nem intenção do criador. Se algo for incerto, indique a dúvida.
+
+Conferência: Este prompt é para um assistente que aceite imagens. Anexe referências próprias ou autorizadas. Confira cada observação na imagem; a análise automática pode errar.
+
+# Sete famílias estéticas, muitas possibilidades
+
+Crie uma imagem de uma caneca terracota de alça oval sobre mesa clara. Direção visual minimalista: poucos elementos, fundo creme uniforme, luz suave lateral e espaço negativo amplo. Preserve o produto inteiro e um ponto de atenção principal. Depois de avaliar esta versão, farei outra geração alterando somente a direção visual para retrô, com paleta terrosa e composição inspirada em impressos antigos. Gere apenas a primeira imagem agora, sem texto.
+
+Conferência: Produza as duas versões separadamente. Compare paleta, luz, composição e textura. Não atribua diferenças apenas ao rótulo do estilo: registre tudo que mudou.
+
+# Desmonte referências e construa regras próprias
+
+Analise a imagem que anexei como um estudo de composição. Descreva: 1 o primeiro ponto de atenção; 2 os elementos que conduzem o olhar; 3 a distribuição de áreas claras e escuras; 4 a relação entre objeto e espaço vazio; 5 uma técnica que eu possa aplicar a uma imagem diferente. Separe sinais visíveis de hipóteses de interpretação. Não atribua intenção ao autor nem invente dados técnicos.
+
+Conferência: Confira se a análise aponta regiões realmente visíveis. Escolha apenas uma técnica e aplique a outro assunto, com composição e elementos próprios.
+
+# Projeto final: sua direção visual em prática
+
+Crie uma fotografia autoral de uma caneca terracota de alça oval sobre mesa clara, para a marca fictícia Aurora. A direção escolhida combina composição minimalista e paleta terrosa: fundo creme, objeto no terço direito, luz suave de janela à esquerda, esmalte fosco e poucos elementos. Reserve espaço negativo à esquerda. Não inclua texto. Mantenha essa linguagem nas próximas duas imagens, variando apenas a função do enquadramento: detalhe do material e cena de uso.
+
+Conferência: Gere cada imagem separadamente e compare a série. Confira se as palavras visuais escolhidas aparecem nos resultados e se a função de cada peça é diferente.

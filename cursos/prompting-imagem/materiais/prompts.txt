@@ -1,0 +1,41 @@
+# Escolha sua ferramenta e prepare o projeto
+
+Crie uma fotografia de produto de uma caneca de cerâmica sem marca, cor terracota, alça oval à direita. Coloque-a sobre uma mesa clara, diante de um fundo liso creme. Enquadramento quadrado, câmera na altura da caneca, luz suave de uma janela à esquerda. Preserve a borda circular e a alça inteira. Deixe espaço livre acima do objeto. Sem texto na imagem.
+
+Conferência: Confira objeto, alça, direção da sombra e área livre. Salve a imagem e o nome exato do modelo, mesmo que o resultado não seja aprovado.
+
+# A fórmula do prompt
+
+Fotografia de uma caneca artesanal terracota com uma única alça oval à direita, sobre mesa de madeira clara. Plano de produto com a caneca inteira e margem ao redor, câmera na altura da borda. Luz de janela grande à esquerda, sombras suaves à direita. Esmalte fosco com pequenas irregularidades, sem rachaduras. Fundo creme simples, objeto no terço direito e espaço livre à esquerda para diagramação posterior. Atmosfera tranquila de manhã. Formato horizontal 4:3.
+
+Conferência: Anote no resultado onde aparecem sujeito, enquadramento, luz, textura e composição. Se um pedido não apareceu, descreva o desvio sem acrescentar vários adjetivos.
+
+# Controles e testes dentro das ferramentas
+
+Use a imagem de referência anexada como guia da forma da caneca: uma alça oval à direita e corpo terracota. Crie uma nova cena sobre mesa creme, com luz suave à esquerda e fundo sem objetos. Preserve a proporção do corpo e da alça. Deixe a caneca inteira no quadro. Nesta versão, altere somente a posição do objeto para o terço direito. Não acrescente texto.
+
+Conferência: Antes de gerar, anexe a referência própria criada no módulo anterior. Depois compare forma e posição. Registre qualquer outra diferença que apareceu.
+
+# Personagem e campanha consistentes
+
+Crie uma cena para a marca fictícia Aurora. Uma ceramista adulta fictícia, cabelo curto grisalho, camisa azul simples e avental bege, segura uma caneca terracota de alça oval. Use a referência anexada da caneca para a forma e o material. Ambiente de ateliê com mesa clara, luz de janela à esquerda, enquadramento médio. A mão deve apoiar a caneca de modo plausível. Não inclua logotipos nem texto. Preserve a aparência da personagem nas próximas edições a partir desta imagem aprovada.
+
+Conferência: A referência obrigatória é a caneca aprovada. Após a primeira personagem, salve também seu retrato e use-o nas cenas seguintes; confira rosto, roupa, mãos e produto.
+
+# Edite sem perder o que já funciona
+
+Edite a imagem anexada. Remova somente o pequeno objeto que aparece no fundo à direita e preencha a área com continuação do fundo creme. Preserve a caneca, sua alça, a mesa, a sombra, o enquadramento e a iluminação. Não acrescente novos objetos nem texto.
+
+Conferência: Use uma cópia de uma imagem sua que contenha um elemento a remover. Se ela não tiver esse problema, escolha outra correção localizada e ajuste a frase. Compare também regiões fora da edição.
+
+# Upscale, restauração e entrega
+
+Use a imagem anexada como base. Faça uma restauração conservadora, reduzindo artefatos de compressão e mantendo o contorno da caneca, a alça e a posição da sombra. Preserve as pequenas irregularidades já visíveis no esmalte. Evite inventar inscrições, marcas ou novos padrões. Entregue a maior resolução disponível nesta ferramenta sem mudar a proporção.
+
+Conferência: Confira as dimensões reais do arquivo. Compare bordas, textura e detalhes com o original. O prompt não garante 4K, identidade perfeita nem recuperação de informação ausente.
+
+# Projeto final: da intenção ao portfólio
+
+Crie uma fotografia para a campanha fictícia Aurora usando a referência anexada da caneca aprovada. Preserve o corpo terracota, a alça oval e o acabamento fosco. Mostre a caneca sobre mesa clara em um ateliê simples, com luz suave de janela à esquerda. Mantenha a paleta terracota, creme e azul discreto. Reserve espaço livre acima do produto. Gere apenas uma imagem; não faça colagem e não inclua texto.
+
+Conferência: Produza três imagens separadas: produto inteiro, detalhe do esmalte e cena de uso. Registre a decisão alterada em cada uma e mantenha referências e configurações junto dos arquivos.

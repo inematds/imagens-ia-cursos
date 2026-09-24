@@ -1,0 +1,53 @@
+{
+  "course": "olhar-treinado",
+  "tracks": [
+    {
+      "n": "1",
+      "title": "Fundamentos",
+      "modules": [
+        {
+          "id": "1-1",
+          "title": "Observe, selecione e descreva",
+          "topics": 6,
+          "href": "curso/trilha1/modulo-1-1.html"
+        }
+      ]
+    },
+    {
+      "n": "2",
+      "title": "Direção visual",
+      "modules": [
+        {
+          "id": "2-1",
+          "title": "Sete famílias estéticas, muitas possibilidades",
+          "topics": 6,
+          "href": "curso/trilha2/modulo-2-1.html"
+        }
+      ]
+    },
+    {
+      "n": "3",
+      "title": "Produção",
+      "modules": [
+        {
+          "id": "3-1",
+          "title": "Desmonte referências e construa regras próprias",
+          "topics": 6,
+          "href": "curso/trilha3/modulo-3-1.html"
+        }
+      ]
+    },
+    {
+      "n": "4",
+      "title": "Projeto",
+      "modules": [
+        {
+          "id": "4-1",
+          "title": "Projeto final: sua direção visual em prática",
+          "topics": 6,
+          "href": "curso/trilha4/modulo-4-1.html"
+        }
+      ]
+    }
+  ]
+}

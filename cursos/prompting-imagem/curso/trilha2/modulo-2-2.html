@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+<head>
+<script>(function () {
+  try {
+    var html = document.documentElement;
+    var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+    function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+    var p = clone(DEF);
+    try {
+      var raw = localStorage.getItem('inema.prefs');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k];
+        }
+      } else {
+        // fallback ao tema legado do v1
+        var legacy = localStorage.getItem('theme');
+        if (legacy === 'light') p.theme = 'claro';
+        else if (legacy === 'dark') p.theme = 'inema-dark';
+      }
+    } catch (e) { p = clone(DEF); }
+
+    // mapa tema -> (.dark on/off, data-theme, color-scheme)
+    var THEMES = {
+      'inema-dark': { dark: true,  attr: null,        cs: 'dark'  },
+      'claro':      { dark: false, attr: null,        cs: 'light' },
+      'sepia':      { dark: false, attr: 'sepia',     cs: 'light' },
+      'foco':       { dark: null,  attr: 'foco',      cs: null    },  // herda eixo atual
+      'contraste':  { dark: true,  attr: 'contraste', cs: 'dark'  }
+    };
+    var t = THEMES[p.theme] || THEMES['inema-dark'];
+
+    if (t.dark === true) html.classList.add('dark');
+    else if (t.dark === false) html.classList.remove('dark');
+    // 'foco' (null) preserva o que ja houver no atributo class do <html>
+
+    if (t.attr) html.setAttribute('data-theme', t.attr);
+    else html.removeAttribute('data-theme');
+
+    html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+
+    html.setAttribute('data-font', p.font || 'inter');
+    html.setAttribute('data-accent', p.accent || 'emerald');
+
+    // variaveis de leitura (espelham learn.js / learn.css) ANTES do paint
+    var s = html.style;
+    var scale = (+p.fontScale || 100);
+    s.setProperty('--inema-font-scale', (scale / 100).toString());
+    s.setProperty('font-size', scale + '%');               // :root em %, nunca px
+    s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+    s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+    var fam = p.font === 'system'
+      ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+      : (p.font === 'leitura'
+        ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif'
+        : '"Inter", system-ui, sans-serif');
+    s.setProperty('--font-body', fam);
+
+    var ACC = {
+      emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66],
+      amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60]
+    };
+    var a = ACC[p.accent] || ACC.emerald;
+    s.setProperty('--accent-h', a[0] + '');
+    s.setProperty('--accent-s', a[1] + '%');
+    s.setProperty('--accent-l', a[2] + '%');
+    s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+  } catch (err) {
+    // qualquer falha => default dark, preserva a marca
+    try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {}
+  }
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="inema-course" content="prompting-imagem">
+<meta name="description" content="Transforme uma ideia em decisões de enquadramento, luz e composição. Construa uma série de imagens que você consegue explicar e revisar.">
+<title>Personagem e campanha consistentes · INEMA.CLUB</title>
+<link rel="stylesheet" href="../../assets/learn.css">
+<link rel="stylesheet" href="../../assets/course.css">
+<script type="application/json" data-inema-manifest>{"course": "prompting-imagem", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Escolha sua ferramenta e prepare o projeto", "topics": 6, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "A fórmula do prompt", "topics": 6, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controles e testes dentro das ferramentas", "topics": 6, "href": "curso/trilha2/modulo-2-1.html"}, {"id": "2-2", "title": "Personagem e campanha consistentes", "topics": 6, "href": "curso/trilha2/modulo-2-2.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Edite sem perder o que já funciona", "topics": 6, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Upscale, restauração e entrega", "topics": 6, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: da intenção ao portfólio", "topics": 6, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="topbar">
+<div class="nav-inner">
+<a class="brand" href="../../index.html" aria-label="Início do curso">
+<svg viewBox="0 0 32 32" aria-hidden="true">
+<path d="M4 6h24v20H4zM10 6v20M22 6v20" fill="none" stroke="currentColor" stroke-width="2"/>
+<circle cx="16" cy="16" r="4" fill="currentColor"/>
+</svg>
+<span class="wide-only">Imagem com IA</span>
+</a>
+<a class="text-sky-400" href="https://inema.club">INEMA.CLUB</a>
+<span>–</span>
+<a class="pro" href="https://inema.pro">PRO</a>
+<nav class="tracks" aria-label="Trilhas">
+<a href="../../curso/trilha1/index.html">1. Fundamentos</a>
+<a href="../../curso/trilha2/index.html" aria-current="page">2. Direção visual</a>
+<a href="../../curso/trilha3/index.html">3. Produção</a>
+<a href="../../curso/trilha4/index.html">4. Projeto</a>
+</nav>
+<div class="tools">
+<button data-inema-journey-open>Minha jornada</button>
+<button data-inema-appearance-toggle="[data-inema-appearance]" aria-expanded="false">Aparência</button>
+</div>
+</div>
+<div data-inema-appearance class="inema-appearance-pop">
+<div class="inema-segment">
+<button data-inema-set-theme="inema-dark">Escuro</button>
+<button data-inema-set-theme="claro">Claro</button>
+<button data-inema-set-theme="sepia">Sépia</button>
+<button data-inema-set-theme="foco">Foco</button>
+<button data-inema-set-theme="contraste">Alto contraste</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-fontscale="100">Texto padrão</button>
+<button data-inema-set-fontscale="112">Texto maior</button>
+<button data-inema-set-fontscale="125">Texto amplo</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-font="system">Fonte do sistema</button>
+<button data-inema-set-font="leitura">Fonte de leitura</button>
+<button data-inema-set-linewidth="60">Coluna estreita</button>
+<button data-inema-set-linewidth="75">Coluna larga</button>
+</div>
+</div>
+</header>
+<main id="conteudo" class="wrap">
+<div class="breadcrumb">
+<a href="../../index.html">Prompting de Imagem</a> / <a href="index.html">Direção visual</a> / Módulo 2-2</div>
+<header class="intro">
+<h1>Personagem e campanha consistentes</h1>
+<p>Você vai definir invariantes e montar uma sequência de seis cenas sem depender de sorte.</p>
+<p class="meta">6 tópicos · explicação, observação e prática · avance no seu ritmo</p>
+<div data-inema-meter="modulo:2-2">
+<span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span>
+<div class="inema-bar">
+<div class="inema-bar__fill" data-inema-meter-fill>
+</div>
+</div>
+</div>
+</header>
+<div class="reading-layout">
+<nav class="toc" data-inema-toc aria-label="Tópicos deste módulo">
+<strong>Nesta aula</strong>
+<ol>
+<li>
+<a href="#topico-1">Defina o que não pode mudar</a>
+</li>
+<li>
+<a href="#topico-2">Crie e aprove uma imagem-base</a>
+</li>
+<li>
+<a href="#topico-3">Combine referências sem misturar papéis</a>
+</li>
+<li>
+<a href="#topico-4">Planeje seis cenas com funções diferentes</a>
+</li>
+<li>
+<a href="#topico-5">Faça uma folha de contato</a>
+</li>
+<li>
+<a href="#topico-6">Corrija o ponto que quebra a série</a>
+</li>
+</ol>
+<a href="#pratica">Prática do módulo</a>
+<a href="#checagem">Teste sua decisão</a>
+</nav>
+<article class="lesson" data-inema-module="2-2" data-inema-track="2">
+<section class="topic" id="topico-1" data-inema-topic="modulo-2-2#topico-1">
+<h2 class="text-2xl font-bold">
+<span class="number">1</span>Defina o que não pode mudar</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-2-t1-concept">Invariantes são características que precisam permanecer ao longo da série. Para a caneca: cor, número de alças e formato. Para a personagem fictícia: faixa etária, cabelo, traços principais e figurino. Ângulo e ação podem variar.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-2-t1-why">Uma campanha coerente depende de reconhecer o mesmo universo, não de repetir o mesmo enquadramento. Separar invariantes de variáveis permite criar diversidade com controle.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-2-t1-svgtitle" class="w-full h-auto">
+<title id="m2-2-t1-svgtitle">Defina o que não pode mudar — Use características observáveis para descrever e conferir a identidade do produto fictício Aurora.</title>
+<rect x="15" y="25" width="610" height="182" rx="12" fill="var(--surface-2)"/>
+<g transform="translate(80 90) scale(0.95)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="280" y="80" font-size="17" fill="currentColor">1  Uma alça oval</text>
+<text x="280" y="120" font-size="17" fill="currentColor">2  Corpo terracota</text>
+<text x="280" y="160" font-size="17" fill="currentColor">3  Borda contínua</text>
+</svg>
+<figcaption>Use características observáveis para descrever e conferir a identidade do produto fictício Aurora.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-2-t1-practice">Monte uma ficha com duas colunas: preservar e variar. Escolha cinco invariantes no máximo para a primeira rodada e descreva como verificá-los visualmente.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m2-2-t1-caution">Não use adjetivos vagos como mesma energia como único critério. Escreva sinais que outra pessoa consiga conferir na imagem.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-2" data-inema-topic="modulo-2-2#topico-2">
+<h2 class="text-2xl font-bold">
+<span class="number">2</span>Crie e aprove uma imagem-base</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-2-t2-concept">Imagem-base é a referência aprovada que orientará a série. Para identidade, prefira um rosto desobstruído; para produto, prefira bordas visíveis e iluminação que mostre a forma.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-2-t2-why">Uma base com erro transfere incerteza para todas as cenas. Resolver olhos, cabelo, alça ou rótulo antes da expansão economiza revisões posteriores.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-2-t2-svgtitle" class="w-full h-auto">
+<title id="m2-2-t2-svgtitle">Crie e aprove uma imagem-base — Use características observáveis para descrever e conferir a identidade do produto fictício Aurora.</title>
+<rect x="15" y="25" width="610" height="182" rx="12" fill="var(--surface-2)"/>
+<g transform="translate(80 90) scale(0.95)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="280" y="80" font-size="17" fill="currentColor">1  Uma alça oval</text>
+<text x="280" y="120" font-size="17" fill="currentColor">2  Corpo terracota</text>
+<text x="280" y="160" font-size="17" fill="currentColor">3  Borda contínua</text>
+</svg>
+<figcaption>Use características observáveis para descrever e conferir a identidade do produto fictício Aurora.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-2-t2-practice">Gere a personagem fictícia e revise em tamanho natural e ampliado. Salve a escolhida com um nome estável. Registre o que foi aprovado e descarte da pasta de referências versões ainda problemáticas.</p>
+<div class="compare-grid">
+<div>
+<h3>✓ Faça a verificação</h3>
+<p>Gere a personagem fictícia e revise em tamanho natural e ampliado. Salve a escolhida com um nome estável. Registre o que foi aprovado e descarte da pasta de referências versões ainda problemáticas.</p>
+</div>
+<div>
+<h3>✗ Evite a conclusão automática</h3>
+<p>Não confunda uma imagem visualmente atraente com uma referência útil. Sombras que escondem metade do rosto podem dificultar a verificação de identidade.</p>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-3" data-inema-topic="modulo-2-2#topico-3">
+<h2 class="text-2xl font-bold">
+<span class="number">3</span>Combine referências sem misturar papéis</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-2-t3-concept">Uma cena pode usar referências distintas para pessoa, produto, roupa e ambiente. A instrução deve associar cada arquivo ao papel correto, conforme o modo de anexar da ferramenta.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-2-t3-why">Sem associação, a IA pode copiar o cenário da foto de produto ou trocar o figurino da personagem. A clareza do pedido importa tanto quanto a quantidade de imagens.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-2-t3-svgtitle" class="w-full h-auto">
+<title id="m2-2-t3-svgtitle">Combine referências sem misturar papéis — Atribua um papel a cada referência para evitar que produto, cenário e estilo se misturem.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Produto</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Luz / estilo</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Cena</text>
+</svg>
+<figcaption>Atribua um papel a cada referência para evitar que produto, cenário e estilo se misturem.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-2-t3-practice">Nomeie os arquivos e escreva: imagem A para a personagem; imagem B para a caneca; fundo conforme descrição. Comece com duas referências e acrescente outras só se resolverem um problema real.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m2-2-t3-caution">A capacidade de usar múltiplas referências varia. Se houver confusão, simplifique para uma edição por vez e confira os invariantes após cada etapa.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-4" data-inema-topic="modulo-2-2#topico-4">
+<h2 class="text-2xl font-bold">
+<span class="number">4</span>Planeje seis cenas com funções diferentes</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-2-t4-concept">Uma lista de cenas define o papel de cada imagem na história. Para Aurora: ambiente do ateliê, escolha da peça, detalhe do esmalte, uso da caneca, conjunto na mesa e imagem final com espaço para mensagem.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-2-t4-why">Ter seis imagens do mesmo produto não basta para construir uma sequência. Cada quadro precisa acrescentar informação ou mudar o ponto de vista com intenção.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 310" role="img" aria-labelledby="m2-2-t4-svgtitle" class="w-full h-auto">
+<title id="m2-2-t4-svgtitle">Planeje seis cenas com funções diferentes — Cada quadro tem uma função. Aqui a repetição do produto é esquemática; no seu trabalho, varie a cena e confira os invariantes.</title>
+<rect x="12" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(76 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="24" y="136" font-size="15" fill="currentColor">1. Apresentar</text>
+<rect x="222" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(286 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="234" y="136" font-size="15" fill="currentColor">2. Aproximar</text>
+<rect x="432" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(496 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="444" y="136" font-size="15" fill="currentColor">3. Detalhar</text>
+<rect x="12" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(76 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="24" y="284" font-size="15" fill="currentColor">4. Contextualizar</text>
+<rect x="222" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(286 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="234" y="284" font-size="15" fill="currentColor">5. Usar</text>
+<rect x="432" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(496 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="444" y="284" font-size="15" fill="currentColor">6. Concluir</text>
+</svg>
+<figcaption>Cada quadro tem uma função. Aqui a repetição do produto é esquemática; no seu trabalho, varie a cena e confira os invariantes.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-2-t4-practice">Use o storyboard dos materiais. Escreva ação, enquadramento e invariante por quadro. Comece pela imagem mais simples e use a versão aprovada como apoio às mais complexas.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m2-2-t4-caution">Não peça seis imagens finais numa colagem e presuma que cada quadro terá resolução suficiente. Use a colagem para planejamento e produza finais individualmente.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-5" data-inema-topic="modulo-2-2#topico-5">
+<h2 class="text-2xl font-bold">
+<span class="number">5</span>Faça uma folha de contato</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-2-t5-concept">Folha de contato é uma visão de várias imagens em miniatura. Ela revela diferenças de paleta, escala, figurino e iluminação que passam despercebidas quando cada arquivo é visto isoladamente.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-2-t5-why">O público verá a campanha como conjunto. Uma imagem excelente pode quebrar a unidade da série se o produto ou a personagem mudar nela.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 310" role="img" aria-labelledby="m2-2-t5-svgtitle" class="w-full h-auto">
+<title id="m2-2-t5-svgtitle">Faça uma folha de contato — Cada quadro tem uma função. Aqui a repetição do produto é esquemática; no seu trabalho, varie a cena e confira os invariantes.</title>
+<rect x="12" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(76 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="24" y="136" font-size="15" fill="currentColor">1. Apresentar</text>
+<rect x="222" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(286 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="234" y="136" font-size="15" fill="currentColor">2. Aproximar</text>
+<rect x="432" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(496 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="444" y="136" font-size="15" fill="currentColor">3. Detalhar</text>
+<rect x="12" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(76 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="24" y="284" font-size="15" fill="currentColor">4. Contextualizar</text>
+<rect x="222" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(286 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="234" y="284" font-size="15" fill="currentColor">5. Usar</text>
+<rect x="432" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(496 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="444" y="284" font-size="15" fill="currentColor">6. Concluir</text>
+</svg>
+<figcaption>Cada quadro tem uma função. Aqui a repetição do produto é esquemática; no seu trabalho, varie a cena e confira os invariantes.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-2-t5-practice">Organize os seis quadros em uma grade. Marque com palavras cada desvio: alça menor, camisa diferente, luz invertida. Corrija primeiro os erros de identidade; depois ajuste variações de acabamento.</p>
+<div class="compare-grid">
+<div>
+<h3>✓ Faça a verificação</h3>
+<p>Organize os seis quadros em uma grade. Marque com palavras cada desvio: alça menor, camisa diferente, luz invertida. Corrija primeiro os erros de identidade; depois ajuste variações de acabamento.</p>
+</div>
+<div>
+<h3>✗ Evite a conclusão automática</h3>
+<p>Evite selecionar só pelas imagens mais bonitas individualmente. Coerência e função da cena são critérios distintos de impacto visual isolado.</p>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-6" data-inema-topic="modulo-2-2#topico-6">
+<h2 class="text-2xl font-bold">
+<span class="number">6</span>Corrija o ponto que quebra a série</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-2-t6-concept">Correção localizada preserva decisões que já funcionam. Se apenas a camisa mudou, descreva essa edição sem reescrever toda a cena. Compare também áreas que deveriam permanecer intactas.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-2-t6-why">Regenerar do zero pode resolver um detalhe e perder pose, identidade e composição. Uma correção deve ser julgada pelo ganho e pelo que preservou.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-2-t6-svgtitle" class="w-full h-auto">
+<title id="m2-2-t6-svgtitle">Corrija o ponto que quebra a série — A área azul indica a região a editar. Depois da correção, confira também o que deveria ter sido preservado.</title>
+<rect x="25" y="28" width="590" height="165" rx="10" fill="var(--surface-2)"/>
+<g transform="translate(235 75) scale(0.95)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<rect x="420" y="105" width="70" height="70" rx="12" fill="#38bdf8" opacity=".25" stroke="#38bdf8" stroke-dasharray="5 4"/>
+<circle cx="455" cy="140" r="18" fill="#8c9cb2"/>
+<text x="35" y="225" font-size="17" fill="currentColor">Preservar produto</text>
+<text x="365" y="225" font-size="17" fill="currentColor">Editar só a seleção</text>
+</svg>
+<figcaption>A área azul indica a região a editar. Depois da correção, confira também o que deveria ter sido preservado.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-2-t6-practice">Escolha o quadro com maior desvio, anexe-o e solicite uma mudança objetiva. Salve como nova versão. Recoloque-o na folha de contato para conferir se o conjunto melhorou.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m2-2-t6-caution">Não aceite uma mão corrigida se a caneca mudou de forma. A revisão final precisa voltar aos invariantes do briefing.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section id="pratica" class="codebox">
+<h2>Prática: um pedido completo</h2>
+<p>
+<strong>Objetivo:</strong> Você vai definir invariantes e montar uma sequência de seis cenas sem depender de sorte.</p>
+<p>Use o texto abaixo na sua ferramenta de imagens. Quando houver referência, anexe o arquivo indicado antes de gerar.</p>
+<pre id="prompt-2-2">Crie uma cena para a marca fictícia Aurora. Uma ceramista adulta fictícia, cabelo curto grisalho, camisa azul simples e avental bege, segura uma caneca terracota de alça oval. Use a referência anexada da caneca para a forma e o material. Ambiente de ateliê com mesa clara, luz de janela à esquerda, enquadramento médio. A mão deve apoiar a caneca de modo plausível. Não inclua logotipos nem texto. Preserve a aparência da personagem nas próximas edições a partir desta imagem aprovada.</pre>
+<button data-copy="prompt-2-2">Copiar prompt</button>
+<h3>Como verificar</h3>
+<p>A referência obrigatória é a caneca aprovada. Após a primeira personagem, salve também seu retrato e use-o nas cenas seguintes; confira rosto, roupa, mãos e produto.</p>
+<ol class="timeline">
+<li>Prepare o arquivo ou briefing necessário.</li>
+<li>Faça uma tentativa e salve o resultado com as configurações.</li>
+<li>Compare com os critérios acima e localize um desvio.</li>
+<li>Corrija uma decisão e registre o efeito na nova versão.</li>
+</ol>
+</section>
+<section id="checagem" class="quiz" data-quiz="modulo-2-2#q1" data-correct="0" data-explain="A alça é um invariante. Corrija a identidade antes de polir a apresentação do conjunto.">
+<h2>Teste sua decisão</h2>
+<p>Na folha de contato, a caneca mudou de alça. O que revisar primeiro?</p>
+<button data-answer="0" aria-pressed="false">A identidade do produto</button>
+<button data-answer="1" aria-pressed="false">A decoração da borda da apresentação</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>A alça é um invariante. Corrija a identidade antes de polir a apresentação do conjunto.</p>
+</details>
+<p class="fine">Responder não marca a leitura nem bloqueia o próximo módulo.</p>
+</section>
+<section>
+<h2>O que levar desta aula</h2>
+<ul>
+<li>Defina o que não pode mudar</li>
+<li>Crie e aprove uma imagem-base</li>
+<li>Combine referências sem misturar papéis</li>
+<li>Planeje seis cenas com funções diferentes</li>
+<li>Faça uma folha de contato</li>
+<li>Corrija o ponto que quebra a série</li>
+</ul>
+<p>Escolha uma decisão que você consegue explicar sem consultar o texto. Se ainda houver dúvida, marque o tópico e volte a ele pela jornada.</p>
+<div class="actions">
+<a class="button" href="index.html">Voltar para a trilha</a>
+<a class="button primary" href="../../curso/trilha3/modulo-3-1.html">Próximo módulo: Edite sem perder o que já funciona</a>
+</div>
+</section>
+</article>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<span>Curso gratuito · INEMA.CLUB · v1.0.0</span>
+<a href="../../materiais.html">Materiais e referências</a>
+<a href="../../../index.html">Os três cursos</a>
+<a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>
+<a href="https://www.inema.club/cursos/">Todos os cursos</a>
+</div>
+</footer>
+<script src="../../assets/learn.js">
+</script>
+<script src="../../assets/course.js">
+</script>
+</body>
+</html>

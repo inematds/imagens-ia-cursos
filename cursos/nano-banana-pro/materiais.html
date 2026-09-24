@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR" class="dark"><head><script>(function () {
+  try {
+    var html = document.documentElement;
+    var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+    function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+    var p = clone(DEF);
+    try {
+      var raw = localStorage.getItem('inema.prefs');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k];
+        }
+      } else {
+        // fallback ao tema legado do v1
+        var legacy = localStorage.getItem('theme');
+        if (legacy === 'light') p.theme = 'claro';
+        else if (legacy === 'dark') p.theme = 'inema-dark';
+      }
+    } catch (e) { p = clone(DEF); }
+
+    // mapa tema -> (.dark on/off, data-theme, color-scheme)
+    var THEMES = {
+      'inema-dark': { dark: true,  attr: null,        cs: 'dark'  },
+      'claro':      { dark: false, attr: null,        cs: 'light' },
+      'sepia':      { dark: false, attr: 'sepia',     cs: 'light' },
+      'foco':       { dark: null,  attr: 'foco',      cs: null    },  // herda eixo atual
+      'contraste':  { dark: true,  attr: 'contraste', cs: 'dark'  }
+    };
+    var t = THEMES[p.theme] || THEMES['inema-dark'];
+
+    if (t.dark === true) html.classList.add('dark');
+    else if (t.dark === false) html.classList.remove('dark');
+    // 'foco' (null) preserva o que ja houver no atributo class do <html>
+
+    if (t.attr) html.setAttribute('data-theme', t.attr);
+    else html.removeAttribute('data-theme');
+
+    html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+
+    html.setAttribute('data-font', p.font || 'inter');
+    html.setAttribute('data-accent', p.accent || 'emerald');
+
+    // variaveis de leitura (espelham learn.js / learn.css) ANTES do paint
+    var s = html.style;
+    var scale = (+p.fontScale || 100);
+    s.setProperty('--inema-font-scale', (scale / 100).toString());
+    s.setProperty('font-size', scale + '%');               // :root em %, nunca px
+    s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+    s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+    var fam = p.font === 'system'
+      ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+      : (p.font === 'leitura'
+        ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif'
+        : '"Inter", system-ui, sans-serif');
+    s.setProperty('--font-body', fam);
+
+    var ACC = {
+      emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66],
+      amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60]
+    };
+    var a = ACC[p.accent] || ACC.emerald;
+    s.setProperty('--accent-h', a[0] + '');
+    s.setProperty('--accent-s', a[1] + '%');
+    s.setProperty('--accent-l', a[2] + '%');
+    s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+  } catch (err) {
+    // qualquer falha => default dark, preserva a marca
+    try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {}
+  }
+})();
+</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="inema-course" content="nano-banana-pro"><meta name="description" content="Organize referências, preserve o produto e construa uma campanha com linguagem visual coerente. Aprenda a gerar, editar e conferir cada peça."><title>Materiais · INEMA.CLUB</title><link rel="stylesheet" href="assets/learn.css"><link rel="stylesheet" href="assets/course.css"><script type="application/json" data-inema-manifest>{"course": "nano-banana-pro", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Prepare o modelo, o briefing e as referências", "topics": 6, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "Produto e personagem: uma base consistente", "topics": 6, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controle de marca: cor, texto e hierarquia", "topics": 6, "href": "curso/trilha2/modulo-2-1.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Exploração criativa e storyboard", "topics": 6, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Edições, referências múltiplas e adaptações", "topics": 6, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: campanha Aurora", "topics": 6, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script></head>
+<body><a class="skip" href="#conteudo">Pular para o conteúdo</a><header class="topbar"><div class="nav-inner"><a class="brand" href="index.html" aria-label="Início do curso"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 6h24v20H4zM10 6v20M22 6v20" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="currentColor"/></svg><span class="wide-only">Imagem com IA</span></a><a class="text-sky-400" href="https://inema.club">INEMA.CLUB</a><span>–</span><a class="pro" href="https://inema.pro">PRO</a><nav class="tracks" aria-label="Trilhas"><a href="curso/trilha1/index.html">1. Fundamentos</a><a href="curso/trilha2/index.html">2. Direção visual</a><a href="curso/trilha3/index.html">3. Produção</a><a href="curso/trilha4/index.html">4. Projeto</a></nav><div class="tools"><button data-inema-journey-open>Minha jornada</button><button data-inema-appearance-toggle="[data-inema-appearance]" aria-expanded="false">Aparência</button></div></div><div data-inema-appearance class="inema-appearance-pop"><div class="inema-segment"><button data-inema-set-theme="inema-dark">Escuro</button><button data-inema-set-theme="claro">Claro</button><button data-inema-set-theme="sepia">Sépia</button><button data-inema-set-theme="foco">Foco</button><button data-inema-set-theme="contraste">Alto contraste</button></div><div class="inema-segment"><button data-inema-set-fontscale="100">Texto padrão</button><button data-inema-set-fontscale="112">Texto maior</button><button data-inema-set-fontscale="125">Texto amplo</button></div><div class="inema-segment"><button data-inema-set-font="system">Fonte do sistema</button><button data-inema-set-font="leitura">Fonte de leitura</button><button data-inema-set-linewidth="60">Coluna estreita</button><button data-inema-set-linewidth="75">Coluna larga</button></div></div></header><main id="conteudo" class="wrap"><header class="intro"><h1>Materiais de trabalho</h1><p>Nano Banana Pro: arquivos autorais para acompanhar o projeto. Os prompts são pontos de partida; resultados variam e precisam de revisão.</p></header><ul class="resource-links"><li><a download href="materiais/prompts.txt">Baixar os 6 prompts completos dos módulos</a></li><li><a download href="materiais/ficha-geracao.json">Baixar ficha de geração em JSON</a> — registro, não configuração universal de API.</li><li><a download href="materiais/caderno-projeto.md">Baixar caderno de briefing, referências, storyboard e rubrica</a></li><li><a download href="materiais/produto-aurora.svg">Baixar referência esquemática da caneca Aurora</a> — desenho de forma; abra no navegador e exporte uma captura PNG caso a ferramenta não aceite SVG.</li></ul><p><a download href="materiais/glossario.md">Baixar glossário com 32 termos definidos</a></p><h2>Como avaliar sua entrega</h2><div class="table-scroll"><table><thead><tr><th>Critério</th><th>O que observar</th></tr></thead><tbody><tr><td>Forma</td><td>Quantidade, contornos e partes essenciais preservadas.</td></tr><tr><td>Luz</td><td>Direção coerente de sombras e reflexos.</td></tr><tr><td>Composição</td><td>Assunto legível e espaço adequado ao uso.</td></tr><tr><td>Coerência</td><td>Produto, personagem e linguagem reconhecíveis na série.</td></tr><tr><td>Entrega</td><td>Dimensões, texto, arquivos e registro conferidos.</td></tr></tbody></table></div><h2>Documentação para conferir recursos</h2><p>Consulta editorial em 24/09/2026. Planos, interfaces e modelos mudam; confira a versão da sua ferramenta. A documentação técnica de uma API não garante que o mesmo controle esteja disponível no aplicativo.</p><ul><li><a href="https://ai.google.dev/gemini-api/docs/image-generation">Google — geração e edição de imagens</a></li><li><a href="https://docs.midjourney.com/hc/en-us/articles/36285124473997-Omni-Reference">Midjourney — referências e identidade</a></li><li><a href="https://docs.midjourney.com/hc/en-us/articles/32604356340877-Seeds">Midjourney — seeds e suas limitações</a></li><li><a href="https://docs.midjourney.com/hc/en-us/articles/32199405667853-Version">Midjourney — versões e compatibilidade</a></li></ul><h2>Sobre os exemplos</h2><p>Aurora é uma marca fictícia para estudo. Textos, prompts e diagramas foram preparados para estes cursos a partir de estudo crítico do acervo interno. Os exemplos esquemáticos não são resultados de Nano Banana ou de outro modelo. As capas usam flux2-klein. Nenhuma promessa de fidelidade, custo ou desempenho é garantida pelos exercícios.</p><p>Não são incluídos vídeos, imagens ou apostilas da comunidade de origem. Anexos externos indisponíveis no acervo foram substituídos por fichas próprias, sem alegar consulta ao material ausente.</p><a class="button" href="index.html">Voltar ao curso</a></main><footer class="footer"><div class="wrap"><span>Curso gratuito · INEMA.CLUB · v1.0.0</span><a href="materiais.html">Materiais e referências</a><a href="../index.html">Os três cursos</a><a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a><a href="https://www.inema.club/cursos/">Todos os cursos</a></div></footer><script src="assets/learn.js"></script><script src="assets/course.js"></script></body></html>

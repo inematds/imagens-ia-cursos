@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR" class="dark"><head><script>(function () {
+  try {
+    var html = document.documentElement;
+    var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+    function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+    var p = clone(DEF);
+    try {
+      var raw = localStorage.getItem('inema.prefs');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k];
+        }
+      } else {
+        // fallback ao tema legado do v1
+        var legacy = localStorage.getItem('theme');
+        if (legacy === 'light') p.theme = 'claro';
+        else if (legacy === 'dark') p.theme = 'inema-dark';
+      }
+    } catch (e) { p = clone(DEF); }
+
+    // mapa tema -> (.dark on/off, data-theme, color-scheme)
+    var THEMES = {
+      'inema-dark': { dark: true,  attr: null,        cs: 'dark'  },
+      'claro':      { dark: false, attr: null,        cs: 'light' },
+      'sepia':      { dark: false, attr: 'sepia',     cs: 'light' },
+      'foco':       { dark: null,  attr: 'foco',      cs: null    },  // herda eixo atual
+      'contraste':  { dark: true,  attr: 'contraste', cs: 'dark'  }
+    };
+    var t = THEMES[p.theme] || THEMES['inema-dark'];
+
+    if (t.dark === true) html.classList.add('dark');
+    else if (t.dark === false) html.classList.remove('dark');
+    // 'foco' (null) preserva o que ja houver no atributo class do <html>
+
+    if (t.attr) html.setAttribute('data-theme', t.attr);
+    else html.removeAttribute('data-theme');
+
+    html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+
+    html.setAttribute('data-font', p.font || 'inter');
+    html.setAttribute('data-accent', p.accent || 'emerald');
+
+    // variaveis de leitura (espelham learn.js / learn.css) ANTES do paint
+    var s = html.style;
+    var scale = (+p.fontScale || 100);
+    s.setProperty('--inema-font-scale', (scale / 100).toString());
+    s.setProperty('font-size', scale + '%');               // :root em %, nunca px
+    s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+    s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+    var fam = p.font === 'system'
+      ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+      : (p.font === 'leitura'
+        ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif'
+        : '"Inter", system-ui, sans-serif');
+    s.setProperty('--font-body', fam);
+
+    var ACC = {
+      emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66],
+      amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60]
+    };
+    var a = ACC[p.accent] || ACC.emerald;
+    s.setProperty('--accent-h', a[0] + '');
+    s.setProperty('--accent-s', a[1] + '%');
+    s.setProperty('--accent-l', a[2] + '%');
+    s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+  } catch (err) {
+    // qualquer falha => default dark, preserva a marca
+    try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {}
+  }
+})();
+</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="inema-course" content="olhar-treinado"><meta name="description" content="Aprenda a observar referências, reconhecer padrões e escolher uma estética com intenção. Transforme o que você vê em uma linguagem que consegue repetir."><title>Produção · INEMA.CLUB</title><link rel="stylesheet" href="../../assets/learn.css"><link rel="stylesheet" href="../../assets/course.css"><script type="application/json" data-inema-manifest>{"course": "olhar-treinado", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Observe, selecione e descreva", "topics": 6, "href": "curso/trilha1/modulo-1-1.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Sete famílias estéticas, muitas possibilidades", "topics": 6, "href": "curso/trilha2/modulo-2-1.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Desmonte referências e construa regras próprias", "topics": 6, "href": "curso/trilha3/modulo-3-1.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: sua direção visual em prática", "topics": 6, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script></head>
+<body><a class="skip" href="#conteudo">Pular para o conteúdo</a><header class="topbar"><div class="nav-inner"><a class="brand" href="../../index.html" aria-label="Início do curso"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 6h24v20H4zM10 6v20M22 6v20" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="currentColor"/></svg><span class="wide-only">Imagem com IA</span></a><a class="text-sky-400" href="https://inema.club">INEMA.CLUB</a><span>–</span><a class="pro" href="https://inema.pro">PRO</a><nav class="tracks" aria-label="Trilhas"><a href="../../curso/trilha1/index.html">1. Fundamentos</a><a href="../../curso/trilha2/index.html">2. Direção visual</a><a href="../../curso/trilha3/index.html" aria-current="page">3. Produção</a><a href="../../curso/trilha4/index.html">4. Projeto</a></nav><div class="tools"><button data-inema-journey-open>Minha jornada</button><button data-inema-appearance-toggle="[data-inema-appearance]" aria-expanded="false">Aparência</button></div></div><div data-inema-appearance class="inema-appearance-pop"><div class="inema-segment"><button data-inema-set-theme="inema-dark">Escuro</button><button data-inema-set-theme="claro">Claro</button><button data-inema-set-theme="sepia">Sépia</button><button data-inema-set-theme="foco">Foco</button><button data-inema-set-theme="contraste">Alto contraste</button></div><div class="inema-segment"><button data-inema-set-fontscale="100">Texto padrão</button><button data-inema-set-fontscale="112">Texto maior</button><button data-inema-set-fontscale="125">Texto amplo</button></div><div class="inema-segment"><button data-inema-set-font="system">Fonte do sistema</button><button data-inema-set-font="leitura">Fonte de leitura</button><button data-inema-set-linewidth="60">Coluna estreita</button><button data-inema-set-linewidth="75">Coluna larga</button></div></div></header><main id="conteudo" class="wrap"><header class="intro"><p class="breadcrumb"><a href="../../index.html">Olhar Treinado</a> / Trilha 3</p><h1>Produção</h1><p>Explore os módulos desta etapa e acompanhe seu progresso.</p><div data-inema-meter="trilha:3"><span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span><div class="inema-bar"><div class="inema-bar__fill" data-inema-meter-fill></div></div></div></header><figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário"><p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p><svg viewBox="0 0 640 240" role="img" aria-labelledby="t3-svgtitle" class="w-full h-auto"><title id="t3-svgtitle">Percurso de aprendizagem — Siga a sequência e registre as decisões entre as etapas. O diagrama organiza o processo, não automatiza a avaliação.</title><rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/><text x="35" y="104" font-size="15" fill="currentColor">1</text><text x="35" y="132" font-size="17" fill="currentColor">Pedido</text><path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/><rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/><text x="245" y="104" font-size="15" fill="currentColor">2</text><text x="245" y="132" font-size="17" fill="currentColor">Geração</text><path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/><rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/><text x="455" y="104" font-size="15" fill="currentColor">3</text><text x="455" y="132" font-size="17" fill="currentColor">Revisão</text></svg><figcaption>Siga a sequência e registre as decisões entre as etapas. O diagrama organiza o processo, não automatiza a avaliação.</figcaption></figure><h2>Mapa da trilha</h2><div class="module-grid"><a class="module-card" href="#modulo-3-1"><div class="card-top"><span>Módulo 3-1</span><span>6 tópicos + prática</span></div><h3>◉ Desmonte referências e construa regras próprias</h3><p>Você vai relacionar cada decisão visual a uma função e testar uma técnica em trabalho próprio.</p></a></div><h2>Conteúdo detalhado</h2><article class="module-detail" id="modulo-3-1"><h2>Desmonte referências e construa regras próprias</h2><p>Você vai relacionar cada decisão visual a uma função e testar uma técnica em trabalho próprio.</p><button class="topic-button" aria-expanded="true" aria-controls="sum-3-1-1" onclick="toggleTopic(this)"><span class="number">1</span>Um painel anotado</button><div class="topic-explanation" id="sum-3-1-1"><h3>O que é</h3><p>Um painel anotado liga cada referência a uma observação e a uma aplicação. A legenda precisa dizer o que olhar e por que isso importa para o exercício.</p><h3>Por que aprender</h3><p>Sem anotação, o painel depende da memória. Com uma frase precisa, ele se torna uma ferramenta para decidir luz, enquadramento e acabamento.</p><h3>Conceitos-chave</h3><p>Um painel anotado. Para cada imagem, escreva: recurso observado, efeito percebido e possível uso. Exemplo: objeto isolado em fundo claro; forma legível; útil para apresentar a alça da caneca.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-3-1-2" onclick="toggleTopic(this)"><span class="number">2</span>Siga o percurso do olhar</button><div class="topic-explanation" id="sum-3-1-2"><h3>O que é</h3><p>Percurso do olhar é uma hipótese sobre a ordem de atenção: elemento dominante, apoio e detalhe. Escala, contraste, direção de linhas e rostos podem influenciar essa leitura.</p><h3>Por que aprender</h3><p>Ao desenhar o percurso, você percebe se um detalhe secundário está competindo com a mensagem principal. A hipótese deve ser testada com observação, não tratada como certeza universal.</p><h3>Conceitos-chave</h3><p>Siga o percurso do olhar. Olhe a referência por poucos segundos e anote o primeiro elemento percebido. Cubra a imagem e descreva o que lembra. Compare com o objetivo declarado da peça.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-3-1-3" onclick="toggleTopic(this)"><span class="number">3</span>Observe cor por função</button><div class="topic-explanation" id="sum-3-1-3"><h3>O que é</h3><p>Uma cor pode funcionar como base, acento ou apoio. O efeito depende da área ocupada, dos vizinhos e do contraste. Uma pequena região saturada pode chamar mais atenção do que uma grande área neutra.</p><h3>Por que aprender</h3><p>Analisar funções é mais útil do que copiar uma lista de códigos. Isso ajuda a transferir a lógica da referência para outra imagem.</p><h3>Conceitos-chave</h3><p>Observe cor por função. Separe a paleta em base, acento e apoio. Estime qual ocupa mais área. Faça uma versão própria mantendo a relação entre papéis, sem copiar toda a composição.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-3-1-4" onclick="toggleTopic(this)"><span class="number">4</span>Textura, forma e coerência</button><div class="topic-explanation" id="sum-3-1-4"><h3>O que é</h3><p>Textura e forma podem reforçar ou contrariar a mensagem. Uma superfície irregular pode apoiar uma ideia artesanal; geometria precisa pode apoiar uma apresentação técnica. São hipóteses contextuais.</p><h3>Por que aprender</h3><p>Uma peça pode acumular sinais que apontam em direções diferentes. A revisão deve decidir se essa tensão é intencional ou distração.</p><h3>Conceitos-chave</h3><p>Textura, forma e coerência. Escolha duas referências com o mesmo assunto e materiais diferentes. Descreva o que muda na sensação e na legibilidade. Aplique um desses recursos à caneca Aurora.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-3-1-5" onclick="toggleTopic(this)"><span class="number">5</span>Estude uma técnica, não uma cópia inteira</button><div class="topic-explanation" id="sum-3-1-5"><h3>O que é</h3><p>Um estudo transfere uma decisão para um novo assunto: relação entre luz e volume, distribuição de massas ou uso de espaço. Você pode aprender a lógica sem reproduzir a obra inteira.</p><h3>Por que aprender</h3><p>Trocar só o nome do objeto em uma composição copiada limita o aprendizado. Separar a técnica ajuda a criar uma solução própria e explicar o raciocínio.</p><h3>Conceitos-chave</h3><p>Estude uma técnica, não uma cópia inteira. Escolha uma referência, escreva a técnica em uma frase e aplique a outro contexto. Mude assunto, arranjo e detalhes. Compare se o princípio continua funcionando.</p></div><button class="topic-button" aria-expanded="true" aria-controls="sum-3-1-6" onclick="toggleTopic(this)"><span class="number">6</span>Escreva cinco regras com limites</button><div class="topic-explanation" id="sum-3-1-6"><h3>O que é</h3><p>Regras pessoais são decisões úteis para um projeto, acompanhadas de condições de uso. Uma regra como preservar espaço para texto só faz sentido quando a peça terá texto.</p><h3>Por que aprender</h3><p>Regras com contexto ajudam a manter unidade sem engessar toda criação. Elas podem ser revisadas quando o objetivo mudar.</p><h3>Conceitos-chave</h3><p>Escreva cinco regras com limites. Escreva cinco regras no formato quando o objetivo for X, farei Y e verificarei Z. Inclua ao menos uma exceção. Teste as regras em uma nova imagem.</p></div><div class="actions"><a class="button primary" href="modulo-3-1.html">Ver Completo</a><button onclick="openModule('modulo-3-1.html')">Ver em Modal</button></div></article><dialog id="module-dialog" aria-label="Leitura do módulo"><button data-close>Fechar leitura</button><iframe title="Módulo completo"></iframe></dialog></main><footer class="footer"><div class="wrap"><span>Curso gratuito · INEMA.CLUB · v1.0.0</span><a href="../../materiais.html">Materiais e referências</a><a href="../../../index.html">Os três cursos</a><a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a><a href="https://www.inema.club/cursos/">Todos os cursos</a></div></footer><script src="../../assets/learn.js"></script><script src="../../assets/course.js"></script></body></html>

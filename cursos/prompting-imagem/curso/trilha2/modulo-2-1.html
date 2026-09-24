@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+<head>
+<script>(function () {
+  try {
+    var html = document.documentElement;
+    var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+    function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+    var p = clone(DEF);
+    try {
+      var raw = localStorage.getItem('inema.prefs');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k];
+        }
+      } else {
+        // fallback ao tema legado do v1
+        var legacy = localStorage.getItem('theme');
+        if (legacy === 'light') p.theme = 'claro';
+        else if (legacy === 'dark') p.theme = 'inema-dark';
+      }
+    } catch (e) { p = clone(DEF); }
+
+    // mapa tema -> (.dark on/off, data-theme, color-scheme)
+    var THEMES = {
+      'inema-dark': { dark: true,  attr: null,        cs: 'dark'  },
+      'claro':      { dark: false, attr: null,        cs: 'light' },
+      'sepia':      { dark: false, attr: 'sepia',     cs: 'light' },
+      'foco':       { dark: null,  attr: 'foco',      cs: null    },  // herda eixo atual
+      'contraste':  { dark: true,  attr: 'contraste', cs: 'dark'  }
+    };
+    var t = THEMES[p.theme] || THEMES['inema-dark'];
+
+    if (t.dark === true) html.classList.add('dark');
+    else if (t.dark === false) html.classList.remove('dark');
+    // 'foco' (null) preserva o que ja houver no atributo class do <html>
+
+    if (t.attr) html.setAttribute('data-theme', t.attr);
+    else html.removeAttribute('data-theme');
+
+    html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+
+    html.setAttribute('data-font', p.font || 'inter');
+    html.setAttribute('data-accent', p.accent || 'emerald');
+
+    // variaveis de leitura (espelham learn.js / learn.css) ANTES do paint
+    var s = html.style;
+    var scale = (+p.fontScale || 100);
+    s.setProperty('--inema-font-scale', (scale / 100).toString());
+    s.setProperty('font-size', scale + '%');               // :root em %, nunca px
+    s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+    s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+    var fam = p.font === 'system'
+      ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+      : (p.font === 'leitura'
+        ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif'
+        : '"Inter", system-ui, sans-serif');
+    s.setProperty('--font-body', fam);
+
+    var ACC = {
+      emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66],
+      amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60]
+    };
+    var a = ACC[p.accent] || ACC.emerald;
+    s.setProperty('--accent-h', a[0] + '');
+    s.setProperty('--accent-s', a[1] + '%');
+    s.setProperty('--accent-l', a[2] + '%');
+    s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+  } catch (err) {
+    // qualquer falha => default dark, preserva a marca
+    try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {}
+  }
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="inema-course" content="prompting-imagem">
+<meta name="description" content="Transforme uma ideia em decisões de enquadramento, luz e composição. Construa uma série de imagens que você consegue explicar e revisar.">
+<title>Controles e testes dentro das ferramentas · INEMA.CLUB</title>
+<link rel="stylesheet" href="../../assets/learn.css">
+<link rel="stylesheet" href="../../assets/course.css">
+<script type="application/json" data-inema-manifest>{"course": "prompting-imagem", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Escolha sua ferramenta e prepare o projeto", "topics": 6, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "A fórmula do prompt", "topics": 6, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controles e testes dentro das ferramentas", "topics": 6, "href": "curso/trilha2/modulo-2-1.html"}, {"id": "2-2", "title": "Personagem e campanha consistentes", "topics": 6, "href": "curso/trilha2/modulo-2-2.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Edite sem perder o que já funciona", "topics": 6, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Upscale, restauração e entrega", "topics": 6, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: da intenção ao portfólio", "topics": 6, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="topbar">
+<div class="nav-inner">
+<a class="brand" href="../../index.html" aria-label="Início do curso">
+<svg viewBox="0 0 32 32" aria-hidden="true">
+<path d="M4 6h24v20H4zM10 6v20M22 6v20" fill="none" stroke="currentColor" stroke-width="2"/>
+<circle cx="16" cy="16" r="4" fill="currentColor"/>
+</svg>
+<span class="wide-only">Imagem com IA</span>
+</a>
+<a class="text-sky-400" href="https://inema.club">INEMA.CLUB</a>
+<span>–</span>
+<a class="pro" href="https://inema.pro">PRO</a>
+<nav class="tracks" aria-label="Trilhas">
+<a href="../../curso/trilha1/index.html">1. Fundamentos</a>
+<a href="../../curso/trilha2/index.html" aria-current="page">2. Direção visual</a>
+<a href="../../curso/trilha3/index.html">3. Produção</a>
+<a href="../../curso/trilha4/index.html">4. Projeto</a>
+</nav>
+<div class="tools">
+<button data-inema-journey-open>Minha jornada</button>
+<button data-inema-appearance-toggle="[data-inema-appearance]" aria-expanded="false">Aparência</button>
+</div>
+</div>
+<div data-inema-appearance class="inema-appearance-pop">
+<div class="inema-segment">
+<button data-inema-set-theme="inema-dark">Escuro</button>
+<button data-inema-set-theme="claro">Claro</button>
+<button data-inema-set-theme="sepia">Sépia</button>
+<button data-inema-set-theme="foco">Foco</button>
+<button data-inema-set-theme="contraste">Alto contraste</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-fontscale="100">Texto padrão</button>
+<button data-inema-set-fontscale="112">Texto maior</button>
+<button data-inema-set-fontscale="125">Texto amplo</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-font="system">Fonte do sistema</button>
+<button data-inema-set-font="leitura">Fonte de leitura</button>
+<button data-inema-set-linewidth="60">Coluna estreita</button>
+<button data-inema-set-linewidth="75">Coluna larga</button>
+</div>
+</div>
+</header>
+<main id="conteudo" class="wrap">
+<div class="breadcrumb">
+<a href="../../index.html">Prompting de Imagem</a> / <a href="index.html">Direção visual</a> / Módulo 2-1</div>
+<header class="intro">
+<h1>Controles e testes dentro das ferramentas</h1>
+<p>Você vai separar formato, referência e variação, registrando um teste sem confundir as causas.</p>
+<p class="meta">6 tópicos · explicação, observação e prática · avance no seu ritmo</p>
+<div data-inema-meter="modulo:2-1">
+<span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span>
+<div class="inema-bar">
+<div class="inema-bar__fill" data-inema-meter-fill>
+</div>
+</div>
+</div>
+</header>
+<div class="reading-layout">
+<nav class="toc" data-inema-toc aria-label="Tópicos deste módulo">
+<strong>Nesta aula</strong>
+<ol>
+<li>
+<a href="#topico-1">Proporção não é resolução</a>
+</li>
+<li>
+<a href="#topico-2">Referência de identidade e de estilo</a>
+</li>
+<li>
+<a href="#topico-3">Intensidade de estilo e exploração</a>
+</li>
+<li>
+<a href="#topico-4">Steps, guidance e força de edição</a>
+</li>
+<li>
+<a href="#topico-5">Seed e comparação honesta</a>
+</li>
+<li>
+<a href="#topico-6">Um preset verificável</a>
+</li>
+</ol>
+<a href="#pratica">Prática do módulo</a>
+<a href="#checagem">Teste sua decisão</a>
+</nav>
+<article class="lesson" data-inema-module="2-1" data-inema-track="2">
+<section class="topic" id="topico-1" data-inema-topic="modulo-2-1#topico-1">
+<h2 class="text-2xl font-bold">
+<span class="number">1</span>Proporção não é resolução</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-1-t1-concept">Proporção é a relação entre largura e altura: 1:1 é quadrado, 4:3 é horizontal e 9:16 é vertical. Resolução é a quantidade de pixels. Duas imagens podem ter a mesma proporção e tamanhos muito diferentes.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-1-t1-why">Escolher a proporção antes ajuda a compor. Aumentar pixels depois não recupera uma alça cortada nem reserva espaço para um título.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t1-svgtitle" class="w-full h-auto">
+<title id="m2-1-t1-svgtitle">Proporção não é resolução — Formato altera a área disponível para organizar a cena. Estes quadros têm proporções diferentes, não uma escala de qualidade.</title>
+<rect x="35" y="45" width="155" height="155" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<rect x="235" y="85" width="195" height="110" fill="var(--surface-2)" stroke="var(--primary)"/>
+<rect x="490" y="20" width="104" height="184" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<g transform="translate(73 94) scale(0.7)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<g transform="translate(302 110) scale(0.65)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<g transform="translate(510 102) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="77" y="231" font-size="17" fill="currentColor">1:1</text>
+<text x="305" y="231" font-size="17" fill="currentColor">16:9</text>
+<text x="523" y="231" font-size="17" fill="currentColor">9:16</text>
+<text x="25" y="231" font-size="14" fill="currentColor">Diagrama de composição — exemplo autoral</text>
+</svg>
+<figcaption>Formato altera a área disponível para organizar a cena. Estes quadros têm proporções diferentes, não uma escala de qualidade.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-1-t1-practice">Alterne os formatos no laboratório e observe os recortes. Escolha o destino da peça antes da geração. Registre largura e altura do arquivo baixado, em vez de confiar apenas em palavras como HD.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m2-1-t1-caution">Recortar elimina informação; expandir a tela inventa novas áreas. São operações diferentes, mesmo quando entregam o mesmo formato final.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-2" data-inema-topic="modulo-2-1#topico-2">
+<h2 class="text-2xl font-bold">
+<span class="number">2</span>Referência de identidade e de estilo</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-1-t2-concept">Identidade trata da aparência reconhecível de um objeto ou pessoa. Estilo trata da linguagem visual. Uma foto pode conter os dois, mas a instrução deve separar aquilo que precisa permanecer do que pode variar.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-1-t2-why">O acervo mistura funções de referência. No Midjourney, Omni Reference pertence ao fluxo V7; a documentação atual aponta o Edit Model para V8.X. Não há um botão universal com o mesmo comportamento em toda versão.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t2-svgtitle" class="w-full h-auto">
+<title id="m2-1-t2-svgtitle">Referência de identidade e de estilo — Atribua um papel a cada referência para evitar que produto, cenário e estilo se misturem.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Produto</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Luz / estilo</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Cena</text>
+</svg>
+<figcaption>Atribua um papel a cada referência para evitar que produto, cenário e estilo se misturem.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-1-t2-practice">Na sua ferramenta, identifique o recurso correspondente a imagem de entrada ou edição. Anexe a caneca e diga para preservar a forma. Se acrescentar referência de estilo, explique que deseja apenas luz e paleta.</p>
+<div class="compare-grid">
+<div>
+<h3>✓ Faça a verificação</h3>
+<p>Na sua ferramenta, identifique o recurso correspondente a imagem de entrada ou edição. Anexe a caneca e diga para preservar a forma. Se acrescentar referência de estilo, explique que deseja apenas luz e paleta.</p>
+</div>
+<div>
+<h3>✗ Evite a conclusão automática</h3>
+<p>Confira a documentação vinculada nos materiais. Não aplique instruções de Omni Reference a outra versão sem verificar compatibilidade.</p>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-3" data-inema-topic="modulo-2-1#topico-3">
+<h2 class="text-2xl font-bold">
+<span class="number">3</span>Intensidade de estilo e exploração</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-1-t3-concept">Algumas interfaces oferecem controles que ampliam a interpretação estética ou a diversidade de resultados. Esses controles não são sinônimos: uma série pode manter o mesmo estilo e variar bastante a composição.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-1-t3-why">Entender a função do controle permite escolher entre explorar ideias e refinar uma decisão. O nome e a escala variam entre ferramentas.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t3-svgtitle" class="w-full h-auto">
+<title id="m2-1-t3-svgtitle">Intensidade de estilo e exploração — Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</title>
+<rect x="20" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
+<rect x="335" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
+<g transform="translate(110 80) scale(0.8)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<g transform="translate(430 80) scale(0.8)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<path d="M48 55L225 175" stroke="var(--accent-2)" stroke-dasharray="5 5"/>
+<path d="M358 55H570" stroke="var(--primary)" stroke-dasharray="5 5"/>
+<text x="30" y="227" font-size="17" fill="currentColor">A · versão de referência</text>
+<text x="345" y="227" font-size="17" fill="currentColor">B · hipótese de mudança</text>
+</svg>
+<figcaption>Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-1-t3-practice">Se o controle existir, faça duas rodadas com valores próximos do padrão e uma diferença moderada. Mantenha o restante. Registre quais partes mudaram: enquadramento, objetos, acabamento ou cor.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m2-1-t3-caution">Não ensine um número como receita universal. Um valor alto não significa mais qualidade; pode afastar a imagem do briefing.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-4" data-inema-topic="modulo-2-1#topico-4">
+<h2 class="text-2xl font-bold">
+<span class="number">4</span>Steps, guidance e força de edição</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-1-t4-concept">Steps são etapas de processamento em modelos que expõem esse controle. Guidance ou CFG ajusta a influência do texto em certos sistemas. Força de edição costuma controlar a transformação da imagem de entrada, mas a direção da escala precisa ser conferida.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-1-t4-why">Esses parâmetros pertencem à implementação. Modelos rápidos ou destilados podem ter faixas específicas; elevar tudo pode piorar o resultado ou apenas consumir recursos.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t4-svgtitle" class="w-full h-auto">
+<title id="m2-1-t4-svgtitle">Steps, guidance e força de edição — Parta do padrão, altere um controle e registre o efeito observado antes da próxima mudança.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Padrão</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Uma variável</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Observação</text>
+</svg>
+<figcaption>Parta do padrão, altere um controle e registre o efeito observado antes da próxima mudança.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-1-t4-practice">Comece no padrão do modelo. Leia a descrição de um único controle e faça um teste pequeno. Anote o valor, a mudança esperada e o efeito observado. Se a interface não expõe o parâmetro, prossiga sem ele.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m2-1-t4-caution">Não copie a regra mais passos e mais guidance é melhor. Nem todo modelo usa esses controles, e a interpretação da escala não é universal.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-5" data-inema-topic="modulo-2-1#topico-5">
+<h2 class="text-2xl font-bold">
+<span class="number">5</span>Seed e comparação honesta</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-1-t5-concept">Seed é um ponto de partida numérico usado por determinados geradores. Ela pode ajudar a reduzir uma fonte de variação num teste, mas prompt, modelo e configurações também participam do resultado.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-1-t5-why">Usar a mesma seed não torna duas imagens uma experiência perfeitamente controlada. A comparação deve registrar o que efetivamente mudou, e não apenas o que você pretendia mudar.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t5-svgtitle" class="w-full h-auto">
+<title id="m2-1-t5-svgtitle">Seed e comparação honesta — Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</title>
+<rect x="20" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
+<rect x="335" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
+<g transform="translate(110 80) scale(0.8)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<g transform="translate(430 80) scale(0.8)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<path d="M48 55L225 175" stroke="var(--accent-2)" stroke-dasharray="5 5"/>
+<path d="M358 55H570" stroke="var(--primary)" stroke-dasharray="5 5"/>
+<text x="30" y="227" font-size="17" fill="currentColor">A · versão de referência</text>
+<text x="345" y="227" font-size="17" fill="currentColor">B · hipótese de mudança</text>
+</svg>
+<figcaption>Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-1-t5-practice">Faça A com luz suave e B com luz dura. Se houver seed, registre-a e mantenha-a. Compare sombra, pose, fundo e forma. Separe a diferença de luz das mudanças adicionais.</p>
+<div class="compare-grid">
+<div>
+<h3>✓ Faça a verificação</h3>
+<p>Faça A com luz suave e B com luz dura. Se houver seed, registre-a e mantenha-a. Compare sombra, pose, fundo e forma. Separe a diferença de luz das mudanças adicionais.</p>
+</div>
+<div>
+<h3>✗ Evite a conclusão automática</h3>
+<p>Não use seed como substituto de referência de personagem. A documentação do Midjourney explicita que seed não salva estilo, identidade ou aparência entre prompts.</p>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-6" data-inema-topic="modulo-2-1#topico-6">
+<h2 class="text-2xl font-bold">
+<span class="number">6</span>Um preset verificável</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m2-1-t6-concept">Preset é um conjunto salvo de configurações. Para ser útil ao seu trabalho, ele precisa vir acompanhado de referência e critério de aprovação. Um preset sem contexto só repete números.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m2-1-t6-why">A receita completa permite retomar o trabalho sem adivinhar e identificar mudanças de comportamento após atualizações da ferramenta.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t6-svgtitle" class="w-full h-auto">
+<title id="m2-1-t6-svgtitle">Um preset verificável — Guarde o arquivo original, as decisões da receita e a versão aprovada como itens separados.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Original</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Receita</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Aprovada</text>
+</svg>
+<figcaption>Guarde o arquivo original, as decisões da receita e a versão aprovada como itens separados.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m2-1-t6-practice">Preencha a ficha de geração nos materiais. Inclua o prompt aprovado, arquivo de referência, formato, modelo, controles disponíveis e observações. Faça uma segunda tentativa usando a ficha e compare os resultados.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m2-1-t6-caution">Reprodutibilidade aqui significa documentar o processo e reconhecer diferenças. Não prometa arquivos idênticos em plataformas ou versões diferentes.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section id="pratica" class="codebox">
+<h2>Prática: um pedido completo</h2>
+<p>
+<strong>Objetivo:</strong> Você vai separar formato, referência e variação, registrando um teste sem confundir as causas.</p>
+<p>Use o texto abaixo na sua ferramenta de imagens. Quando houver referência, anexe o arquivo indicado antes de gerar.</p>
+<pre id="prompt-2-1">Use a imagem de referência anexada como guia da forma da caneca: uma alça oval à direita e corpo terracota. Crie uma nova cena sobre mesa creme, com luz suave à esquerda e fundo sem objetos. Preserve a proporção do corpo e da alça. Deixe a caneca inteira no quadro. Nesta versão, altere somente a posição do objeto para o terço direito. Não acrescente texto.</pre>
+<button data-copy="prompt-2-1">Copiar prompt</button>
+<h3>Como verificar</h3>
+<p>Antes de gerar, anexe a referência própria criada no módulo anterior. Depois compare forma e posição. Registre qualquer outra diferença que apareceu.</p>
+<ol class="timeline">
+<li>Prepare o arquivo ou briefing necessário.</li>
+<li>Faça uma tentativa e salve o resultado com as configurações.</li>
+<li>Compare com os critérios acima e localize um desvio.</li>
+<li>Corrija uma decisão e registre o efeito na nova versão.</li>
+</ol>
+</section>
+<section id="checagem" class="quiz" data-quiz="modulo-2-1#q1" data-correct="1" data-explain="Seed ajuda em determinados testes. Ela não substitui a referência nem garante identidade entre prompts, versões e configurações.">
+<h2>Teste sua decisão</h2>
+<p>O que a seed consegue registrar?</p>
+<button data-answer="0" aria-pressed="false">A identidade permanente de uma personagem</button>
+<button data-answer="1" aria-pressed="false">Um ponto inicial de aleatoriedade do gerador</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>Seed ajuda em determinados testes. Ela não substitui a referência nem garante identidade entre prompts, versões e configurações.</p>
+</details>
+<p class="fine">Responder não marca a leitura nem bloqueia o próximo módulo.</p>
+</section>
+<section>
+<h2>O que levar desta aula</h2>
+<ul>
+<li>Proporção não é resolução</li>
+<li>Referência de identidade e de estilo</li>
+<li>Intensidade de estilo e exploração</li>
+<li>Steps, guidance e força de edição</li>
+<li>Seed e comparação honesta</li>
+<li>Um preset verificável</li>
+</ul>
+<p>Escolha uma decisão que você consegue explicar sem consultar o texto. Se ainda houver dúvida, marque o tópico e volte a ele pela jornada.</p>
+<div class="actions">
+<a class="button" href="index.html">Voltar para a trilha</a>
+<a class="button primary" href="../../curso/trilha2/modulo-2-2.html">Próximo módulo: Personagem e campanha consistentes</a>
+</div>
+</section>
+</article>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<span>Curso gratuito · INEMA.CLUB · v1.0.0</span>
+<a href="../../materiais.html">Materiais e referências</a>
+<a href="../../../index.html">Os três cursos</a>
+<a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>
+<a href="https://www.inema.club/cursos/">Todos os cursos</a>
+</div>
+</footer>
+<script src="../../assets/learn.js">
+</script>
+<script src="../../assets/course.js">
+</script>
+</body>
+</html>

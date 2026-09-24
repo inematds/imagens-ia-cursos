@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+<head>
+<script>(function () {
+  try {
+    var html = document.documentElement;
+    var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+    function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+    var p = clone(DEF);
+    try {
+      var raw = localStorage.getItem('inema.prefs');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k];
+        }
+      } else {
+        // fallback ao tema legado do v1
+        var legacy = localStorage.getItem('theme');
+        if (legacy === 'light') p.theme = 'claro';
+        else if (legacy === 'dark') p.theme = 'inema-dark';
+      }
+    } catch (e) { p = clone(DEF); }
+
+    // mapa tema -> (.dark on/off, data-theme, color-scheme)
+    var THEMES = {
+      'inema-dark': { dark: true,  attr: null,        cs: 'dark'  },
+      'claro':      { dark: false, attr: null,        cs: 'light' },
+      'sepia':      { dark: false, attr: 'sepia',     cs: 'light' },
+      'foco':       { dark: null,  attr: 'foco',      cs: null    },  // herda eixo atual
+      'contraste':  { dark: true,  attr: 'contraste', cs: 'dark'  }
+    };
+    var t = THEMES[p.theme] || THEMES['inema-dark'];
+
+    if (t.dark === true) html.classList.add('dark');
+    else if (t.dark === false) html.classList.remove('dark');
+    // 'foco' (null) preserva o que ja houver no atributo class do <html>
+
+    if (t.attr) html.setAttribute('data-theme', t.attr);
+    else html.removeAttribute('data-theme');
+
+    html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+
+    html.setAttribute('data-font', p.font || 'inter');
+    html.setAttribute('data-accent', p.accent || 'emerald');
+
+    // variaveis de leitura (espelham learn.js / learn.css) ANTES do paint
+    var s = html.style;
+    var scale = (+p.fontScale || 100);
+    s.setProperty('--inema-font-scale', (scale / 100).toString());
+    s.setProperty('font-size', scale + '%');               // :root em %, nunca px
+    s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+    s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+    var fam = p.font === 'system'
+      ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+      : (p.font === 'leitura'
+        ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif'
+        : '"Inter", system-ui, sans-serif');
+    s.setProperty('--font-body', fam);
+
+    var ACC = {
+      emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66],
+      amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60]
+    };
+    var a = ACC[p.accent] || ACC.emerald;
+    s.setProperty('--accent-h', a[0] + '');
+    s.setProperty('--accent-s', a[1] + '%');
+    s.setProperty('--accent-l', a[2] + '%');
+    s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+  } catch (err) {
+    // qualquer falha => default dark, preserva a marca
+    try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {}
+  }
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="inema-course" content="olhar-treinado">
+<meta name="description" content="Aprenda a observar referências, reconhecer padrões e escolher uma estética com intenção. Transforme o que você vê em uma linguagem que consegue repetir.">
+<title>Projeto final: sua direção visual em prática · INEMA.CLUB</title>
+<link rel="stylesheet" href="../../assets/learn.css">
+<link rel="stylesheet" href="../../assets/course.css">
+<script type="application/json" data-inema-manifest>{"course": "olhar-treinado", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Observe, selecione e descreva", "topics": 6, "href": "curso/trilha1/modulo-1-1.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Sete famílias estéticas, muitas possibilidades", "topics": 6, "href": "curso/trilha2/modulo-2-1.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Desmonte referências e construa regras próprias", "topics": 6, "href": "curso/trilha3/modulo-3-1.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: sua direção visual em prática", "topics": 6, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="topbar">
+<div class="nav-inner">
+<a class="brand" href="../../index.html" aria-label="Início do curso">
+<svg viewBox="0 0 32 32" aria-hidden="true">
+<path d="M4 6h24v20H4zM10 6v20M22 6v20" fill="none" stroke="currentColor" stroke-width="2"/>
+<circle cx="16" cy="16" r="4" fill="currentColor"/>
+</svg>
+<span class="wide-only">Imagem com IA</span>
+</a>
+<a class="text-sky-400" href="https://inema.club">INEMA.CLUB</a>
+<span>–</span>
+<a class="pro" href="https://inema.pro">PRO</a>
+<nav class="tracks" aria-label="Trilhas">
+<a href="../../curso/trilha1/index.html">1. Fundamentos</a>
+<a href="../../curso/trilha2/index.html">2. Direção visual</a>
+<a href="../../curso/trilha3/index.html">3. Produção</a>
+<a href="../../curso/trilha4/index.html" aria-current="page">4. Projeto</a>
+</nav>
+<div class="tools">
+<button data-inema-journey-open>Minha jornada</button>
+<button data-inema-appearance-toggle="[data-inema-appearance]" aria-expanded="false">Aparência</button>
+</div>
+</div>
+<div data-inema-appearance class="inema-appearance-pop">
+<div class="inema-segment">
+<button data-inema-set-theme="inema-dark">Escuro</button>
+<button data-inema-set-theme="claro">Claro</button>
+<button data-inema-set-theme="sepia">Sépia</button>
+<button data-inema-set-theme="foco">Foco</button>
+<button data-inema-set-theme="contraste">Alto contraste</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-fontscale="100">Texto padrão</button>
+<button data-inema-set-fontscale="112">Texto maior</button>
+<button data-inema-set-fontscale="125">Texto amplo</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-font="system">Fonte do sistema</button>
+<button data-inema-set-font="leitura">Fonte de leitura</button>
+<button data-inema-set-linewidth="60">Coluna estreita</button>
+<button data-inema-set-linewidth="75">Coluna larga</button>
+</div>
+</div>
+</header>
+<main id="conteudo" class="wrap">
+<div class="breadcrumb">
+<a href="../../index.html">Olhar Treinado</a> / <a href="index.html">Projeto</a> / Módulo 4-1</div>
+<header class="intro">
+<h1>Projeto final: sua direção visual em prática</h1>
+<p>Você vai produzir três painéis, escolher uma linguagem e revisar uma peça com evidências.</p>
+<p class="meta">6 tópicos · explicação, observação e prática · avance no seu ritmo</p>
+<div data-inema-meter="modulo:4-1">
+<span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span>
+<div class="inema-bar">
+<div class="inema-bar__fill" data-inema-meter-fill>
+</div>
+</div>
+</div>
+</header>
+<div class="reading-layout">
+<nav class="toc" data-inema-toc aria-label="Tópicos deste módulo">
+<strong>Nesta aula</strong>
+<ol>
+<li>
+<a href="#topico-1">Três painéis, três hipóteses</a>
+</li>
+<li>
+<a href="#topico-2">Escolha uma direção pelo objetivo</a>
+</li>
+<li>
+<a href="#topico-3">Dez palavras que você consegue mostrar</a>
+</li>
+<li>
+<a href="#topico-4">Três imagens, uma linguagem</a>
+</li>
+<li>
+<a href="#topico-5">Melhore uma peça e explique por quê</a>
+</li>
+<li>
+<a href="#topico-6">Mantenha uma prática de observação</a>
+</li>
+</ol>
+<a href="#pratica">Prática do módulo</a>
+<a href="#checagem">Teste sua decisão</a>
+</nav>
+<article class="lesson" data-inema-module="4-1" data-inema-track="4">
+<section class="topic" id="topico-1" data-inema-topic="modulo-4-1#topico-1">
+<h2 class="text-2xl font-bold">
+<span class="number">1</span>Três painéis, três hipóteses</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m4-1-t1-concept">Cada painel representa uma direção possível para o mesmo objetivo. Ao manter o briefing, você consegue comparar soluções em vez de apenas coleções sem relação.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m4-1-t1-why">Painéis diferentes mostram alternativas de linguagem antes de produzir todas as imagens. A escolha fica mais explícita e revisável.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 310" role="img" aria-labelledby="m4-1-t1-svgtitle" class="w-full h-auto">
+<title id="m4-1-t1-svgtitle">Três painéis, três hipóteses — Cada quadro tem uma função. Aqui a repetição do produto é esquemática; no seu trabalho, varie a cena e confira os invariantes.</title>
+<rect x="12" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(76 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="24" y="136" font-size="15" fill="currentColor">1. Apresentar</text>
+<rect x="222" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(286 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="234" y="136" font-size="15" fill="currentColor">2. Aproximar</text>
+<rect x="432" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(496 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="444" y="136" font-size="15" fill="currentColor">3. Detalhar</text>
+<rect x="12" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(76 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="24" y="284" font-size="15" fill="currentColor">4. Contextualizar</text>
+<rect x="222" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(286 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="234" y="284" font-size="15" fill="currentColor">5. Usar</text>
+<rect x="432" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(496 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="444" y="284" font-size="15" fill="currentColor">6. Concluir</text>
+</svg>
+<figcaption>Cada quadro tem uma função. Aqui a repetição do produto é esquemática; no seu trabalho, varie a cena e confira os invariantes.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m4-1-t1-practice">Monte três painéis pequenos: um de clareza, um de atmosfera e um de expressão gráfica. Use imagens próprias ou referências autorizadas e anote as decisões de cada painel.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m4-1-t1-caution">Não force a mesma quantidade de referências se isso reduzir a qualidade. O critério é que cada direção fique compreensível e tenha origem registrada.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-2" data-inema-topic="modulo-4-1#topico-2">
+<h2 class="text-2xl font-bold">
+<span class="number">2</span>Escolha uma direção pelo objetivo</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m4-1-t2-concept">A escolha cruza intenção, público, uso e recursos visuais. Preferência pessoal participa, mas não substitui o que a peça precisa comunicar.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m4-1-t2-why">Uma direção pode ser interessante e inadequada para mostrar a forma do produto. Explicar a decisão evita escolher apenas pela novidade.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m4-1-t2-svgtitle" class="w-full h-auto">
+<title id="m4-1-t2-svgtitle">Escolha uma direção pelo objetivo — Comece pelo objetivo, explicite as restrições e só então defina o que será entregue.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Objetivo</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Restrições</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Entrega</text>
+</svg>
+<figcaption>Comece pelo objetivo, explicite as restrições e só então defina o que será entregue.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m4-1-t2-practice">Compare os três painéis com o briefing Aurora. Dê uma razão para escolher um e uma razão para rejeitar os outros neste projeto. Registre a hipótese de leitura que deseja testar.</p>
+<div class="compare-grid">
+<div>
+<h3>✓ Faça a verificação</h3>
+<p>Compare os três painéis com o briefing Aurora. Dê uma razão para escolher um e uma razão para rejeitar os outros neste projeto. Registre a hipótese de leitura que deseja testar.</p>
+</div>
+<div>
+<h3>✗ Evite a conclusão automática</h3>
+<p>Não declare um painel universalmente superior. A decisão vale para este objetivo e pode mudar em outro contexto.</p>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-3" data-inema-topic="modulo-4-1#topico-3">
+<h2 class="text-2xl font-bold">
+<span class="number">3</span>Dez palavras que você consegue mostrar</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m4-1-t3-concept">Palavras visuais úteis apontam para propriedades observáveis. Elas formam um vocabulário de produção: plano aberto, luz lateral, fundo creme, textura fosca, margem ampla.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m4-1-t3-why">Se você não consegue localizar uma palavra no resultado, talvez ela esteja vaga demais ou não tenha sido realizada. O vocabulário também serve à revisão.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m4-1-t3-svgtitle" class="w-full h-auto">
+<title id="m4-1-t3-svgtitle">Dez palavras que você consegue mostrar — O pedido cresce em camadas que descrevem elementos observáveis.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Sujeito</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Luz / câmera</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Composição</text>
+</svg>
+<figcaption>O pedido cresce em camadas que descrevem elementos observáveis.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m4-1-t3-practice">Selecione dez expressões do painel escolhido. Organize por cor, luz, composição e material. Use-as num prompt e marque quais apareceram de fato.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m4-1-t3-caution">Não acrescente sinônimos apenas para chegar a dez. Prefira decisões distintas e remova contradições antes de gerar.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-4" data-inema-topic="modulo-4-1#topico-4">
+<h2 class="text-2xl font-bold">
+<span class="number">4</span>Três imagens, uma linguagem</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m4-1-t4-concept">Uma série coerente mantém decisões de linguagem e varia o conteúdo de forma intencional. Para Aurora, use produto, detalhe e contexto de uso.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m4-1-t4-why">A série é o teste de que o painel virou um sistema de decisões. Uma única imagem pode ter sido um acerto isolado.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 310" role="img" aria-labelledby="m4-1-t4-svgtitle" class="w-full h-auto">
+<title id="m4-1-t4-svgtitle">Três imagens, uma linguagem — Cada quadro tem uma função. Aqui a repetição do produto é esquemática; no seu trabalho, varie a cena e confira os invariantes.</title>
+<rect x="12" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(76 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="24" y="136" font-size="15" fill="currentColor">1. Apresentar</text>
+<rect x="222" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(286 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="234" y="136" font-size="15" fill="currentColor">2. Aproximar</text>
+<rect x="432" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(496 44) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="444" y="136" font-size="15" fill="currentColor">3. Detalhar</text>
+<rect x="12" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(76 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="24" y="284" font-size="15" fill="currentColor">4. Contextualizar</text>
+<rect x="222" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(286 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="234" y="284" font-size="15" fill="currentColor">5. Usar</text>
+<rect x="432" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
+<g transform="translate(496 192) scale(0.55)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<text x="444" y="284" font-size="15" fill="currentColor">6. Concluir</text>
+</svg>
+<figcaption>Cada quadro tem uma função. Aqui a repetição do produto é esquemática; no seu trabalho, varie a cena e confira os invariantes.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m4-1-t4-practice">Produza três peças com as mesmas referências de linguagem. Coloque lado a lado e confira paleta, luz e material. Anote uma diferença intencional e um desvio a corrigir.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m4-1-t4-caution">Não confunda coerência com repetição exata. Cada imagem deve acrescentar informação ao conjunto.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-5" data-inema-topic="modulo-4-1#topico-5">
+<h2 class="text-2xl font-bold">
+<span class="number">5</span>Melhore uma peça e explique por quê</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m4-1-t5-concept">Uma revisão de portfólio aplica as regras a um trabalho existente. O antes/depois precisa revelar uma melhoria relacionada ao objetivo, como foco mais claro ou texto mais legível.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m4-1-t5-why">A comparação mostra se a observação levou a uma decisão prática. Ela também ajuda a identificar quando a alteração foi apenas uma troca de gosto.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m4-1-t5-svgtitle" class="w-full h-auto">
+<title id="m4-1-t5-svgtitle">Melhore uma peça e explique por quê — Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</title>
+<rect x="20" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
+<rect x="335" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
+<g transform="translate(110 80) scale(0.8)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<g transform="translate(430 80) scale(0.8)">
+<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
+<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
+<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
+<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+</g>
+<path d="M48 55L225 175" stroke="var(--accent-2)" stroke-dasharray="5 5"/>
+<path d="M358 55H570" stroke="var(--primary)" stroke-dasharray="5 5"/>
+<text x="30" y="227" font-size="17" fill="currentColor">A · versão de referência</text>
+<text x="345" y="227" font-size="17" fill="currentColor">B · hipótese de mudança</text>
+</svg>
+<figcaption>Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m4-1-t5-practice">Escolha uma peça própria. Defina um problema e aplique uma regra do módulo anterior. Compare as duas versões em tamanho de uso e escreva a evidência de melhora ou a dúvida restante.</p>
+<div class="compare-grid">
+<div>
+<h3>✓ Faça a verificação</h3>
+<p>Escolha uma peça própria. Defina um problema e aplique uma regra do módulo anterior. Compare as duas versões em tamanho de uso e escreva a evidência de melhora ou a dúvida restante.</p>
+</div>
+<div>
+<h3>✗ Evite a conclusão automática</h3>
+<p>Se a revisão não resolveu o problema, registre isso e volte à hipótese. Não force uma narrativa de sucesso em todo experimento.</p>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-6" data-inema-topic="modulo-4-1#topico-6">
+<h2 class="text-2xl font-bold">
+<span class="number">6</span>Mantenha uma prática de observação</h2>
+<div class="inema-prose">
+<h3>O que é</h3>
+<p data-inema-block="m4-1-t6-concept">Um caderno de estudos guarda referências, hipóteses, tentativas e conclusões. A continuidade vem de práticas pequenas que produzem decisões, não de uma sequência obrigatória de dias.</p>
+<h3>Por que aprender</h3>
+<p data-inema-block="m4-1-t6-why">Voltar a estudos antigos permite perceber mudanças no vocabulário e no julgamento. Também evita repetir os mesmos erros sem reconhecê-los.</p>
+</div>
+<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
+<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
+<svg viewBox="0 0 640 240" role="img" aria-labelledby="m4-1-t6-svgtitle" class="w-full h-auto">
+<title id="m4-1-t6-svgtitle">Mantenha uma prática de observação — Cada rodada responde a um problema observado e termina com uma nova conferência.</title>
+<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="35" y="104" font-size="15" fill="currentColor">1</text>
+<text x="35" y="132" font-size="17" fill="currentColor">Observar</text>
+<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="245" y="104" font-size="15" fill="currentColor">2</text>
+<text x="245" y="132" font-size="17" fill="currentColor">Ajustar</text>
+<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
+<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
+<text x="455" y="104" font-size="15" fill="currentColor">3</text>
+<text x="455" y="132" font-size="17" fill="currentColor">Conferir</text>
+</svg>
+<figcaption>Cada rodada responde a um problema observado e termina com uma nova conferência.</figcaption>
+</figure>
+<h3>Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m4-1-t6-practice">Planeje três estudos futuros: um de luz, um de composição e um de cor. Para cada um, escolha pergunta, referência e aplicação. Exporte a jornada e guarde seus painéis junto dos arquivos.</p>
+<aside class="tip">
+<strong>O que conferir</strong>
+<p data-inema-block="m4-1-t6-caution">Este curso não classifica pessoas em estilos fixos de aprendizagem. Os apoios visuais e a prática servem para tornar o conteúdo observável e verificável.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section id="pratica" class="codebox">
+<h2>Prática: um pedido completo</h2>
+<p>
+<strong>Objetivo:</strong> Você vai produzir três painéis, escolher uma linguagem e revisar uma peça com evidências.</p>
+<p>Use o texto abaixo na sua ferramenta de imagens. Quando houver referência, anexe o arquivo indicado antes de gerar.</p>
+<pre id="prompt-4-1">Crie uma fotografia autoral de uma caneca terracota de alça oval sobre mesa clara, para a marca fictícia Aurora. A direção escolhida combina composição minimalista e paleta terrosa: fundo creme, objeto no terço direito, luz suave de janela à esquerda, esmalte fosco e poucos elementos. Reserve espaço negativo à esquerda. Não inclua texto. Mantenha essa linguagem nas próximas duas imagens, variando apenas a função do enquadramento: detalhe do material e cena de uso.</pre>
+<button data-copy="prompt-4-1">Copiar prompt</button>
+<h3>Como verificar</h3>
+<p>Gere cada imagem separadamente e compare a série. Confira se as palavras visuais escolhidas aparecem nos resultados e se a função de cada peça é diferente.</p>
+<ol class="timeline">
+<li>Prepare o arquivo ou briefing necessário.</li>
+<li>Faça uma tentativa e salve o resultado com as configurações.</li>
+<li>Compare com os critérios acima e localize um desvio.</li>
+<li>Corrija uma decisão e registre o efeito na nova versão.</li>
+</ol>
+</section>
+<section id="checagem" class="quiz" data-quiz="modulo-4-1#q1" data-correct="0" data-explain="Uma série com justificativa mostra aplicação. A quantidade de referências, sozinha, não demonstra o aprendizado.">
+<h2>Teste sua decisão</h2>
+<p>O que demonstra que seu painel virou um sistema?</p>
+<button data-answer="0" aria-pressed="false">Três imagens com decisões reconhecíveis e funções diferentes</button>
+<button data-answer="1" aria-pressed="false">Uma pasta cheia de referências sem anotação</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>Uma série com justificativa mostra aplicação. A quantidade de referências, sozinha, não demonstra o aprendizado.</p>
+</details>
+<p class="fine">Responder não marca a leitura nem bloqueia o próximo módulo.</p>
+</section>
+<section>
+<h2>O que levar desta aula</h2>
+<ul>
+<li>Três painéis, três hipóteses</li>
+<li>Escolha uma direção pelo objetivo</li>
+<li>Dez palavras que você consegue mostrar</li>
+<li>Três imagens, uma linguagem</li>
+<li>Melhore uma peça e explique por quê</li>
+<li>Mantenha uma prática de observação</li>
+</ul>
+<p>Escolha uma decisão que você consegue explicar sem consultar o texto. Se ainda houver dúvida, marque o tópico e volte a ele pela jornada.</p>
+<div class="actions">
+<a class="button" href="index.html">Voltar para a trilha</a>
+<a class="button primary" href="../../materiais.html">Revisar e guardar o projeto</a>
+</div>
+</section>
+</article>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<span>Curso gratuito · INEMA.CLUB · v1.0.0</span>
+<a href="../../materiais.html">Materiais e referências</a>
+<a href="../../../index.html">Os três cursos</a>
+<a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>
+<a href="https://www.inema.club/cursos/">Todos os cursos</a>
+</div>
+</footer>
+<script src="../../assets/learn.js">
+</script>
+<script src="../../assets/course.js">
+</script>
+</body>
+</html>
