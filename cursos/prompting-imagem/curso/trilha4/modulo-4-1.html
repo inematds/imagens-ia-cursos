@@ -76,11 +76,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="inema-course" content="prompting-imagem">
-<meta name="description" content="Transforme uma ideia em decisões de enquadramento, luz e composição. Construa uma série de imagens que você consegue explicar e revisar.">
+<meta name="description" content="Ao terminar, você conduz um cliente do briefing à entrega: prompt-mestre, variações comparadas, JSON e preset, antes/depois de edição, uma série de seis imagens coerentes e a prancha de apresentação — e sabe avaliar o próprio trabalho com uma rubrica.">
 <title>Projeto final: da intenção ao portfólio · INEMA.CLUB</title>
 <link rel="stylesheet" href="../../assets/learn.css">
 <link rel="stylesheet" href="../../assets/course.css">
-<script type="application/json" data-inema-manifest>{"course": "prompting-imagem", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Escolha sua ferramenta e prepare o projeto", "topics": 6, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "A fórmula do prompt", "topics": 6, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controles e testes dentro das ferramentas", "topics": 6, "href": "curso/trilha2/modulo-2-1.html"}, {"id": "2-2", "title": "Personagem e campanha consistentes", "topics": 6, "href": "curso/trilha2/modulo-2-2.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Edite sem perder o que já funciona", "topics": 6, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Upscale, restauração e entrega", "topics": 6, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: da intenção ao portfólio", "topics": 6, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
+<script type="application/json" data-inema-manifest>{"course": "prompting-imagem", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Escolha sua ferramenta e prepare o projeto", "topics": 8, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "A fórmula do prompt", "topics": 8, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controles e testes dentro das ferramentas", "topics": 8, "href": "curso/trilha2/modulo-2-1.html"}, {"id": "2-2", "title": "Personagem e campanha consistentes", "topics": 7, "href": "curso/trilha2/modulo-2-2.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Edite sem perder o que já funciona", "topics": 8, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Upscale, restauração e entrega", "topics": 7, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: da intenção ao portfólio", "topics": 7, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -132,9 +132,9 @@
 <div class="breadcrumb">
 <a href="../../index.html">Prompting de Imagem</a> / <a href="index.html">Projeto</a> / Módulo 4-1</div>
 <header class="intro">
-<h1>Projeto final: da intenção ao portfólio</h1>
-<p>Você vai entregar três imagens coerentes, uma edição documentada e uma receita reutilizável.</p>
-<p class="meta">6 tópicos · explicação, observação e prática · avance no seu ritmo</p>
+<h1 class="text-2xl font-bold">Projeto final: da intenção ao portfólio</h1>
+<p>Ao terminar, você conduz um cliente do briefing à entrega: prompt-mestre, variações comparadas, JSON e preset, antes/depois de edição, uma série de seis imagens coerentes e a prancha de apresentação — e sabe avaliar o próprio trabalho com uma rubrica.</p>
+<p class="meta">7 tópicos · 3–4 h (projeto) · exemplos com o prompt que gerou cada imagem</p>
 <div data-inema-meter="modulo:4-1">
 <span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span>
 <div class="inema-bar">
@@ -148,60 +148,153 @@
 <strong>Nesta aula</strong>
 <ol>
 <li>
-<a href="#topico-1">Feche o escopo antes de gerar</a>
+<a href="#topico-1">Briefing: do pedido à linguagem visual</a>
 </li>
 <li>
-<a href="#topico-2">Construa a matriz de variações</a>
+<a href="#topico-2">Prompt-mestre e três variações</a>
 </li>
 <li>
-<a href="#topico-3">Escolha pela rubrica e justifique</a>
+<a href="#topico-3">Do prompt ao sistema: JSON e preset</a>
 </li>
 <li>
-<a href="#topico-4">Apresente uma revisão rastreável</a>
+<a href="#topico-4">Antes e depois: até ficar pronta para o cliente</a>
 </li>
 <li>
-<a href="#topico-5">Monte o pacote de entrega</a>
+<a href="#topico-5">A série final: seis imagens, um sistema</a>
 </li>
 <li>
-<a href="#topico-6">Revise o que você consegue fazer</a>
+<a href="#topico-6">Apresentação ao cliente: prancha e case</a>
+</li>
+<li>
+<a href="#topico-7">Rubrica de avaliação</a>
 </li>
 </ol>
-<a href="#pratica">Prática do módulo</a>
+<a href="#pratica">Prática guiada</a>
+<a href="#licao">Lição de casa</a>
 <a href="#checagem">Teste sua decisão</a>
 </nav>
 <article class="lesson" data-inema-module="4-1" data-inema-track="4">
+<section class="abertura">
+<p class="inema-prose" data-inema-block="m4-1-b1">Portfólio de imagem com IA não é uma galeria de imagens bonitas soltas — isso qualquer gerador faz sozinho. O que um cliente compra é <strong>direção</strong>: a prova de que você entende um pedido, traduz em decisões visuais, controla o resultado e entrega uma série que parece de uma marca só. Este módulo junta tudo que você fez no curso em um único projeto, com a Terra Alta como exemplo completo e o seu cliente como lição de casa.</p>
+<figure class="diagram">
+<svg role="img" aria-label="O projeto final em oito etapas. As quatro primeiras constroem o sistema visual; as quatro últimas o provam em peças reais. Cada etapa deixa um arquivo na pasta do projeto." viewBox='0 0 780 300' width='100%' xmlns='http://www.w3.org/2000/svg' font-family='Inter,system-ui,sans-serif'>
+<rect width='780' height='300' rx='14' fill='var(--surface-2)'/>
+<text x='24' y='34' font-size='15' fill='var(--text-muted)'>SISTEMA</text>
+<text x='24' y='176' font-size='15' fill='var(--text-muted)'>PROVA</text>
+<g font-size='14' text-anchor='middle'>
+<rect x='24' y='46' width='168' height='84' rx='10' fill='none' stroke='#fbbf24' stroke-width='2'/>
+<text x='108' y='78' font-weight='700' fill='#fbbf24'>1 · Briefing</text>
+<text x='108' y='102' fill='var(--text)'>quem, para quem,</text>
+<text x='108' y='120' fill='var(--text)'>vibe, plataformas</text>
+<rect x='212' y='46' width='168' height='84' rx='10' fill='none' stroke='#fbbf24' stroke-width='2'/>
+<text x='296' y='78' font-weight='700' fill='#fbbf24'>2 · Prompt-mestre</text>
+<text x='296' y='102' fill='var(--text)'>seis camadas</text>
+<text x='296' y='120' fill='var(--text)'>+ emoção</text>
+<rect x='400' y='46' width='168' height='84' rx='10' fill='none' stroke='#fbbf24' stroke-width='2'/>
+<text x='484' y='78' font-weight='700' fill='#fbbf24'>3 · Variações</text>
+<text x='484' y='102' fill='var(--text)'>A: plano/lente · B: luz</text>
+<text x='484' y='120' fill='var(--text)'>ciclo de comparação</text>
+<rect x='588' y='46' width='168' height='84' rx='10' fill='none' stroke='#fbbf24' stroke-width='2'/>
+<text x='672' y='78' font-weight='700' fill='#fbbf24'>4 · JSON + preset</text>
+<text x='672' y='102' fill='var(--text)'>o que é fixo,</text>
+<text x='672' y='120' fill='var(--text)'>o que varia</text>
+<rect x='24' y='188' width='168' height='84' rx='10' fill='none' stroke='#38bdf8' stroke-width='2'/>
+<text x='108' y='220' font-weight='700' fill='#38bdf8'>5 · Antes/depois</text>
+<text x='108' y='244' fill='var(--text)'>edição até ficar</text>
+<text x='108' y='262' fill='var(--text)'>pronta para o uso</text>
+<rect x='212' y='188' width='168' height='84' rx='10' fill='none' stroke='#38bdf8' stroke-width='2'/>
+<text x='296' y='220' font-weight='700' fill='#38bdf8'>6 · Série de 6</text>
+<text x='296' y='244' fill='var(--text)'>mesma luz, paleta,</text>
+<text x='296' y='262' fill='var(--text)'>personagem</text>
+<rect x='400' y='188' width='168' height='84' rx='10' fill='none' stroke='#38bdf8' stroke-width='2'/>
+<text x='484' y='220' font-weight='700' fill='#38bdf8'>7 · Prancha + case</text>
+<text x='484' y='244' fill='var(--text)'>imagens, processo,</text>
+<text x='484' y='262' fill='var(--text)'>texto de apresentação</text>
+<rect x='588' y='188' width='168' height='84' rx='10' fill='none' stroke='#38bdf8' stroke-width='2'/>
+<text x='672' y='220' font-weight='700' fill='#38bdf8'>8 · Rubrica</text>
+<text x='672' y='244' fill='var(--text)'>autoavaliação</text>
+<text x='672' y='262' fill='var(--text)'>antes de enviar</text>
+</g>
+<g stroke='var(--text-muted)' stroke-width='2' fill='none'>
+<path d='M192 88h20M380 88h20M568 88h20M192 230h20M380 230h20M568 230h20'/>
+<path d='M672 130 v20 H108 v38' stroke-dasharray='4 4'/>
+</g>
+</svg>
+<figcaption>O projeto final em oito etapas. As quatro primeiras constroem o sistema visual; as quatro últimas o provam em peças reais. Cada etapa deixa um arquivo na pasta do projeto.</figcaption>
+</figure>
+</section>
 <section class="topic" id="topico-1" data-inema-topic="modulo-4-1#topico-1">
 <h2 class="text-2xl font-bold">
-<span class="number">1</span>Feche o escopo antes de gerar</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m4-1-t1-concept">Escopo define o que será entregue. Neste projeto são três imagens, uma comparação antes/depois, uma ficha de geração e um breve relato de decisões. O objetivo é demonstrar direção e revisão, não volume.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m4-1-t1-why">Um conjunto pequeno permite cuidar de cada detalhe e perceber a relação entre briefing e resultado. Limitar a entrega também ajuda a concluir.</p>
+<span class="number">1</span>Briefing: do pedido à linguagem visual</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m4-1-b3">O <strong>briefing</strong> tem de 5 a 7 frases e responde a cinco perguntas. Pode ser um cliente real, sua própria marca ou um cliente fictício — mas escolha um nicho em que você <strong>gostaria de trabalhar de verdade</strong>, porque este projeto vira a primeira peça do seu portfólio.</p>
+<h4>O briefing da Terra Alta</h4>
+<div class="table-scroll" data-inema-block="m4-1-b4">
+<table>
+<thead>
+<tr>
+<th>Pergunta</th>
+<th>Resposta do cliente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quem é?</td>
+<td>Terra Alta Cafés, torrefação familiar na Serra da Mantiqueira, terceira geração de cafeicultores.</td>
+</tr>
+<tr>
+<td>O que faz?</td>
+<td>Compra café de pequenos produtores da serra, torra em lotes pequenos num torrador antigo e vende grão e moído.</td>
+</tr>
+<tr>
+<td>Para quem?</td>
+<td>Adultos de 28 a 50 anos que preparam café em casa com coador ou prensa e se importam com origem.</td>
+</tr>
+<tr>
+<td>Qual a vibe?</td>
+<td>Artesanal, calma, luminosa, honesta — manhã na montanha, nada de luxo frio.</td>
+</tr>
+<tr>
+<td>Onde as imagens vão?</td>
+<td>Instagram (feed e Reels), site com loja, rótulos e um cartaz para o ponto de venda.</td>
+</tr>
+</tbody>
+</table>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m4-1-t1-svgtitle" class="w-full h-auto">
-<title id="m4-1-t1-svgtitle">Feche o escopo antes de gerar — Comece pelo objetivo, explicite as restrições e só então defina o que será entregue.</title>
-<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="35" y="104" font-size="15" fill="currentColor">1</text>
-<text x="35" y="132" font-size="17" fill="currentColor">Objetivo</text>
-<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="245" y="104" font-size="15" fill="currentColor">2</text>
-<text x="245" y="132" font-size="17" fill="currentColor">Restrições</text>
-<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="455" y="104" font-size="15" fill="currentColor">3</text>
-<text x="455" y="132" font-size="17" fill="currentColor">Entrega</text>
-</svg>
-<figcaption>Comece pelo objetivo, explicite as restrições e só então defina o que será entregue.</figcaption>
-</figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m4-1-t1-practice">Releia o briefing Aurora. Defina destino e proporção das três peças. Escreva o papel de cada uma: apresentar forma, mostrar material e sugerir uso.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m4-1-t1-caution">Não acrescente vídeo, logo novo e catálogo completo no meio do projeto. Anote ideias futuras e finalize o conjunto combinado.</p>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m4-1-b5">O briefing ainda está em linguagem de cliente. O seu trabalho é traduzi-lo em <strong>linguagem de set</strong> — é essa tradução que vai para o prompt. Para a Terra Alta:</p>
+<ul class="inema-prose list" data-inema-block="m4-1-b6">
+<li>
+<strong>3–5 adjetivos de estilo:</strong> quente, natural, luminoso, tátil, sem pressa.</li>
+<li>
+<strong>2–3 referências descritas (sem nomes de artistas):</strong> fotografia documental de ofício; editorial de revista de gastronomia com luz de janela; filme 35 mm com grão sutil.</li>
+<li>
+<strong>Constantes técnicas que saem daí:</strong> luz de janela lateral a 3500K, lentes de 35 a 85 mm, paleta mostarda–creme–kraft–carvalho, texturas sempre visíveis.</li>
+<li>
+<strong>Uso principal:</strong> posts de feed 4:5 e hero do site 16:9 — o que já define espaço negativo para título.</li>
+</ul>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-grid" data-inema-block="m4-1-b7">
+<div class="ok">
+<h4>✓ Briefing que ajuda</h4>
+<ul>
+<li>“público que coa café em casa e quer saber a origem”</li>
+<li>“calmo e luminoso, manhã na montanha”</li>
+<li>“feed 4:5, hero do site, cartaz A3”</li>
+</ul>
+</div>
+<div class="no">
+<h4>✗ Briefing que não ajuda</h4>
+<ul>
+<li>“público geral”</li>
+<li>“bonito e moderno”</li>
+<li>“para as redes”</li>
+</ul>
+</div>
+</div>
+<aside class="tip" data-inema-block="m4-1-b8">
+<strong>Pergunte o que o cliente NÃO quer</strong>
+<p>Uma pergunta que economiza rodadas: “que imagem de concorrente você detestaria ver com a sua marca?”. A Terra Alta respondeu “aquele café de balcão de mármore preto com luz azulada”. Isso vira uma linha de negativos e uma decisão de paleta. O modelo completo está em <strong>Materiais → briefing-cliente.md</strong>.</p>
 </aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
@@ -210,80 +303,88 @@
 </section>
 <section class="topic" id="topico-2" data-inema-topic="modulo-4-1#topico-2">
 <h2 class="text-2xl font-bold">
-<span class="number">2</span>Construa a matriz de variações</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m4-1-t2-concept">Matriz de variações organiza o que fica fixo e o que muda em cada imagem. Nas três peças, mantenha produto, paleta e lógica de luz; varie função, plano e contexto de modo deliberado.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m4-1-t2-why">A matriz transforma escolhas soltas em uma série. Ela também ajuda a diagnosticar se uma diferença é intencional ou um erro de geração.</p>
-</div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 310" role="img" aria-labelledby="m4-1-t2-svgtitle" class="w-full h-auto">
-<title id="m4-1-t2-svgtitle">Construa a matriz de variações — Cada quadro tem uma função. Aqui a repetição do produto é esquemática; no seu trabalho, varie a cena e confira os invariantes.</title>
-<rect x="12" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
-<g transform="translate(76 44) scale(0.55)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<text x="24" y="136" font-size="15" fill="currentColor">1. Apresentar</text>
-<rect x="222" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
-<g transform="translate(286 44) scale(0.55)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<text x="234" y="136" font-size="15" fill="currentColor">2. Aproximar</text>
-<rect x="432" y="12" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
-<g transform="translate(496 44) scale(0.55)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<text x="444" y="136" font-size="15" fill="currentColor">3. Detalhar</text>
-<rect x="12" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
-<g transform="translate(76 192) scale(0.55)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<text x="24" y="284" font-size="15" fill="currentColor">4. Contextualizar</text>
-<rect x="222" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
-<g transform="translate(286 192) scale(0.55)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<text x="234" y="284" font-size="15" fill="currentColor">5. Usar</text>
-<rect x="432" y="160" width="196" height="137" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
-<g transform="translate(496 192) scale(0.55)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<text x="444" y="284" font-size="15" fill="currentColor">6. Concluir</text>
-</svg>
-<figcaption>Cada quadro tem uma função. Aqui a repetição do produto é esquemática; no seu trabalho, varie a cena e confira os invariantes.</figcaption>
+<span class="number">2</span>Prompt-mestre e três variações</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m4-1-b9">O <strong>prompt-mestre</strong> é a imagem-herói da marca escrita como um bloco de texto corrido (não em tópicos), com sujeito, ação, plano, lente, luz, textura, composição, estilo e a emoção no fim — o molde do módulo 1-2. Dele saem duas variações controladas: <strong>A</strong> muda o plano ou a lente; <strong>B</strong> muda a luz ou a composição.</p>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">Mestre: plano médio, 50 mm, janela</span>
+<a href="../../assets/img/c1-m12-mestre.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-mestre.webp" alt="Lia, barista de avental mostarda, despeja água de uma chaleira de cobre no coador, luz de janela quente à esquerda, torrador desfocado ao fundo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m4-1-p11">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, slowly pouring hot water from a copper gooseneck kettle into a ceramic pour-over dripper, focused and calm. Shot on a 50mm lens at f/2, eye level. Soft morning window light from the left, warm 3500K, gentle shadow falloff on the right side of her face. Visible steam, matte glazed ceramic, worn wooden counter with coffee grounds, linen texture on the apron. Subject on the left third, negative space on the right with a softly blurred vintage coffee roaster and burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking quiet craftsmanship at dawn.</pre>
+<button data-copy="m4-1-p11">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m4-1-t2-practice">Preencha três linhas na ficha: produto, detalhe e uso. Em cada linha, escreva enquadramento, ação, referência e critério de aprovação. Gere uma peça por vez.</p>
-<div class="compare-grid">
-<div>
-<h3>✓ Faça a verificação</h3>
-<p>Preencha três linhas na ficha: produto, detalhe e uso. Em cada linha, escreva enquadramento, ação, referência e critério de aprovação. Gere uma peça por vez.</p>
+<figure class="shot">
+<span class="shot-label">Variação A: close</span>
+<a href="../../assets/img/c1-m12-plano-close.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-plano-close.webp" alt="Close no rosto de Lia, olhos concentrados para baixo, fundo totalmente desfocado" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m4-1-p12">Reframe this exact scene as a CLOSE-UP: only Lia&#x27;s face and shoulders fill the frame, her concentrated eyes looking down at the pour. Keep the same woman, same hair, freckles, apron, same warm window light from the left and same color grade. Background becomes an out-of-focus blur.</pre>
+<button data-copy="m4-1-p12">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Variação B: contraluz</span>
+<a href="../../assets/img/c1-m12-luz-contra.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-luz-contra.webp" alt="Mesma cena em contraluz: contorno dourado no cabelo e no vapor, rosto em sombra suave" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m4-1-p13">Change ONLY the lighting: strong BACKLIGHT from a window behind Lia, a golden rim light outlining her hair, shoulders and the rising steam, her face in soft shadow with gentle fill. Keep the same woman, pose, framing, lens, background and objects identical.</pre>
+<button data-copy="m4-1-p13">Copiar prompt</button>
+</details>
+</figure>
 </div>
-<div>
-<h3>✗ Evite a conclusão automática</h3>
-<p>Não mude luz, estilo, personagem e produto simultaneamente só para tornar a série variada. Preserve os sinais que identificam a marca fictícia.</p>
+<p class="caption" data-inema-block="m4-1-b10">As três imagens da Terra Alta que você já viu no módulo 1-2, agora lidas como etapa de projeto. A e B são edições do mestre, então só a camada escolhida mudou. O close fala da pessoa; o contraluz fala do ritual (o vapor vira protagonista). O mestre continua sendo o melhor “retrato de marca” — e isso é uma conclusão, não um gosto.</p>
 </div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m4-1-b14">Mostrar três opções sem critério é pedir ao cliente que faça o seu trabalho. Mostrar três opções <strong>com o motivo de cada uma</strong> é direção. É para isso que serve o ciclo de comparação escrito:</p>
+<h4>Ciclo de comparação da Terra Alta</h4>
+<div class="table-scroll" data-inema-block="m4-1-b15">
+<table>
+<thead>
+<tr>
+<th>Versão</th>
+<th>O que mudou no prompt</th>
+<th>O que mudou na imagem</th>
+<th>Serve para</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mestre</td>
+<td>—</td>
+<td>equilíbrio entre Lia e ofício, espaço à direita</td>
+<td>hero do site, post de apresentação</td>
+</tr>
+<tr>
+<td>A: close</td>
+<td>“medium shot” → “close-up”</td>
+<td>rosto domina, fundo some, mais intimidade</td>
+<td>Reels de bastidor, depoimento</td>
+</tr>
+<tr>
+<td>B: contraluz</td>
+<td>luz lateral → contraluz com recorte</td>
+<td>vapor e cabelo desenhados em dourado, rosto em sombra suave</td>
+<td>capa de campanha, cartaz</td>
+</tr>
+</tbody>
+</table>
 </div>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m4-1-b16">Feche o ciclo com duas perguntas: <strong>qual versão está mais perto do resultado profissional que você imaginou?</strong> e <strong>quais palavras tiveram mais efeito?</strong> Na Terra Alta, as palavras de maior impacto foram a direção da luz e a lente; “cinematic” e “beautiful” não mudavam nada e saíram de todos os prompts. Essas descobertas vão direto para o preset.</p>
+<aside class="tip" data-inema-block="m4-1-b17">
+<strong>Guarde o perdedor</strong>
+<p>A versão que não foi escolhida entra na pasta, com o motivo. No case, “testei contraluz e ficou dramático demais para o feed” mostra ao próximo cliente que você decide — não sorteia.</p>
+</aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
@@ -291,36 +392,95 @@
 </section>
 <section class="topic" id="topico-3" data-inema-topic="modulo-4-1#topico-3">
 <h2 class="text-2xl font-bold">
-<span class="number">3</span>Escolha pela rubrica e justifique</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m4-1-t3-concept">Rubrica é uma lista de critérios com níveis de avaliação. Use aderência, forma, luz, composição e coerência. Zero significa falha; um exige revisão; dois atende ao objetivo definido.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m4-1-t3-why">Justificar a escolha desenvolve vocabulário de direção. Uma nota isolada pouco ensina; uma evidência como alça inteira e sombra coerente mostra o que foi observado.</p>
+<span class="number">3</span>Do prompt ao sistema: JSON e preset</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m4-1-b18">No módulo 1-2 você escreveu uma imagem em JSON. No projeto, o JSON descreve <strong>o sistema</strong>: os campos que nunca mudam (luz, paleta, estilo, personagem) ficam preenchidos; os que mudam a cada peça ficam como variáveis entre &lt; &gt;.</p>
+<div class="codebox">
+<h4>Sistema visual da Terra Alta em JSON</h4>
+<pre id="m4-1-p20" data-lang="json">{
+  &quot;brand&quot;: &quot;Terra Alta Cafés — small-batch roastery, Serra da Mantiqueira&quot;,
+  &quot;character&quot;: {
+    &quot;who&quot;: &quot;Lia, Brazilian barista, early 30s, curly dark hair tied up, light-brown skin, freckles&quot;,
+    &quot;wardrobe&quot;: &quot;mustard-yellow linen apron over a white t-shirt&quot;,
+    &quot;reference_image&quot;: &quot;lia-mestre_v01.png&quot;
+  },
+  &quot;scene&quot;: { &quot;subject_action&quot;: &quot;&lt;what happens in this piece&gt;&quot;, &quot;location&quot;: &quot;&lt;roastery | farm | counter | table&gt;&quot; },
+  &quot;camera&quot;: { &quot;shot&quot;: &quot;&lt;close-up | medium | full | wide | top-down&gt;&quot;, &quot;lens&quot;: &quot;&lt;35 | 50 | 85 | 100 macro&gt; mm&quot;, &quot;angle&quot;: &quot;eye level unless stated&quot; },
+  &quot;lighting&quot;: { &quot;source&quot;: &quot;window or low morning sun&quot;, &quot;direction&quot;: &quot;from the left&quot;, &quot;quality&quot;: &quot;soft&quot;, &quot;temperature&quot;: &quot;3500K&quot; },
+  &quot;palette&quot;: [&quot;#C9A227 mustard&quot;, &quot;#F3EBDD cream&quot;, &quot;#A47B55 kraft&quot;, &quot;#5A3E2B roast&quot;, &quot;#4F5D3A leaf&quot;],
+  &quot;textures&quot;: &quot;always visible: linen, kraft fibers, speckled matte glaze, oak grain, skin pores&quot;,
+  &quot;composition&quot;: &quot;&lt;placement&gt;, clean negative space for text when the piece needs a headline&quot;,
+  &quot;style&quot;: &quot;natural documentary photography, subtle 35mm film grain&quot;,
+  &quot;negative&quot;: &quot;no black marble, no cold blue light, no text on signs or chalkboards, no plastic skin&quot;,
+  &quot;mood&quot;: &quot;quiet craftsmanship, mornings in the mountains&quot;
+}</pre>
+<button data-copy="m4-1-p20">Copiar</button>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m4-1-t3-svgtitle" class="w-full h-auto">
-<title id="m4-1-t3-svgtitle">Escolha pela rubrica e justifique — A aprovação deve considerar forma, coerência e adequação ao uso.</title>
-<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="35" y="104" font-size="15" fill="currentColor">1</text>
-<text x="35" y="132" font-size="17" fill="currentColor">Forma</text>
-<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="245" y="104" font-size="15" fill="currentColor">2</text>
-<text x="245" y="132" font-size="17" fill="currentColor">Coerência</text>
-<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="455" y="104" font-size="15" fill="currentColor">3</text>
-<text x="455" y="132" font-size="17" fill="currentColor">Uso final</text>
-</svg>
-<figcaption>A aprovação deve considerar forma, coerência e adequação ao uso.</figcaption>
-</figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m4-1-t3-practice">Compare duas candidatas para a mesma função. Dê notas e escreva uma evidência por critério. Escolha a que atende melhor ao briefing, mesmo que a outra seja mais chamativa.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m4-1-t3-caution">A rubrica é uma ferramenta de estudo, não uma medição científica de beleza. Ajuste critérios quando o objetivo mudar.</p>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m4-1-b21">O JSON é a parte técnica; o <strong>preset</strong> é a página que acompanha o JSON e que um colega (ou você daqui a seis meses) consegue seguir. Ele registra o que funcionou no seu gerador e as regras do jogo:</p>
+<h4>Preset de uma página — o que ele contém</h4>
+<div class="table-scroll" data-inema-block="m4-1-b22">
+<table>
+<thead>
+<tr>
+<th>Seção</th>
+<th>Terra Alta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Marca e cenário de uso</td>
+<td>torrefação artesanal; feed, site, rótulo, cartaz</td>
+</tr>
+<tr>
+<td>Prompt-mestre refinado</td>
+<td>a versão final, depois do ciclo de comparação</td>
+</tr>
+<tr>
+<td>Biblioteca de referências</td>
+<td>lia-mestre (identidade), textura-com (materiais), comp-tercos (espaço para título) — com nota de quando usar cada uma</td>
+</tr>
+<tr>
+<td>Modelo e configurações</td>
+<td>gerador escolhido e por quê; proporções usadas; semente e intensidade de referência, se a ferramenta mostrar</td>
+</tr>
+<tr>
+<td>Pode mudar</td>
+<td>ação, lugar, plano, lente, composição, texto da peça</td>
+</tr>
+<tr>
+<td>Não pode mudar</td>
+<td>rosto e figurino da Lia, luz da esquerda a ~3500K, paleta, grão, negativos</td>
+</tr>
+<tr>
+<td>Exemplos</td>
+<td>2–4 imagens aprovadas que mostram o sistema funcionando</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-grid" data-inema-block="m4-1-b23">
+<div class="ok">
+<h4>✓ Preset que funciona</h4>
+<ul>
+<li>uma página, com as regras “pode / não pode” explícitas</li>
+<li>prompt colável e JSON com variáveis marcadas</li>
+<li>imagens de exemplo ao lado das regras</li>
+</ul>
+</div>
+<div class="no">
+<h4>✗ Preset que ninguém usa</h4>
+<ul>
+<li>dez páginas de teoria de cor</li>
+<li>prompt com o texto de uma peça antiga no meio</li>
+<li>“use o bom senso” no lugar das constantes</li>
+</ul>
+</div>
+</div>
+<aside class="tip" data-inema-block="m4-1-b24">
+<strong>Dica de diretor</strong>
+<p>Teste o preset como um cliente testaria: peça a alguém que nunca viu o projeto para gerar uma imagem nova só com a sua página. Se sair “Terra Alta”, o sistema funciona. Se não, a regra que faltou é a próxima linha do preset.</p>
 </aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
@@ -329,43 +489,56 @@
 </section>
 <section class="topic" id="topico-4" data-inema-topic="modulo-4-1#topico-4">
 <h2 class="text-2xl font-bold">
-<span class="number">4</span>Apresente uma revisão rastreável</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m4-1-t4-concept">Um estudo de caso mostra o pedido, as tentativas relevantes, a correção e o resultado. O antes/depois deve revelar uma decisão que fez diferença, como liberar espaço para título ou corrigir um objeto.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m4-1-t4-why">Mostrar processo torna seu aprendizado verificável. Também evita que o portfólio seja apenas uma sequência de imagens sem explicação.</p>
-</div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m4-1-t4-svgtitle" class="w-full h-auto">
-<title id="m4-1-t4-svgtitle">Apresente uma revisão rastreável — Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</title>
-<rect x="20" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
-<rect x="335" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
-<g transform="translate(110 80) scale(0.8)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<g transform="translate(430 80) scale(0.8)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<path d="M48 55L225 175" stroke="var(--accent-2)" stroke-dasharray="5 5"/>
-<path d="M358 55H570" stroke="var(--primary)" stroke-dasharray="5 5"/>
-<text x="30" y="227" font-size="17" fill="currentColor">A · versão de referência</text>
-<text x="345" y="227" font-size="17" fill="currentColor">B · hipótese de mudança</text>
-</svg>
-<figcaption>Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</figcaption>
+<span class="number">4</span>Antes e depois: até ficar pronta para o cliente</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m4-1-b25">Comece por um <strong>uso definido</strong> em uma frase — “hero do site, 16:9, título à direita” — e só então edite. As edições se dividem em <strong>estruturais</strong> (proporção, recorte, expansão, posição do sujeito) e <strong>de conteúdo</strong> (fundo, objetos, roupa, detalhes). Faça as estruturais primeiro e salve essa versão: é o seu “estrutura resolvida”.</p>
+<h3 class="sec">Por que aprender</h3>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Antes: foto de balcão em hora de pico</span>
+<a href="../../assets/img/c1-m41-antes.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m41-antes.webp" alt="Antes: a barista quase no centro estende um copo de café para viagem em hora de pico, com fila de clientes, lousa de preços, porta-guardanapos, copos e garrafas ao fundo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m4-1-p27">Medium shot of a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, serving a cup of coffee over the counter during a busy morning rush in a small café. Centered in the frame. Behind her: two customers waiting, a chalkboard menu full of handwritten prices, a napkin dispenser, stacked paper cups, unbranded plastic syrup bottles and a cash register on the counter. Mixed overhead fluorescent light and daylight. Phone-snapshot look. All bottles and machines unbranded: no real brand names or logos anywhere.</pre>
+<button data-copy="m4-1-p27">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m4-1-t4-practice">Escolha uma edição e escreva: problema observado, intervenção feita e resultado conferido. Use imagens com escala comparável. Identifique as peças como estudo autoral com IA para marca fictícia.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m4-1-t4-caution">Não invente cliente, campanha publicada, métricas ou resultados comerciais. O valor do exercício está nas decisões e na qualidade demonstrada.</p>
+<figure class="shot">
+<span class="shot-label">Depois: hero de site</span>
+<a href="../../assets/img/c1-m41-depois.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m41-depois.webp" alt="Depois: a mesma barista no terço esquerdo, fundo limpo e desfocado de torrefação, luz quente de janela, metade direita livre para título" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m4-1-p28">Turn this snapshot into a client-ready website hero image. Keep the exact same woman, face, freckles, hair, apron, pose and the cup she is serving. Remove the customers, the chalkboard menu and all its text, the napkin dispenser, paper cups, plastic bottles and the cash register; replace them with a calm, softly blurred rustic roastery background — wooden shelves with a few kraft coffee bags and a vintage roaster far behind. Shift the composition so she stands on the left third and the right half becomes clean negative space for a headline. Relight to soft window light from the left, warm 3500K, and give it a natural documentary color grade with subtle film grain.</pre>
+<button data-copy="m4-1-p28">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m4-1-b26">O antes é uma geração independente simulando a foto que o cliente manda: barista quase no centro estendendo um copo de café para viagem, fila de clientes, lousas cheias de preços, porta-guardanapos, copos e garrafas de xarope. O depois é uma edição dessa imagem: mesma barista e mesmo gesto, fundo trocado por uma torrefação desfocada, sujeito no terço esquerdo, metade direita livre para o título, luz de janela quente.</p>
+</div>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Nota de fluxo de trabalho (vai para o case)</h4>
+<ol class="timeline" data-inema-block="m4-1-b29">
+<li>
+<strong>Uso:</strong> hero do site da Terra Alta, 16:9, título à direita.</li>
+<li>
+<strong>Ferramenta:</strong> edição por prompt sobre a imagem original.</li>
+<li>
+<strong>Estrutural:</strong> sujeito levado ao terço esquerdo; metade direita limpa para texto.</li>
+<li>
+<strong>Conteúdo:</strong> removidos clientes, lousa, copos, garrafas e caixa; fundo trocado por prateleiras e torrador desfocados.</li>
+<li>
+<strong>Luz e cor:</strong> luz de janela da esquerda a ~3500K e correção de cor documental.</li>
+<li>
+<strong>O que eu melhoraria:</strong> conferir a mão que segura a xícara em 100% e expandir para 21:9 para telas largas.</li>
+</ol>
+<aside class="tip" data-inema-block="m4-1-b30">
+<strong>Três métodos, escolha pelo tamanho da mudança</strong>
+<p>Ferramentas de interface (remover objeto, trocar fundo) para limpezas rápidas; <strong>edição por prompt</strong> para mudanças de clima e fundo inteiro; <strong>máscara/pincel</strong> (<em>inpainting</em>) para detalhes precisos — cor de uma roupa, um objeto na mesa. O módulo 3-1 tem os três em detalhe.</p>
 </aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
@@ -374,43 +547,162 @@
 </section>
 <section class="topic" id="topico-5" data-inema-topic="modulo-4-1#topico-5">
 <h2 class="text-2xl font-bold">
-<span class="number">5</span>Monte o pacote de entrega</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m4-1-t5-concept">Um pacote organizado contém finais, referências autorizadas, prompts, configurações e instruções curtas para reutilizar. Mantenha arquivos de teste separados das versões aprovadas.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m4-1-t5-why">Outra pessoa — ou você daqui a um mês — precisa encontrar a imagem correta sem abrir dezenas de arquivos. Organização também permite revisar só a peça necessária.</p>
+<span class="number">5</span>A série final: seis imagens, um sistema</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m4-1-b31">Uma série coerente mistura <strong>variedade de assunto</strong> com <strong>constância de linguagem</strong>. Para a Terra Alta, cada peça tem um papel na história da marca, e todas compartilham as mesmas constantes do preset:</p>
+<div class="table-scroll" data-inema-block="m4-1-b32">
+<table>
+<thead>
+<tr>
+<th>Peça</th>
+<th>Papel na história</th>
+<th>Plano e lente</th>
+<th>Como foi feita</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 · Retrato</td>
+<td>quem faz o café</td>
+<td>close, 85 mm</td>
+<td>edição da imagem-mestre da Lia (referência de identidade)</td>
+</tr>
+<tr>
+<td>2 · Torra</td>
+<td>o ofício</td>
+<td>médio, 35 mm, ângulo baixo leve</td>
+<td>edição da imagem-mestre</td>
+</tr>
+<tr>
+<td>3 · Origem</td>
+<td>de onde vem o grão</td>
+<td>médio-aberto, 35 mm, externa</td>
+<td>edição da imagem-mestre + produtor fictício</td>
+</tr>
+<tr>
+<td>4 · Produto</td>
+<td>o que se compra</td>
+<td>médio-close, 85 mm</td>
+<td>geração nova com as linhas de estilo do preset</td>
+</tr>
+<tr>
+<td>5 · Prova</td>
+<td>o cuidado</td>
+<td>zenital</td>
+<td>geração nova com as linhas de estilo do preset</td>
+</tr>
+<tr>
+<td>6 · Espaço</td>
+<td>o lugar</td>
+<td>plano geral, 24 mm</td>
+<td>edição da imagem-mestre</td>
+</tr>
+</tbody>
+</table>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m4-1-t5-svgtitle" class="w-full h-auto">
-<title id="m4-1-t5-svgtitle">Monte o pacote de entrega — Guarde o arquivo original, as decisões da receita e a versão aprovada como itens separados.</title>
-<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="35" y="104" font-size="15" fill="currentColor">1</text>
-<text x="35" y="132" font-size="17" fill="currentColor">Original</text>
-<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="245" y="104" font-size="15" fill="currentColor">2</text>
-<text x="245" y="132" font-size="17" fill="currentColor">Receita</text>
-<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="455" y="104" font-size="15" fill="currentColor">3</text>
-<text x="455" y="132" font-size="17" fill="currentColor">Aprovada</text>
-</svg>
-<figcaption>Guarde o arquivo original, as decisões da receita e a versão aprovada como itens separados.</figcaption>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m4-1-b33">Por que seis e não doze? Seis peças cabem numa prancha, fecham duas linhas do grid do Instagram e bastam para provar consistência sem virar repetição. Escolha os papéis pela história da marca, não pelo que é fácil de gerar: <strong>quem</strong> (pessoa), <strong>como</strong> (ofício, processo), <strong>de onde</strong> (origem, lugar), <strong>o quê</strong> (produto), <strong>com que cuidado</strong> (detalhe) e <strong>onde</strong> (atmosfera). Se duas peças contam a mesma coisa, troque uma. E varie o plano de propósito — close, médio, geral, zenital — para que a série respire quando aparecer lado a lado no feed.</p>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">1 · Retrato</span>
+<a href="../../assets/img/c1-m41-serie-retrato.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m41-serie-retrato.webp" alt="Série final 1: close de Lia segurando a xícara salpicada perto do queixo, olhando para a câmera, fundo desfocado quente" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m4-1-p35">Use the woman in the attached image as a strict identity reference (same face, freckles, curly dark hair tied up, light-brown skin, mustard-yellow linen apron over a white t-shirt) and completely re-shoot a NEW photo: close-up portrait, she holds a speckled cream stoneware cup of black coffee with both hands just below her chin and looks directly into the camera with a calm, slight smile. 85mm lens at f/1.8, eye level. Soft morning window light from the left, warm 3500K, gentle shadow on the right side of her face. Visible skin pores, linen texture, steam rising from the cup. Face on the left third, the roastery reduced to a creamy warm blur on the right. Natural documentary photography, subtle 35mm film grain, warm muted palette of mustard, cream, kraft brown and oak. No text on signs or chalkboards.</pre>
+<button data-copy="m4-1-p35">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m4-1-t5-practice">Use nomes com projeto, função e versão. Inclua um README com briefing, ferramentas usadas e limitações observadas. Exporte sua jornada pelo painel para guardar dúvidas e notas do curso.</p>
-<div class="compare-grid">
-<div>
-<h3>✓ Faça a verificação</h3>
-<p>Use nomes com projeto, função e versão. Inclua um README com briefing, ferramentas usadas e limitações observadas. Exporte sua jornada pelo painel para guardar dúvidas e notas do curso.</p>
+<figure class="shot">
+<span class="shot-label">2 · Torra</span>
+<a href="../../assets/img/c1-m41-serie-torra.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m41-serie-torra.webp" alt="Série final 2: Lia no torrador antigo de ferro, cheirando os grãos na colher de prova, fumaça leve na luz da janela" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m4-1-p36">Use the woman in the attached image as a strict identity reference (same face, freckles, curly dark hair tied up, light-brown skin, mustard-yellow linen apron over a white t-shirt) and completely re-shoot a NEW photo: medium shot of her at a vintage cast-iron drum coffee roaster, pulling the small sample trier out of the drum and smelling the freshly roasted beans in it, concentrated. Freshly roasted beans spinning in the round cooling tray below, a thin haze of roasting smoke. 35mm lens at f/2.8, slightly low angle. Soft morning window light from the left, warm 3500K, the smoke catching the light. Worn cast iron, brass details, burlap sacks. Natural documentary photography, subtle 35mm film grain, warm muted palette of mustard, cream, kraft brown and oak. No text on signs or chalkboards.</pre>
+<button data-copy="m4-1-p36">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">3 · Origem</span>
+<a href="../../assets/img/c1-m41-serie-origem.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m41-serie-origem.webp" alt="Série final 3: Lia no cafezal da serra com um produtor de chapéu de palha que mostra cerejas de café na palma da mão, névoa ao fundo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m4-1-p37">Use the woman in the attached image as a strict identity reference (same face, freckles, curly dark hair tied up, light-brown skin, mustard-yellow linen apron over a white t-shirt) and completely re-shoot a NEW photo OUTDOORS: medium-wide shot on a hillside coffee farm in the Serra da Mantiqueira, early morning. She stands between rows of coffee shrubs next to a fictional coffee producer — a Black Brazilian man in his 60s with a short white mustache, straw hat and faded blue work shirt — who shows her a handful of ripe red and yellow coffee cherries in his open palm; both look at the cherries and smile. 35mm lens at f/4. Soft low morning sun from the left, warm 3500K, light mist over the mountains behind them. Glossy coffee leaves, rough hands, straw texture. Natural documentary photography, subtle 35mm film grain, warm muted palette of mustard, cream, kraft brown and green.</pre>
+<button data-copy="m4-1-p37">Copiar prompt</button>
+</details>
+</figure>
 </div>
-<div>
-<h3>✗ Evite a conclusão automática</h3>
-<p>O progresso do curso fica no navegador; o backup da jornada não inclui suas imagens externas. Guarde os dois conjuntos de arquivos.</p>
+<p class="caption" data-inema-block="m4-1-b34">As três com a Lia foram feitas editando a imagem-mestre do módulo 1-2 como <strong>referência de identidade</strong> e pedindo uma foto nova. Repare no que se repete: luz vinda da esquerda, tons mostarda e creme, grão leve, texturas visíveis. O produtor da peça 3 é um personagem secundário fictício.</p>
+</div>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">4 · Produto</span>
+<a href="../../assets/img/c1-m41-serie-produto.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m41-serie-produto.webp" alt="Série final 4: pacote kraft com etiqueta TERRA ALTA e desenho de montanha à direita, xícara salpicada com escorrido e concha de cobre com grãos no balcão de carvalho" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m4-1-p39">Medium close-up product photograph of a kraft-paper coffee bag with a hand-stamped cream label reading &#x27;TERRA ALTA&#x27; standing on a worn oak counter, next to a speckled cream stoneware cup of black coffee with a thin golden crema and a small copper scoop full of roasted beans. 85mm lens at f/2.8, slightly above eye level. Soft morning window light from the left, warm 3500K, gentle shadow to the right. Rough recycled kraft fibers, matte speckled glaze with a drip line, oily beans with a center crease, oak grain. Bag on the right third, clean negative space of softly blurred roastery on the left. Natural documentary photography, subtle 35mm film grain, warm muted palette of mustard, cream, kraft brown and oak. No other text anywhere.</pre>
+<button data-copy="m4-1-p39">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">5 · Prova</span>
+<a href="../../assets/img/c1-m41-serie-mesa.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m41-serie-mesa.webp" alt="Série final 5: vista zenital de uma prova de café, tigelas de cerâmica em diagonal, colheres, grãos verdes e torrados, mãos quebrando a crosta" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m4-1-p40">Bird&#x27;s-eye view, straight down, of a coffee cupping session on a worn oak table: five small cream stoneware cupping bowls in a diagonal row, each with a crust of ground coffee, two silver cupping spoons, a small pile of green coffee beans and a small pile of roasted beans, a kraft-paper bag lying flat, a linen cloth in mustard yellow, and a woman&#x27;s hands with freckled light-brown skin breaking the crust of one bowl with a spoon. Soft morning window light from the left, warm 3500K, long soft shadows to the right. Graphic, orderly composition with breathing space. Natural documentary photography, subtle 35mm film grain, warm muted palette of mustard, cream, kraft brown and oak. No text or labels anywhere.</pre>
+<button data-copy="m4-1-p40">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">6 · Espaço</span>
+<a href="../../assets/img/c1-m41-serie-espaco.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m41-serie-espaco.webp" alt="Série final 6: plano geral da torrefação ao amanhecer, Lia pequena abrindo a janela grande, feixes de luz com poeira sobre o torrador e as sacas" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m4-1-p41">Use the woman in the attached image as the identity reference (same curly dark hair tied up, mustard-yellow linen apron over a white t-shirt) and completely re-shoot a NEW photo: a wide establishing shot of the whole rustic roastery at dawn. She is small in the frame, on the right third, pushing open a large wooden-framed window; pale golden first light floods in from the left across the wooden floor, the vintage cast-iron roaster, stacked burlap coffee sacks and a long wooden counter. Dust particles floating in the light beams. 24mm lens at f/5.6, eye level. Warm 3500K light, deep soft shadows. Natural documentary photography, subtle 35mm film grain, warm muted palette of mustard, cream, kraft brown and oak. No text on signs or chalkboards.</pre>
+<button data-copy="m4-1-p41">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m4-1-b38">O produto (pacote com etiqueta TERRA ALTA, xícara salpicada e concha de cobre) e a prova (cinco tigelas em diagonal, grãos verdes e torrados, pano mostarda) são gerações novas, sem imagem de referência — a coerência veio de repetir <strong>palavra por palavra</strong> as linhas de luz, paleta e estilo do preset. O plano geral fecha a série mostrando o lugar, com a Lia pequena no quadro.</p>
+</div>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-grid" data-inema-block="m4-1-b42">
+<div class="ok">
+<h4>✓ O que segura a série</h4>
+<ul>
+<li>mesma direção e temperatura de luz em todas</li>
+<li>linhas de estilo e paleta coladas idênticas</li>
+<li>personagem sempre gerado a partir da mesma referência</li>
+<li>variar plano e lente de propósito, para o feed respirar</li>
+</ul>
+</div>
+<div class="no">
+<h4>✗ Onde a coerência quebra</h4>
+<ul>
+<li>uma peça com luz fria “porque ficou bonita”</li>
+<li>reescrever a descrição da Lia com outras palavras</li>
+<li>editar uma edição de uma edição (o rosto deriva)</li>
+<li>seis imagens no mesmo plano médio</li>
+</ul>
 </div>
 </div>
+<aside class="limite" data-inema-block="m4-1-b43">
+<strong>Limite do modelo</strong>
+<p>Mesmo com referência, o modelo não garante o mesmo rosto em todas as peças: sardas mudam de lugar, o formato do rosto varia um pouco, o avental troca de tom. Coloque as seis lado a lado com a imagem-mestre antes de mostrar ao cliente e refaça a que destoar — na série da Terra Alta, essa conferência faz parte da checagem final do módulo 3-2.</p>
+</aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
@@ -418,85 +710,287 @@
 </section>
 <section class="topic" id="topico-6" data-inema-topic="modulo-4-1#topico-6">
 <h2 class="text-2xl font-bold">
-<span class="number">6</span>Revise o que você consegue fazer</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m4-1-t6-concept">Concluir uma leitura e dominar uma habilidade são coisas diferentes. O projeto deve mostrar que você consegue descrever uma cena, testar uma variável, reconhecer um erro e corrigir sem perder a intenção.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m4-1-t6-why">A revisão final transforma um exercício terminado em próximos passos concretos. Dúvidas remanescentes indicam qual módulo revisitar.</p>
-</div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m4-1-t6-svgtitle" class="w-full h-auto">
-<title id="m4-1-t6-svgtitle">Revise o que você consegue fazer — Cada rodada responde a um problema observado e termina com uma nova conferência.</title>
-<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="35" y="104" font-size="15" fill="currentColor">1</text>
-<text x="35" y="132" font-size="17" fill="currentColor">Observar</text>
-<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="245" y="104" font-size="15" fill="currentColor">2</text>
-<text x="245" y="132" font-size="17" fill="currentColor">Ajustar</text>
-<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="455" y="104" font-size="15" fill="currentColor">3</text>
-<text x="455" y="132" font-size="17" fill="currentColor">Conferir</text>
-</svg>
-<figcaption>Cada rodada responde a um problema observado e termina com uma nova conferência.</figcaption>
+<span class="number">6</span>Apresentação ao cliente: prancha e case</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m4-1-b44">A <strong>prancha</strong> é uma página (ou slide) com a série, a paleta e as regras de luz — o sistema visual em um olhar. O <strong>case</strong> é a versão narrada para o portfólio: problema, processo, decisões, resultado.</p>
+<div class="figure-wrap">
+<figure class="shot">
+<a href="../../assets/img/c1-m41-prancha.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m41-prancha.webp" alt="Maquete de prancha de apresentação: título TERRA ALTA CAFÉS, grade de seis fotos com a mesma luz e paleta, amostras de cor com HEX e a nota de luz" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m4-1-p46">A clean case-study presentation board, flat digital layout on a warm off-white background, like a slide a designer presents to a client. Top left, a bold serif title &#x27;TERRA ALTA CAFÉS&#x27; and below it a smaller line &#x27;Manhãs na Serra — série final&#x27;. Center: a neat 3-by-2 grid of six photographs with thin white margins, all sharing the same warm window light and muted mustard, cream, kraft and oak palette: a close-up portrait of a freckled barista with curly dark hair holding a cup, a woman at a vintage coffee roaster, a woman and an older farmer among coffee shrubs, a kraft coffee bag product shot, a top-down coffee cupping table, a wide rustic roastery interior at dawn. Right column: a small heading &#x27;Paleta&#x27; with five round color swatches labeled &#x27;#C9A227&#x27;, &#x27;#F3EBDD&#x27;, &#x27;#A47B55&#x27;, &#x27;#5A3E2B&#x27;, &#x27;#4F5D3A&#x27;, and a small heading &#x27;Luz&#x27; with the line &#x27;janela à esquerda · 3500K&#x27;. All equipment unbranded: no real brand names or logos anywhere. Minimal, elegant typography, generous whitespace, no other text.</pre>
+<button data-copy="m4-1-p46">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m4-1-t6-practice">Sem consultar o texto, explique uma imagem em cinco decisões. Depois faça um novo prompt para outro objeto usando o mesmo raciocínio. Liste uma habilidade que ficou clara e uma que precisa de outra prática.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m4-1-t6-caution">Não marque domínio apenas porque a imagem ficou bonita. Verifique se você consegue explicar e repetir o processo com um novo exemplo.</p>
+<p class="caption" data-inema-block="m4-1-b45">Maquete de prancha gerada para mostrar o layout: título, grade de seis fotos com a mesma luz e paleta, amostras de cor com HEX e a nota de luz. As fotos da maquete foram inventadas pelo gerador; na sua prancha entram as imagens reais da série (monte-a em Canva, Figma ou num slide).</p>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<h4>Roteiro do case (5 a 7 telas ou blocos)</h4>
+<ol class="timeline" data-inema-block="m4-1-b47">
+<li>
+<strong>O cliente e o pedido</strong> — duas frases do briefing e o uso das imagens.</li>
+<li>
+<strong>A tradução visual</strong> — adjetivos, referências descritas, constantes técnicas.</li>
+<li>
+<strong>O mestre e as variações</strong> — as três imagens com a tabela do ciclo de comparação.</li>
+<li>
+<strong>O sistema</strong> — trecho do JSON e as regras “pode / não pode” do preset.</li>
+<li>
+<strong>O antes/depois</strong> — as duas imagens e a nota de fluxo de trabalho.</li>
+<li>
+<strong>A série final</strong> — a prancha com as seis peças e onde cada uma será usada.</li>
+<li>
+<strong>Resultado e próximos passos</strong> — formatos entregues, o que você faria na próxima rodada.</li>
+</ol>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="codebox">
+<h4>Texto de apresentação (exemplo Terra Alta)</h4>
+<pre id="m4-1-p49" data-lang="text">Terra Alta Cafés — “Manhãs na Serra”
+
+O pedido: imagens para feed, site, rótulo e ponto de venda que mostrassem uma torrefação familiar, artesanal e luminosa — sem o luxo frio dos cafés de balcão de mármore.
+
+A direção: tratamos a marca como uma manhã na montanha. Toda imagem tem luz de janela vinda da esquerda, quente (cerca de 3500K), texturas visíveis — linho, papel kraft, cerâmica, madeira — e a mesma paleta de mostarda, creme e marrom. A Lia, barista da casa, aparece sempre com a mesma aparência e figurino.
+
+A série: seis peças que contam a história do grão — quem faz, o ofício da torra, a origem no cafezal, o produto, o cuidado na prova e o espaço. Cada uma já sai no formato do seu uso (4:5 para o feed, 16:9 para o site, A3 para o cartaz).
+
+O sistema: entregamos também o preset — prompt-mestre, JSON e regras do que pode e do que não pode mudar — para que as próximas campanhas mantenham a mesma cara.
+
+Próximo passo sugerido: uma série de outono com os produtores parceiros, usando o mesmo sistema.</pre>
+<button data-copy="m4-1-p49">Copiar</button>
+</div>
+<aside class="tip" data-inema-block="m4-1-b50">
+<strong>Na reunião, mostre na ordem certa</strong>
+<p>Primeiro a prancha (o cliente vê o todo e sente a marca), depois o case (entende por que é assim), por último os arquivos. Se você começar pelos arquivos soltos, a conversa vira “gostei desta, não gostei daquela” — e o sistema se perde.</p>
 </aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
 </div>
 </section>
-<section id="pratica" class="codebox">
-<h2>Prática: um pedido completo</h2>
-<p>
-<strong>Objetivo:</strong> Você vai entregar três imagens coerentes, uma edição documentada e uma receita reutilizável.</p>
-<p>Use o texto abaixo na sua ferramenta de imagens. Quando houver referência, anexe o arquivo indicado antes de gerar.</p>
-<pre id="prompt-4-1">Crie uma fotografia para a campanha fictícia Aurora usando a referência anexada da caneca aprovada. Preserve o corpo terracota, a alça oval e o acabamento fosco. Mostre a caneca sobre mesa clara em um ateliê simples, com luz suave de janela à esquerda. Mantenha a paleta terracota, creme e azul discreto. Reserve espaço livre acima do produto. Gere apenas uma imagem; não faça colagem e não inclua texto.</pre>
-<button data-copy="prompt-4-1">Copiar prompt</button>
-<h3>Como verificar</h3>
-<p>Produza três imagens separadas: produto inteiro, detalhe do esmalte e cena de uso. Registre a decisão alterada em cada uma e mantenha referências e configurações junto dos arquivos.</p>
-<ol class="timeline">
-<li>Prepare o arquivo ou briefing necessário.</li>
-<li>Faça uma tentativa e salve o resultado com as configurações.</li>
-<li>Compare com os critérios acima e localize um desvio.</li>
-<li>Corrija uma decisão e registre o efeito na nova versão.</li>
+<section class="topic" id="topico-7" data-inema-topic="modulo-4-1#topico-7">
+<h2 class="text-2xl font-bold">
+<span class="number">7</span>Rubrica de avaliação</h2>
+<h3 class="sec">O que é</h3>
+<h4>Rubrica do projeto final</h4>
+<div class="table-scroll" data-inema-block="m4-1-b51">
+<table>
+<thead>
+<tr>
+<th>Critério</th>
+<th>Em construção</th>
+<th>Pronto para cliente</th>
+<th>Nível portfólio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<strong>Briefing e tradução</strong>
+</td>
+<td>briefing genérico; estilo = gosto pessoal</td>
+<td>5–7 frases claras; adjetivos, referências e uso definidos</td>
+<td>constantes técnicas derivadas do briefing e negativos vindos do que o cliente não quer</td>
+</tr>
+<tr>
+<td>
+<strong>Prompt e controle</strong>
+</td>
+<td>prompt de uma linha; variações mudam várias coisas</td>
+<td>mestre com seis camadas; A e B mudam uma camada cada</td>
+<td>ciclo de comparação escrito, com as palavras de maior efeito identificadas</td>
+</tr>
+<tr>
+<td>
+<strong>Sistema (JSON + preset)</strong>
+</td>
+<td>não existe ou é o prompt copiado</td>
+<td>JSON com variáveis e preset com pode/não pode</td>
+<td>preset testado por outra pessoa e corrigido</td>
+</tr>
+<tr>
+<td>
+<strong>Edição</strong>
+</td>
+<td>antes/depois sem uso definido</td>
+<td>uso e formato definidos; estrutural + conteúdo documentados</td>
+<td>edição invisível em 100%; nota de fluxo com o que melhoraria</td>
+</tr>
+<tr>
+<td>
+<strong>Coerência da série</strong>
+</td>
+<td>imagens soltas, luz e paleta variando</td>
+<td>seis peças com luz, paleta e personagem constantes</td>
+<td>variedade de planos com papéis claros na história; nenhuma peça destoa lado a lado</td>
+</tr>
+<tr>
+<td>
+<strong>Entrega e apresentação</strong>
+</td>
+<td>arquivos sem nome, um formato só</td>
+<td>formatos por plataforma, nomes no padrão, fichas</td>
+<td>prancha + case com texto de apresentação e próximos passos</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m4-1-b52">A rubrica tem seis linhas porque o trabalho tem seis entregas diferentes, e cada uma falha de um jeito próprio. O briefing falha por ser genérico; o prompt, por mudar várias coisas ao mesmo tempo; o sistema, por não existir fora da sua cabeça; a edição, por aparecer em 100%; a série, por ter uma peça que destoa; a entrega, por chegar sem nome e no formato errado. Os três níveis descrevem <strong>evidências</strong>, não esforço: “pronto para cliente” significa que outra pessoa conseguiria usar o que você entregou sem precisar te ligar.</p>
+<p class="inema-prose" data-inema-block="m4-1-b53">Leia a rubrica <strong>linha por linha</strong>, não no geral. Um projeto com série excelente e entrega em “em construção” ainda não está pronto para cliente: o cliente vai receber arquivos sem nome num formato errado, e é disso que ele vai lembrar.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Como usar</h4>
+<ol class="timeline" data-inema-block="m4-1-b54">
+<li>Marque o seu nível em cada linha, com a evidência (qual arquivo prova).</li>
+<li>Qualquer linha em “em construção” é a primeira coisa a refazer.</li>
+<li>Escolha <strong>uma</strong> linha para levar a “nível portfólio” nesta rodada — não todas.</li>
+<li>Peça a um colega que avalie com a mesma tabela e compare as notas.</li>
+<li>Guarde a rubrica preenchida na pasta do projeto: ela mostra sua evolução no próximo.</li>
 </ol>
+<blockquote class="pull" data-inema-block="m4-1-b55">Portfólio não é o melhor que você já gerou. É a prova de que você consegue repetir.</blockquote>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
 </section>
-<section id="checagem" class="quiz" data-quiz="modulo-4-1#q1" data-correct="1" data-explain="O conjunto mostra o que você tentou, o que observou e como corrigiu. Não é necessário inventar métricas ou clientes.">
+<section id="pratica" class="pratica">
+<h2>Prática guiada: monte o projeto do seu cliente em uma sessão</h2>
+<p class="inema-prose" data-inema-block="m4-1-b56">Reserve de 3 a 4 horas. Use o cliente que você escolheu no módulo 1-2 e os arquivos que já produziu no curso; o que faltar, produza agora. Trabalhe na ordem das oito etapas e salve um arquivo por etapa.</p>
+<h4>Roteiro da sessão</h4>
+<ol class="timeline" data-inema-block="m4-1-b57">
+<li>Reescreva o briefing (5–7 frases) e a tradução visual — use o molde em Materiais.</li>
+<li>Revise o prompt-mestre e gere de novo o mestre, a variação A e a variação B. Preencha a tabela do ciclo de comparação.</li>
+<li>Monte o JSON do sistema e o preset de uma página.</li>
+<li>Escolha uma imagem imperfeita e leve-a até a entrega (antes/depois + nota de fluxo).</li>
+<li>Gere a série de seis peças com o prompt abaixo, usando a imagem-mestre como referência nas peças com pessoa.</li>
+<li>Coloque as seis lado a lado com o mestre, refaça a que destoar e monte a prancha.</li>
+<li>Escreva o texto de apresentação e avalie tudo com a rubrica.</li>
+</ol>
+<div class="codebox copyrun">
+<h4>Peça de série com referência de identidade</h4>
+<p>
+<strong>Objetivo:</strong> Gerar cada peça com pessoa a partir da imagem-mestre anexada, mantendo rosto, figurino e as constantes do preset. Troque só o que está entre &lt; &gt;.</p>
+<pre id="m4-1-p59">Use the person in the attached image as a strict identity reference (same face, &lt;traços marcantes&gt;, &lt;cabelo&gt;, &lt;figurino&gt;) and completely re-shoot a NEW photo:
+&lt;plano&gt; of &lt;ação física concreta&gt; in &lt;lugar com 2–3 objetos&gt;.
+&lt;lente&gt; lens at &lt;abertura&gt;, &lt;ângulo&gt;.
+&lt;CONSTANTE DE LUZ DO PRESET, colada idêntica&gt;.
+&lt;CONSTANTE DE TEXTURAS DO PRESET, colada idêntica&gt;.
+&lt;composição: posição do sujeito e espaço para texto, se houver&gt;.
+&lt;CONSTANTE DE ESTILO E PALETA DO PRESET, colada idêntica&gt;.
+&lt;NEGATIVOS DO PRESET&gt;.</pre>
+<button data-copy="m4-1-p59">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> Ponha a peça nova ao lado da imagem-mestre: o rosto e o figurino batem? A luz vem do mesmo lado? Se só uma constante falhou, reforce essa linha e gere de novo — não reescreva o resto.</p>
+</div>
+<div class="codebox copyrun">
+<h4>Rascunho do texto de apresentação com um assistente</h4>
+<p>
+<strong>Objetivo:</strong> Transformar seu briefing, preset e lista de peças num texto de apresentação curto, que você depois revisa com a sua voz.</p>
+<pre id="m4-1-p61">Você é diretor de arte e vai apresentar uma série de imagens a um cliente. Escreva um texto de apresentação em português, com no máximo 220 palavras, em cinco parágrafos curtos: o pedido, a direção visual, a série (uma frase por peça), o sistema entregue e um próximo passo sugerido. Tom: claro, confiante, sem jargão de marketing e sem adjetivos vazios. Use só as informações abaixo.
+
+BRIEFING: &lt;cole o briefing&gt;
+CONSTANTES VISUAIS: &lt;luz, paleta, texturas, estilo&gt;
+PEÇAS: &lt;1 linha por peça: papel na história + formato de uso&gt;
+ENTREGA: &lt;formatos, preset, JSON&gt;</pre>
+<button data-copy="m4-1-p61">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> Todo fato do texto está no seu briefing ou no preset? Corte qualquer promessa que você não fez e troque palavras genéricas (“incrível”, “impactante”) por decisões concretas.</p>
+</div>
+</section>
+<section id="licao" class="licao">
+<h2>Lição de casa</h2>
+<p>Este é o projeto de conclusão do curso. Ele usa o mesmo cliente que você escolheu no módulo 1-2 e reaproveita o que você produziu nos módulos anteriores. O resultado é a primeira peça do seu portfólio de direção de imagem com IA.</p>
+<div class="levels">
+<div class="level">
+<h3>Nível básico <span class="fine">(obrigatório)</span>
+</h3>
+<ol>
+<li>Briefing de 5–7 frases e a tradução visual (adjetivos, referências descritas, uso principal).</li>
+<li>Prompt-mestre + variações A e B, com as três imagens e a tabela do ciclo de comparação.</li>
+<li>JSON do sistema e preset de uma página com as regras “pode / não pode”.</li>
+<li>Um antes/depois de edição com uso definido e nota de fluxo de 5–8 itens.</li>
+<li>Série final de seis imagens coerentes, entregues nos formatos das plataformas do cliente, com nomes no padrão.</li>
+<li>Prancha da série e texto de apresentação; rubrica preenchida por você.</li>
+</ol>
+</div>
+<div class="level adv">
+<h3>Nível avançado <span class="fine">(desafio)</span>
+</h3>
+<ol>
+<li>
+<strong>Case publicável:</strong> transforme o projeto em uma página de portfólio (site, Behance, PDF) seguindo o roteiro de 7 blocos, com antes/depois, trecho do preset e a série.</li>
+<li>
+<strong>Teste cego do preset:</strong> entregue só o preset a outra pessoa, peça duas imagens novas e inclua no case o que você corrigiu no preset depois do teste.</li>
+<li>
+<strong>Série de extensão:</strong> com o mesmo sistema, gere mais três peças para uma campanha sazonal e mostre que elas encaixam na prancha sem ajuste.</li>
+</ol>
+</div>
+</div>
+<p>
+<strong>Entregue/guarde:</strong> Pasta “projeto-final” com subpastas por etapa (01-briefing … 08-rubrica), a prancha em PDF ou PNG, o texto de apresentação e a rubrica preenchida. Se quiser feedback, apresente a prancha e termine com uma pergunta específica (“a peça 5 está na mesma série das outras?”).</p>
+</section>
+<section id="checagem">
 <h2>Teste sua decisão</h2>
-<p>O que torna seu projeto final demonstrável?</p>
-<button data-answer="0" aria-pressed="false">A quantidade de tentativas, sem explicação</button>
-<button data-answer="1" aria-pressed="false">Briefing, decisões, resultados e revisão documentada</button>
+<div class="quiz" data-quiz="modulo-4-1#q1" data-correct="1" data-explain="Referência de identidade + constantes coladas palavra por palavra é o que mantém rosto, luz e cor. Reescrever a descrição muda o resultado; editar uma edição acumula deriva a cada geração.">
+<p>
+<strong>1.</strong> Você vai gerar uma peça nova da série com a Lia. Qual prática mais protege a coerência?</p>
+<button data-answer="0" aria-pressed="false">Reescrever a descrição da Lia com palavras novas para variar</button>
+<button data-answer="1" aria-pressed="false">Usar a imagem-mestre como referência de identidade e colar idênticas as linhas de luz, paleta e estilo do preset</button>
+<button data-answer="2" aria-pressed="false">Editar a peça anterior da série, que já está pronta</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
 <summary>Consultar a explicação</summary>
-<p>O conjunto mostra o que você tentou, o que observou e como corrigiu. Não é necessário inventar métricas ou clientes.</p>
+<p>Referência de identidade + constantes coladas palavra por palavra é o que mantém rosto, luz e cor. Reescrever a descrição muda o resultado; editar uma edição acumula deriva a cada geração.</p>
 </details>
+</div>
+<div class="quiz" data-quiz="modulo-4-1#q2" data-correct="1" data-explain="A rubrica se lê por linha. Série excelente não compensa entrega sem formatos por plataforma, nomes e fichas — é a primeira linha a refazer.">
+<p>
+<strong>2.</strong> O cliente recebeu seis imagens bonitas, mas em pastas sem nome e só em 3:2. Pela rubrica, onde o projeto está?</p>
+<button data-answer="0" aria-pressed="false">Nível portfólio, porque as imagens são ótimas</button>
+<button data-answer="1" aria-pressed="false">“Em construção” no critério de entrega — e isso impede chamar o projeto de pronto para cliente</button>
+<button data-answer="2" aria-pressed="false">Não dá para avaliar sem ver o prompt</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>A rubrica se lê por linha. Série excelente não compensa entrega sem formatos por plataforma, nomes e fichas — é a primeira linha a refazer.</p>
+</details>
+</div>
+<div class="quiz" data-quiz="modulo-4-1#q3" data-correct="1" data-explain="A prancha mostra o sistema de uma vez, o case explica as decisões e só então os arquivos entram. Começar pelos arquivos transforma a conversa em gosto peça a peça.">
+<figure class="shot">
+<a href="../../assets/img/c1-m41-prancha.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m41-prancha.webp" alt="Maquete de prancha de apresentação: título TERRA ALTA CAFÉS, grade de seis fotos com a mesma luz e paleta, amostras de cor com HEX e a nota de luz" loading="lazy" decoding="async">
+</a>
+</figure>
+<p>
+<strong>3.</strong> Na reunião de apresentação, qual ordem funciona melhor?</p>
+<button data-answer="0" aria-pressed="false">Arquivos soltos → prancha → case</button>
+<button data-answer="1" aria-pressed="false">Prancha → case → arquivos</button>
+<button data-answer="2" aria-pressed="false">Case → rubrica → arquivos</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>A prancha mostra o sistema de uma vez, o case explica as decisões e só então os arquivos entram. Começar pelos arquivos transforma a conversa em gosto peça a peça.</p>
+</details>
+</div>
 <p class="fine">Responder não marca a leitura nem bloqueia o próximo módulo.</p>
 </section>
 <section>
 <h2>O que levar desta aula</h2>
 <ul>
-<li>Feche o escopo antes de gerar</li>
-<li>Construa a matriz de variações</li>
-<li>Escolha pela rubrica e justifique</li>
-<li>Apresente uma revisão rastreável</li>
-<li>Monte o pacote de entrega</li>
-<li>Revise o que você consegue fazer</li>
+<li>Portfólio de IA vende <strong>direção</strong>: briefing traduzido em decisões, controle das variações e uma série que parece de uma marca só.</li>
+<li>Briefing de 5–7 frases → adjetivos, referências descritas, constantes técnicas e uso principal.</li>
+<li>Mestre + duas variações de uma camada cada, com o ciclo de comparação escrito, viram critério — não gosto.</li>
+<li>JSON + preset registram o que é fixo e o que varia; teste o preset com outra pessoa.</li>
+<li>Coerência = mesma referência de identidade + constantes coladas idênticas + variedade de planos com papéis claros.</li>
+<li>Apresente prancha → case → arquivos, e avalie cada linha da rubrica antes de enviar.</li>
 </ul>
-<p>Escolha uma decisão que você consegue explicar sem consultar o texto. Se ainda houver dúvida, marque o tópico e volte a ele pela jornada.</p>
 <div class="actions">
 <a class="button" href="index.html">Voltar para a trilha</a>
-<a class="button primary" href="../../materiais.html">Revisar e guardar o projeto</a>
+<a class="button primary" href="../../materiais.html">Materiais e projeto final</a>
 </div>
 </section>
 </article>
@@ -504,7 +998,7 @@
 </main>
 <footer class="footer">
 <div class="wrap">
-<span>Curso gratuito · INEMA.CLUB · v1.0.0</span>
+<span>Curso gratuito · INEMA.CLUB · v1.1.0</span>
 <a href="../../materiais.html">Materiais e referências</a>
 <a href="../../../index.html">Os três cursos</a>
 <a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>

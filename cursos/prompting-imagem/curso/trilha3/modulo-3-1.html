@@ -76,11 +76,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="inema-course" content="prompting-imagem">
-<meta name="description" content="Transforme uma ideia em decisões de enquadramento, luz e composição. Construa uma série de imagens que você consegue explicar e revisar.">
+<meta name="description" content="Ao terminar, você escolhe o tipo e o método de edição certos para cada pedido do cliente, escreve instruções com invariantes (“mude só X, mantenha Y”) e revisa o resultado com um checklist antes de entregar.">
 <title>Edite sem perder o que já funciona · INEMA.CLUB</title>
 <link rel="stylesheet" href="../../assets/learn.css">
 <link rel="stylesheet" href="../../assets/course.css">
-<script type="application/json" data-inema-manifest>{"course": "prompting-imagem", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Escolha sua ferramenta e prepare o projeto", "topics": 6, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "A fórmula do prompt", "topics": 6, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controles e testes dentro das ferramentas", "topics": 6, "href": "curso/trilha2/modulo-2-1.html"}, {"id": "2-2", "title": "Personagem e campanha consistentes", "topics": 6, "href": "curso/trilha2/modulo-2-2.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Edite sem perder o que já funciona", "topics": 6, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Upscale, restauração e entrega", "topics": 6, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: da intenção ao portfólio", "topics": 6, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
+<script type="application/json" data-inema-manifest>{"course": "prompting-imagem", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Escolha sua ferramenta e prepare o projeto", "topics": 8, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "A fórmula do prompt", "topics": 8, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controles e testes dentro das ferramentas", "topics": 8, "href": "curso/trilha2/modulo-2-1.html"}, {"id": "2-2", "title": "Personagem e campanha consistentes", "topics": 7, "href": "curso/trilha2/modulo-2-2.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Edite sem perder o que já funciona", "topics": 8, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Upscale, restauração e entrega", "topics": 7, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: da intenção ao portfólio", "topics": 7, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -132,9 +132,9 @@
 <div class="breadcrumb">
 <a href="../../index.html">Prompting de Imagem</a> / <a href="index.html">Produção</a> / Módulo 3-1</div>
 <header class="intro">
-<h1>Edite sem perder o que já funciona</h1>
-<p>Você vai escolher entre ajuste global, edição local, expansão e montagem final.</p>
-<p class="meta">6 tópicos · explicação, observação e prática · avance no seu ritmo</p>
+<h1 class="text-2xl font-bold">Edite sem perder o que já funciona</h1>
+<p>Ao terminar, você escolhe o tipo e o método de edição certos para cada pedido do cliente, escreve instruções com invariantes (“mude só X, mantenha Y”) e revisa o resultado com um checklist antes de entregar.</p>
+<p class="meta">8 tópicos · 75 min · exemplos com o prompt que gerou cada imagem</p>
 <div data-inema-meter="modulo:3-1">
 <span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span>
 <div class="inema-bar">
@@ -148,60 +148,100 @@
 <strong>Nesta aula</strong>
 <ol>
 <li>
-<a href="#topico-1">Global ou local: qual é o alcance?</a>
+<a href="#topico-1">Editar, não regenerar</a>
 </li>
 <li>
-<a href="#topico-2">Máscara: indique onde mexer</a>
+<a href="#topico-2">O mapa: 4 tipos de edição × 3 métodos</a>
 </li>
 <li>
-<a href="#topico-3">Expandir é criar fora do quadro</a>
+<a href="#topico-3">Instruções com invariantes: “mude só X, mantenha Y”</a>
 </li>
 <li>
-<a href="#topico-4">Integre objeto, luz e fundo</a>
+<a href="#topico-4">Edição global: hora do dia, clima e cor</a>
 </li>
 <li>
-<a href="#topico-5">Texto e marca em camada editável</a>
+<a href="#topico-5">Edição local: remover, corrigir, trocar um detalhe</a>
 </li>
 <li>
-<a href="#topico-6">Histórico de edição e antes/depois</a>
+<a href="#topico-6">Troca de fundo sem cara de recorte</a>
+</li>
+<li>
+<a href="#topico-7">Expansão (outpainting): a mesma foto em outro formato</a>
+</li>
+<li>
+<a href="#topico-8">Edições em cadeia, degradação e o checklist final</a>
 </li>
 </ol>
-<a href="#pratica">Prática do módulo</a>
+<a href="#pratica">Prática guiada</a>
+<a href="#licao">Lição de casa</a>
 <a href="#checagem">Teste sua decisão</a>
 </nav>
 <article class="lesson" data-inema-module="3-1" data-inema-track="3">
+<section class="abertura">
+<p class="inema-prose" data-inema-block="m3-1-b1">A imagem da Lia no módulo 1-2 ficou ótima — e tem problemas que nenhum cliente aceitaria: uma lousa com frase que ninguém escreveu, texto pintado na parede, um rótulo no pote, uma tatuagem com palavras no braço, “BRASIL” gravado no torrador. O reflexo do iniciante é gerar de novo e torcer. O profissional <strong>edita</strong>: tira só o que está errado e preserva a luz, o gesto e o rosto que já foram aprovados.</p>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Antes: geração aprovada</span>
+<a href="../../assets/img/c1-m12-mestre.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-mestre.webp" alt="Lia, barista de avental mostarda, despeja água de uma chaleira de cobre no coador, luz de janela quente à esquerda, torrador desfocado ao fundo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m3-1-p3">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, slowly pouring hot water from a copper gooseneck kettle into a ceramic pour-over dripper, focused and calm. Shot on a 50mm lens at f/2, eye level. Soft morning window light from the left, warm 3500K, gentle shadow falloff on the right side of her face. Visible steam, matte glazed ceramic, worn wooden counter with coffee grounds, linen texture on the apron. Subject on the left third, negative space on the right with a softly blurred vintage coffee roaster and burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking quiet craftsmanship at dawn.</pre>
+<button data-copy="m3-1-p3">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Depois: textos removidos por edição</span>
+<a href="../../assets/img/c1-m31-limpeza.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-limpeza.webp" alt="A cena da Lia sem nenhum texto: lousa lisa, parede limpa, pote e caderno sem rótulo, braço sem tatuagem" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-1-p4">Remove ALL written text from this image, and change nothing else: the chalkboard sign on the left becomes a plain dark board, the painted words on the right wall disappear leaving a plain plaster wall, the label on the glass jar becomes blank kraft paper, the notebook cover on the counter is blank, the word on the roaster&#x27;s front badge is gone, the print on the burlap sack is gone, and the written tattoo on her forearm is removed (clean skin). Keep the woman, her face, pose, both hands, the kettle, the pour, the steam, every object, the lighting, the framing and the color grade identical.</pre>
+<button data-copy="m3-1-p4">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m3-1-b2">Uma única edição com a instrução “remova todo texto escrito e não mude mais nada”. Compare lousa, parede, pote, caderno, antebraço e torrador: o texto sumiu; rosto, gesto, vapor e luz continuam os mesmos. Regenerar do zero daria outra Lia, outra luz e outros textos inventados.</p>
+</div>
+</section>
 <section class="topic" id="topico-1" data-inema-topic="modulo-3-1#topico-1">
 <h2 class="text-2xl font-bold">
-<span class="number">1</span>Global ou local: qual é o alcance?</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m3-1-t1-concept">Uma edição global altera a imagem inteira, como contraste ou temperatura. Uma edição local modifica uma área, como remover um objeto. O alcance precisa corresponder ao problema observado.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m3-1-t1-why">Pedir uma nova atmosfera para remover uma distração é uma intervenção maior que a necessária. Escolher o menor alcance reduz o número de coisas a conferir.</p>
+<span class="number">1</span>Editar, não regenerar</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m3-1-b5">Gerar é o <strong>ponto de partida</strong>. A maior parte do trabalho com cliente é pedido de ajuste: “tira aquela placa”, “troca o fundo”, “precisa de uma versão vertical”, “o avental pode ser verde?”. Cada um desses pedidos mexe numa parte da imagem. Se você responde gerando de novo, o cliente recebe uma imagem diferente em tudo — e volta a aprovar do zero.</p>
+<aside class="novo" data-inema-block="m3-1-b6">
+<strong>Novo aqui? Imagem-mestre</strong>
+<p>A versão aprovada, em resolução cheia, da qual todas as edições partem. Trate-a como o negativo de um filme: você nunca edita por cima dela; salva cada edição como arquivo novo (mestre → v1-limpeza → v2-vertical…).</p>
+</aside>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m3-1-b7">A edição fixa a maior parte dos pixels e pede ao modelo que mexa só numa região ou numa característica. Isso preserva o que é mais difícil de conseguir de novo: o rosto certo, o gesto natural, a luz que caiu bem. Também é mais barato — uma edição resolve em uma rodada o que regenerar resolveria em dez tentativas.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-grid" data-inema-block="m3-1-b8">
+<div class="ok">
+<h4>✓ Edite quando…</h4>
+<ul>
+<li>o rosto, a pose e a luz foram aprovados</li>
+<li>o problema é localizado (objeto, texto, roupa, mão)</li>
+<li>o pedido é de formato (vertical, quadrado, banner)</li>
+<li>o pedido é de clima (hora do dia, cor) mantendo a cena</li>
+</ul>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m3-1-t1-svgtitle" class="w-full h-auto">
-<title id="m3-1-t1-svgtitle">Global ou local: qual é o alcance? — A área azul indica a região a editar. Depois da correção, confira também o que deveria ter sido preservado.</title>
-<rect x="25" y="28" width="590" height="165" rx="10" fill="var(--surface-2)"/>
-<g transform="translate(235 75) scale(0.95)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<rect x="420" y="105" width="70" height="70" rx="12" fill="#38bdf8" opacity=".25" stroke="#38bdf8" stroke-dasharray="5 4"/>
-<circle cx="455" cy="140" r="18" fill="#8c9cb2"/>
-<text x="35" y="225" font-size="17" fill="currentColor">Preservar produto</text>
-<text x="365" y="225" font-size="17" fill="currentColor">Editar só a seleção</text>
-</svg>
-<figcaption>A área azul indica a região a editar. Depois da correção, confira também o que deveria ter sido preservado.</figcaption>
-</figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m3-1-t1-practice">Descreva um problema da sua imagem. Classifique-o como global, local, estrutural ou de diagramação. Escolha o método antes de abrir o editor.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m3-1-t1-caution">Um pedido local em linguagem natural não garante preservação pixel a pixel. Compare o resultado inteiro e mantenha o original.</p>
+<div class="no">
+<h4>✗ Regenere quando…</h4>
+<ul>
+<li>a composição inteira está errada (plano, ângulo, lente)</li>
+<li>o personagem não é o personagem</li>
+<li>a imagem já passou por 3–4 edições e começou a degradar (tópico 8)</li>
+<li>o cliente mudou o conceito, não um detalhe</li>
+</ul>
+</div>
+</div>
+<aside class="tip" data-inema-block="m3-1-b9">
+<strong>Salve a etapa “estrutura resolvida”</strong>
+<p>Antes de mexer em conteúdo (fundo, objetos, roupa), resolva a estrutura — formato e enquadramento — e salve esse arquivo. Se uma edição de conteúdo der errado, você volta a esse ponto, não à estaca zero.</p>
 </aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
@@ -210,43 +250,144 @@
 </section>
 <section class="topic" id="topico-2" data-inema-topic="modulo-3-1#topico-2">
 <h2 class="text-2xl font-bold">
-<span class="number">2</span>Máscara: indique onde mexer</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m3-1-t2-concept">Máscara é uma marcação da região que poderá ser alterada. Inpainting é o preenchimento ou reconstrução dessa área. O significado de branco, preto ou seleção varia conforme o editor.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m3-1-t2-why">Uma máscara precisa delimitar o objeto e permitir integração com as bordas. Incluir área demais pode alterar aquilo que você queria preservar.</p>
+<span class="number">2</span>O mapa: 4 tipos de edição × 3 métodos</h2>
+<h3 class="sec">O que é</h3>
+<h4>Os quatro tipos de edição</h4>
+<div class="table-scroll" data-inema-block="m3-1-b10">
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>O que muda</th>
+<th>Pedidos típicos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<strong>Global</strong>
+</td>
+<td>a imagem inteira: cor, contraste, luz, hora, clima, estilo</td>
+<td>“mais quente”, “versão noturna”, “cara de filme”</td>
+</tr>
+<tr>
+<td>
+<strong>Local (inpainting)</strong>
+</td>
+<td>uma região: objeto, texto, roupa, mão, rosto</td>
+<td>“tira a placa”, “troca a cor do avental”, “arruma a mão”</td>
+</tr>
+<tr>
+<td>
+<strong>Estrutural (outpainting, recorte)</strong>
+</td>
+<td>o quadro: formato, expansão, enquadramento</td>
+<td>“preciso em 9:16”, “sobra espaço para título?”</td>
+</tr>
+<tr>
+<td>
+<strong>Troca de elemento / fundo</strong>
+</td>
+<td>um componente inteiro é substituído</td>
+<td>“coloca ela no cafezal”, “cardápio em português”</td>
+</tr>
+</tbody>
+</table>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m3-1-t2-svgtitle" class="w-full h-auto">
-<title id="m3-1-t2-svgtitle">Máscara: indique onde mexer — A área azul indica a região a editar. Depois da correção, confira também o que deveria ter sido preservado.</title>
-<rect x="25" y="28" width="590" height="165" rx="10" fill="var(--surface-2)"/>
-<g transform="translate(235 75) scale(0.95)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
+<aside class="novo" data-inema-block="m3-1-b11">
+<strong>Novo aqui? Inpainting e outpainting</strong>
+<p>
+<em>Inpainting</em> é repintar uma área dentro da imagem (você marca a região, o modelo preenche). <em>Outpainting</em> é pintar fora dela: aumentar a tela e deixar o modelo inventar o que haveria além das bordas, combinando luz e perspectiva.</p>
+</aside>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m3-1-b12">Os <strong>métodos</strong> são as três formas de dizer ao modelo o que fazer. <strong>Instrução em texto</strong>: você anexa a imagem e descreve a mudança (modo “editar com prompt”, “imagem + prompt”). <strong>Máscara ou seleção</strong>: você pinta ou seleciona a área (pincel, laço, retângulo) e escreve o que vai ali — o modelo só mexe dentro. <strong>Referência</strong>: você anexa uma segunda imagem com o que deve entrar (o avental certo, o produto real, o rosto do personagem).</p>
+<figure class="diagram">
+<svg role="img" aria-label="Grade tipo × método. Quanto mais cheio o círculo, melhor a combinação costuma funcionar. Leia pela linha do pedido: um pedido local pede máscara; um pedido global vai bem só com texto." viewBox="0 0 760 330" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif">
+<rect width="760" height="330" rx="14" fill="var(--surface-2)"/>
+<g font-size="15" font-weight="700" text-anchor="middle">
+<text x="370" y="40" fill="#c084fc">Instrução em texto</text>
+<text x="530" y="40" fill="#c084fc">Máscara / seleção</text>
+<text x="680" y="40" fill="#38bdf8">Referência</text>
 </g>
-<rect x="420" y="105" width="70" height="70" rx="12" fill="#38bdf8" opacity=".25" stroke="#38bdf8" stroke-dasharray="5 4"/>
-<circle cx="455" cy="140" r="18" fill="#8c9cb2"/>
-<text x="35" y="225" font-size="17" fill="currentColor">Preservar produto</text>
-<text x="365" y="225" font-size="17" fill="currentColor">Editar só a seleção</text>
+<g font-size="15" fill="var(--text)">
+<text x="24" y="92" font-weight="700">Global</text>
+<text x="24" y="110" font-size="13" fill="var(--text-muted)">cor, hora, clima, estilo</text>
+<text x="24" y="157" font-weight="700">Local</text>
+<text x="24" y="175" font-size="13" fill="var(--text-muted)">objeto, texto, roupa, mão</text>
+<text x="24" y="222" font-weight="700">Estrutural</text>
+<text x="24" y="240" font-size="13" fill="var(--text-muted)">formato, expansão</text>
+<text x="24" y="287" font-weight="700">Troca de elemento/fundo</text>
+<text x="24" y="305" font-size="13" fill="var(--text-muted)">componente inteiro</text>
+</g>
+<g stroke="var(--text-muted)" stroke-opacity="0.3">
+<line x1="20" y1="60" x2="740" y2="60"/>
+<line x1="20" y1="125" x2="740" y2="125"/>
+<line x1="20" y1="190" x2="740" y2="190"/>
+<line x1="20" y1="255" x2="740" y2="255"/>
+</g>
+<g stroke="#c084fc" stroke-width="2">
+<circle cx="370" cy="96" r="14" fill="#c084fc"/>
+<circle cx="530" cy="96" r="14" fill="none"/>
+<circle cx="370" cy="161" r="14" fill="#c084fc" fill-opacity="0.45"/>
+<circle cx="530" cy="161" r="14" fill="#c084fc"/>
+<circle cx="370" cy="226" r="14" fill="#c084fc" fill-opacity="0.45"/>
+<circle cx="530" cy="226" r="14" fill="#c084fc"/>
+<circle cx="370" cy="291" r="14" fill="#c084fc" fill-opacity="0.45"/>
+<circle cx="530" cy="291" r="14" fill="#c084fc"/>
+</g>
+<g stroke="#38bdf8" stroke-width="2">
+<circle cx="680" cy="96" r="14" fill="#38bdf8" fill-opacity="0.45"/>
+<circle cx="680" cy="161" r="14" fill="#38bdf8" fill-opacity="0.45"/>
+<circle cx="680" cy="226" r="14" fill="none"/>
+<circle cx="680" cy="291" r="14" fill="#38bdf8"/>
+</g>
 </svg>
-<figcaption>A área azul indica a região a editar. Depois da correção, confira também o que deveria ter sido preservado.</figcaption>
+<figcaption>Grade tipo × método. Quanto mais cheio o círculo, melhor a combinação costuma funcionar. Leia pela linha do pedido: um pedido local pede máscara; um pedido global vai bem só com texto.</figcaption>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m3-1-t2-practice">No esquema, observe a seleção e a área protegida. No editor, teste uma máscara com pequena margem ao redor do elemento. Peça a continuação do material ou fundo que deve ocupar o lugar.</p>
-<div class="compare-grid">
-<div>
-<h3>✓ Faça a verificação</h3>
-<p>No esquema, observe a seleção e a área protegida. No editor, teste uma máscara com pequena margem ao redor do elemento. Peça a continuação do material ou fundo que deve ocupar o lugar.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Pedido do cliente → tipo → método</h4>
+<div class="table-scroll" data-inema-block="m3-1-b14">
+<table>
+<thead>
+<tr>
+<th>Pedido</th>
+<th>Tipo</th>
+<th>Método que resolve melhor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“Tira as frases da parede e da lousa”</td>
+<td>local</td>
+<td>texto (“remove all written text”) ou máscara em cada placa</td>
+</tr>
+<tr>
+<td>“Queria essa foto à noite, com chuva”</td>
+<td>global</td>
+<td>texto, com invariantes</td>
+</tr>
+<tr>
+<td>“Preciso de capa de Reels”</td>
+<td>estrutural</td>
+<td>expandir/outpaint para 9:16 + descrição do que entra nas bordas</td>
+</tr>
+<tr>
+<td>“Coloca ela no cafezal”</td>
+<td>troca de fundo</td>
+<td>remover fundo + gerar novo, ou texto com “replace ONLY the background”</td>
+</tr>
+<tr>
+<td>“O avental tem que ser o da loja”</td>
+<td>troca de elemento</td>
+<td>máscara no avental + imagem de referência do avental real</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div>
-<h3>✗ Evite a conclusão automática</h3>
-<p>Confira a convenção da ferramenta antes de aplicar. Se estiver removendo uma alça duplicada, proteja a alça correta e revise sombra e contorno após a edição.</p>
-</div>
-</div>
+<aside class="tip" data-inema-block="m3-1-b15">
+<strong>O quinto caminho: fluxo híbrido</strong>
+<p>Texto de anúncio, preço, logotipo e diagramação <strong>não</strong> são trabalho para o modelo de imagem. Gere a foto com espaço livre, edite o que for de imagem com IA e faça título, logo e layout num editor clássico (Canva, Figma, Photoshop). A IA entrega a fotografia; a peça final é montada fora.</p>
+</aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
@@ -254,51 +395,79 @@
 </section>
 <section class="topic" id="topico-3" data-inema-topic="modulo-3-1#topico-3">
 <h2 class="text-2xl font-bold">
-<span class="number">3</span>Expandir é criar fora do quadro</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m3-1-t3-concept">Outpainting é gerar conteúdo além da área original. Serve para adaptar uma imagem vertical a um formato horizontal ou criar espaço para texto, preservando o assunto quando possível.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m3-1-t3-why">Um recorte só reduz a área; a expansão acrescenta conteúdo. Saber a diferença evita esticar uma imagem e deformar o produto para caber no formato.</p>
-</div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m3-1-t3-svgtitle" class="w-full h-auto">
-<title id="m3-1-t3-svgtitle">Expandir é criar fora do quadro — Formato altera a área disponível para organizar a cena. Estes quadros têm proporções diferentes, não uma escala de qualidade.</title>
-<rect x="35" y="45" width="155" height="155" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<rect x="235" y="85" width="195" height="110" fill="var(--surface-2)" stroke="var(--primary)"/>
-<rect x="490" y="20" width="104" height="184" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<g transform="translate(73 94) scale(0.7)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<g transform="translate(302 110) scale(0.65)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<g transform="translate(510 102) scale(0.55)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<text x="77" y="231" font-size="17" fill="currentColor">1:1</text>
-<text x="305" y="231" font-size="17" fill="currentColor">16:9</text>
-<text x="523" y="231" font-size="17" fill="currentColor">9:16</text>
-<text x="25" y="231" font-size="14" fill="currentColor">Diagrama de composição — exemplo autoral</text>
-</svg>
-<figcaption>Formato altera a área disponível para organizar a cena. Estes quadros têm proporções diferentes, não uma escala de qualidade.</figcaption>
+<span class="number">3</span>Instruções com invariantes: “mude só X, mantenha Y”</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m3-1-b16">Uma boa instrução de edição tem três partes: <strong>o verbo com escopo</strong> (“Change ONLY…”, “Remove ONLY…”, “Replace ONLY…”), <strong>a mudança descrita com a mesma precisão de um prompt</strong> (material, cor, forma, luz) e <strong>a lista de invariantes</strong> — o que deve continuar exatamente igual (“Keep her face, pose, hands, background, lighting and framing identical”).</p>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">Base</span>
+<a href="../../assets/img/c1-m12-mestre.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-mestre.webp" alt="Lia, barista de avental mostarda, despeja água de uma chaleira de cobre no coador, luz de janela quente à esquerda, torrador desfocado ao fundo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m3-1-p18">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, slowly pouring hot water from a copper gooseneck kettle into a ceramic pour-over dripper, focused and calm. Shot on a 50mm lens at f/2, eye level. Soft morning window light from the left, warm 3500K, gentle shadow falloff on the right side of her face. Visible steam, matte glazed ceramic, worn wooden counter with coffee grounds, linen texture on the apron. Subject on the left third, negative space on the right with a softly blurred vintage coffee roaster and burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking quiet craftsmanship at dawn.</pre>
+<button data-copy="m3-1-p18">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m3-1-t3-practice">Amplie a tela para um lado e descreva a continuação do fundo e da mesa. Mantenha a imagem-base em posição. Verifique a linha do horizonte, as sombras e a transição entre original e área criada.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m3-1-t3-caution">O modelo pode inventar novos objetos nas áreas abertas. Peça continuidade simples e revise junções, repetições e mudanças de textura.</p>
-</aside>
+<figure class="shot">
+<span class="shot-label">“Mais premium, com avental verde”</span>
+<a href="../../assets/img/c1-m31-roupa-vago.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-roupa-vago.webp" alt="Resultado de uma instrução vaga: além do avental verde, o modelo mexeu em outras partes da imagem" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-1-p19">Make her look more premium, with a green apron.</pre>
+<button data-copy="m3-1-p19">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">“Mude SÓ o avental…” + invariantes</span>
+<a href="../../assets/img/c1-m31-roupa.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-roupa.webp" alt="Só o avental mudou: lona encerada verde-escura com alças de couro; o resto da imagem igual" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-1-p20">Change ONLY the apron: make it a dark forest-green waxed-canvas apron with brown leather straps and small brass buckles. Keep her face, freckles, hair, white t-shirt, pose, both hands, the kettle, the pour and the steam, every background object, the lighting, the framing and the color grade exactly identical.</pre>
+<button data-copy="m3-1-p20">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m3-1-b17">Duas edições da mesma base. Na do meio, a instrução vaga (“mais premium, com avental verde”) trocou o avental — e também a <strong>camiseta branca por uma camisa de colarinho com mangas dobradas</strong>, e pôs ilhoses e fivelas de latão. Ninguém pediu a camisa: “premium” deu licença ao modelo. A da direita descreve o avental (lona encerada verde-escura, alças de couro, fivelas de latão) e lista tudo o que deve ficar igual. Abra os dois “Prompt usado”.</p>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m3-1-b21">Adjetivos de valor (“premium”, “mais bonito”, “mais profissional”) não dizem <strong>o que</strong> mudar — então o modelo escolhe. Às vezes escolhe bem, mas escolhe por você: a luz, o fundo, o penteado entram na conta. Invariantes transformam um desejo em uma ordem com limites. Elas também servem de checklist na revisão: você confere item por item se ficou igual.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="codebox copyrun">
+<h4>Molde de instrução de edição</h4>
+<p>
+<strong>Objetivo:</strong> Pedir uma mudança precisa e travar todo o resto.</p>
+<pre id="m3-1-p23">Change ONLY &lt;o elemento&gt;: &lt;descrição da mudança com material, cor, forma e luz&gt;.
+Match the existing light direction (&lt;de onde vem a luz&gt;) and perspective.
+Keep &lt;rosto/pessoa&gt;, &lt;pose e mãos&gt;, &lt;objetos principais&gt;, the background, the lighting, the framing and the color grade exactly identical.</pre>
+<button data-copy="m3-1-p23">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> Depois de gerar, confira item por item da lista “Keep…”. Se algo que estava na lista mudou, refaça reforçando esse item — não troque o pedido.</p>
+</div>
+<div class="compare-grid" data-inema-block="m3-1-b24">
+<div class="ok">
+<h4>✓ Instrução com escopo</h4>
+<ul>
+<li>Change ONLY the apron to dark forest-green waxed canvas…</li>
+<li>Remove ONLY the chalkboard sign; fill with plain plaster wall</li>
+<li>Replace ONLY the background; keep the light from the left at 3500K</li>
+</ul>
+</div>
+<div class="no">
+<h4>✗ Instrução aberta</h4>
+<ul>
+<li>make it more premium</li>
+<li>clean up the image</li>
+<li>put her somewhere nicer</li>
+</ul>
+</div>
+</div>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
@@ -306,37 +475,71 @@
 </section>
 <section class="topic" id="topico-4" data-inema-topic="modulo-3-1#topico-4">
 <h2 class="text-2xl font-bold">
-<span class="number">4</span>Integre objeto, luz e fundo</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m3-1-t4-concept">Um objeto inserido parece pertencer à cena quando escala, perspectiva, luz e contato com a superfície são coerentes. A sombra de contato é a região escura próxima ao apoio do objeto.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m3-1-t4-why">Trocar o fundo sem observar essas relações produz aparência de recorte colado. A correção precisa considerar o conjunto de sinais, não só a borda.</p>
-</div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m3-1-t4-svgtitle" class="w-full h-auto">
-<title id="m3-1-t4-svgtitle">Integre objeto, luz e fundo — Observe a sombra do lado oposto à fonte. A posição da luz ajuda a explicar o volume. Esquema simplificado.</title>
-<rect x="15" y="25" width="610" height="182" rx="12" fill="var(--surface-2)"/>
-<path d="M40 50L300 155L40 125Z" fill="#f6d88b" opacity=".25"/>
-<rect x="35" y="45" width="30" height="100" fill="#f6d88b"/>
-<ellipse cx="368" cy="189" rx="86" ry="12" fill="#241810" opacity=".55"/>
-<g transform="translate(260 85) scale(0.95)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<text x="32" y="225" font-size="17" fill="currentColor">Janela à esquerda</text>
-<text x="350" y="225" font-size="17" fill="currentColor">Sombra à direita</text>
-</svg>
-<figcaption>Observe a sombra do lado oposto à fonte. A posição da luz ajuda a explicar o volume. Esquema simplificado.</figcaption>
+<span class="number">4</span>Edição global: hora do dia, clima e cor</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m3-1-b25">Na edição global não há máscara: a instrução vale para a imagem inteira. Funciona muito bem só com texto, porque o modelo mantém a estrutura (quem está onde) e reaplica luz, cor e atmosfera. O cuidado é dizer <strong>quais fontes de luz existem depois da mudança</strong> — de onde vem, que cor, o que ilumina — como no módulo 1-2.</p>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Manhã, janela a 3500K</span>
+<a href="../../assets/img/c1-m12-mestre.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-mestre.webp" alt="Lia, barista de avental mostarda, despeja água de uma chaleira de cobre no coador, luz de janela quente à esquerda, torrador desfocado ao fundo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m3-1-p27">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, slowly pouring hot water from a copper gooseneck kettle into a ceramic pour-over dripper, focused and calm. Shot on a 50mm lens at f/2, eye level. Soft morning window light from the left, warm 3500K, gentle shadow falloff on the right side of her face. Visible steam, matte glazed ceramic, worn wooden counter with coffee grounds, linen texture on the apron. Subject on the left third, negative space on the right with a softly blurred vintage coffee roaster and burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking quiet craftsmanship at dawn.</pre>
+<button data-copy="m3-1-p27">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m3-1-t4-practice">Observe a direção da luz no produto. Escolha ou gere fundo compatível. Confira se a base encosta na mesa e se a sombra começa no ponto de apoio, sem lacuna que faça o objeto flutuar.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m3-1-t4-caution">Um fundo bonito com luz oposta pode piorar o resultado. Não use desfoque excessivo para esconder toda incompatibilidade.</p>
+<figure class="shot">
+<span class="shot-label">Noite chuvosa: 7000K de fora + pendente 2700K</span>
+<a href="../../assets/img/c1-m31-hora.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-hora.webp" alt="A mesma cena numa noite chuvosa: janela azul com gotas, luz fria de fora e um pendente quente sobre o balcão" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-1-p28">Change ONLY the time of day and weather: it is now a rainy evening at blue hour. The window on the left shows a deep blue dusk with raindrops and streaks on the glass; cool 7000K light comes through it, and a warm 2700K pendant lamp above the counter lights her hands, the kettle and the dripper. Reflections on the wet window, slightly darker room. Keep the woman, her face, pose, hands, the pour, every object, the framing and the lens identical.</pre>
+<button data-copy="m3-1-p28">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m3-1-b26">Uma edição global da mesma base. A instrução descreveu a nova hora (anoitecer azul, chuva no vidro), a luz fria que entra pela janela e a luz quente de um pendente sobre o balcão — e travou pessoa, pose, objetos e enquadramento.</p>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m3-1-b29">Uma única foto aprovada rende uma série: versão manhã para o post de segunda, versão noite para a promoção do happy hour do café, versão fria para o inverno. Como a pessoa e a composição não mudam, a série parece planejada — e é.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Frases de edição global</h4>
+<div class="table-scroll" data-inema-block="m3-1-b30">
+<table>
+<thead>
+<tr>
+<th>Quero…</th>
+<th>Frase para a instrução</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mudar a hora</td>
+<td>Change ONLY the time of day to golden hour / blue hour / night; &lt;novas fontes de luz com K&gt;</td>
+</tr>
+<tr>
+<td>mudar o tempo</td>
+<td>overcast rainy day, raindrops on the window, soft diffused 6500K light</td>
+</tr>
+<tr>
+<td>gradação de cor</td>
+<td>apply a warm, muted film color grade: lifted blacks, soft highlights, desaturated greens</td>
+</tr>
+<tr>
+<td>estilo inteiro</td>
+<td>Fully re-render this ENTIRE image as &lt;estilo&gt;, keep the composition and the people</td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="tip" data-inema-block="m3-1-b31">
+<strong>Edição fraca não muda nada</strong>
+<p>Pedidos tímidos (“um pouco mais quente”, “em estilo anos 70”) às vezes voltam quase iguais. Para mudanças globais grandes, seja explícito e forte: “Fully re-render this ENTIRE image…”, descreva a nova luz em detalhe e compare lado a lado para ver se a diferença é evidente.</p>
 </aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
@@ -345,43 +548,90 @@
 </section>
 <section class="topic" id="topico-5" data-inema-topic="modulo-3-1#topico-5">
 <h2 class="text-2xl font-bold">
-<span class="number">5</span>Texto e marca em camada editável</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m3-1-t5-concept">Camada é um elemento separado numa composição. Manter texto e logo em camadas permite corrigir grafia, tamanho, posição e cor sem regenerar a foto.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m3-1-t5-why">A IA pode produzir texto útil para estudo, mas o arquivo final precisa de revisão. Tipografia exata e códigos de cor exigem controle no editor de diagramação.</p>
-</div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m3-1-t5-svgtitle" class="w-full h-auto">
-<title id="m3-1-t5-svgtitle">Texto e marca em camada editável — Planeje o espaço de texto e mantenha a tipografia em camada editável. A imagem do produto não precisa conter as letras.</title>
-<rect x="25" y="20" width="590" height="180" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
-<text x="57" y="75" font-size="29" fill="currentColor">AURORA</text>
-<text x="57" y="113" font-size="16" fill="currentColor">Uma pausa à sua maneira</text>
-<g transform="translate(420 75) scale(0.85)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<rect x="50" y="145" width="160" height="25" rx="4" fill="var(--primary)"/>
-<text x="25" y="231" font-size="14" fill="currentColor">Diagrama de composição — exemplo autoral</text>
-</svg>
-<figcaption>Planeje o espaço de texto e mantenha a tipografia em camada editável. A imagem do produto não precisa conter as letras.</figcaption>
+<span class="number">5</span>Edição local: remover, corrigir, trocar um detalhe</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m3-1-b32">Com <strong>pincel/máscara</strong> você pinta a área que muda e escreve o que vai no lugar. Com <strong>seleção de região</strong> (retângulo ou laço) você anexa uma instrução só àquela área (“selecione o céu → céu de tempestade”). Com <strong>instrução de escopo</strong> você nomeia o elemento no texto. As três fazem a mesma coisa em graus diferentes de precisão; a máscara é a mais próxima do retoque de Photoshop.</p>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">Base: textos em inglês e 12 OZ</span>
+<a href="../../assets/img/c1-m12-comp-centro.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-comp-centro.webp" alt="Pacote TERRA ALTA exatamente centralizado e simétrico na prateleira" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m3-1-p34">Product photograph of a kraft-paper coffee bag with a hand-stamped label reading &#x27;TERRA ALTA&#x27; standing on a rustic wooden shelf in a café, perfectly centered and symmetrical in the frame, soft window light from the left, 4000K, 50mm lens, realistic paper texture.</pre>
+<button data-copy="m3-1-p34">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m3-1-t5-practice">Exporte a imagem sem texto, abra no editor de sua preferência e acrescente Aurora e uma frase curta. Teste o tamanho de leitura no celular e mantenha margem nas bordas.</p>
-<div class="compare-grid">
-<div>
-<h3>✓ Faça a verificação</h3>
-<p>Exporte a imagem sem texto, abra no editor de sua preferência e acrescente Aurora e uma frase curta. Teste o tamanho de leitura no celular e mantenha margem nas bordas.</p>
+<figure class="shot">
+<span class="shot-label">Rótulo traduzido, 250 g</span>
+<a href="../../assets/img/c1-m31-rotulo.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-rotulo.webp" alt="O mesmo pacote com os textos do rótulo traduzidos: ORIGEM ÚNICA, CAFÉ EM GRÃOS, SERRA DA MANTIQUEIRA, PESO LÍQUIDO 250 g" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-1-p35">Change ONLY the English text lines printed on the coffee bag into Portuguese, in the same typeface, size, ink color and position: &#x27;SINGLE ORIGIN / WHOLE BEAN COFFEE&#x27; becomes &#x27;ORIGEM ÚNICA / CAFÉ EM GRÃOS&#x27;; &#x27;HIGHER GROUND / BRIGHTER DAYS&#x27; becomes &#x27;SERRA DA MANTIQUEIRA / TORRA ARTESANAL&#x27;; &#x27;NET WT. 12 OZ (340 g)&#x27; becomes exactly &#x27;PESO LÍQUIDO 250 g&#x27; (remove the parentheses completely, no leftover bracket). Keep &#x27;TERRA ALTA&#x27;, the mountain and coffee-branch drawings, the bag shape and wrinkles, and everything else in the photo exactly identical.</pre>
+<button data-copy="m3-1-p35">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Cardápio em português e R$</span>
+<a href="../../assets/img/c1-m31-cardapio.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-cardapio.webp" alt="A lousa do cardápio agora em português e em reais: espresso, coado, cappuccino, pingado, café com leite" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-1-p36">Replace ONLY the chalkboard menu at the top right with a Brazilian menu in Portuguese, same white hand-lettered chalk style and layout: &#x27;ESPRESSO R$ 7&#x27;, &#x27;COADO R$ 9&#x27;, &#x27;CAPPUCCINO R$ 12&#x27;, &#x27;PINGADO R$ 8&#x27;, &#x27;CAFÉ COM LEITE R$ 9&#x27;, then a short line and &#x27;CAFÉ DA SERRA, FEITO COM CALMA&#x27;. Keep the coffee bag, its label, the shelf, the plant, the cups, the jar and all lighting exactly identical.</pre>
+<button data-copy="m3-1-p36">Copiar prompt</button>
+</details>
+</figure>
 </div>
-<div>
-<h3>✗ Evite a conclusão automática</h3>
-<p>Não declare fidelidade de fonte ou HEX só porque o prompt os menciona. Use o arquivo de marca correto e ajuste cores diretamente nas camadas.</p>
+<p class="caption" data-inema-block="m3-1-b33">Pedido real de cliente: a marca é brasileira, mas a geração inventou textos em inglês, peso em onças e preços sem moeda. Duas edições locais sobre a mesma base: uma só no rótulo do pacote, outra só na lousa do cardápio. O resto da prateleira deveria ficar intocado — confira.</p>
 </div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m3-1-b37">Detalhes pequenos derrubam a credibilidade da imagem inteira: texto errado, mão com dedo a mais, logotipo que não existe. São justamente os detalhes que o cliente aponta primeiro. A edição local resolve o problema sem arriscar o que está certo em volta.</p>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Mão apoiada no balcão</span>
+<a href="../../assets/img/c1-m12-mestre.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-mestre.webp" alt="Lia, barista de avental mostarda, despeja água de uma chaleira de cobre no coador, luz de janela quente à esquerda, torrador desfocado ao fundo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m3-1-p39">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, slowly pouring hot water from a copper gooseneck kettle into a ceramic pour-over dripper, focused and calm. Shot on a 50mm lens at f/2, eye level. Soft morning window light from the left, warm 3500K, gentle shadow falloff on the right side of her face. Visible steam, matte glazed ceramic, worn wooden counter with coffee grounds, linen texture on the apron. Subject on the left third, negative space on the right with a softly blurred vintage coffee roaster and burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking quiet craftsmanship at dawn.</pre>
+<button data-copy="m3-1-p39">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Mão segurando a xícara</span>
+<a href="../../assets/img/c1-m31-mao.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-mao.webp" alt="A mão esquerda de Lia, antes apoiada no balcão, agora segura uma xícara salpicada envolvendo o corpo dela, com dedos de formato natural" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-1-p40">Change ONLY her left hand, the one resting on the counter at the right of the dripper: she now holds a small speckled cream ceramic cup by its handle, natural relaxed grip with five correctly shaped fingers, thumb on top of the handle, wrist relaxed. Match the warm window light from the left and the shadow direction. Keep her face, the right hand with the kettle, the pour, the apron, every other object, the background, the framing and the color grade identical.</pre>
+<button data-copy="m3-1-p40">Copiar prompt</button>
+</details>
+</figure>
 </div>
+<p class="caption" data-inema-block="m3-1-b38">Edição local de mão: a esquerda de Lia, antes apoiada no balcão, passa a segurar uma xícara salpicada, com dedos de formato natural e a luz vinda do mesmo lado. Repare que a instrução pedia a pegada pela alça, com o polegar por cima — o modelo preferiu envolver o corpo da xícara com a mão. Pegada crível, mas não a pedida: confira sempre o detalhe que você especificou. É a mesma técnica que se usa para corrigir uma mão deformada numa geração: isolar a mão e descrever a pegada.</p>
+</div>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Boas práticas de máscara</h4>
+<ol class="timeline" data-inema-block="m3-1-b41">
+<li>Pinte a máscara <strong>um pouco maior</strong> que o objeto — a borda do objeto e a sombra dele também precisam ser refeitas.</li>
+<li>Use <strong>borda suave</strong> (feather) para a transição não virar uma costura visível.</li>
+<li>Inclua a <strong>sombra</strong> do objeto ao removê-lo; sombra órfã denuncia a edição.</li>
+<li>Descreva o que entra <strong>no lugar</strong>, não só o que sai (“fill with plain plaster wall”, “fill with soft bokeh”).</li>
+<li>Em mãos e rostos, peça anatomia explícita: “five correctly shaped fingers”, “same face”.</li>
+<li>Confira a <strong>direção da luz</strong> e a <strong>perspectiva</strong> do que foi inserido.</li>
+</ol>
+<aside class="limite" data-inema-block="m3-1-b42">
+<strong>Texto e mão continuam frágeis</strong>
+<p>Modelos atuais escrevem texto bem, mas não perfeitamente: acentos, letras trocadas e números errados ainda acontecem, sobretudo em letras pequenas. Mãos melhoraram muito e ainda falham em pegadas complexas. Sempre dê zoom em 100% nessas áreas antes de entregar — e, para texto de peça final (preço, slogan), prefira o fluxo híbrido: tipografia no editor, não no modelo.</p>
+</aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
@@ -389,89 +639,374 @@
 </section>
 <section class="topic" id="topico-6" data-inema-topic="modulo-3-1#topico-6">
 <h2 class="text-2xl font-bold">
-<span class="number">6</span>Histórico de edição e antes/depois</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m3-1-t6-concept">Um antes/depois útil mantém enquadramento e escala comparáveis. O histórico registra o problema, a intervenção e o critério de aprovação. Isso torna a revisão explicável.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m3-1-t6-why">Sem o original, é difícil saber se você corrigiu algo ou apenas mudou o estilo. A comparação permite perceber perdas de identidade e detalhes inventados.</p>
-</div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m3-1-t6-svgtitle" class="w-full h-auto">
-<title id="m3-1-t6-svgtitle">Histórico de edição e antes/depois — Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</title>
-<rect x="20" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
-<rect x="335" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
-<g transform="translate(110 80) scale(0.8)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<g transform="translate(430 80) scale(0.8)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<path d="M48 55L225 175" stroke="var(--accent-2)" stroke-dasharray="5 5"/>
-<path d="M358 55H570" stroke="var(--primary)" stroke-dasharray="5 5"/>
-<text x="30" y="227" font-size="17" fill="currentColor">A · versão de referência</text>
-<text x="345" y="227" font-size="17" fill="currentColor">B · hipótese de mudança</text>
-</svg>
-<figcaption>Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</figcaption>
+<span class="number">6</span>Troca de fundo sem cara de recorte</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m3-1-b43">Há dois caminhos. Nas ferramentas de interface: <strong>remover fundo</strong> com um clique (o sujeito fica recortado) e <strong>gerar um novo</strong> com uma frase curta. Na edição por texto: “Replace ONLY the background…” descrevendo o novo lugar. Nos dois casos, o novo fundo tem de <strong>concordar</strong> com a luz que já está no sujeito.</p>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Fundo original: torrador</span>
+<a href="../../assets/img/c1-m12-mestre.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-mestre.webp" alt="Lia, barista de avental mostarda, despeja água de uma chaleira de cobre no coador, luz de janela quente à esquerda, torrador desfocado ao fundo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m3-1-p45">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, slowly pouring hot water from a copper gooseneck kettle into a ceramic pour-over dripper, focused and calm. Shot on a 50mm lens at f/2, eye level. Soft morning window light from the left, warm 3500K, gentle shadow falloff on the right side of her face. Visible steam, matte glazed ceramic, worn wooden counter with coffee grounds, linen texture on the apron. Subject on the left third, negative space on the right with a softly blurred vintage coffee roaster and burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking quiet craftsmanship at dawn.</pre>
+<button data-copy="m3-1-p45">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m3-1-t6-practice">Salve v01-original, v02-edicao e v03-final. Anote uma frase para cada mudança. Compare em miniatura, tamanho de uso e ampliação. Só aprove quando o problema estiver resolvido sem perder os invariantes.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m3-1-t6-caution">Uma versão posterior não é necessariamente melhor. Volte à anterior quando o ganho local custar uma perda importante em outra região.</p>
+<figure class="shot">
+<span class="shot-label">Fundo trocado: cafezal na serra</span>
+<a href="../../assets/img/c1-m31-fundo.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-fundo.webp" alt="Mesma Lia e mesmo balcão, mas o fundo virou uma janela aberta para o cafezal nos morros com névoa" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-1-p46">Replace ONLY the background behind Lia: instead of the roaster, the wall and the burlap sacks, show a large open window looking out onto rows of coffee plants on green Mantiqueira hills in soft morning haze, slightly out of focus to match the original depth of field. Keep the light coming from the left at the same warm 3500K, the same perspective and horizon height, the wooden counter and every foreground object, and the woman, her pose, both hands and the pour exactly identical.</pre>
+<button data-copy="m3-1-p46">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m3-1-b44">Só o fundo foi trocado: o torrador e a parede viraram uma janela aberta para o cafezal em flor e os morros com névoa. Pessoa, balcão, objetos (e até os textos da base, que não entraram no pedido) ficaram. A luz quente da esquerda se manteve. Confira com a tabela abaixo: o fundo novo saiu <strong>mais nítido</strong> do que o torrador desfocado do original — numa entrega, esse seria o ponto a refazer (“background out of focus, f/2 look”).</p>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m3-1-b47">O olho humano percebe incoerência de luz antes de saber explicar por quê: rosto iluminado pela esquerda com o sol do fundo vindo da direita; sujeito nítido contra um fundo mais nítido ainda; horizonte na altura do peito quando a câmera está na altura dos olhos. Esses três erros são o “cara de recorte”.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Conferência de troca de fundo</h4>
+<div class="table-scroll" data-inema-block="m3-1-b48">
+<table>
+<thead>
+<tr>
+<th>Ponto</th>
+<th>Pergunta</th>
+<th>Se falhar, peça</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direção da luz</td>
+<td>a luz do fundo vem do mesmo lado que ilumina o rosto?</td>
+<td>keep the light coming from the left</td>
+</tr>
+<tr>
+<td>Temperatura</td>
+<td>a cor da luz do fundo combina com a pele?</td>
+<td>match the warm 3500K light on her skin</td>
+</tr>
+<tr>
+<td>Perspectiva</td>
+<td>o horizonte está na altura da câmera?</td>
+<td>same camera height and horizon line</td>
+</tr>
+<tr>
+<td>Profundidade</td>
+<td>o desfoque do fundo bate com a lente do original?</td>
+<td>background slightly out of focus, f/2 look</td>
+</tr>
+<tr>
+<td>Borda</td>
+<td>cabelo e ombros têm halo ou serrilhado?</td>
+<td>clean natural edges around the hair</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-7" data-inema-topic="modulo-3-1#topico-7">
+<h2 class="text-2xl font-bold">
+<span class="number">7</span>Expansão (outpainting): a mesma foto em outro formato</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m3-1-b49">A imagem-mestre é 3:2 horizontal; o cliente quer capa de Reels (9:16). Recortar um 9:16 do meio de um 3:2 corta a chaleira, o torrador e metade do gesto. <strong>Expandir</strong> mantém a imagem original intacta no centro e pede ao modelo que invente o que há acima e abaixo — teto, luminária, a frente do balcão, o chão — com a mesma luz e perspectiva.</p>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Original 3:2</span>
+<a href="../../assets/img/c1-m12-mestre.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-mestre.webp" alt="Lia, barista de avental mostarda, despeja água de uma chaleira de cobre no coador, luz de janela quente à esquerda, torrador desfocado ao fundo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m3-1-p51">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, slowly pouring hot water from a copper gooseneck kettle into a ceramic pour-over dripper, focused and calm. Shot on a 50mm lens at f/2, eye level. Soft morning window light from the left, warm 3500K, gentle shadow falloff on the right side of her face. Visible steam, matte glazed ceramic, worn wooden counter with coffee grounds, linen texture on the apron. Subject on the left third, negative space on the right with a softly blurred vintage coffee roaster and burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking quiet craftsmanship at dawn.</pre>
+<button data-copy="m3-1-p51">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Expandida para vertical</span>
+<a href="../../assets/img/c1-m31-expandir.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-expandir.webp" alt="A cena redesenhada no formato vertical: teto com vigas e luminária acima, frente do balcão e sacas abaixo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-1-p52">OUTPAINT to a VERTICAL 9:16 canvas (tall portrait orientation, for a Reels cover): keep the original picture unchanged in the middle band at the same scale, and invent new matching content above and below it. Above: wooden ceiling beams, the top of the roaster&#x27;s chimney and a hanging pendant lamp, with calm empty wall space for a headline. Below: the front of the worn wooden counter, a couple of burlap coffee sacks on the floor and the rustic floor boards. Same warm window light from the left, same perspective, same color grade and film grain, seamless transitions.</pre>
+<button data-copy="m3-1-p52">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m3-1-b50">A instrução pediu tela vertical 9:16, a foto original intacta na faixa do meio e conteúdo novo acima (vigas, chaminé do torrador, luminária e parede livre para título) e abaixo (frente do balcão, sacas, piso). O acima e o abaixo vieram; mas repare que a faixa do meio não é a foto original colada: o GPT Image redesenhou a cena inteira (o torrador mudou de lugar, a Lia ficou menor). Quando o miolo precisa ficar idêntico pixel a pixel, use a ferramenta de expandir/outpaint dedicada da sua plataforma, que preserva o original e só pinta as bordas.</p>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m3-1-b53">Expansão é edição <strong>estrutural</strong>: resolve o formato antes de tudo. E já é a hora de pensar no texto que vai por cima — na capa vertical, o espaço de parede acima de Lia é onde entra o título. Descreva no pedido o que precisa existir nas bordas (“calm empty wall space for a headline”); se você deixar em aberto, o modelo pode encher de objetos.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Formatos de entrega mais comuns</h4>
+<div class="table-scroll" data-inema-block="m3-1-b54">
+<table>
+<thead>
+<tr>
+<th>Formato</th>
+<th>Uso</th>
+<th>O que expandir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9:16</td>
+<td>Reels, Stories, Shorts, capa vertical</td>
+<td>acima e abaixo; deixar área limpa no topo para título</td>
+</tr>
+<tr>
+<td>4:5</td>
+<td>feed do Instagram</td>
+<td>um pouco acima e abaixo</td>
+</tr>
+<tr>
+<td>1:1</td>
+<td>feed, catálogo, marketplace</td>
+<td>depende da origem; em 3:2, acima e abaixo</td>
+</tr>
+<tr>
+<td>16:9</td>
+<td>YouTube, banner de site, apresentação</td>
+<td>nas laterais; espaço negativo de um lado para texto</td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="tip" data-inema-block="m3-1-b55">
+<strong>Dica de diretor</strong>
+<p>Nem toda ferramenta muda a proporção numa edição por texto — algumas mantêm o formato da imagem enviada. Para outpainting de verdade, use a função de expandir/estender tela (você arrasta as bordas e escreve o que entra) e <strong>confira o tamanho do arquivo final</strong> antes de dar por resolvido.</p>
 </aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
 </div>
 </section>
-<section id="pratica" class="codebox">
-<h2>Prática: um pedido completo</h2>
-<p>
-<strong>Objetivo:</strong> Você vai escolher entre ajuste global, edição local, expansão e montagem final.</p>
-<p>Use o texto abaixo na sua ferramenta de imagens. Quando houver referência, anexe o arquivo indicado antes de gerar.</p>
-<pre id="prompt-3-1">Edite a imagem anexada. Remova somente o pequeno objeto que aparece no fundo à direita e preencha a área com continuação do fundo creme. Preserve a caneca, sua alça, a mesa, a sombra, o enquadramento e a iluminação. Não acrescente novos objetos nem texto.</pre>
-<button data-copy="prompt-3-1">Copiar prompt</button>
-<h3>Como verificar</h3>
-<p>Use uma cópia de uma imagem sua que contenha um elemento a remover. Se ela não tiver esse problema, escolha outra correção localizada e ajuste a frase. Compare também regiões fora da edição.</p>
-<ol class="timeline">
-<li>Prepare o arquivo ou briefing necessário.</li>
-<li>Faça uma tentativa e salve o resultado com as configurações.</li>
-<li>Compare com os critérios acima e localize um desvio.</li>
-<li>Corrija uma decisão e registre o efeito na nova versão.</li>
+<section class="topic" id="topico-8" data-inema-topic="modulo-3-1#topico-8">
+<h2 class="text-2xl font-bold">
+<span class="number">8</span>Edições em cadeia, degradação e o checklist final</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m3-1-b56">Cada edição é uma nova geração que tenta copiar os pixels que você mandou manter — e a cópia nunca é perfeita. Ao encadear, a cópia da cópia vai perdendo: a textura da pele muda, as sardas mudam de peso, o contraste e o brilho sobem, o fundo ganha grão que não existia. Veja o teste: três mudanças pequenas, uma por vez, cada uma sobre a anterior; e as mesmas três numa única edição sobre o original.</p>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Cadeia 1: avental terracota</span>
+<a href="../../assets/img/c1-m31-cadeia-1.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-cadeia-1.webp" alt="Edição 1 da cadeia: avental terracota" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-1-p58">Change ONLY the apron color to a warm terracotta orange, same linen fabric. Keep everything else identical.</pre>
+<button data-copy="m3-1-p58">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Cadeia 2: + muda de café</span>
+<a href="../../assets/img/c1-m31-cadeia-2.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-cadeia-2.webp" alt="Edição 2 da cadeia (feita sobre a edição 1): vasinho com muda de café no balcão" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-1-p59">Add ONLY a small potted coffee seedling in a clay pot on the counter at the far right. Keep everything else identical.</pre>
+<button data-copy="m3-1-p59">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Cadeia 3: + vapor denso</span>
+<a href="../../assets/img/c1-m31-cadeia-3.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-cadeia-3.webp" alt="Edição 3 da cadeia (feita sobre a edição 2): vapor mais denso — e o acúmulo de pequenas mudanças" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-1-p60">Make ONLY the steam rising from the dripper denser and more visible. Keep everything else identical.</pre>
+<button data-copy="m3-1-p60">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Direto: as 3 mudanças de uma vez</span>
+<a href="../../assets/img/c1-m31-direto.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-direto.webp" alt="As mesmas três mudanças numa única edição feita sobre o original" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-1-p61">Make exactly three changes and nothing else: (1) the apron color becomes a warm terracotta orange, same linen fabric; (2) add a small potted coffee seedling in a clay pot on the counter at the far right; (3) the steam rising from the dripper becomes denser and more visible. Keep the woman, her face, freckles, hair, pose, hands, every other object, the lighting, the framing and the color grade identical.</pre>
+<button data-copy="m3-1-p61">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m3-1-b57">Este é o único lugar do curso em que editamos além de dois níveis — de propósito. As três primeiras são uma cadeia (cada uma editada sobre a anterior); a última aplica as mesmas três mudanças numa só edição sobre a imagem-mestre. Em miniatura as quatro parecem iguais — e é essa a armadilha. Em zoom 100%, a “Cadeia 3” mostra o desgaste: pele mais dura e brilhante, sardas mais escuras e “crocantes”, nitidez exagerada nos cachos e a parede do fundo mais granulada. O “Direto”, com as mesmas três mudanças, fica muito mais perto da mestre do topo do módulo.</p>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m3-1-b62">A regra prática: <strong>volte sempre à mestre</strong>. Se o cliente pede três ajustes, faça-os numa edição só (ou em edições paralelas, cada uma sobre a mestre, e escolha). Se precisa encadear — por exemplo, primeiro limpar o texto, depois expandir —, pare em dois níveis e confira o rosto a cada passo.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Checklist de revisão antes de entregar</h4>
+<ol class="timeline" data-inema-block="m3-1-b63">
+<li>
+<strong>Pedido:</strong> a mudança pedida aconteceu, e só ela? Compare com a mestre lado a lado, no mesmo tamanho.</li>
+<li>
+<strong>Invariantes:</strong> passe pela lista “Keep…” da instrução, item por item.</li>
+<li>
+<strong>Pessoa:</strong> rosto, marcas (sardas), idade aparente e mãos — zoom a 100%.</li>
+<li>
+<strong>Luz:</strong> direção, dureza e temperatura coerentes em tudo que foi editado; sombras dos objetos novos no lado certo.</li>
+<li>
+<strong>Bordas e costuras:</strong> halo em volta do cabelo, repetição de padrão, área borrada onde havia máscara.</li>
+<li>
+<strong>Texto:</strong> leia cada palavra e número; acentos e unidades (g, R$).</li>
+<li>
+<strong>Formato e resolução:</strong> proporção certa para o destino; se vai imprimir ou ampliar, passe para o módulo 3-2 (upscale).</li>
+<li>
+<strong>Registro:</strong> salve antes/depois, a instrução usada e o número da versão.</li>
 </ol>
+<blockquote class="pull" data-inema-block="m3-1-b64">O cliente não vê a edição — vê o que ficou igual. Uma edição boa é aquela em que ninguém percebe onde você mexeu.</blockquote>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
 </section>
-<section id="checagem" class="quiz" data-quiz="modulo-3-1#q1" data-correct="0" data-explain="Comece pelo menor alcance necessário. Depois confira se as regiões que deveriam permanecer iguais foram preservadas.">
+<section id="pratica" class="pratica">
+<h2>Prática guiada: um caso antes/depois pronto para portfólio</h2>
+<p class="inema-prose" data-inema-block="m3-1-b65">Você vai pegar uma imagem sua (uma geração dos módulos anteriores ou uma foto real sua) e levá-la até a versão de entrega para um uso definido, registrando o processo. No fim, você tem um “case” de edição.</p>
+<h4>Roteiro</h4>
+<ol class="timeline" data-inema-block="m3-1-b66">
+<li>Defina o <strong>uso</strong> em 1–2 frases e o formato: ex. “capa de Reels da Terra Alta, 9:16, título em cima”.</li>
+<li>Salve a mestre como v0. Nunca edite por cima dela.</li>
+<li>
+<strong>Estrutura:</strong> expanda ou recorte para o formato e confirme o espaço para texto. Salve como v1 (“estrutura resolvida”).</li>
+<li>
+<strong>Conteúdo:</strong> faça 2–3 edições (fundo, objeto, roupa, detalhe) usando pelo menos <strong>dois métodos</strong> diferentes (texto, máscara, referência). Cada uma com invariantes.</li>
+<li>Rode o checklist de revisão. Refaça o que falhar voltando à versão anterior, não empilhando mais edições.</li>
+<li>Monte o antes/depois e escreva a nota de fluxo (modelo abaixo).</li>
+</ol>
+<div class="codebox copyrun">
+<h4>Instrução de limpeza (a primeira edição de quase toda geração)</h4>
+<p>
+<strong>Objetivo:</strong> Remover o texto que o modelo inventou em placas, rótulos e paredes sem mexer em mais nada.</p>
+<pre id="m3-1-p68">Remove ALL written text from this image, and change nothing else: &lt;liste cada lugar com texto: the chalkboard sign on the left, the words painted on the wall, the label on the jar…&gt;. Fill each area with what would naturally be there (&lt;plain dark board / plain plaster wall / blank kraft label&gt;). Keep the person, her face, pose and hands, every object, the lighting, the framing and the color grade identical.</pre>
+<button data-copy="m3-1-p68">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> Todos os textos listados sumiram? Sobrou alguma letra fantasma? O rosto e a luz estão iguais à mestre quando você alterna entre as duas?</p>
+</div>
+<div class="codebox">
+<h4>Nota de fluxo (cole no seu case)</h4>
+<pre id="m3-1-p70" data-lang="text">Uso: capa de Reels da Terra Alta (9:16), título na parte de cima.
+Base: c1-m12-mestre (geração aprovada, 3:2).
+Estrutura: expandida para 9:16 — teto e parede livre acima, balcão abaixo. (v1)
+Conteúdo 1: remoção de todo texto inventado — instrução em texto. (v2)
+Conteúdo 2: avental trocado para verde — máscara no avental + invariantes. (v3)
+Revisão: sardas conferidas a 100%; sombra da xícara nova no lado certo.
+Melhoraria: a costura do teto expandido aparece na viga esquerda.</pre>
+<button data-copy="m3-1-p70">Copiar</button>
+</div>
+</section>
+<section id="licao" class="licao">
+<h2>Lição de casa</h2>
+<p>Use o cliente que acompanha você desde o módulo 1-2 e escolha a imagem dele que mais tem “quase”: boa, mas com um ou dois problemas que impediriam a entrega. Defina para que ela vai servir antes de mexer.</p>
+<div class="levels">
+<div class="level">
+<h3>Nível básico <span class="fine">(obrigatório)</span>
+</h3>
+<ol>
+<li>Escreva o uso e o formato de destino em 1–2 frases.</li>
+<li>Faça 1 edição estrutural (expandir ou recortar para o formato) e salve como “estrutura resolvida”.</li>
+<li>Faça 2 edições de conteúdo com métodos diferentes, cada uma com a lista de invariantes.</li>
+<li>Rode o checklist de revisão e anote o que precisou refazer.</li>
+<li>Monte o antes/depois e a nota de fluxo (5–8 linhas).</li>
+</ol>
+</div>
+<div class="level adv">
+<h3>Nível avançado <span class="fine">(desafio)</span>
+</h3>
+<ol>
+<li>
+<strong>Três formatos:</strong> a partir da mesma versão final, entregue 9:16 (Reels), 1:1 (feed) e 16:9 (YouTube/site), cada um com espaço para texto no lugar certo.</li>
+<li>
+<strong>Teste de invariantes:</strong> faça a mesma mudança duas vezes sobre a mestre — com instrução vaga e com invariantes — e escreva 5 frases sobre o que mudou sem você pedir.</li>
+<li>
+<strong>Teste de degradação:</strong> encadeie 4 edições pequenas e compare a última com uma edição única que faça as mesmas mudanças. Recorte só os rostos, no mesmo tamanho, e descreva a perda.</li>
+<li>
+<strong>Foto real:</strong> repita o fluxo com uma foto sua (produto, ambiente, retrato autorizado) e compare como a IA lida com foto real e com imagem gerada.</li>
+</ol>
+</div>
+</div>
+<p>
+<strong>Entregue/guarde:</strong> Case de edição: antes, depois, as versões intermediárias numeradas, as instruções usadas e a nota de fluxo. Vai direto para o portfólio do módulo 4-1.</p>
+</section>
+<section id="checagem">
 <h2>Teste sua decisão</h2>
-<p>Só um objeto pequeno no fundo precisa sair. Qual intervenção começar?</p>
-<button data-answer="0" aria-pressed="false">Edição localizada com comparação do restante</button>
-<button data-answer="1" aria-pressed="false">Regeneração de toda a campanha</button>
+<div class="quiz" data-quiz="modulo-3-1#q1" data-correct="1" data-explain="Regenerar sorteia tudo de novo, inclusive o que foi aprovado. A edição local mexe só na placa e preserva rosto, luz e gesto; as invariantes garantem que o resto fique igual.">
+<figure class="shot">
+<a href="../../assets/img/c1-m31-limpeza.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-limpeza.webp" alt="A cena da Lia sem nenhum texto: lousa lisa, parede limpa, pote e caderno sem rótulo, braço sem tatuagem" loading="lazy" decoding="async">
+</a>
+</figure>
+<p>
+<strong>1.</strong> O cliente aprovou a imagem, mas quer tirar uma placa com texto do fundo. O que você faz?</p>
+<button data-answer="0" aria-pressed="false">Gera de novo com “no signs” no prompt</button>
+<button data-answer="1" aria-pressed="false">Edição local na placa (máscara ou “Remove ONLY the sign…”) com invariantes para o resto</button>
+<button data-answer="2" aria-pressed="false">Aplica um desfoque global na imagem para a placa ficar ilegível</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
 <summary>Consultar a explicação</summary>
-<p>Comece pelo menor alcance necessário. Depois confira se as regiões que deveriam permanecer iguais foram preservadas.</p>
+<p>Regenerar sorteia tudo de novo, inclusive o que foi aprovado. A edição local mexe só na placa e preserva rosto, luz e gesto; as invariantes garantem que o resto fique igual.</p>
 </details>
+</div>
+<div class="quiz" data-quiz="modulo-3-1#q2" data-correct="1" data-explain="Escopo (“ONLY”), descrição precisa da mudança e lista de invariantes. Adjetivos de valor como “premium” dão licença ao modelo para decidir outras mudanças.">
+<figure class="shot">
+<a href="../../assets/img/c1-m31-roupa-vago.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m31-roupa-vago.webp" alt="Resultado de uma instrução vaga: além do avental verde, o modelo mexeu em outras partes da imagem" loading="lazy" decoding="async">
+</a>
+</figure>
+<p>
+<strong>2.</strong> Qual instrução tem mais chance de trocar só o avental?</p>
+<button data-answer="0" aria-pressed="false">“Make her look more premium, with a green apron.”</button>
+<button data-answer="1" aria-pressed="false">“Change ONLY the apron to dark forest-green waxed canvas with leather straps. Keep her face, pose, hands, background, lighting and framing identical.”</button>
+<button data-answer="2" aria-pressed="false">“Green apron, high quality, 8k, masterpiece.”</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>Escopo (“ONLY”), descrição precisa da mudança e lista de invariantes. Adjetivos de valor como “premium” dão licença ao modelo para decidir outras mudanças.</p>
+</details>
+</div>
+<div class="quiz" data-quiz="modulo-3-1#q3" data-correct="1" data-explain="Cada edição copia a imagem com pequenas perdas; encadeadas, as perdas se somam. Voltar à mestre mantém a qualidade — e regenerar perde o que já estava aprovado.">
+<p>
+<strong>3.</strong> O cliente pediu três ajustes pequenos numa imagem. Qual fluxo degrada menos?</p>
+<button data-answer="0" aria-pressed="false">Uma edição por ajuste, cada uma sobre o resultado da anterior</button>
+<button data-answer="1" aria-pressed="false">Os três ajustes numa edição só sobre a imagem-mestre (ou edições paralelas, cada uma sobre a mestre)</button>
+<button data-answer="2" aria-pressed="false">Regenerar a imagem com os três ajustes no prompt original</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>Cada edição copia a imagem com pequenas perdas; encadeadas, as perdas se somam. Voltar à mestre mantém a qualidade — e regenerar perde o que já estava aprovado.</p>
+</details>
+</div>
 <p class="fine">Responder não marca a leitura nem bloqueia o próximo módulo.</p>
 </section>
 <section>
 <h2>O que levar desta aula</h2>
 <ul>
-<li>Global ou local: qual é o alcance?</li>
-<li>Máscara: indique onde mexer</li>
-<li>Expandir é criar fora do quadro</li>
-<li>Integre objeto, luz e fundo</li>
-<li>Texto e marca em camada editável</li>
-<li>Histórico de edição e antes/depois</li>
+<li>Gerar é o ponto de partida; entregar é <strong>editar</strong>. Mestre intocada, uma versão nova por edição.</li>
+<li>Nomeie o pedido: <strong>global, local, estrutural ou troca</strong> — e escolha o método: texto, máscara ou referência.</li>
+<li>Toda instrução de edição tem escopo, descrição precisa e <strong>invariantes</strong> (“Change ONLY X… Keep Y identical”).</li>
+<li>Troca de fundo e objeto novo só convencem com a <strong>mesma luz e a mesma perspectiva</strong>.</li>
+<li>Estrutura primeiro (formato, espaço para texto), conteúdo depois; texto final e logo vão para o editor clássico.</li>
+<li>Evite cadeias longas: <strong>volte à mestre</strong> e revise com checklist, em zoom 100%, antes de entregar.</li>
 </ul>
-<p>Escolha uma decisão que você consegue explicar sem consultar o texto. Se ainda houver dúvida, marque o tópico e volte a ele pela jornada.</p>
 <div class="actions">
 <a class="button" href="index.html">Voltar para a trilha</a>
 <a class="button primary" href="../../curso/trilha3/modulo-3-2.html">Próximo módulo: Upscale, restauração e entrega</a>
@@ -482,7 +1017,7 @@
 </main>
 <footer class="footer">
 <div class="wrap">
-<span>Curso gratuito · INEMA.CLUB · v1.0.0</span>
+<span>Curso gratuito · INEMA.CLUB · v1.1.0</span>
 <a href="../../materiais.html">Materiais e referências</a>
 <a href="../../../index.html">Os três cursos</a>
 <a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>

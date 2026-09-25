@@ -1,0 +1,1119 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+<head>
+<script>(function () {
+  try {
+    var html = document.documentElement;
+    var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+    function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+    var p = clone(DEF);
+    try {
+      var raw = localStorage.getItem('inema.prefs');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k];
+        }
+      } else {
+        // fallback ao tema legado do v1
+        var legacy = localStorage.getItem('theme');
+        if (legacy === 'light') p.theme = 'claro';
+        else if (legacy === 'dark') p.theme = 'inema-dark';
+      }
+    } catch (e) { p = clone(DEF); }
+
+    // mapa tema -> (.dark on/off, data-theme, color-scheme)
+    var THEMES = {
+      'inema-dark': { dark: true,  attr: null,        cs: 'dark'  },
+      'claro':      { dark: false, attr: null,        cs: 'light' },
+      'sepia':      { dark: false, attr: 'sepia',     cs: 'light' },
+      'foco':       { dark: null,  attr: 'foco',      cs: null    },  // herda eixo atual
+      'contraste':  { dark: true,  attr: 'contraste', cs: 'dark'  }
+    };
+    var t = THEMES[p.theme] || THEMES['inema-dark'];
+
+    if (t.dark === true) html.classList.add('dark');
+    else if (t.dark === false) html.classList.remove('dark');
+    // 'foco' (null) preserva o que ja houver no atributo class do <html>
+
+    if (t.attr) html.setAttribute('data-theme', t.attr);
+    else html.removeAttribute('data-theme');
+
+    html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+
+    html.setAttribute('data-font', p.font || 'inter');
+    html.setAttribute('data-accent', p.accent || 'emerald');
+
+    // variaveis de leitura (espelham learn.js / learn.css) ANTES do paint
+    var s = html.style;
+    var scale = (+p.fontScale || 100);
+    s.setProperty('--inema-font-scale', (scale / 100).toString());
+    s.setProperty('font-size', scale + '%');               // :root em %, nunca px
+    s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+    s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+    var fam = p.font === 'system'
+      ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+      : (p.font === 'leitura'
+        ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif'
+        : '"Inter", system-ui, sans-serif');
+    s.setProperty('--font-body', fam);
+
+    var ACC = {
+      emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66],
+      amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60]
+    };
+    var a = ACC[p.accent] || ACC.emerald;
+    s.setProperty('--accent-h', a[0] + '');
+    s.setProperty('--accent-s', a[1] + '%');
+    s.setProperty('--accent-l', a[2] + '%');
+    s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+  } catch (err) {
+    // qualquer falha => default dark, preserva a marca
+    try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {}
+  }
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="inema-course" content="olhar-treinado">
+<meta name="description" content="Ao terminar, você escolhe a estética a partir do objetivo do projeto, justifica cada elemento pela mensagem que ele passa, monta híbridos de duas famílias e trava um bloco de estilo que mantém uma série inteira coerente.">
+<title>Estética por objetivo: decidir, misturar, aplicar · INEMA.CLUB</title>
+<link rel="stylesheet" href="../../assets/learn.css">
+<link rel="stylesheet" href="../../assets/course.css">
+<script type="application/json" data-inema-manifest>{"course": "olhar-treinado", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Gosto é treinável", "topics": 7, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "Nomeie o que você vê: vocabulário e Visual DNA", "topics": 7, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "As sete famílias estéticas", "topics": 8, "href": "curso/trilha2/modulo-2-1.html"}, {"id": "2-2", "title": "Estética por objetivo: decidir, misturar, aplicar", "topics": 7, "href": "curso/trilha2/modulo-2-2.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Observação profissional: desmontar, estudar, criar regras", "topics": 7, "href": "curso/trilha3/modulo-3-1.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: seu caderno de olhar aplicado", "topics": 7, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="topbar">
+<div class="nav-inner">
+<a class="brand" href="../../index.html" aria-label="Início do curso">
+<svg viewBox="0 0 32 32" aria-hidden="true">
+<path d="M4 6h24v20H4zM10 6v20M22 6v20" fill="none" stroke="currentColor" stroke-width="2"/>
+<circle cx="16" cy="16" r="4" fill="currentColor"/>
+</svg>
+<span class="wide-only">Imagem com IA</span>
+</a>
+<a class="text-sky-400" href="https://inema.club">INEMA.CLUB</a>
+<span>–</span>
+<a class="pro" href="https://inema.pro">PRO</a>
+<nav class="tracks" aria-label="Trilhas">
+<a href="../../curso/trilha1/index.html">1. Fundamentos</a>
+<a href="../../curso/trilha2/index.html" aria-current="page">2. Direção visual</a>
+<a href="../../curso/trilha3/index.html">3. Produção</a>
+<a href="../../curso/trilha4/index.html">4. Projeto</a>
+</nav>
+<div class="tools">
+<button data-inema-journey-open>Minha jornada</button>
+<button data-inema-appearance-toggle="[data-inema-appearance]" aria-expanded="false">Aparência</button>
+</div>
+</div>
+<div data-inema-appearance class="inema-appearance-pop">
+<div class="inema-segment">
+<button data-inema-set-theme="inema-dark">Escuro</button>
+<button data-inema-set-theme="claro">Claro</button>
+<button data-inema-set-theme="sepia">Sépia</button>
+<button data-inema-set-theme="foco">Foco</button>
+<button data-inema-set-theme="contraste">Alto contraste</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-fontscale="100">Texto padrão</button>
+<button data-inema-set-fontscale="112">Texto maior</button>
+<button data-inema-set-fontscale="125">Texto amplo</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-font="system">Fonte do sistema</button>
+<button data-inema-set-font="leitura">Fonte de leitura</button>
+<button data-inema-set-linewidth="60">Coluna estreita</button>
+<button data-inema-set-linewidth="75">Coluna larga</button>
+</div>
+</div>
+</header>
+<main id="conteudo" class="wrap">
+<div class="breadcrumb">
+<a href="../../index.html">Olhar Treinado</a> / <a href="index.html">Direção visual</a> / Módulo 2-2</div>
+<header class="intro">
+<h1 class="text-2xl font-bold">Estética por objetivo: decidir, misturar, aplicar</h1>
+<p>Ao terminar, você escolhe a estética a partir do objetivo do projeto, justifica cada elemento pela mensagem que ele passa, monta híbridos de duas famílias e trava um bloco de estilo que mantém uma série inteira coerente.</p>
+<p class="meta">7 tópicos · 75 min · exemplos com o prompt que gerou cada imagem</p>
+<div data-inema-meter="modulo:2-2">
+<span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span>
+<div class="inema-bar">
+<div class="inema-bar__fill" data-inema-meter-fill>
+</div>
+</div>
+</div>
+</header>
+<div class="reading-layout">
+<nav class="toc" data-inema-toc aria-label="Tópicos deste módulo">
+<strong>Nesta aula</strong>
+<ol>
+<li>
+<a href="#topico-1">A cadeia de decisão: objetivo → emoção → estética</a>
+</li>
+<li>
+<a href="#topico-2">Meta-mensagens: cada elemento diz alguma coisa</a>
+</li>
+<li>
+<a href="#topico-3">Cor com papel definido, não arco-íris</a>
+</li>
+<li>
+<a href="#topico-4">Híbridos: duas famílias, cada uma com uma função</a>
+</li>
+<li>
+<a href="#topico-5">Como a estética entra no prompt</a>
+</li>
+<li>
+<a href="#topico-6">Consistência de série: o bloco de estilo travado</a>
+</li>
+<li>
+<a href="#topico-7">Checar a escolha antes de produzir</a>
+</li>
+</ol>
+<a href="#pratica">Prática guiada</a>
+<a href="#licao">Lição de casa</a>
+<a href="#checagem">Teste sua decisão</a>
+</nav>
+<article class="lesson" data-inema-module="2-2" data-inema-track="2">
+<section class="abertura">
+<p class="inema-prose" data-inema-block="m2-2-b1">No módulo anterior você viu a mesma vendedora de açaí do Ver-o-Peso atravessar as sete famílias estéticas. Agora vem a pergunta que separa quem gera imagens bonitas de quem dirige: <strong>qual delas usar, e por quê?</strong> Um lançamento de produto, uma campanha de ONG e o cartaz de uma festa de tecnobrega podem partir da mesma cena — e precisam de estéticas diferentes, porque querem provocar sentimentos diferentes em pessoas diferentes.</p>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">ONG: memória e importância</span>
+<a href="../../assets/img/c3-m22-hibrido-cine-retro.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-hibrido-cine-retro.webp" alt="A mesma cena como híbrido cinematográfico + retrô: luz dramática de cinema com a superfície de um filme negativo dos anos 70, grão, pretos lavados e vinheta" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-2-p3">Fully re-render this ENTIRE image — subject AND background — as a HYBRID of two aesthetics. From CINEMATIC take the structure: a single low warm directional sun from the right, deep contrast, shallow depth of field, a sense of weight and story. From RETRO/VINTAGE take the surface: the look of a 1970s color negative film print — warm faded tones, lifted milky blacks, slightly yellowed whites, clearly visible film grain, gentle analog color shifts, soft vignette and a hint of light leak at the right edge. The result must look unmistakably like an old film photograph with cinematic lighting. Keep the same woman, face, headscarf, outfit, pose, action, stall and framing. No text on signs.</pre>
+<button data-copy="m2-2-p3">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Marca de açaí: premium e confiança</span>
+<a href="../../assets/img/c3-m22-hibrido-minimal-editorial.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-hibrido-minimal-editorial.webp" alt="Híbrido minimalista + editorial: fundo liso cor de areia, a vendedora olha para a câmera segurando a tigela de açaí como numa campanha de moda" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-2-p4">Fully re-render this ENTIRE image — subject AND background — as a HYBRID of MINIMALIST and EDITORIAL/FASHION aesthetics for a premium açaí brand launch. Minimalist: replace the busy market background with a clean, seamless wall in muted sand beige, remove the customer&#x27;s hand and the clutter on the stall so only the aluminium basin and one white bowl of açaí remain, lots of negative space on the right. Editorial: large soft diffused studio light from the front-left, polished skin and fabric texture, the woman now standing tall and looking confidently straight into the camera, holding the bowl of açaí at chest height like a campaign portrait. Palette: sand, off-white and her red headscarf, with the deep purple of the açaí as the strongest accent. Keep the same woman, face, headscarf and outfit.</pre>
+<button data-copy="m2-2-p4">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Festa: energia e noite</span>
+<a href="../../assets/img/c3-m22-hibrido-futuro-gritty.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-hibrido-futuro-gritty.webp" alt="Híbrido futurista + sombrio: a feira à noite, néon magenta e ciano de uma aparelhagem, contraluz ciano na vendedora, sombras profundas e chão molhado" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-2-p5">Fully re-render this ENTIRE image — subject AND background — as a HYBRID of FUTURISTIC/TECH and GRITTY/DARK aesthetics for a poster of a tecnobrega night party. Turn the scene into NIGHT: the market is dark, lit by magenta and cyan neon tubes and LED strips from a huge sound-system rig in the background, a hard cyan rim light outlining the woman&#x27;s profile and the aluminium basin, the açaí glowing deep violet. Gritty: very high contrast, crushed black shadows, wet reflective ground, rough weathered wood and scratched metal textures, a little smoke in the air. Keep the same woman, face, headscarf, outfit, pose, action, stall and framing. No text on signs.</pre>
+<button data-copy="m2-2-p5">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m2-2-b2">Três objetivos, uma cena-base. Todas são edições da mesma foto da vendedora, cada uma pedindo uma mistura de duas famílias escolhida pelo objetivo. Nenhuma é “a mais bonita”: cada uma está certa para um público e errada para os outros dois. Este módulo ensina a chegar a essa escolha de propósito.</p>
+</div>
+</section>
+<section class="topic" id="topico-1" data-inema-topic="modulo-2-2#topico-1">
+<h2 class="text-2xl font-bold">
+<span class="number">1</span>A cadeia de decisão: objetivo → emoção → estética</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m2-2-b6">Escolher estética não é abrir o Pinterest e salvar o que agrada. É responder, em ordem, a cinco perguntas. Cada resposta estreita a seguinte, e a última já sai em forma de palavras que você cola no prompt.</p>
+<figure class="diagram">
+<svg role="img" aria-label="A cadeia de decisão. Cada elo responde a uma pergunta e alimenta o próximo. Se você pular direto para “estética”, os elos da esquerda ficam vazios — e a escolha vira palpite." viewBox="0 0 760 240" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif">
+<defs>
+<marker id="m22seta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+<path d="M0,0 L10,5 L0,10 z" fill="#60a5fa"/>
+</marker>
+</defs>
+<rect width="760" height="240" rx="14" fill="var(--surface-2)"/>
+<g text-anchor="middle">
+<rect x="16" y="56" width="128" height="120" rx="10" fill="none" stroke="#60a5fa" stroke-width="2"/>
+<text x="80" y="88" font-size="15" font-weight="700" fill="#60a5fa">1 OBJETIVO</text>
+<text x="80" y="116" font-size="13" fill="var(--text)">vender, atrair,</text>
+<text x="80" y="134" font-size="13" fill="var(--text)">dar confiança,</text>
+<text x="80" y="152" font-size="13" fill="var(--text)">mobilizar</text>
+<rect x="166" y="56" width="128" height="120" rx="10" fill="none" stroke="#60a5fa" stroke-width="2"/>
+<text x="230" y="88" font-size="15" font-weight="700" fill="#60a5fa">2 EMOÇÃO</text>
+<text x="230" y="116" font-size="13" fill="var(--text)">o que o público</text>
+<text x="230" y="134" font-size="13" fill="var(--text)">deve sentir em</text>
+<text x="230" y="152" font-size="13" fill="var(--text)">3 segundos</text>
+<rect x="316" y="56" width="128" height="120" rx="10" fill="#60a5fa" fill-opacity="0.14" stroke="#60a5fa" stroke-width="2"/>
+<text x="380" y="88" font-size="15" font-weight="700" fill="#60a5fa">3 ESTÉTICA</text>
+<text x="380" y="116" font-size="13" fill="var(--text)">1 família ou</text>
+<text x="380" y="134" font-size="13" fill="var(--text)">1 híbrido de 2</text>
+<rect x="466" y="56" width="128" height="120" rx="10" fill="none" stroke="#38bdf8" stroke-width="2"/>
+<text x="530" y="88" font-size="15" font-weight="700" fill="#38bdf8">4 PALETA+LUZ</text>
+<text x="530" y="116" font-size="13" fill="var(--text)">cores com papel,</text>
+<text x="530" y="134" font-size="13" fill="var(--text)">fonte, direção,</text>
+<text x="530" y="152" font-size="13" fill="var(--text)">qualidade</text>
+<rect x="616" y="56" width="128" height="120" rx="10" fill="none" stroke="#38bdf8" stroke-width="2"/>
+<text x="680" y="88" font-size="15" font-weight="700" fill="#38bdf8">5 REFERÊNCIAS</text>
+<text x="680" y="116" font-size="13" fill="var(--text)">board que você</text>
+<text x="680" y="134" font-size="13" fill="var(--text)">consegue repetir</text>
+<text x="680" y="152" font-size="13" fill="var(--text)">toda semana</text>
+</g>
+<g stroke="#60a5fa" stroke-width="2" marker-end="url(#m22seta)">
+<line x1="145" y1="116" x2="163" y2="116"/>
+<line x1="295" y1="116" x2="313" y2="116"/>
+<line x1="445" y1="116" x2="463" y2="116"/>
+<line x1="595" y1="116" x2="613" y2="116"/>
+</g>
+<text x="20" y="36" font-size="14" fill="var(--text-muted)">Perguntas de negócio (azul)  →  decisões visuais (ciano)</text>
+<text x="20" y="214" font-size="13" fill="var(--text-muted)">Saída do elo 5: um bloco de estilo de 3–5 linhas que entra igual em todos os prompts do projeto.</text>
+</svg>
+<figcaption>A cadeia de decisão. Cada elo responde a uma pergunta e alimenta o próximo. Se você pular direto para “estética”, os elos da esquerda ficam vazios — e a escolha vira palpite.</figcaption>
+</figure>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m2-2-b8">O público decide em segundos se confia, se deseja, se continua olhando. Essa decisão não é racional: é uma <strong>associação</strong> disparada por cor, luz, textura e composição. Se você escolhe a estética pelo gosto pessoal, pode acertar — mas não consegue explicar ao cliente, nem repetir na semana seguinte. Quando a escolha nasce do objetivo, você tem um argumento (“queremos confiança, por isso luz suave e muito espaço”) e um critério para julgar cada imagem gerada.</p>
+<aside class="novo" data-inema-block="m2-2-b9">
+<strong>Novo aqui? Emoção-alvo</strong>
+<p>A sensação que o público deve ter ao bater o olho — escrita em uma ou duas palavras (“confiança calma”, “desejo”, “urgência”, “ternura”). É a ponte entre o que o negócio quer e o que a imagem mostra. Sem ela, “objetivo: vender” não diz nada sobre luz ou cor.</p>
+</aside>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Casos: do objetivo à estética</h4>
+<div class="table-scroll" data-inema-block="m2-2-b10">
+<table>
+<thead>
+<tr>
+<th>Projeto</th>
+<th>Objetivo</th>
+<th>Emoção-alvo</th>
+<th>Estética (família ou híbrido)</th>
+<th>Paleta e luz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lançamento de um fone sem fio</td>
+<td>gerar desejo e parecer inovador</td>
+<td>curiosidade, “quero ter”</td>
+<td>Futurista + Minimalista</td>
+<td>grafite e prata, um acento ciano; luz de recorte, reflexos em superfície lisa</td>
+</tr>
+<tr>
+<td>Marca pessoal de uma nutricionista</td>
+<td>passar confiança e proximidade</td>
+<td>calma, “ela entende de mim”</td>
+<td>Minimalista com toque Sonhador</td>
+<td>creme, verde-sálvia; luz de janela difusa, fundo limpo</td>
+</tr>
+<tr>
+<td>ONG de mulheres ribeirinhas</td>
+<td>mobilizar doações</td>
+<td>respeito, importância, memória</td>
+<td>Cinematográfico + Retrô</td>
+<td>terrosos quentes; sol baixo direcional, grão de filme</td>
+</tr>
+<tr>
+<td>Restaurante de cozinha paraense</td>
+<td>encher o salão no fim de semana</td>
+<td>apetite, acolhimento</td>
+<td>Cinematográfico quente (documental)</td>
+<td>terracota, verde, amarelo do tucupi; luz lateral dourada</td>
+</tr>
+<tr>
+<td>Academia de luta</td>
+<td>atrair alunos que querem superação</td>
+<td>força, intensidade</td>
+<td>Sombrio</td>
+<td>preto, concreto, um vermelho; luz dura de cima, contraste alto</td>
+</tr>
+<tr>
+<td>Loja de moda autoral</td>
+<td>posicionar como tendência</td>
+<td>confiança, status</td>
+<td>Editorial</td>
+<td>cores coordenadas com a coleção; luz de estúdio, pose marcada</td>
+</tr>
+<tr>
+<td>Pousada histórica em Paraty</td>
+<td>vender a experiência de tempo lento</td>
+<td>nostalgia, calma</td>
+<td>Retrô + Sonhador</td>
+<td>tons desbotados, luz de fim de tarde com névoa, grão</td>
+</tr>
+<tr>
+<td>Aplicativo de finanças</td>
+<td>parecer seguro e simples</td>
+<td>segurança, controle</td>
+<td>Minimalista</td>
+<td>branco, azul profundo; luz suave, formas geométricas, muito respiro</td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="tip" data-inema-block="m2-2-b11">
+<strong>Escreva a cadeia antes de gerar</strong>
+<p>Uma linha por elo, num bloco de notas: “Objetivo: mobilizar doações → Emoção: respeito e memória → Estética: cinematográfica + retrô → Paleta/luz: terrosos, sol baixo lateral, grão → Referências: board ‘fotojornalismo anos 70’”. Se você não consegue preencher um elo, não é hora de gerar — é hora de perguntar ao cliente.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-2" data-inema-topic="modulo-2-2#topico-2">
+<h2 class="text-2xl font-bold">
+<span class="number">2</span>Meta-mensagens: cada elemento diz alguma coisa</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m2-2-b12">Uma <strong>meta-mensagem</strong> é o que a imagem diz sem dizer. Muito espaço vazio em volta de um produto não é “falta de coisa”: diz “somos seguros o bastante para não gritar”. Grão de filme não é defeito: diz “isto é real, foi vivido”. Para usar isso de propósito, descreva cada elemento numa cadeia de quatro elos.</p>
+<h4>A cadeia de um elemento</h4>
+<ol class="timeline" data-inema-block="m2-2-b13">
+<li>
+<strong>Elemento</strong> — o que está na imagem (ex.: muito espaço negativo).</li>
+<li>
+<strong>Função</strong> — o trabalho prático que ele faz (ex.: isola o produto, dá foco).</li>
+<li>
+<strong>Meta-mensagem</strong> — o que isso sugere sobre quem fala (ex.: confiança premium, contenção).</li>
+<li>
+<strong>Emoção</strong> — o que o público sente (ex.: calma, confiança).</li>
+</ol>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m2-2-b14">Estética coerente é quando <strong>todos os elementos puxam para a mesma emoção</strong>. Estética amadora é quando cada um puxa para um lado: fundo minimalista, luz de balada, fonte infantil e textura de papel velho. O público não sabe dizer o que está errado, mas sente que “parece barato”. Mudar um único elemento já muda a leitura — veja a mesma cena com só a paleta trocada.</p>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">Paleta quente</span>
+<a href="../../assets/img/c3-m22-cor-quente.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-cor-quente.webp" alt="A mesma vendedora com a imagem inteira puxada para âmbar, terracota e ocre" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-2-p16">Change ONLY the color palette and color grade of this entire image: push everything into a WARM palette — golden-amber highlights, terracotta, ochre and burnt-orange midtones, warm brown shadows, skin glowing like a 3000K sunset, the blue awnings shifted toward teal-brown. The change must be obvious. Keep the same woman, face, pose, action, stall, objects, framing and light direction identical. No text on signs.</pre>
+<button data-copy="m2-2-p16">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Base (neutra)</span>
+<a href="../../assets/img/c3-m21-cena-base.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m21-cena-base.webp" alt="Vendedora de açaí de lenço vermelho serve açaí de uma bacia de alumínio numa banca de madeira; ao fundo, toldos azuis, bananas e o rio com um barco" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-2-p17">Medium-wide shot of an açaí vendor at an open-air riverside market in Belém, Brazil, late afternoon. She is a Black Brazilian woman in her late 40s with short natural hair under a faded red headscarf, wearing a sleeveless floral blouse and a plain canvas apron, ladling thick dark-purple açaí from a large aluminium basin into a white plastic bowl for a customer whose hand reaches in from the right edge. On her wooden stall: stacked bowls, a jar of tapioca flour, a scale, straw baskets of açaí berries. Behind her, blurred market stalls with blue tarpaulin awnings, hanging bunches of bananas, and a glimpse of the river with a wooden boat. Shot at eye level on a 35mm lens at f/4, vendor on the left third. Warm low sun from the right, around 4000K, soft side shadows. Neutral, straightforward documentary photograph, natural colors, no stylization. No text anywhere in the scene: no signs, no chalkboards, no printed words on clothing, no brand names or logos on scales or products.</pre>
+<button data-copy="m2-2-p17">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Paleta fria</span>
+<a href="../../assets/img/c3-m22-cor-fria.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-cor-fria.webp" alt="A mesma vendedora com a imagem inteira puxada para azul-aço, cinza e ciano" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-2-p18">Change ONLY the color palette and color grade of this entire image: push everything into a COLD palette — steel-blue and cold teal midtones, desaturated skin, blue-gray shadows, pale cyan highlights, the red headscarf muted toward maroon, like an overcast 7000K morning. The change must be obvious. Keep the same woman, face, pose, action, stall, objects, framing and light direction identical. No text on signs.</pre>
+<button data-copy="m2-2-p18">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m2-2-b15">As duas laterais são edições da base pedindo para mudar só a paleta; pessoa, pose, banca e enquadramento continuam iguais. A versão quente puxa para acolhimento, fim de tarde, comida afetiva; a fria puxa para distância, manhã nublada, um tom quase jornalístico. Mesmo assunto, outra emoção.</p>
+</div>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Mapa de significados (uso prático)</h4>
+<div class="table-scroll" data-inema-block="m2-2-b19">
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Função</th>
+<th>Meta-mensagem</th>
+<th>Emoção</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Muito espaço negativo</td>
+<td>foco, respiro</td>
+<td>confiança premium</td>
+<td>calma</td>
+</tr>
+<tr>
+<td>Um único herói no quadro</td>
+<td>leitura imediata</td>
+<td>liderança, clareza</td>
+<td>decisão</td>
+</tr>
+<tr>
+<td>Simetria</td>
+<td>ordem</td>
+<td>confiabilidade</td>
+<td>segurança</td>
+</tr>
+<tr>
+<td>Assimetria marcada</td>
+<td>movimento</td>
+<td>ousadia</td>
+<td>curiosidade</td>
+</tr>
+<tr>
+<td>Grão fino de filme</td>
+<td>tato, imperfeição</td>
+<td>autenticidade</td>
+<td>confiança humana</td>
+</tr>
+<tr>
+<td>Cromado, vidro, brilho</td>
+<td>destaque moderno</td>
+<td>inovação</td>
+<td>curiosidade, desejo</td>
+</tr>
+<tr>
+<td>Sombras pesadas</td>
+<td>drama</td>
+<td>intensidade</td>
+<td>tensão</td>
+</tr>
+<tr>
+<td>Luz natural suave</td>
+<td>calor, clareza</td>
+<td>honestidade</td>
+<td>conforto</td>
+</tr>
+<tr>
+<td>Macro de detalhe (mãos, fibra)</td>
+<td>atenção ao feito à mão</td>
+<td>cuidado artesanal</td>
+<td>respeito</td>
+</tr>
+<tr>
+<td>Fundo cheio de contexto</td>
+<td>situa a cena</td>
+<td>vida real</td>
+<td>familiaridade (risco: bagunça)</td>
+</tr>
+<tr>
+<td>Formas arredondadas</td>
+<td>suavizar</td>
+<td>acessibilidade</td>
+<td>acolhimento</td>
+</tr>
+<tr>
+<td>Ângulos agudos, diagonais</td>
+<td>direção, ênfase</td>
+<td>precisão, velocidade</td>
+<td>energia</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="inema-prose" data-inema-block="m2-2-b20">Use a tabela ao contrário também: se a emoção-alvo é <strong>calma</strong>, procure na última coluna e volte para a primeira — espaço negativo, luz natural suave, formas arredondadas. Esses são os elementos que o seu prompt precisa pedir.</p>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-3" data-inema-topic="modulo-2-2#topico-3">
+<h2 class="text-2xl font-bold">
+<span class="number">3</span>Cor com papel definido, não arco-íris</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m2-2-b21">O significado de uma cor depende do contexto — vermelho num hospital e numa pizzaria dizem coisas diferentes. O que funciona em qualquer contexto é dar <strong>papéis</strong> às cores: uma <strong>base</strong> neutra que ocupa a maior parte da imagem, um <strong>acento principal</strong> que é a assinatura (e aparece onde você quer o olho) e, raramente, um <strong>acento de apoio</strong>.</p>
+<h4>Famílias de cor: o que costumam sugerir e o cuidado</h4>
+<div class="table-scroll" data-inema-block="m2-2-b22">
+<table>
+<thead>
+<tr>
+<th>Cor</th>
+<th>Tende a sugerir</th>
+<th>Funciona melhor como</th>
+<th>Cuidado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Azul</td>
+<td>confiança, estabilidade, competência</td>
+<td>base ou acento em marcas de serviço, tech, finanças</td>
+<td>frio demais sem um toque humano</td>
+</tr>
+<tr>
+<td>Vermelho</td>
+<td>urgência, energia, ação</td>
+<td>acento pequeno (um lenço, um botão)</td>
+<td>em área grande vira agressivo</td>
+</tr>
+<tr>
+<td>Verde</td>
+<td>crescimento, saúde, equilíbrio</td>
+<td>acento ou base natural</td>
+<td>em excesso parece “bem-estar genérico”</td>
+</tr>
+<tr>
+<td>Amarelo / laranja</td>
+<td>otimismo, calor, atenção</td>
+<td>acento</td>
+<td>grandes áreas reduzem a sensação premium</td>
+</tr>
+<tr>
+<td>Roxo</td>
+<td>criatividade, mistério, aspiração</td>
+<td>acento com neutros</td>
+<td>saturado demais parece festa infantil</td>
+</tr>
+<tr>
+<td>Preto / branco</td>
+<td>autoridade, clareza, contenção</td>
+<td>base premium</td>
+<td>precisa de contraste e espaço para não ficar frio</td>
+</tr>
+<tr>
+<td>Marrom / bege</td>
+<td>artesanal, herança, terra</td>
+<td>base para comida, café, artesanato</td>
+<td>pode envelhecer a marca sem uma tipografia moderna</td>
+</tr>
+<tr>
+<td>Ciano / turquesa</td>
+<td>inovação calma, frescor</td>
+<td>acento em marcas de “laboratório” ou ateliê</td>
+<td>neon demais vira balada</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m2-2-b23">Repare na cena-base: o roxo do açaí é a cor mais forte, e o vermelho do lenço puxa o olho para o rosto. Se o céu, os toldos e as frutas tivessem a mesma força, nada se destacaria. Uma proporção que ajuda a pensar: <strong>cerca de 70% base, 25% cor secundária, 5% acento</strong>. Não é lei; é um ponto de partida para você não pedir “colorful” e receber um arco-íris.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-grid" data-inema-block="m2-2-b24">
+<div class="ok">
+<h4>✓ Paleta com papéis (escreva assim)</h4>
+<ul>
+<li>neutral base of sand and off-white, deep açaí purple as the only strong accent</li>
+<li>earthy palette of terracotta and deep green, the yellow of the tucupi as the single bright accent</li>
+<li>graphite and silver base, one cyan accent on the product</li>
+</ul>
+</div>
+<div class="no">
+<h4>✗ Paleta sem papel</h4>
+<ul>
+<li>colorful, vibrant, beautiful colors</li>
+<li>purple, red, yellow, blue, green</li>
+<li>brand colors</li>
+</ul>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-4" data-inema-topic="modulo-2-2#topico-4">
+<h2 class="text-2xl font-bold">
+<span class="number">4</span>Híbridos: duas famílias, cada uma com uma função</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m2-2-b25">As sete famílias são pontos de partida, não gavetas. Um <strong>híbrido</strong> mistura duas, mas não de qualquer jeito: meio a meio vira uma papa sem identidade. O método que funciona é dar <strong>uma função a cada família</strong>.</p>
+<aside class="novo" data-inema-block="m2-2-b26">
+<strong>Novo aqui? Estrutura e superfície</strong>
+<p>
+<strong>Estrutura</strong> é o que organiza a imagem: luz (direção, dureza), composição, profundidade de campo, pose. <strong>Superfície</strong> é a pele da imagem: paleta, textura, grão, acabamento. Num híbrido, uma família manda na estrutura e a outra manda na superfície.</p>
+</aside>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m2-2-b27">Quando as duas famílias disputam a mesma camada (duas luzes, duas paletas), o modelo faz uma média e o resultado não comunica nenhuma das duas. Separando as funções, cada emoção tem onde aparecer: a luz cinematográfica dá peso, o grão retrô dá memória.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">Cinematográfico + Retrô</span>
+<a href="../../assets/img/c3-m22-hibrido-cine-retro.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-hibrido-cine-retro.webp" alt="A mesma cena como híbrido cinematográfico + retrô: luz dramática de cinema com a superfície de um filme negativo dos anos 70, grão, pretos lavados e vinheta" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-2-p29">Fully re-render this ENTIRE image — subject AND background — as a HYBRID of two aesthetics. From CINEMATIC take the structure: a single low warm directional sun from the right, deep contrast, shallow depth of field, a sense of weight and story. From RETRO/VINTAGE take the surface: the look of a 1970s color negative film print — warm faded tones, lifted milky blacks, slightly yellowed whites, clearly visible film grain, gentle analog color shifts, soft vignette and a hint of light leak at the right edge. The result must look unmistakably like an old film photograph with cinematic lighting. Keep the same woman, face, headscarf, outfit, pose, action, stall and framing. No text on signs.</pre>
+<button data-copy="m2-2-p29">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Minimalista + Editorial</span>
+<a href="../../assets/img/c3-m22-hibrido-minimal-editorial.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-hibrido-minimal-editorial.webp" alt="Híbrido minimalista + editorial: fundo liso cor de areia, a vendedora olha para a câmera segurando a tigela de açaí como numa campanha de moda" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-2-p30">Fully re-render this ENTIRE image — subject AND background — as a HYBRID of MINIMALIST and EDITORIAL/FASHION aesthetics for a premium açaí brand launch. Minimalist: replace the busy market background with a clean, seamless wall in muted sand beige, remove the customer&#x27;s hand and the clutter on the stall so only the aluminium basin and one white bowl of açaí remain, lots of negative space on the right. Editorial: large soft diffused studio light from the front-left, polished skin and fabric texture, the woman now standing tall and looking confidently straight into the camera, holding the bowl of açaí at chest height like a campaign portrait. Palette: sand, off-white and her red headscarf, with the deep purple of the açaí as the strongest accent. Keep the same woman, face, headscarf and outfit.</pre>
+<button data-copy="m2-2-p30">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Futurista + Sombrio</span>
+<a href="../../assets/img/c3-m22-hibrido-futuro-gritty.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-hibrido-futuro-gritty.webp" alt="Híbrido futurista + sombrio: a feira à noite, néon magenta e ciano de uma aparelhagem, contraluz ciano na vendedora, sombras profundas e chão molhado" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-2-p31">Fully re-render this ENTIRE image — subject AND background — as a HYBRID of FUTURISTIC/TECH and GRITTY/DARK aesthetics for a poster of a tecnobrega night party. Turn the scene into NIGHT: the market is dark, lit by magenta and cyan neon tubes and LED strips from a huge sound-system rig in the background, a hard cyan rim light outlining the woman&#x27;s profile and the aluminium basin, the açaí glowing deep violet. Gritty: very high contrast, crushed black shadows, wet reflective ground, rough weathered wood and scratched metal textures, a little smoke in the air. Keep the same woman, face, headscarf, outfit, pose, action, stall and framing. No text on signs.</pre>
+<button data-copy="m2-2-p31">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m2-2-b28">Três edições da cena-base. À esquerda, o cinema dá a estrutura (sol baixo e duro, contraste, fundo desfocado) e o retrô dá a superfície (cor de negativo antigo, pretos lavados, grão). No meio, o minimalismo limpa o fundo e o editorial muda a atitude: a vendedora encara a câmera com a tigela na mão — aqui a pose mudou de propósito, porque a pose faz parte do editorial. À direita, o futurista traz o néon e o recorte; o sombrio traz a noite, o contraste e o chão molhado. Abra “Prompt usado” e veja como cada família recebeu uma tarefa.</p>
+</div>
+<h4>Híbridos que funcionam (e por quê)</h4>
+<div class="table-scroll" data-inema-block="m2-2-b32">
+<table>
+<thead>
+<tr>
+<th>Estrutura vem de</th>
+<th>Superfície vem de</th>
+<th>Resultado</th>
+<th>Bom para</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cinematográfico</td>
+<td>Retrô</td>
+<td>peso de cinema com cara de memória</td>
+<td>documentário, causas, marcas de herança</td>
+</tr>
+<tr>
+<td>Minimalista</td>
+<td>Editorial</td>
+<td>limpo, mas com atitude</td>
+<td>lançamento premium, marca pessoal</td>
+</tr>
+<tr>
+<td>Sombrio</td>
+<td>Futurista</td>
+<td>energia de rua com brilho tecnológico</td>
+<td>música eletrônica, esporte, games</td>
+</tr>
+<tr>
+<td>Sonhador</td>
+<td>Retrô</td>
+<td>nostalgia suave</td>
+<td>turismo, casamento, memória afetiva</td>
+</tr>
+<tr>
+<td>Minimalista</td>
+<td>Futurista</td>
+<td>precisão calma</td>
+<td>tecnologia, apps, eletrônicos</td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="limite" data-inema-block="m2-2-b33">
+<strong>Combinações que brigam</strong>
+<p>Minimalista + Sombrio costuma falhar: uma pede espaço limpo e luz suave, a outra pede textura pesada e sombra dura — as duas querem a luz. Sonhador + Futurista também dá atrito (névoa pastel contra cromado nítido). Dá para fazer, mas só se você decidir explicitamente qual família manda na luz; do contrário o modelo devolve uma média sem identidade.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-5" data-inema-topic="modulo-2-2#topico-5">
+<h2 class="text-2xl font-bold">
+<span class="number">5</span>Como a estética entra no prompt</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m2-2-b34">Aplicar uma estética tem quatro passos: <strong>nomear</strong> a família (ou o híbrido), <strong>acrescentar palavras</strong> de paleta, luz, textura e clima, <strong>manter o mesmo vocabulário</strong> em todas as variações e <strong>gerar várias opções</strong> para escolher a direção mais forte. O segundo passo é o que quase todo mundo pula.</p>
+<h3 class="sec">Por que aprender</h3>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">“Make it cinematic.”</span>
+<a href="../../assets/img/c3-m22-so-nome.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-so-nome.webp" alt="Edição com a instrução “Make it cinematic.”: o modelo esquentou a cena e pôs um céu de pôr do sol dramático — bonito, mas genérico, com as decisões do modelo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-2-p36">Make it cinematic.</pre>
+<button data-copy="m2-2-p36">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Vocabulário cinematográfico completo</span>
+<a href="../../assets/img/c3-m22-vocab-completo.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-vocab-completo.webp" alt="A mesma cena como fotograma de cinema: sol baixo e duro da direita, sombra profunda à esquerda, fundo em bokeh, grão de filme" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-2-p37">Fully re-render this ENTIRE image — subject AND background — in a CINEMATIC aesthetic. Light: a low, hard, warm sun raking in from the right as the single key light, the left side of the frame falling into deep shadow, strong contrast between lit and unlit areas. Palette and grade: teal-and-orange film grade, rich crushed blacks, warm skin against cool shadows. Lens and texture: widescreen anamorphic feel, very shallow depth of field so the market behind her melts into soft bokeh, subtle 35mm film grain and soft halation around the highlights. Mood: quiet, weighty, like a single frame from a drama about her life. Keep the same woman, face, headscarf, outfit, pose, action, stall and framing. No text on signs.</pre>
+<button data-copy="m2-2-p37">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m2-2-b35">As duas são edições da mesma cena-base. À esquerda, a instrução tem três palavras: o modelo decide sozinho o que “cinematográfico” significa — esquentou tudo, pôs um céu de pôr do sol dramático e aumentou o contraste. Ficou bonito, mas é o clichê médio: as decisões foram do modelo, não suas, e a cena continua nítida e cheia de informação. À direita, a família foi traduzida em decisões: sol baixo e duro da direita, sombra profunda à esquerda, grade teal-laranja, fundo em bokeh, grão e halo nas luzes. Compare os dois “Prompt usado”.</p>
+</div>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Vocabulário de prompt por família</h4>
+<div class="table-scroll" data-inema-block="m2-2-b38">
+<table>
+<thead>
+<tr>
+<th>Família</th>
+<th>Luz</th>
+<th>Paleta</th>
+<th>Textura / acabamento</th>
+<th>Clima (mood)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cinematográfico</td>
+<td>low hard key light, deep shadows, motivated light</td>
+<td>teal-and-orange grade, rich blacks</td>
+<td>anamorphic, shallow depth of field, film grain, halation</td>
+<td>dramatic, weighty, story</td>
+</tr>
+<tr>
+<td>Minimalista</td>
+<td>large soft diffused light, no harsh shadows</td>
+<td>neutral base, one accent color</td>
+<td>clean surfaces, seamless background, lots of negative space</td>
+<td>calm, clear, premium</td>
+</tr>
+<tr>
+<td>Editorial de moda</td>
+<td>studio key light with fill, beauty dish</td>
+<td>color-coordinated styling</td>
+<td>polished skin, crisp fabric, campaign finish</td>
+<td>confident, bold, aspirational</td>
+</tr>
+<tr>
+<td>Sonhador</td>
+<td>gentle backlight, glow, haze</td>
+<td>pastel or muted tones</td>
+<td>soft focus, bloom, light leaks</td>
+<td>tender, nostalgic, calm</td>
+</tr>
+<tr>
+<td>Retrô</td>
+<td>natural daylight, soft contrast</td>
+<td>warm faded tones, lifted blacks</td>
+<td>1970s film grain, analog imperfections, vignette</td>
+<td>honest, human, remembered</td>
+</tr>
+<tr>
+<td>Sombrio</td>
+<td>hard top or side light, high contrast</td>
+<td>desaturated, near-black shadows</td>
+<td>rough concrete, sweat, wet surfaces</td>
+<td>intense, powerful, rebellious</td>
+</tr>
+<tr>
+<td>Futurista / tech</td>
+<td>neon and rim light, reflections</td>
+<td>cyan, magenta, graphite</td>
+<td>chrome, glass, glossy surfaces, clean geometry</td>
+<td>innovative, fast, precise</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>Ordem no prompt</h4>
+<ol class="timeline" data-inema-block="m2-2-b39">
+<li>
+<strong>Assunto e ação</strong> — quem, fazendo o quê, onde (a cena não muda com a estética).</li>
+<li>
+<strong>Câmera</strong> — plano, lente, ângulo.</li>
+<li>
+<strong>Nome da estética</strong> — “in a cinematic aesthetic” ou “a hybrid of cinematic structure and retro surface”.</li>
+<li>
+<strong>Luz</strong> — as palavras da coluna Luz.</li>
+<li>
+<strong>Paleta</strong> — com papéis: base + acento.</li>
+<li>
+<strong>Textura e acabamento</strong> — grão, brilho, foco.</li>
+<li>
+<strong>Clima</strong> — uma ou duas palavras no fim (“evoking quiet pride”).</li>
+</ol>
+<aside class="tip" data-inema-block="m2-2-b40">
+<strong>Em edições, peça a re-renderização inteira</strong>
+<p>Ao reestilizar uma imagem existente, instruções fracas (“make it retro”) costumam mudar quase nada. Diga explicitamente que a imagem inteira — pessoa <strong>e</strong> fundo — deve ser refeita na nova estética, descreva a estética com força e liste o que deve continuar igual (rosto, pose, enquadramento).</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-6" data-inema-topic="modulo-2-2#topico-6">
+<h2 class="text-2xl font-bold">
+<span class="number">6</span>Consistência de série: o bloco de estilo travado</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m2-2-b41">Uma marca raramente precisa de uma imagem; precisa de <strong>dezenas</strong>, ao longo de meses. A ferramenta para isso é o <strong>bloco de estilo</strong>: 3 a 5 linhas que descrevem luz, paleta, lente, textura e clima, escritas uma vez e coladas sem mudar uma vírgula em todo prompt. O assunto muda; o bloco não.</p>
+<div class="codebox">
+<h4>Bloco de estilo do restaurante fictício (usado nas três imagens abaixo)</h4>
+<pre id="m2-2-p43" data-lang="text">STYLE BLOCK: warm cinematic documentary look; low golden-hour side light from a window on the left, deep but soft shadows on the right; earthy palette of terracotta, deep green and açaí purple, with the yellow of the tucupi as the only bright accent; 50mm lens at f/2, eye level, shallow depth of field; subtle 35mm film grain; calm, proud mood.</pre>
+<button data-copy="m2-2-p43">Copiar</button>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">Cozinha</span>
+<a href="../../assets/img/c3-m22-serie-1.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-serie-1.webp" alt="Chef de avental verde serve tucupi numa cuia com jambu e camarão, luz de janela dourada da esquerda" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-2-p45">Medium shot of a Brazilian chef in his mid-30s with Indigenous features, short black hair and a dark-green linen apron, carefully ladling yellow tucupi broth into a dark gourd bowl (cuia) filled with jambu leaves and pink shrimp, in the small open kitchen of a family restaurant in Belém. STYLE BLOCK: warm cinematic documentary look; low golden-hour side light from a window on the left, deep but soft shadows on the right; earthy palette of terracotta, deep green and açaí purple, with the yellow of the tucupi as the only bright accent; 50mm lens at f/2, eye level, shallow depth of field; subtle 35mm film grain; calm, proud mood. No text on signs.</pre>
+<button data-copy="m2-2-p45">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Prato</span>
+<a href="../../assets/img/c3-m22-serie-2.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-serie-2.webp" alt="Pato no tucupi em prato de barro sobre mesa de madeira, luz lateral dourada, farinha e cachaça ao lado" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-2-p46">Three-quarter close-up of a plate of pato no tucupi — pieces of roasted duck in yellow tucupi broth with dark-green jambu leaves — served in a dark clay dish on a worn wooden table, a small bowl of manioc flour and a glass of cachaça beside it, in a family restaurant in Belém. STYLE BLOCK: warm cinematic documentary look; low golden-hour side light from a window on the left, deep but soft shadows on the right; earthy palette of terracotta, deep green and açaí purple, with the yellow of the tucupi as the only bright accent; 50mm lens at f/2, eye level, shallow depth of field; subtle 35mm film grain; calm, proud mood. No text on signs.</pre>
+<button data-copy="m2-2-p46">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Salão</span>
+<a href="../../assets/img/c3-m22-serie-3.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-serie-3.webp" alt="Salão do restaurante com mesas de madeira, luminárias de palha e uma família comendo junto à janela, mesma luz dourada lateral" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-2-p47">Wide shot of the dining room of a small family restaurant in Belém: wooden tables, woven straw pendant lamps, green-painted walls, an older couple and a young woman sharing dishes at a table by the open window, a ceiling fan turning. STYLE BLOCK: warm cinematic documentary look; low golden-hour side light from a window on the left, deep but soft shadows on the right; earthy palette of terracotta, deep green and açaí purple, with the yellow of the tucupi as the only bright accent; 50mm lens at f/2, eye level, shallow depth of field; subtle 35mm film grain; calm, proud mood. No text on signs.</pre>
+<button data-copy="m2-2-p47">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m2-2-b44">Três gerações independentes para um restaurante paraense fictício — assuntos diferentes (o chef, o pato no tucupi, o salão), o mesmo bloco de estilo no fim de cada prompt. A luz lateral dourada, os terrosos e o grão amarram as três: parecem da mesma campanha.</p>
+</div>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Com o bloco</span>
+<a href="../../assets/img/c3-m22-serie-2.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-serie-2.webp" alt="Pato no tucupi em prato de barro sobre mesa de madeira, luz lateral dourada, farinha e cachaça ao lado" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-2-p49">Three-quarter close-up of a plate of pato no tucupi — pieces of roasted duck in yellow tucupi broth with dark-green jambu leaves — served in a dark clay dish on a worn wooden table, a small bowl of manioc flour and a glass of cachaça beside it, in a family restaurant in Belém. STYLE BLOCK: warm cinematic documentary look; low golden-hour side light from a window on the left, deep but soft shadows on the right; earthy palette of terracotta, deep green and açaí purple, with the yellow of the tucupi as the only bright accent; 50mm lens at f/2, eye level, shallow depth of field; subtle 35mm film grain; calm, proud mood. No text on signs.</pre>
+<button data-copy="m2-2-p49">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Vocabulário à deriva</span>
+<a href="../../assets/img/c3-m22-serie-deriva.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-serie-deriva.webp" alt="O mesmo prato fotografado com outro vocabulário: fundo branco de mármore, luz chapada de cima, cores saturadas" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-2-p50">Three-quarter close-up of a plate of pato no tucupi — pieces of roasted duck in yellow tucupi broth with dark-green jambu leaves — served on a white porcelain plate on a white marble counter, a small bowl of manioc flour and a glass beside it. Bright, vibrant, high-key food photography, crisp even white light from above, saturated colors, clean and fresh, sharp from front to back. No text.</pre>
+<button data-copy="m2-2-p50">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m2-2-b48">Mesmo prato, duas gerações independentes. À direita, o bloco foi trocado por palavras “parecidas” que qualquer um escreveria num dia de pressa: “bright, vibrant, high-key”, luz branca de cima, mármore. A foto não é ruim — mas não pertence à série. No feed, ela quebraria a sequência.</p>
+</div>
+<div class="compare-grid" data-inema-block="m2-2-b51">
+<div class="ok">
+<h4>✓ Mantém a série</h4>
+<ul>
+<li>Colar o bloco de estilo inteiro, igual, em todo prompt</li>
+<li>Mudar só assunto, ação e enquadramento</li>
+<li>Guardar o bloco num arquivo com data e versão (v1, v2)</li>
+<li>Revisar a série lado a lado antes de publicar</li>
+</ul>
+</div>
+<div class="no">
+<h4>✗ Quebra a série</h4>
+<ul>
+<li>Reescrever o estilo “de cabeça” a cada imagem</li>
+<li>Trocar “warm” por “golden” e “grain” por “vintage” achando que é igual</li>
+<li>Mudar a direção da luz de uma imagem para outra</li>
+<li>Aprovar imagem por imagem, sem ver o conjunto</li>
+</ul>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-7" data-inema-topic="modulo-2-2#topico-7">
+<h2 class="text-2xl font-bold">
+<span class="number">7</span>Checar a escolha antes de produzir</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m2-2-b52">Antes de gerar a série inteira, gere três opções da direção escolhida e passe cada uma por três testes. Eles levam cinco minutos e evitam refazer trinta imagens.</p>
+<h3 class="sec">Por que aprender</h3>
+<ol class="inema-prose list" data-inema-block="m2-2-b53">
+<li>
+<strong>Teste do público:</strong> mostre a imagem a alguém do público por 3 segundos e pergunte “o que você sentiu?”. Se a resposta não se parece com a sua emoção-alvo, a estética está errada, mesmo que esteja bonita.</li>
+<li>
+<strong>Teste da contradição:</strong> passe elemento por elemento (luz, paleta, textura, composição, pose) e pergunte se todos puxam para a mesma emoção. Um elemento que puxa para outro lado é o que faz a imagem “parecer barata”.</li>
+<li>
+<strong>Teste da repetição:</strong> você consegue produzir essa estética toda semana, com os assuntos reais do cliente (produto na mesa, equipe, bastidores)? Um híbrido que só funciona numa cena de pôr do sol não serve para um feed.</li>
+</ol>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<blockquote class="pull" data-inema-block="m2-2-b54">Estética não é o que você gosta. É o que o seu público precisa sentir — repetido até virar reconhecimento.</blockquote>
+<aside class="tip" data-inema-block="m2-2-b55">
+<strong>Subestilos são vocabulário</strong>
+<p>Dentro de cada família há dezenas de subestilos (Y2K, cyberpunk, dark academia, “quiet luxury”…). Eles ajudam a afinar época e cultura, mas trate-os como <strong>palavras extras</strong> dentro de uma família, não como a decisão principal. A decisão principal continua vindo do objetivo.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section id="pratica" class="pratica">
+<h2>Prática guiada: do briefing ao bloco de estilo</h2>
+<p class="inema-prose" data-inema-block="m2-2-b56">Você vai pegar um projeto (seu, de um cliente ou um dos casos da tabela) e sair com a <strong>cadeia de decisão preenchida</strong>, <strong>um bloco de estilo</strong> e <strong>três imagens</strong> que o comprovam.</p>
+<h4>Roteiro</h4>
+<ol class="timeline" data-inema-block="m2-2-b57">
+<li>Escreva a cadeia em cinco linhas: objetivo, emoção-alvo, estética (família ou híbrido), paleta com papéis e luz, referências.</li>
+<li>Para cada elemento-chave (luz, paleta, textura, composição), escreva a cadeia Elemento → função → meta → emoção. Se algum elemento não chega à emoção-alvo, troque-o.</li>
+<li>Monte o bloco de estilo com a tabela de vocabulário: 3–5 linhas, em inglês.</li>
+<li>Escolha três assuntos diferentes do projeto (uma pessoa, um produto, um ambiente) e gere uma imagem de cada, colando o bloco igual.</li>
+<li>Coloque as três lado a lado e rode os três testes (público, contradição, repetição).</li>
+</ol>
+<div class="codebox copyrun">
+<h4>Molde de prompt com bloco de estilo</h4>
+<p>
+<strong>Objetivo:</strong> Gerar imagens de uma série trocando só a primeira linha.</p>
+<pre id="m2-2-p59">&lt;Plano&gt; of &lt;assunto: quem ou o quê, aparência&gt; &lt;ação concreta&gt;, in &lt;lugar com 2-3 objetos&gt;.
+In a &lt;família ou híbrido: e.g. &#x27;hybrid of cinematic structure and retro surface&#x27;&gt; aesthetic.
+STYLE BLOCK: &lt;luz: fonte, direção, qualidade, K&gt;; &lt;paleta: base + acento único&gt;; &lt;lente e profundidade de campo&gt;; &lt;textura e acabamento&gt;; &lt;clima em 2 palavras&gt; mood. No text on signs.</pre>
+<button data-copy="m2-2-p59">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> Nas três imagens a luz vem do mesmo lado, a paleta tem o mesmo acento e o grão/acabamento é igual? Se uma destoa, confira se o bloco foi colado sem alteração.</p>
+</div>
+<div class="codebox copyrun">
+<h4>Exemplo pronto: híbrido para uma ONG</h4>
+<p>
+<strong>Objetivo:</strong> Testar um híbrido estrutura + superfície num retrato documental.</p>
+<pre id="m2-2-p61">Medium shot of a Brazilian riverside fisherwoman in her 50s with sun-weathered skin and a faded yellow T-shirt, mending a fishing net on the wooden deck of her stilt house over the river, in the Amazon delta.
+In a hybrid aesthetic: CINEMATIC structure with RETRO surface.
+STYLE BLOCK: low warm late-afternoon sun from the right as a hard key light, deep shadow on the left side of the frame, shallow depth of field on a 50mm lens at f/2; 1970s color negative film look with warm faded tones, lifted blacks, visible grain and a soft vignette; earthy palette of wood brown and river green with the yellow shirt as the only accent; dignified, quiet, remembered mood. No text.</pre>
+<button data-copy="m2-2-p61">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> A luz tem direção clara e sombra profunda (estrutura de cinema)? A superfície parece filme antigo (grão, pretos lavados)? O amarelo é o único acento?</p>
+</div>
+<div class="codebox copyrun">
+<h4>Pedir ajuda a um assistente para fechar a cadeia</h4>
+<p>
+<strong>Objetivo:</strong> Usar um assistente de texto (ChatGPT, Claude, Gemini) para propor e justificar três rotas estéticas.</p>
+<pre id="m2-2-p63">Você é diretor de arte. Projeto: &lt;descreva em 3 frases: o que é, para quem, onde as imagens vão aparecer&gt;.
+Objetivo principal: &lt;vender / atrair clientes / gerar confiança / mobilizar&gt;.
+1) Proponha a emoção-alvo em até 3 palavras.
+2) Proponha 3 rotas estéticas (uma família pura e dois híbridos). Para cada híbrido, diga qual família dá a ESTRUTURA (luz, composição) e qual dá a SUPERFÍCIE (paleta, textura).
+3) Para cada rota, escreva a cadeia Elemento → função → meta-mensagem → emoção para luz, paleta e textura.
+4) Para a rota que você recomendaria, escreva um STYLE BLOCK de 3–5 linhas em inglês, pronto para colar em prompts de imagem.
+Não use nomes de artistas nem de marcas reais.</pre>
+<button data-copy="m2-2-p63">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> As três rotas são realmente diferentes? A recomendada tem justificativa ligada ao objetivo (não só “é bonita”)? O bloco tem luz com direção, paleta com acento único e textura?</p>
+</div>
+</section>
+<section id="licao" class="licao">
+<h2>Lição de casa</h2>
+<p>Continue no seu caderno de olhar. Esta lição transforma os boards do módulo anterior numa decisão justificada.</p>
+<div class="levels">
+<div class="level">
+<h3>Nível básico <span class="fine">(obrigatório)</span>
+</h3>
+<ol>
+<li>Escolha um projeto e escreva a cadeia de decisão completa (cinco linhas).</li>
+<li>Monte a tabela de meta-mensagens do projeto: 5 elementos, cada um com função, meta e emoção.</li>
+<li>Escreva um bloco de estilo e gere 3 imagens de assuntos diferentes com ele, sem alterar o bloco.</li>
+<li>Rode os três testes e anote em 5 frases o que passou e o que falhou.</li>
+</ol>
+</div>
+<div class="level adv">
+<h3>Nível avançado <span class="fine">(desafio)</span>
+</h3>
+<ol>
+<li>
+<strong>Três rotas, um briefing:</strong> gere a mesma cena em uma família pura e em dois híbridos (estrutura + superfície). Escreva qual você apresentaria ao cliente e por quê, citando a emoção-alvo.</li>
+<li>
+<strong>Teste de deriva:</strong> gere a mesma série duas vezes — uma com o bloco travado, outra reescrevendo o estilo de cabeça em cada prompt. Monte as duas lado a lado e descreva as diferenças.</li>
+</ol>
+</div>
+</div>
+<p>
+<strong>Entregue/guarde:</strong> No caderno: a cadeia de decisão, a tabela de meta-mensagens, o bloco de estilo (com versão e data), as 3 imagens e a análise dos testes.</p>
+</section>
+<section id="checagem">
+<h2>Teste sua decisão</h2>
+<div class="quiz" data-quiz="modulo-2-2#q1" data-correct="1" data-explain="A cadeia começa no objetivo e passa pela emoção. É a emoção-alvo que diz se você precisa de luz suave e espaço (minimalista) ou de contraste e drama — a beleza sozinha não decide.">
+<p>
+<strong>1.</strong> Uma nutricionista quer um feed que passe confiança e proximidade. Qual é o primeiro passo certo?</p>
+<button data-answer="0" aria-pressed="false">Escolher a estética que está em alta no momento</button>
+<button data-answer="1" aria-pressed="false">Definir a emoção-alvo (ex.: calma, “ela me entende”) e só então a estética</button>
+<button data-answer="2" aria-pressed="false">Gerar 20 imagens em estilos diferentes e ver qual fica mais bonita</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>A cadeia começa no objetivo e passa pela emoção. É a emoção-alvo que diz se você precisa de luz suave e espaço (minimalista) ou de contraste e drama — a beleza sozinha não decide.</p>
+</details>
+</div>
+<div class="quiz" data-quiz="modulo-2-2#q2" data-correct="1" data-explain="Dar uma função a cada família (estrutura para uma, superfície para a outra) evita que o modelo faça uma média. Porcentagens e listas de adjetivos não dizem o que cada estética deve controlar.">
+<figure class="shot">
+<a href="../../assets/img/c3-m22-hibrido-cine-retro.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-hibrido-cine-retro.webp" alt="A mesma cena como híbrido cinematográfico + retrô: luz dramática de cinema com a superfície de um filme negativo dos anos 70, grão, pretos lavados e vinheta" loading="lazy" decoding="async">
+</a>
+</figure>
+<p>
+<strong>2.</strong> Você quer um híbrido de cinematográfica e retrô. Qual prompt tem mais chance de funcionar?</p>
+<button data-answer="0" aria-pressed="false">“cinematic retro vintage film style”</button>
+<button data-answer="1" aria-pressed="false">“cinematic structure (low hard sun, deep shadows, shallow focus) with retro surface (1970s film grain, faded warm tones)”</button>
+<button data-answer="2" aria-pressed="false">“50% cinematic, 50% retro”</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>Dar uma função a cada família (estrutura para uma, superfície para a outra) evita que o modelo faça uma média. Porcentagens e listas de adjetivos não dizem o que cada estética deve controlar.</p>
+</details>
+</div>
+<div class="quiz" data-quiz="modulo-2-2#q3" data-correct="1" data-explain="Séries se mantêm coerentes quando o bloco de estilo entra idêntico em todos os prompts. Trocar palavras por “sinônimos” (bright, vibrant) muda luz e paleta — exatamente o que se vê na imagem à deriva.">
+<figure class="shot">
+<a href="../../assets/img/c3-m22-serie-deriva.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m22-serie-deriva.webp" alt="O mesmo prato fotografado com outro vocabulário: fundo branco de mármore, luz chapada de cima, cores saturadas" loading="lazy" decoding="async">
+</a>
+</figure>
+<p>
+<strong>3.</strong> A terceira imagem de uma série saiu com luz branca chapada e cores saturadas, destoando das outras. O que provavelmente aconteceu?</p>
+<button data-answer="0" aria-pressed="false">O modelo errou por acaso</button>
+<button data-answer="1" aria-pressed="false">O bloco de estilo foi reescrito ou alterado nesse prompt</button>
+<button data-answer="2" aria-pressed="false">Faltou pedir resolução maior</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>Séries se mantêm coerentes quando o bloco de estilo entra idêntico em todos os prompts. Trocar palavras por “sinônimos” (bright, vibrant) muda luz e paleta — exatamente o que se vê na imagem à deriva.</p>
+</details>
+</div>
+<p class="fine">Responder não marca a leitura nem bloqueia o próximo módulo.</p>
+</section>
+<section>
+<h2>O que levar desta aula</h2>
+<ul>
+<li>Decida em ordem: <strong>objetivo → emoção → estética → paleta e luz → referências</strong>.</li>
+<li>Todo elemento carrega uma meta-mensagem; estética coerente é quando todos puxam para a <strong>mesma emoção</strong>.</li>
+<li>Cores com papel: base neutra, <strong>um</strong> acento principal, apoio raro.</li>
+<li>Híbrido bom = uma família dá a <strong>estrutura</strong> (luz, composição), a outra dá a <strong>superfície</strong> (paleta, textura).</li>
+<li>O nome da estética não basta: traduza em vocabulário de luz, paleta, textura e clima.</li>
+<li>Série coerente = <strong>bloco de estilo travado</strong>, colado igual em todo prompt.</li>
+</ul>
+<div class="actions">
+<a class="button" href="index.html">Voltar para a trilha</a>
+<a class="button primary" href="../../curso/trilha3/modulo-3-1.html">Próximo módulo: Observação profissional: desmontar, estudar, criar regras</a>
+</div>
+</section>
+</article>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<span>Curso gratuito · INEMA.CLUB · v1.1.0</span>
+<a href="../../materiais.html">Materiais e referências</a>
+<a href="../../../index.html">Os três cursos</a>
+<a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>
+<a href="https://www.inema.club/cursos/">Todos os cursos</a>
+</div>
+</footer>
+<script src="../../assets/learn.js">
+</script>
+<script src="../../assets/course.js">
+</script>
+</body>
+</html>

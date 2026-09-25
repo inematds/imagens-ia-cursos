@@ -1,6 +1,6 @@
 # Cursos de Imagem com IA
 
-Cursos abertos e gratuitos do INEMA.CLUB, com diagramas SVG, exercícios e acompanhamento de aprendizagem.
+Cursos abertos e gratuitos do INEMA.CLUB. Cada conceito vem com a imagem que ele produz e o prompt exato que a gerou — 230 imagens de exemplo (GPT Image), comparações feitas editando a mesma imagem-base, prática guiada, lição de casa em dois níveis e acompanhamento de aprendizagem.
 
 - [Prompting de Imagem — Pense como Diretor de Fotografia](https://inematds.github.io/imagens-ia-cursos/cursos/prompting-imagem/)
 - [Nano Banana Pro — Campanha de Marca Completa](https://inematds.github.io/imagens-ia-cursos/cursos/nano-banana-pro/)
@@ -14,4 +14,4 @@ Cursos abertos e gratuitos do INEMA.CLUB, com diagramas SVG, exercícios e acomp
 - [Guia: como aprender inteligência artificial](https://www.inema.club/aprender-inteligencia-artificial/)
 - [Todos os cursos](https://www.inema.club/cursos/)
 
-Publicação estática v1.0.0. Apenas conteúdo autoral; nenhum vídeo ou apostila de terceiros.
+Publicação estática v1.1.0 (ver [CHANGELOG](CHANGELOG.md)). Apenas conteúdo autoral; nenhum vídeo, imagem ou apostila de terceiros. Pessoas e marcas nos exemplos são fictícias.

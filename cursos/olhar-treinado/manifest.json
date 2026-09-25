@@ -7,9 +7,15 @@
       "modules": [
         {
           "id": "1-1",
-          "title": "Observe, selecione e descreva",
-          "topics": 6,
+          "title": "Gosto é treinável",
+          "topics": 7,
           "href": "curso/trilha1/modulo-1-1.html"
+        },
+        {
+          "id": "1-2",
+          "title": "Nomeie o que você vê: vocabulário e Visual DNA",
+          "topics": 7,
+          "href": "curso/trilha1/modulo-1-2.html"
         }
       ]
     },
@@ -19,9 +25,15 @@
       "modules": [
         {
           "id": "2-1",
-          "title": "Sete famílias estéticas, muitas possibilidades",
-          "topics": 6,
+          "title": "As sete famílias estéticas",
+          "topics": 8,
           "href": "curso/trilha2/modulo-2-1.html"
+        },
+        {
+          "id": "2-2",
+          "title": "Estética por objetivo: decidir, misturar, aplicar",
+          "topics": 7,
+          "href": "curso/trilha2/modulo-2-2.html"
         }
       ]
     },
@@ -31,8 +43,8 @@
       "modules": [
         {
           "id": "3-1",
-          "title": "Desmonte referências e construa regras próprias",
-          "topics": 6,
+          "title": "Observação profissional: desmontar, estudar, criar regras",
+          "topics": 7,
           "href": "curso/trilha3/modulo-3-1.html"
         }
       ]
@@ -43,8 +55,8 @@
       "modules": [
         {
           "id": "4-1",
-          "title": "Projeto final: sua direção visual em prática",
-          "topics": 6,
+          "title": "Projeto final: seu caderno de olhar aplicado",
+          "topics": 7,
           "href": "curso/trilha4/modulo-4-1.html"
         }
       ]

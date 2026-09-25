@@ -1,0 +1,1321 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+<head>
+<script>(function () {
+  try {
+    var html = document.documentElement;
+    var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+    function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+    var p = clone(DEF);
+    try {
+      var raw = localStorage.getItem('inema.prefs');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k];
+        }
+      } else {
+        // fallback ao tema legado do v1
+        var legacy = localStorage.getItem('theme');
+        if (legacy === 'light') p.theme = 'claro';
+        else if (legacy === 'dark') p.theme = 'inema-dark';
+      }
+    } catch (e) { p = clone(DEF); }
+
+    // mapa tema -> (.dark on/off, data-theme, color-scheme)
+    var THEMES = {
+      'inema-dark': { dark: true,  attr: null,        cs: 'dark'  },
+      'claro':      { dark: false, attr: null,        cs: 'light' },
+      'sepia':      { dark: false, attr: 'sepia',     cs: 'light' },
+      'foco':       { dark: null,  attr: 'foco',      cs: null    },  // herda eixo atual
+      'contraste':  { dark: true,  attr: 'contraste', cs: 'dark'  }
+    };
+    var t = THEMES[p.theme] || THEMES['inema-dark'];
+
+    if (t.dark === true) html.classList.add('dark');
+    else if (t.dark === false) html.classList.remove('dark');
+    // 'foco' (null) preserva o que ja houver no atributo class do <html>
+
+    if (t.attr) html.setAttribute('data-theme', t.attr);
+    else html.removeAttribute('data-theme');
+
+    html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+
+    html.setAttribute('data-font', p.font || 'inter');
+    html.setAttribute('data-accent', p.accent || 'emerald');
+
+    // variaveis de leitura (espelham learn.js / learn.css) ANTES do paint
+    var s = html.style;
+    var scale = (+p.fontScale || 100);
+    s.setProperty('--inema-font-scale', (scale / 100).toString());
+    s.setProperty('font-size', scale + '%');               // :root em %, nunca px
+    s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+    s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+    var fam = p.font === 'system'
+      ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+      : (p.font === 'leitura'
+        ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif'
+        : '"Inter", system-ui, sans-serif');
+    s.setProperty('--font-body', fam);
+
+    var ACC = {
+      emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66],
+      amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60]
+    };
+    var a = ACC[p.accent] || ACC.emerald;
+    s.setProperty('--accent-h', a[0] + '');
+    s.setProperty('--accent-s', a[1] + '%');
+    s.setProperty('--accent-l', a[2] + '%');
+    s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+  } catch (err) {
+    // qualquer falha => default dark, preserva a marca
+    try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {}
+  }
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="inema-course" content="olhar-treinado">
+<meta name="description" content="Ao terminar, você desmonta qualquer imagem em sete camadas, tem uma biblioteca de palavras visuais pronta para usar em prompt, sabe extrair com um assistente de IA o Visual DNA de um conjunto de referências e justifica cada escolha com um Meaning Map.">
+<title>Nomeie o que você vê: vocabulário e Visual DNA · INEMA.CLUB</title>
+<link rel="stylesheet" href="../../assets/learn.css">
+<link rel="stylesheet" href="../../assets/course.css">
+<script type="application/json" data-inema-manifest>{"course": "olhar-treinado", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Gosto é treinável", "topics": 7, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "Nomeie o que você vê: vocabulário e Visual DNA", "topics": 7, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "As sete famílias estéticas", "topics": 8, "href": "curso/trilha2/modulo-2-1.html"}, {"id": "2-2", "title": "Estética por objetivo: decidir, misturar, aplicar", "topics": 7, "href": "curso/trilha2/modulo-2-2.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Observação profissional: desmontar, estudar, criar regras", "topics": 7, "href": "curso/trilha3/modulo-3-1.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: seu caderno de olhar aplicado", "topics": 7, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="topbar">
+<div class="nav-inner">
+<a class="brand" href="../../index.html" aria-label="Início do curso">
+<svg viewBox="0 0 32 32" aria-hidden="true">
+<path d="M4 6h24v20H4zM10 6v20M22 6v20" fill="none" stroke="currentColor" stroke-width="2"/>
+<circle cx="16" cy="16" r="4" fill="currentColor"/>
+</svg>
+<span class="wide-only">Imagem com IA</span>
+</a>
+<a class="text-sky-400" href="https://inema.club">INEMA.CLUB</a>
+<span>–</span>
+<a class="pro" href="https://inema.pro">PRO</a>
+<nav class="tracks" aria-label="Trilhas">
+<a href="../../curso/trilha1/index.html" aria-current="page">1. Fundamentos</a>
+<a href="../../curso/trilha2/index.html">2. Direção visual</a>
+<a href="../../curso/trilha3/index.html">3. Produção</a>
+<a href="../../curso/trilha4/index.html">4. Projeto</a>
+</nav>
+<div class="tools">
+<button data-inema-journey-open>Minha jornada</button>
+<button data-inema-appearance-toggle="[data-inema-appearance]" aria-expanded="false">Aparência</button>
+</div>
+</div>
+<div data-inema-appearance class="inema-appearance-pop">
+<div class="inema-segment">
+<button data-inema-set-theme="inema-dark">Escuro</button>
+<button data-inema-set-theme="claro">Claro</button>
+<button data-inema-set-theme="sepia">Sépia</button>
+<button data-inema-set-theme="foco">Foco</button>
+<button data-inema-set-theme="contraste">Alto contraste</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-fontscale="100">Texto padrão</button>
+<button data-inema-set-fontscale="112">Texto maior</button>
+<button data-inema-set-fontscale="125">Texto amplo</button>
+</div>
+<div class="inema-segment">
+<button data-inema-set-font="system">Fonte do sistema</button>
+<button data-inema-set-font="leitura">Fonte de leitura</button>
+<button data-inema-set-linewidth="60">Coluna estreita</button>
+<button data-inema-set-linewidth="75">Coluna larga</button>
+</div>
+</div>
+</header>
+<main id="conteudo" class="wrap">
+<div class="breadcrumb">
+<a href="../../index.html">Olhar Treinado</a> / <a href="index.html">Fundamentos</a> / Módulo 1-2</div>
+<header class="intro">
+<h1 class="text-2xl font-bold">Nomeie o que você vê: vocabulário e Visual DNA</h1>
+<p>Ao terminar, você desmonta qualquer imagem em sete camadas, tem uma biblioteca de palavras visuais pronta para usar em prompt, sabe extrair com um assistente de IA o Visual DNA de um conjunto de referências e justifica cada escolha com um Meaning Map.</p>
+<p class="meta">7 tópicos · 75 min · exemplos com o prompt que gerou cada imagem</p>
+<div data-inema-meter="modulo:1-2">
+<span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span>
+<div class="inema-bar">
+<div class="inema-bar__fill" data-inema-meter-fill>
+</div>
+</div>
+</div>
+</header>
+<div class="reading-layout">
+<nav class="toc" data-inema-toc aria-label="Tópicos deste módulo">
+<strong>Nesta aula</strong>
+<ol>
+<li>
+<a href="#topico-1">Desmontar uma imagem em sete camadas</a>
+</li>
+<li>
+<a href="#topico-2">Precisão vence adjetivo</a>
+</li>
+<li>
+<a href="#topico-3">A biblioteca de palavras visuais</a>
+</li>
+<li>
+<a href="#topico-4">Visual DNA: o que se repete num conjunto de referências</a>
+</li>
+<li>
+<a href="#topico-5">Extrair o DNA com um assistente de IA</a>
+</li>
+<li>
+<a href="#topico-6">Meaning Map: cada elemento carrega uma mensagem</a>
+</li>
+<li>
+<a href="#topico-7">A lista do NÃO e o teste de consistência</a>
+</li>
+</ol>
+<a href="#pratica">Prática guiada</a>
+<a href="#licao">Lição de casa</a>
+<a href="#checagem">Teste sua decisão</a>
+</nav>
+<article class="lesson" data-inema-module="1-2" data-inema-track="1">
+<section class="abertura">
+<p class="inema-prose" data-inema-block="m1-2-b1">No módulo anterior você descobriu que gosto é feito de decisões. Mas decisão que não tem nome não entra no prompt, não entra no briefing e não se defende na frente de um cliente. Este módulo é o dicionário: você aprende a <strong>olhar uma imagem e dizer, camada por camada, o que ela está fazendo</strong> — e depois a condensar um conjunto inteiro de referências num documento curto, o <strong>Visual DNA</strong>, que vira prompt.</p>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">A imagem</span>
+<a href="../../assets/img/c3-m12-analise.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m12-analise.webp" alt="Pescadora empurra uma jangada de vela branca para o mar ao amanhecer no Ceará, contraluz com névoa, pegadas na areia levando até ela" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p3">Wide shot of a young Brazilian fisherwoman in her 30s with dark-brown skin and short braids, wearing an oversized faded blue work shirt, pushing a small wooden jangada fishing raft with a white triangular sail into the sea at dawn on a beach in Ceará. Backlight: the sun just above the horizon behind her, around 3000K, rim light on her shoulders and the sail edge, long shadows toward the camera, light mist over the water. Palette of peach, pale gold and slate blue. Subject small on the right third, horizon on the lower third, the sail forming a strong triangle, footprints in wet sand leading in from the bottom left corner. Shot on a 35mm lens at f/5.6 from low height near the sand. Fine grain, slightly faded shadows like 1990s color negative film. Mood: quiet determination at the start of the day.</pre>
+<button data-copy="m1-2-p3">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">A imagem lida por um diretor de arte</span>
+<a href="../../assets/img/c3-m12-anotada.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m12-anotada.webp" alt="A mesma foto com anotações brancas de diretor de arte: luz, cor, composição, linha, forma, textura, lente e época apontadas nas partes da imagem" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p4">Keep this exact photograph untouched and overlay a clean, minimal analysis diagram on top of it, like an art director&#x27;s notes: thin white lines with small circular endpoints pointing to parts of the image, each ending in a short label in Portuguese in a clean sans-serif font, white text on small semi-transparent dark rectangles. Labels exactly: &#x27;LUZ: contraluz 3000K&#x27; pointing to the sun; &#x27;COR: pêssego + azul-ardósia&#x27; pointing to the sky; &#x27;COMPOSIÇÃO: terço direito&#x27; pointing to the woman; &#x27;LINHA: pegadas guiam o olhar&#x27; pointing to the footprints; &#x27;FORMA: triângulo da vela&#x27; pointing to the sail; &#x27;TEXTURA: névoa + grão&#x27; pointing to the mist on the water; &#x27;LENTE: 35mm baixa&#x27; in the lower left corner; &#x27;ÉPOCA: negativo anos 90&#x27; in the upper left corner. Also draw thin dotted white rule-of-thirds grid lines. Spell every label exactly as written, in correct Portuguese, letter by letter (for example &#x27;baixa&#x27; is b-a-i-x-a). Do not change the photo itself.</pre>
+<button data-copy="m1-2-p4">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m1-2-b2">À direita, a mesma foto com as anotações de quem sabe ler imagem: de onde vem a luz e em que temperatura, quais cores mandam, onde está o sujeito, que linha guia o olho, que forma organiza o quadro, qual textura dá o clima, que lente e que época ela evoca. A anotada é uma edição da original pedindo só a sobreposição. Ao fim do módulo, você fará isso sozinho com qualquer referência.</p>
+</div>
+</section>
+<section class="topic" id="topico-1" data-inema-topic="modulo-1-2#topico-1">
+<h2 class="text-2xl font-bold">
+<span class="number">1</span>Desmontar uma imagem em sete camadas</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m1-2-b5">Toda imagem — foto, frame de filme, ilustração, anúncio — é feita das mesmas camadas. Olhar como diretor é <strong>passar por elas uma de cada vez, sempre na mesma ordem</strong>, até que isso fique automático. A ordem abaixo vai do que mais pesa (luz) ao que resume tudo (emoção):</p>
+<h4>As sete camadas de leitura</h4>
+<div class="table-scroll" data-inema-block="m1-2-b6">
+<table>
+<thead>
+<tr>
+<th>Camada</th>
+<th>Pergunta</th>
+<th>Na foto da pescadora</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<strong>Luz</strong>
+</td>
+<td>Qual a fonte, a direção, a dureza e a temperatura?</td>
+<td>sol baixo atrás dela (contraluz), ~3000K, recorte nos ombros e na vela</td>
+</tr>
+<tr>
+<td>
+<strong>Cor</strong>
+</td>
+<td>Quais 3–4 cores mandam? Quente ou fria? Saturada ou contida?</td>
+<td>pêssego, dourado pálido, azul-ardósia; saturação contida</td>
+</tr>
+<tr>
+<td>
+<strong>Composição</strong>
+</td>
+<td>Onde está o sujeito? Que linhas e formas organizam o quadro?</td>
+<td>sujeito pequeno no terço direito; pegadas em diagonal; triângulo da vela</td>
+</tr>
+<tr>
+<td>
+<strong>Textura</strong>
+</td>
+<td>O que a superfície da imagem transmite: fosco, brilho, grão, névoa?</td>
+<td>névoa sobre a água, areia molhada, grão fino</td>
+</tr>
+<tr>
+<td>
+<strong>Lente</strong>
+</td>
+<td>Grande-angular ou tele? Altura da câmera? Fundo nítido ou desfocado?</td>
+<td>35 mm, câmera baixa perto da areia, tudo razoavelmente nítido</td>
+</tr>
+<tr>
+<td>
+<strong>Época</strong>
+</td>
+<td>Que tempo ou suporte ela evoca: filme, digital, anos 70, 90?</td>
+<td>negativo colorido dos anos 90, sombras levemente desbotadas</td>
+</tr>
+<tr>
+<td>
+<strong>Emoção</strong>
+</td>
+<td>O que sobra quando você fecha os olhos?</td>
+<td>determinação calma, começo de dia, solidão sem tristeza</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b7">Separar as camadas transforma impressão em informação. “Essa foto é linda” não te ajuda a fazer outra; “contraluz baixa a 3000K, paleta pêssego e ardósia, sujeito pequeno num terço, grão de negativo dos anos 90” é praticamente um prompt pronto. É também assim que você descobre <strong>o que está fazendo o trabalho</strong>: tire mentalmente uma camada de cada vez e veja qual faria a imagem desabar.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="figure-wrap">
+<figure class="shot">
+<a href="../../assets/img/c3-m12-anotada.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m12-anotada.webp" alt="A mesma foto com anotações brancas de diretor de arte: luz, cor, composição, linha, forma, textura, lente e época apontadas nas partes da imagem" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p9">Keep this exact photograph untouched and overlay a clean, minimal analysis diagram on top of it, like an art director&#x27;s notes: thin white lines with small circular endpoints pointing to parts of the image, each ending in a short label in Portuguese in a clean sans-serif font, white text on small semi-transparent dark rectangles. Labels exactly: &#x27;LUZ: contraluz 3000K&#x27; pointing to the sun; &#x27;COR: pêssego + azul-ardósia&#x27; pointing to the sky; &#x27;COMPOSIÇÃO: terço direito&#x27; pointing to the woman; &#x27;LINHA: pegadas guiam o olhar&#x27; pointing to the footprints; &#x27;FORMA: triângulo da vela&#x27; pointing to the sail; &#x27;TEXTURA: névoa + grão&#x27; pointing to the mist on the water; &#x27;LENTE: 35mm baixa&#x27; in the lower left corner; &#x27;ÉPOCA: negativo anos 90&#x27; in the upper left corner. Also draw thin dotted white rule-of-thirds grid lines. Spell every label exactly as written, in correct Portuguese, letter by letter (for example &#x27;baixa&#x27; is b-a-i-x-a). Do not change the photo itself.</pre>
+<button data-copy="m1-2-p9">Copiar prompt</button>
+</details>
+</figure>
+<p class="caption" data-inema-block="m1-2-b8">A leitura anotada em detalhe. Repare que duas camadas não estão “em lugar nenhum”: época e lente ficam nos cantos, porque são propriedades da imagem inteira, não de um ponto dela. Nas suas anotações, faça o mesmo.</p>
+</div>
+<aside class="tip" data-inema-block="m1-2-b10">
+<strong>Anote em cima da imagem</strong>
+<p>Abra a referência num editor qualquer (até o do celular) e escreva as sete camadas em cima dela, com setas. O gesto de apontar obriga a precisão: você não consegue apontar para “bonito”, mas consegue apontar para “o recorte de luz no ombro”.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-2" data-inema-topic="modulo-1-2#topico-2">
+<h2 class="text-2xl font-bold">
+<span class="number">2</span>Precisão vence adjetivo</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m1-2-b11">Palavras como <em>cinematic</em>, <em>moody</em>, <em>aesthetic</em> ou <em>beautiful</em> soam como direção, mas não decidem nada: cada uma cabe em mil imagens diferentes. Uma palavra visual útil é aquela que <strong>uma pessoa conseguiria executar</strong> — um iluminador saberia onde pôr a luz, um colorista saberia que curva aplicar.</p>
+<aside class="novo" data-inema-block="m1-2-b12">
+<strong>Novo aqui? Palavra visual</strong>
+<p>Um termo que descreve uma propriedade observável da imagem (<em>raking light</em>, <em>teal shadows</em>, <em>negative space</em>, <em>35mm film grain</em>) — em oposição a um adjetivo de julgamento (<em>beautiful</em>, <em>epic</em>, <em>stunning</em>).</p>
+</aside>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b13">Veja a mesma ideia — uma mulher na rua — pedida de duas formas. São <strong>duas gerações independentes</strong> (não uma edição da outra), porque aqui o ponto é justamente o prompt inteiro:</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">“woman on the street, cinematic lighting”</span>
+<a href="../../assets/img/c3-m12-vago.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m12-vago.webp" alt="Geração independente com prompt vago: moça jovem de franja e jaqueta de couro numa rua noturna molhada com bokeh de faróis — bonita, mas genérica: todas as escolhas foram do modelo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p15">woman on the street, cinematic lighting</pre>
+<button data-copy="m1-2-p15">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Seis decisões escritas</span>
+<a href="../../assets/img/c3-m12-preciso.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m12-preciso.webp" alt="Geração independente com prompt preciso: mulher de casaco grafite num ponto de ônibus no centro de São Paulo, paleta azul-acinzentada, garoa, reflexos no asfalto, um acento quente de padaria" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p16">Woman in her 40s with short grey hair and a long charcoal coat waiting at a bus stop on a drizzly avenue in downtown São Paulo, early evening. Muted blue-gray palette with a single warm accent from a bakery window behind her, matte textures, soft haze from the drizzle, wet asphalt with blurred reflections. Asymmetrical composition: she stands on the left third, a concrete column cuts the right side, lots of grey sky above. 35mm lens at f/2.8, eye level. Gritty editorial mood, fine grain, restrained contrast.</pre>
+<button data-copy="m1-2-p16">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m1-2-b14">À esquerda, o prompt vago rendeu uma imagem bonita — moça de franja e jaqueta de couro, rua noturna molhada, bokeh de faróis —, mas genérica: quem ela é, que rua é, que luz é “de cinema” e onde ela fica no quadro foram decisões do modelo, não suas. É o “cinematográfico” médio que ele entrega a qualquer um. À direita, cada uma dessas coisas foi pedida: centro de São Paulo com garoa, paleta azul-acinzentada com um único acento quente de padaria, texturas foscas, névoa, composição assimétrica com uma coluna cortando o quadro, 35 mm. Abra os dois “Prompt usado” e conte as decisões.</p>
+</div>
+<div class="compare-grid" data-inema-block="m1-2-b17">
+<div class="ok">
+<h4>✓ Troque por…</h4>
+<ul>
+<li>
+<em>low-key, single hard light from the right, deep shadows</em>
+</li>
+<li>
+<em>muted blue-gray palette with one warm accent</em>
+</li>
+<li>
+<em>soft overcast daylight, no hard shadows</em>
+</li>
+<li>
+<em>faded 1990s color negative, fine grain</em>
+</li>
+</ul>
+</div>
+<div class="no">
+<h4>✗ Em vez de…</h4>
+<ul>
+<li>
+<em>dramatic lighting</em>
+</li>
+<li>
+<em>moody colors</em>
+</li>
+<li>
+<em>nice light</em>
+</li>
+<li>
+<em>vintage vibe</em>
+</li>
+</ul>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-3" data-inema-topic="modulo-1-2#topico-3">
+<h2 class="text-2xl font-bold">
+<span class="number">3</span>A biblioteca de palavras visuais</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m1-2-b18">A <strong>biblioteca de palavras visuais</strong> é uma seção do seu caderno de olhar. Cada entrada tem quatro partes: a <strong>camada</strong>, o <strong>termo em português</strong>, o <strong>termo em inglês</strong> (é como vai no prompt) e o <strong>efeito na imagem</strong> em poucas palavras. Comece pela tabela abaixo e acrescente três termos por dia, vindos das suas leituras de referências.</p>
+<h4>Biblioteca de partida</h4>
+<div class="table-scroll" data-inema-block="m1-2-b19">
+<table>
+<thead>
+<tr>
+<th>Camada</th>
+<th>Termo</th>
+<th>No prompt (inglês)</th>
+<th>Efeito na imagem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Luz</td>
+<td>luz rasante</td>
+<td>
+<em>raking light</em>
+</td>
+<td>luz quase paralela à superfície; revela textura e relevo</td>
+</tr>
+<tr>
+<td>Luz</td>
+<td>contraluz / recorte</td>
+<td>
+<em>backlight, rim light</em>
+</td>
+<td>contorno brilhante, silhueta, atmosfera</td>
+</tr>
+<tr>
+<td>Luz</td>
+<td>luz de janela suave</td>
+<td>
+<em>soft window light</em>
+</td>
+<td>sombras graduais, pele bonita, intimidade</td>
+</tr>
+<tr>
+<td>Luz</td>
+<td>luz dura de fonte única</td>
+<td>
+<em>single hard light source</em>
+</td>
+<td>sombra de borda nítida, drama, tensão</td>
+</tr>
+<tr>
+<td>Luz</td>
+<td>clave baixa / clave alta</td>
+<td>
+<em>low-key / high-key</em>
+</td>
+<td>imagem dominada por sombra / por claros</td>
+</tr>
+<tr>
+<td>Luz</td>
+<td>hora dourada / hora azul</td>
+<td>
+<em>golden hour / blue hour</em>
+</td>
+<td>quente e baixa / fria e crepuscular</td>
+</tr>
+<tr>
+<td>Luz</td>
+<td>céu nublado difuso</td>
+<td>
+<em>overcast diffused daylight</em>
+</td>
+<td>sem sombras duras, cores calmas</td>
+</tr>
+<tr>
+<td>Cor</td>
+<td>paleta contida</td>
+<td>
+<em>restrained / muted palette</em>
+</td>
+<td>poucas cores, pouca saturação; soa adulto e caro</td>
+</tr>
+<tr>
+<td>Cor</td>
+<td>acento único</td>
+<td>
+<em>single warm accent</em>
+</td>
+<td>um ponto de cor que guia o olho</td>
+</tr>
+<tr>
+<td>Cor</td>
+<td>complementares</td>
+<td>
+<em>teal and orange</em>
+</td>
+<td>contraste quente × frio de cinema</td>
+</tr>
+<tr>
+<td>Cor</td>
+<td>monocromático</td>
+<td>
+<em>monochromatic sage palette</em>
+</td>
+<td>uma cor em vários tons; unidade</td>
+</tr>
+<tr>
+<td>Cor</td>
+<td>tons terrosos</td>
+<td>
+<em>earthy tones: terracotta, ochre</em>
+</td>
+<td>artesanal, acolhedor, orgânico</td>
+</tr>
+<tr>
+<td>Cor</td>
+<td>pastel</td>
+<td>
+<em>pastel peach and lilac</em>
+</td>
+<td>delicadeza, nostalgia, suavidade</td>
+</tr>
+<tr>
+<td>Composição</td>
+<td>regra dos terços</td>
+<td>
+<em>subject on the left third</em>
+</td>
+<td>equilíbrio dinâmico, espaço para respirar</td>
+</tr>
+<tr>
+<td>Composição</td>
+<td>espaço negativo</td>
+<td>
+<em>generous negative space</em>
+</td>
+<td>calma, destaque, lugar para texto</td>
+</tr>
+<tr>
+<td>Composição</td>
+<td>linhas-guia</td>
+<td>
+<em>leading lines</em>
+</td>
+<td>conduzem o olho até o sujeito</td>
+</tr>
+<tr>
+<td>Composição</td>
+<td>moldura natural</td>
+<td>
+<em>framed by a doorway</em>
+</td>
+<td>profundidade e foco</td>
+</tr>
+<tr>
+<td>Composição</td>
+<td>simetria frontal</td>
+<td>
+<em>symmetrical frontal composition</em>
+</td>
+<td>ordem, estabilidade, formalidade</td>
+</tr>
+<tr>
+<td>Composição</td>
+<td>primeiro plano desfocado</td>
+<td>
+<em>blurred foreground element</em>
+</td>
+<td>sensação de espiar, camadas</td>
+</tr>
+<tr>
+<td>Textura</td>
+<td>fosco</td>
+<td>
+<em>matte textures</em>
+</td>
+<td>discreto, tátil, sem brilho plástico</td>
+</tr>
+<tr>
+<td>Textura</td>
+<td>brilhante / cromado</td>
+<td>
+<em>glossy, chrome reflections</em>
+</td>
+<td>tecnologia, luxo, modernidade</td>
+</tr>
+<tr>
+<td>Textura</td>
+<td>grão de filme</td>
+<td>
+<em>35mm film grain</em>
+</td>
+<td>humano, analógico, autêntico</td>
+</tr>
+<tr>
+<td>Textura</td>
+<td>névoa / neblina</td>
+<td>
+<em>soft haze, atmospheric mist</em>
+</td>
+<td>profundidade, mistério, suavidade</td>
+</tr>
+<tr>
+<td>Textura</td>
+<td>halação</td>
+<td>
+<em>halation around highlights</em>
+</td>
+<td>brilho avermelhado em torno das luzes, cara de película</td>
+</tr>
+<tr>
+<td>Lente</td>
+<td>grande-angular</td>
+<td>
+<em>24mm wide-angle</em>
+</td>
+<td>muito espaço, presença, linhas esticadas</td>
+</tr>
+<tr>
+<td>Lente</td>
+<td>tele / compressão</td>
+<td>
+<em>135mm telephoto compression</em>
+</td>
+<td>fundo colado e desfocado, sujeito isolado</td>
+</tr>
+<tr>
+<td>Lente</td>
+<td>pouca profundidade de campo</td>
+<td>
+<em>shallow depth of field, f/1.8</em>
+</td>
+<td>fundo em borrão, foco num ponto</td>
+</tr>
+<tr>
+<td>Lente</td>
+<td>câmera baixa</td>
+<td>
+<em>low camera near the ground</em>
+</td>
+<td>sujeito imponente, chão como primeiro plano</td>
+</tr>
+<tr>
+<td>Época</td>
+<td>negativo colorido anos 90</td>
+<td>
+<em>1990s color negative film</em>
+</td>
+<td>cores desbotadas, memória recente</td>
+</tr>
+<tr>
+<td>Época</td>
+<td>slide anos 70</td>
+<td>
+<em>1970s Kodachrome-like slide film</em>
+</td>
+<td>vermelhos e amarelos intensos, nostalgia</td>
+</tr>
+<tr>
+<td>Época</td>
+<td>flash de câmera descartável</td>
+<td>
+<em>direct on-camera flash snapshot</em>
+</td>
+<td>espontâneo, festa, anos 2000</td>
+</tr>
+<tr>
+<td>Emoção</td>
+<td>dignidade calma</td>
+<td>
+<em>calm and dignified mood</em>
+</td>
+<td>respeito pelo sujeito, sem pose</td>
+</tr>
+<tr>
+<td>Emoção</td>
+<td>tensão urbana</td>
+<td>
+<em>gritty tense urban mood</em>
+</td>
+<td>energia, desconforto, realismo</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b20">Os modelos de imagem foram treinados com milhões de fotos legendadas por fotógrafos, editores e bancos de imagem — em inglês, na maior parte. Termos de set e de laboratório (<em>raking light</em>, <em>halation</em>, <em>low-key</em>) têm um significado estável nessas legendas, por isso funcionam como atalhos precisos. Seu glossário em português serve para <strong>pensar e conversar com o cliente</strong>; o termo em inglês serve para <strong>pedir ao modelo</strong>.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Como crescer a biblioteca (3 termos por dia)</h4>
+<ol class="timeline" data-inema-block="m1-2-b21">
+<li>Leia uma referência pelas sete camadas.</li>
+<li>Para a camada que mais pesa nela, procure o termo técnico (livros de fotografia, glossários de cinema, legendas de bancos de imagem).</li>
+<li>Teste o termo: gere uma imagem simples com ele e outra sem ele. Se não mudou nada visível, ele não entra.</li>
+<li>Registre camada, termo PT, termo EN e o efeito que você <strong>viu</strong>, não o que leu.</li>
+</ol>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-4" data-inema-topic="modulo-1-2#topico-4">
+<h2 class="text-2xl font-bold">
+<span class="number">4</span>Visual DNA: o que se repete num conjunto de referências</h2>
+<h3 class="sec">O que é</h3>
+<aside class="novo" data-inema-block="m1-2-b22">
+<strong>Novo aqui? Visual DNA</strong>
+<p>O conjunto de traços visuais que aparece em todas as imagens de um mesmo estilo — como o DNA de uma família, que faz parentes diferentes parecerem parentes. No trabalho de direção de arte, é também o nome do documento que registra esses traços para que toda peça nova os siga.</p>
+</aside>
+<p class="inema-prose" data-inema-block="m1-2-b23">Enquanto a leitura em sete camadas desmonta <strong>uma</strong> imagem, o Visual DNA procura o que é <strong>comum a várias</strong>. Observe a folha de referências abaixo. Os assuntos variam — uma fachada, uma cadeira de praia, mãos com amendoim, um quiosque, um menino, um varal — mas alguma coisa faz todas parecerem da mesma família:</p>
+<div class="figure-wrap">
+<figure class="shot">
+<a href="../../assets/img/c3-m12-refs.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m12-refs.webp" alt="Folha de referências 3×2: fachada coral, cadeira de praia, mãos com cone de amendoim, quiosque verde-água, menino olhando o mar, roupa no varal — todas com a mesma luz difusa e paleta" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p25">A reference moodboard sheet with six separate photographs arranged in a 3-column by 2-row grid with thin off-white gutters, on an off-white background, no text. All six share one hidden visual DNA: soft overcast daylight or open shade, no hard shadows; a restrained palette of sea-glass green, faded coral, sand and chalk white; slightly overexposed airy highlights; flat frontal compositions with generous empty space; everyday objects of a Brazilian beach town treated with calm and dignity; faded 1990s point-and-shoot color film with fine grain. Photos: 1) a pastel coral house facade with a closed green wooden window in Paraty; 2) a plastic chair and a folded beach umbrella on empty sand; 3) a woman&#x27;s hands holding a paper cone of boiled peanuts; 4) a sea-green kiosk shutter half open; 5) a boy in a faded coral t-shirt looking at the sea from a concrete wall, seen from behind; 6) laundry drying on a line against a chalk-white wall.</pre>
+<button data-copy="m1-2-p25">Copiar prompt</button>
+</details>
+</figure>
+<p class="caption" data-inema-block="m1-2-b24">Seis referências de uma cidade de praia brasileira geradas com um DNA em comum (o prompt conta qual é). Antes de abrir o “Prompt usado”, tente descrever o DNA pelas sete camadas. Depois confira.</p>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b26">Um board de 30 imagens não cabe num prompt; um DNA de oito linhas cabe. Ele também resolve um problema comum de quem trabalha com clientes: <strong>consistência não vem de fazer mais posts, vem de decidir o sistema antes</strong>. Com o DNA escrito, a centésima imagem da série segue as mesmas regras da primeira.</p>
+<h4>O que um Visual DNA contém</h4>
+<div class="table-scroll" data-inema-block="m1-2-b27">
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>O que registrar</th>
+<th>Exemplo (folha acima)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paleta</td>
+<td>3–5 cores com papéis</td>
+<td>verde-água, coral desbotado, areia, branco-giz</td>
+</tr>
+<tr>
+<td>Luz</td>
+<td>tipo, direção, dureza</td>
+<td>dia nublado ou sombra aberta, sem sombra dura</td>
+</tr>
+<tr>
+<td>Texturas</td>
+<td>superfície e acabamento</td>
+<td>altas luzes levemente estouradas, grão fino</td>
+</tr>
+<tr>
+<td>Composição</td>
+<td>hábitos de quadro</td>
+<td>frontal e plana, muito espaço vazio</td>
+</tr>
+<tr>
+<td>Clima</td>
+<td>2–3 palavras de emoção</td>
+<td>calma, cotidiano digno, verão fora de temporada</td>
+</tr>
+<tr>
+<td>Época/suporte</td>
+<td>referência de tempo</td>
+<td>câmera compacta de filme dos anos 90</td>
+</tr>
+<tr>
+<td>Palavras-chave</td>
+<td>5–7 termos para prompt</td>
+<td>
+<em>overcast, sea-glass green, faded coral, airy, frontal, 1990s point-and-shoot</em>
+</td>
+</tr>
+<tr>
+<td>Lista do NÃO</td>
+<td>o que quebra o estilo</td>
+<td>cores tropicais saturadas, pôr do sol, HDR, brilho, ângulos dramáticos</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<aside class="tip" data-inema-block="m1-2-b28">
+<strong>O DNA vem das repetições, não das exceções</strong>
+<p>Se só uma das seis referências tem pôr do sol, pôr do sol não é DNA — é exceção, e pode até ir para a lista do NÃO. Considere DNA o que aparece em pelo menos dois terços das imagens.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-5" data-inema-topic="modulo-1-2#topico-5">
+<h2 class="text-2xl font-bold">
+<span class="number">5</span>Extrair o DNA com um assistente de IA</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m1-2-b29">Os assistentes de IA atuais aceitam imagens anexadas e sabem descrevê-las em linguagem técnica. Isso faz deles um bom <strong>segundo olhar</strong>: você sobe de 6 a 20 referências (ou uma captura de tela do board inteiro) e pede a leitura estruturada. O prompt abaixo funciona em qualquer um deles:</p>
+<div class="codebox copyrun">
+<h4>Extrator de Visual DNA</h4>
+<p>
+<strong>Objetivo:</strong> Transformar um conjunto de referências anexadas num DNA visual com palavras-chave, lista do NÃO e prompts prontos.</p>
+<pre id="m1-2-p31">You are an experienced art director. I am attaching &lt;N&gt; reference images that I chose because they share a visual language I want to own.
+
+1. Analyze them together, not one by one. Find only what REPEATS in at least two thirds of them.
+2. Return my VISUAL DNA in this exact structure:
+   - Palette: 3-5 colors with approximate HEX and the role of each (base, accent, support)
+   - Light: source, direction, quality (hard/soft), approximate color temperature in K
+   - Textures and finish
+   - Composition habits (subject placement, negative space, camera height, lens feel)
+   - Era / medium it evokes
+   - Mood: 3 words
+   - 7 prompt keywords in English
+   - NO list: 6 things that would break this style
+3. Point out 1-2 references that do NOT fit the DNA and explain why.
+4. Write a reusable STYLE BLOCK (one paragraph in English, no subject) that I can append to image prompts.
+5. Write 3 complete image prompts with different subjects from &lt;meu tema&gt;, each ending with the STYLE BLOCK.
+
+Be concrete: use observable visual terms, never words like beautiful, stunning, aesthetic or cinematic without explaining what they mean.</pre>
+<button data-copy="m1-2-p31">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> O DNA descreve o que você vê nas imagens, ou inventou coisas que não estão lá? As referências apontadas como “fora do DNA” são mesmo as mais diferentes? Corte qualquer palavra-chave que você não consiga apontar em pelo menos quatro imagens.</p>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b32">O assistente é rápido, mas não tem o seu gosto: ele descreve o que é <strong>frequente</strong>, não o que é <strong>importante para você</strong>. Trate a resposta como um rascunho de estagiário muito atento — revise, corte, reescreva com as suas palavras. O documento final é seu.</p>
+<div class="codebox">
+<h4>Exemplo de DNA revisado (a folha de praia)</h4>
+<pre id="m1-2-p34" data-lang="text">PALETTE: sea-glass green #9CC7B4 (accent), faded coral #E8A08A (accent), sand #E9DCC4 (base), chalk white #F5F2EA (base)
+LIGHT: overcast daylight or open shade, soft, no hard shadows, ~6000K
+TEXTURES: slightly overexposed airy highlights, fine film grain, matte painted walls
+COMPOSITION: flat frontal framing, subject small, generous empty space, eye-level
+ERA: 1990s point-and-shoot color film
+MOOD: calm, everyday, dignified
+KEYWORDS: overcast, sea-glass green, faded coral, airy highlights, frontal, negative space, point-and-shoot film
+NO LIST: saturated tropical colors, sunsets, HDR, glossy surfaces, dramatic angles, posed smiles
+
+STYLE BLOCK: soft overcast daylight or open shade, no hard shadows; restrained palette of sea-glass green, faded coral, sand and chalk white; slightly overexposed airy highlights; flat frontal composition with generous empty space around the subject; everyday life treated with calm and dignity; faded 1990s point-and-shoot color film, fine grain.</pre>
+<button data-copy="m1-2-p34">Copiar</button>
+</div>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m1-2-b35">O teste do DNA é gerar <strong>assuntos que não estavam nas referências</strong> usando só o bloco de estilo e a lista do NÃO. Se as imagens novas parecerem da mesma família da folha, o DNA está bem escrito:</p>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Assunto novo: vendedor de coco</span>
+<a href="../../assets/img/c3-m12-dna-1.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m12-dna-1.webp" alt="Senhor vendendo água de coco num carrinho à sombra, enquadramento frontal com espaço vazio, paleta verde-água, coral desbotado e areia" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p37">Vertical photo of an elderly man selling coconut water from a small cart under a tree in a Brazilian beach town, looking off to the side. VISUAL DNA: soft overcast daylight or open shade, no hard shadows; restrained palette of sea-glass green, faded coral, sand and chalk white; slightly overexposed airy highlights; flat frontal composition with generous empty space around the subject; everyday life treated with calm and dignity; faded 1990s point-and-shoot color film, fine grain. Avoid: saturated tropical colors, sunsets, HDR, glossy surfaces, dramatic angles.</pre>
+<button data-copy="m1-2-p37">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Assunto novo: balcão de cocadas</span>
+<a href="../../assets/img/c3-m12-dna-2.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m12-dna-2.webp" alt="Balcão de mercearia com pote de cocadas, ventilador e parede coral desbotada, no mesmo DNA visual das referências" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p38">Vertical photo of a small grocery counter in a Brazilian beach town: a glass jar of cocadas, a hand-written price tag, a fan, a faded coral wall. VISUAL DNA: soft overcast daylight or open shade, no hard shadows; restrained palette of sea-glass green, faded coral, sand and chalk white; slightly overexposed airy highlights; flat frontal composition with generous empty space around the subject; everyday life treated with calm and dignity; faded 1990s point-and-shoot color film, fine grain. Avoid: saturated tropical colors, sunsets, HDR, glossy surfaces, dramatic angles. The price tag is the only text: no signs or posters on the wall, unbranded plain fan, no logos.</pre>
+<button data-copy="m1-2-p38">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m1-2-b36">Duas gerações independentes com assuntos que não existiam na folha de referências — um senhor com o carrinho de água de coco e um balcão de mercearia com pote de cocadas — e o mesmo bloco de estilo mais a lista do NÃO (“Avoid: …”). Compare com a folha: a luz sem sombra dura, a paleta verde-água e coral e o enquadramento frontal com vazio vieram do DNA, não das referências em si.</p>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-6" data-inema-topic="modulo-1-2#topico-6">
+<h2 class="text-2xl font-bold">
+<span class="number">6</span>Meaning Map: cada elemento carrega uma mensagem</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m1-2-b39">Uma imagem não só “fica bonita”: ela dispara <strong>associações</strong> — confiança, pressa, luxo, acolhimento — e essas associações decidem, em segundos, se alguém confia, compra ou passa reto. O <strong>Meaning Map</strong> (mapa de significados) é a ferramenta que torna isso explícito, sempre no mesmo formato:</p>
+<figure class="diagram">
+<svg role="img" aria-label="A cadeia do Meaning Map. Leia da esquerda para a direita: o elemento faz um trabalho, o trabalho passa uma meta-mensagem, a meta-mensagem gera uma emoção. Se você não consegue completar a cadeia de um elemento, ele está ali por acaso." viewBox="0 0 760 300" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif">
+<defs>
+<marker id="m12arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+<path d="M0,0 L10,5 L0,10 z" fill="#34d399"/>
+</marker>
+</defs>
+<rect width="760" height="300" rx="14" fill="var(--surface-2)"/>
+<g font-size="15" font-weight="700" text-anchor="middle">
+<rect x="20" y="24" width="160" height="44" rx="10" fill="#34d399" fill-opacity="0.15" stroke="#34d399"/>
+<text x="100" y="52" fill="#34d399">ELEMENTO</text>
+<rect x="210" y="24" width="160" height="44" rx="10" fill="#34d399" fill-opacity="0.15" stroke="#34d399"/>
+<text x="290" y="52" fill="#34d399">FUNÇÃO</text>
+<rect x="400" y="24" width="160" height="44" rx="10" fill="#38bdf8" fill-opacity="0.15" stroke="#38bdf8"/>
+<text x="480" y="52" fill="#38bdf8">META-MENSAGEM</text>
+<rect x="590" y="24" width="150" height="44" rx="10" fill="#38bdf8" fill-opacity="0.15" stroke="#38bdf8"/>
+<text x="665" y="52" fill="#38bdf8">EMOÇÃO</text>
+</g>
+<g stroke="#34d399" stroke-width="2" marker-end="url(#m12arr)">
+<line x1="182" y1="46" x2="206" y2="46"/>
+<line x1="372" y1="46" x2="396" y2="46"/>
+<line x1="562" y1="46" x2="586" y2="46"/>
+</g>
+<g font-size="14" fill="var(--text)" text-anchor="middle">
+<text x="100" y="112">Espaço vazio</text>
+<text x="290" y="112">clareza</text>
+<text x="480" y="112">confiança premium</text>
+<text x="665" y="112">calma</text>
+<text x="100" y="152">Alto contraste</text>
+<text x="290" y="152">legibilidade</text>
+<text x="480" y="152">autoridade</text>
+<text x="665" y="152">decisão</text>
+<text x="100" y="192">Tom quente</text>
+<text x="290" y="192">humanizar</text>
+<text x="480" y="192">acessível</text>
+<text x="665" y="192">pertencimento</text>
+<text x="100" y="232">Grão sutil</text>
+<text x="290" y="232">tatilidade</text>
+<text x="480" y="232">autenticidade</text>
+<text x="665" y="232">confiança</text>
+</g>
+<g stroke="var(--text-muted)" stroke-opacity="0.35">
+<line x1="20" y1="128" x2="740" y2="128"/>
+<line x1="20" y1="168" x2="740" y2="168"/>
+<line x1="20" y1="208" x2="740" y2="208"/>
+</g>
+<text x="20" y="278" font-size="13" fill="var(--text-muted)">Verde = o que você controla na imagem · Ciano = o que acontece na cabeça de quem vê</text>
+</svg>
+<figcaption>A cadeia do Meaning Map. Leia da esquerda para a direita: o elemento faz um trabalho, o trabalho passa uma meta-mensagem, a meta-mensagem gera uma emoção. Se você não consegue completar a cadeia de um elemento, ele está ali por acaso.</figcaption>
+</figure>
+<aside class="novo" data-inema-block="m1-2-b41">
+<strong>Novo aqui? Meta-mensagem</strong>
+<p>O que uma escolha visual comunica além do que mostra. Uma foto de produto sobre fundo branco com muito espaço mostra um produto; a meta-mensagem é “somos precisos, não temos pressa, confiamos no que vendemos”.</p>
+</aside>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b42">Cor é o elemento com mais carga de significado — e o mais mal usado. O erro clássico é a “marca arco-íris”: cada peça com uma cor diferente. O antídoto é pensar em <strong>papéis de cor</strong>: neutros de base (fundo, respiro), um acento principal (a assinatura, o foco), um acento de apoio usado raramente e, se houver interface, cores de status. O significado de cada cor depende do contexto, mas a tabela abaixo dá o ponto de partida:</p>
+<h4>Famílias de cor → meta-mensagem → emoção</h4>
+<div class="table-scroll" data-inema-block="m1-2-b43">
+<table>
+<thead>
+<tr>
+<th>Cor</th>
+<th>Meta-mensagem</th>
+<th>Emoção</th>
+<th>Cuidado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Azul</td>
+<td>confiança, estabilidade, competência</td>
+<td>segurança calma</td>
+<td>funciona melhor com bastante espaço branco</td>
+</tr>
+<tr>
+<td>Vermelho</td>
+<td>urgência, poder, ação</td>
+<td>energia, intensidade</td>
+<td>use como acento; em excesso fica agressivo</td>
+</tr>
+<tr>
+<td>Verde</td>
+<td>crescimento, equilíbrio, saúde</td>
+<td>alívio, calma</td>
+<td>em excesso vira “bem-estar genérico”</td>
+</tr>
+<tr>
+<td>Amarelo</td>
+<td>otimismo, atenção, calor</td>
+<td>alegria, curiosidade</td>
+<td>grandes áreas reduzem a sensação de premium</td>
+</tr>
+<tr>
+<td>Laranja</td>
+<td>impulso, simpatia, ousadia</td>
+<td>confiança animada</td>
+<td>contido, senão parece barato</td>
+</tr>
+<tr>
+<td>Roxo</td>
+<td>criatividade, mistério, imaginação</td>
+<td>intriga, aspiração</td>
+<td>combine com neutros para ficar nítido</td>
+</tr>
+<tr>
+<td>Rosa</td>
+<td>leveza, brincadeira, personalidade</td>
+<td>calor, diversão</td>
+<td>muda muito com o tom: de sofisticado a infantil</td>
+</tr>
+<tr>
+<td>Preto e branco</td>
+<td>autoridade, clareza, contenção</td>
+<td>controle, confiança</td>
+<td>melhor base para premium; hierarquia pelo contraste</td>
+</tr>
+<tr>
+<td>Marrom e bege</td>
+<td>ofício, herança, qualidade</td>
+<td>conforto, confiança calorosa</td>
+<td>precisa de tipografia firme para parecer atual</td>
+</tr>
+<tr>
+<td>Azul-petróleo / ciano</td>
+<td>inovação com calma, ateliê moderno</td>
+<td>frescor, curiosidade</td>
+<td>evite versões neon</td>
+</tr>
+<tr>
+<td>Cinza</td>
+<td>neutralidade, foco, maturidade</td>
+<td>estabilidade</td>
+<td>sem um toque quente, fica frio</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Forma, composição e tipografia → meta-mensagem</h4>
+<div class="table-scroll" data-inema-block="m1-2-b44">
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Função</th>
+<th>Meta-mensagem</th>
+<th>Emoção</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ângulos agudos, triângulos</td>
+<td>direção, ênfase</td>
+<td>precisão, velocidade, autoridade</td>
+<td>impulso, intensidade</td>
+</tr>
+<tr>
+<td>Cantos arredondados, círculos</td>
+<td>suavidade, acesso</td>
+<td>segurança, simpatia</td>
+<td>conforto</td>
+</tr>
+<tr>
+<td>Grades, retângulos</td>
+<td>ordem, estrutura</td>
+<td>confiabilidade, disciplina</td>
+<td>controle calmo</td>
+</tr>
+<tr>
+<td>Formas orgânicas, fluidas</td>
+<td>movimento humano</td>
+<td>emoção, criatividade</td>
+<td>calor, curiosidade</td>
+</tr>
+<tr>
+<td>Simetria</td>
+<td>ordem</td>
+<td>confiabilidade</td>
+<td>segurança</td>
+</tr>
+<tr>
+<td>Assimetria</td>
+<td>energia</td>
+<td>ousadia</td>
+<td>curiosidade</td>
+</tr>
+<tr>
+<td>Um herói claro no quadro</td>
+<td>compreensão</td>
+<td>liderança</td>
+<td>decisão</td>
+</tr>
+<tr>
+<td>Escala enorme (tipo ou imagem)</td>
+<td>atenção imediata</td>
+<td>autoridade</td>
+<td>impacto</td>
+</tr>
+<tr>
+<td>Serifada editorial</td>
+<td>tom, refinamento</td>
+<td>tradição, premium</td>
+<td>respeito</td>
+</tr>
+<tr>
+<td>Sem serifa limpa</td>
+<td>legibilidade</td>
+<td>clareza moderna</td>
+<td>confiança</td>
+</tr>
+<tr>
+<td>Condensada, caixa alta</td>
+<td>densidade, comando</td>
+<td>urgência, impacto</td>
+<td>intensidade</td>
+</tr>
+<tr>
+<td>Espaçamento largo entre letras</td>
+<td>ar</td>
+<td>luxo contido</td>
+<td>calma confiante</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Calmo e artesanal</span>
+<a href="../../assets/img/c3-m12-cartaz-calmo.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m12-cartaz-calmo.webp" alt="Cartaz calmo: fundo off-white, margens largas, uma tigela pequena, título em serifa leve &#x27;FEIRA DE BARRO&#x27; e data discreta" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p46">Vertical poster design for a fictional ceramics fair. Large off-white background with wide margins, a single photograph of one handmade speckled clay bowl placed small in the lower center with lots of negative space around it. Typography: the title &#x27;FEIRA DE BARRO&#x27; in an elegant light serif font with wide letter spacing at the top, a small line below in clean sans-serif reading &#x27;Cunha · 12 a 14 de junho&#x27;. Palette: off-white, warm beige, one terracotta accent. Soft diffused light on the bowl, subtle paper texture. Calm, premium, crafted feeling.</pre>
+<button data-copy="m1-2-p46">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Urgente e intenso</span>
+<a href="../../assets/img/c3-m12-cartaz-urgente.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m12-cartaz-urgente.webp" alt="O mesmo cartaz com papéis de cor e tipografia trocados: título condensado gigante em caixa alta, blocos vermelho e preto, tigela ampliada e cortada, diagonal" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p47">Keep the same event, same text content and the same bowl photograph, but change ONLY the color roles, typography and layout scale to communicate urgency: title &#x27;FEIRA DE BARRO&#x27; in huge bold condensed sans-serif ALL CAPS filling the full width, the line &#x27;Cunha · 12 a 14 de junho&#x27; in bold on a solid red block, background becomes saturated red and black with high contrast, the bowl enlarged and cropped at the edge of the frame, diagonal composition, tight margins.</pre>
+<button data-copy="m1-2-p47">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m1-2-b45">O mesmo cartaz de uma feira de cerâmica fictícia — mesma tigela, mesmo texto. A versão urgente é uma edição da calma que trocou só os papéis de cor, a tipografia e a escala — o título ficou tão grande que sangra pela borda direita, e a tigela, ampliada, é cortada pelo canto. Leia com o Meaning Map: margens largas + serifa leve + bege → cuidado artesanal → calma; vermelho e preto + condensada gigante + corte diagonal → urgência → intensidade. Nenhuma está errada; cada uma serve a um objetivo.</p>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-7" data-inema-topic="modulo-1-2#topico-7">
+<h2 class="text-2xl font-bold">
+<span class="number">7</span>A lista do NÃO e o teste de consistência</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m1-2-b48">Todo DNA tem um lado B: a <strong>lista do NÃO</strong> (ou lista antiestilo). São as escolhas que, se aparecerem, fazem a imagem sair da família — mesmo que fiquem bonitas. Ela é curta (5 a 8 itens) e concreta, escrita com o mesmo vocabulário da biblioteca.</p>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b49">Os geradores têm gostos próprios fortes — pôr do sol, saturação alta, pele lisa, fundo desfocado. Sem uma lista do NÃO, esses vícios vão entrando aos poucos na sua série. Veja o que acontece quando a gente quebra de propósito cada item da lista do DNA de praia, mantendo o mesmo assunto:</p>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Dentro do DNA</span>
+<a href="../../assets/img/c3-m12-dna-1.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m12-dna-1.webp" alt="Senhor vendendo água de coco num carrinho à sombra, enquadramento frontal com espaço vazio, paleta verde-água, coral desbotado e areia" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p51">Vertical photo of an elderly man selling coconut water from a small cart under a tree in a Brazilian beach town, looking off to the side. VISUAL DNA: soft overcast daylight or open shade, no hard shadows; restrained palette of sea-glass green, faded coral, sand and chalk white; slightly overexposed airy highlights; flat frontal composition with generous empty space around the subject; everyday life treated with calm and dignity; faded 1990s point-and-shoot color film, fine grain. Avoid: saturated tropical colors, sunsets, HDR, glossy surfaces, dramatic angles.</pre>
+<button data-copy="m1-2-p51">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Fora do DNA (mesmo assunto)</span>
+<a href="../../assets/img/c3-m12-fora-dna.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m12-fora-dna.webp" alt="O mesmo vendedor de coco, agora em cartão-postal saturado: pôr do sol laranja, HDR, ângulo baixo dramático — tudo o que a lista do NÃO proibia" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p52">Break the visual DNA on purpose, changing only the style: turn it into a hyper-saturated tropical postcard look — blazing orange sunset sky, hard direct sun with deep shadows, oversaturated turquoise and magenta, glossy HDR sharpening, dramatic low wide angle with the sky filling the frame. Keep the same elderly man, the same coconut cart and the same tree.</pre>
+<button data-copy="m1-2-p52">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m1-2-b50">A da direita é uma edição da da esquerda pedindo exatamente o que a lista do NÃO proíbe: pôr do sol laranja, sol duro com sombras fundas, turquesa e magenta saturados, nitidez de HDR, ângulo baixo dramático. O senhor, o carrinho e a árvore continuam lá — mas a imagem deixou de pertencer à série.</p>
+</div>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Teste de consistência (use em toda imagem nova)</h4>
+<ol class="timeline" data-inema-block="m1-2-b53">
+<li>
+<strong>Paleta:</strong> as cores dominantes estão entre as do DNA? Há alguma cor sem papel?</li>
+<li>
+<strong>Luz:</strong> o tipo, a direção e a dureza batem com o DNA?</li>
+<li>
+<strong>Quadro:</strong> o hábito de composição foi mantido?</li>
+<li>
+<strong>Lista do NÃO:</strong> algum item proibido entrou?</li>
+<li>
+<strong>Família:</strong> colocada ao lado de três imagens da série, ela parece parente ou visita?</li>
+</ol>
+<aside class="limite" data-inema-block="m1-2-b54">
+<strong>O assistente também erra a leitura</strong>
+<p>Assistentes de IA descrevem imagens bem, mas confundem coisas finas: chamam de “golden hour” qualquer luz quente, erram temperaturas de cor, inventam “35mm” sem base e às vezes descrevem elementos que não estão na imagem. Por isso o DNA só vale depois que você confere cada linha contra as referências.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section id="pratica" class="pratica">
+<h2>Prática guiada: o DNA do seu board, testado em imagens novas</h2>
+<p class="inema-prose" data-inema-block="m1-2-b55">Pegue o board que você montou no módulo 1-1. Nesta prática você vai ler uma referência pelas sete camadas, extrair o DNA do board com um assistente, revisar, e provar que o DNA funciona gerando duas imagens com assuntos que não estavam no board.</p>
+<h4>Roteiro</h4>
+<ol class="timeline" data-inema-block="m1-2-b56">
+<li>Escolha a referência mais forte do board e anote as sete camadas em cima dela (tabela do primeiro tópico).</li>
+<li>Selecione de 8 a 20 referências do board que você considera o coração do estilo.</li>
+<li>Rode o <strong>Extrator de Visual DNA</strong> (tópico 5) num assistente com visão, anexando as imagens.</li>
+<li>Revise a resposta: corte palavras-chave que você não consegue apontar em quatro imagens; ajuste a lista do NÃO.</li>
+<li>Gere duas imagens com assuntos novos usando o prompt abaixo.</li>
+<li>Aplique o teste de consistência às duas. Se uma falhar, reforce só a linha do DNA que escapou.</li>
+</ol>
+<div class="codebox copyrun">
+<h4>Prompt de teste do DNA</h4>
+<p>
+<strong>Objetivo:</strong> Gerar uma imagem nova guiada apenas pelo seu DNA revisado.</p>
+<pre id="m1-2-p58">&lt;Formato: vertical / horizontal&gt; photo of &lt;assunto novo que NÃO aparece nas referências: quem ou o quê, fazendo o quê, onde&gt;.
+VISUAL DNA: &lt;cole aqui o STYLE BLOCK revisado&gt;.
+Avoid: &lt;cole aqui a lista do NÃO, separada por vírgulas&gt;.</pre>
+<button data-copy="m1-2-p58">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> Ao lado de três referências do board, a imagem nova parece da mesma família? Passe o teste de consistência de cinco perguntas e anote qual camada foi a mais difícil de segurar.</p>
+</div>
+<div class="codebox copyrun">
+<h4>Exemplo pronto (DNA de praia deste módulo)</h4>
+<p>
+<strong>Objetivo:</strong> Ver o DNA funcionando num terceiro assunto antes de testar o seu.</p>
+<pre id="m1-2-p60">Vertical photo of a lifeguard&#x27;s wooden chair and a rolled red-and-white flag on an empty beach in the morning, a single seagull on the sand.
+VISUAL DNA: soft overcast daylight or open shade, no hard shadows; restrained palette of sea-glass green, faded coral, sand and chalk white; slightly overexposed airy highlights; flat frontal composition with generous empty space around the subject; everyday life treated with calm and dignity; faded 1990s point-and-shoot color film, fine grain.
+Avoid: saturated tropical colors, sunsets, HDR, glossy surfaces, dramatic angles.</pre>
+<button data-copy="m1-2-p60">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> O vermelho da bandeira ficou contido (coral desbotado) ou saturado? Se saturou, reforce “faded” e “restrained” — é o tipo de cor que o modelo adora exagerar.</p>
+</div>
+</section>
+<section id="licao" class="licao">
+<h2>Lição de casa</h2>
+<p>Continue no <strong>caderno de olhar</strong>. Esta lição enche a seção *Palavras* e cria a primeira versão do seu DNA — o documento que os módulos de direção visual vão usar.</p>
+<div class="levels">
+<div class="level">
+<h3>Nível básico <span class="fine">(obrigatório)</span>
+</h3>
+<ol>
+<li>Leia <strong>três referências</strong> pelas sete camadas, anotando em cima de cada imagem.</li>
+<li>Monte a sua biblioteca com <strong>pelo menos 30 termos</strong> (camada, PT, EN, efeito), partindo da tabela do módulo e acrescentando 10 seus.</li>
+<li>Extraia o <strong>Visual DNA</strong> do seu board com o assistente e escreva a versão revisada (paleta, luz, texturas, composição, época, clima, palavras-chave, lista do NÃO, bloco de estilo).</li>
+<li>Gere <strong>duas imagens</strong> com assuntos novos usando só o DNA e passe o teste de consistência.</li>
+<li>Escreva um <strong>Meaning Map</strong> de 6 linhas (elemento → função → meta-mensagem → emoção) para o seu DNA.</li>
+</ol>
+</div>
+<div class="level adv">
+<h3>Nível avançado <span class="fine">(desafio)</span>
+</h3>
+<ol>
+<li>
+<strong>Legenda de DNA completa:</strong> transforme o DNA num documento de uma página com: nome do projeto, objetivo das imagens, público, três pilares (função, emoção, diferencial), 5–7 palavras de clima, lista do NÃO, papéis de cor, papéis de tipografia, regras de imagem e o Meaning Map. Peça a um assistente, no papel de diretor de arte, três variações (A/B/C) que respeitem o mesmo posicionamento e um checklist de avaliação; escolha uma e justifique.</li>
+<li>
+<strong>Quebra controlada:</strong> pegue uma das suas imagens dentro do DNA e faça uma edição que quebre de propósito só um item da lista do NÃO. Depois outra, quebrando outro. Anote qual quebra mais tira a imagem da família.</li>
+</ol>
+</div>
+</div>
+<p>
+<strong>Entregue/guarde:</strong> No caderno de olhar: as três leituras anotadas, a biblioteca com 30+ termos, o DNA revisado com bloco de estilo e lista do NÃO, as duas imagens de teste com prompts e o Meaning Map. No avançado, a legenda de DNA de uma página.</p>
+</section>
+<section id="checagem">
+<h2>Teste sua decisão</h2>
+<div class="quiz" data-quiz="modulo-1-2#q1" data-correct="1" data-explain="“Raking light” descreve algo que um iluminador executa e que se vê na imagem (luz rasante, textura revelada). As outras são julgamentos que o modelo resolve pela média.">
+<p>
+<strong>1.</strong> Qual destas descrições é uma palavra visual útil num prompt?</p>
+<button data-answer="0" aria-pressed="false">
+<em>stunning cinematic aesthetic</em>
+</button>
+<button data-answer="1" aria-pressed="false">
+<em>raking light from the left revealing the wood grain</em>
+</button>
+<button data-answer="2" aria-pressed="false">
+<em>beautiful moody vibe</em>
+</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>“Raking light” descreve algo que um iluminador executa e que se vê na imagem (luz rasante, textura revelada). As outras são julgamentos que o modelo resolve pela média.</p>
+</details>
+</div>
+<div class="quiz" data-quiz="modulo-1-2#q2" data-correct="1" data-explain="DNA é o que se repete em pelo menos dois terços das referências. O assistente é um rascunho: você confere cada linha contra as imagens e decide.">
+<figure class="shot">
+<a href="../../assets/img/c3-m12-refs.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c3-m12-refs.webp" alt="Folha de referências 3×2: fachada coral, cadeira de praia, mãos com cone de amendoim, quiosque verde-água, menino olhando o mar, roupa no varal — todas com a mesma luz difusa e paleta" loading="lazy" decoding="async">
+</a>
+</figure>
+<p>
+<strong>2.</strong> O assistente devolveu um DNA dizendo que suas referências têm “golden hour light”, mas só duas de doze têm pôr do sol. O que fazer?</p>
+<button data-answer="0" aria-pressed="false">Aceitar: o assistente analisou melhor</button>
+<button data-answer="1" aria-pressed="false">Tirar “golden hour” do DNA — o que aparece em poucas é exceção, e pode até ir para a lista do NÃO</button>
+<button data-answer="2" aria-pressed="false">Acrescentar mais fotos de pôr do sol ao board para o DNA fazer sentido</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>DNA é o que se repete em pelo menos dois terços das referências. O assistente é um rascunho: você confere cada linha contra as imagens e decide.</p>
+</details>
+</div>
+<div class="quiz" data-quiz="modulo-1-2#q3" data-correct="1" data-explain="Espaço vazio e margens → clareza → confiança calma; serifa leve e espaçada → refinamento contido; bege → ofício e herança. A primeira opção comunica urgência; a terceira, energia e brincadeira.">
+<p>
+<strong>3.</strong> Um cliente quer um cartaz que transmita cuidado artesanal e calma. Pelo Meaning Map, qual combinação serve melhor?</p>
+<button data-answer="0" aria-pressed="false">Vermelho e preto, tipografia condensada em caixa alta, composição diagonal</button>
+<button data-answer="1" aria-pressed="false">Neutros bege e off-white, serifa leve com espaçamento largo, margens generosas</button>
+<button data-answer="2" aria-pressed="false">Rosa saturado, formas angulares, escala gigante</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>Espaço vazio e margens → clareza → confiança calma; serifa leve e espaçada → refinamento contido; bege → ofício e herança. A primeira opção comunica urgência; a terceira, energia e brincadeira.</p>
+</details>
+</div>
+<p class="fine">Responder não marca a leitura nem bloqueia o próximo módulo.</p>
+</section>
+<section>
+<h2>O que levar desta aula</h2>
+<ul>
+<li>Leia toda imagem em <strong>sete camadas</strong>, sempre na mesma ordem: luz, cor, composição, textura, lente, época, emoção.</li>
+<li>
+<strong>Palavra visual</strong> é o que alguém consegue executar; adjetivo de julgamento deixa o modelo decidir.</li>
+<li>Sua <strong>biblioteca de palavras</strong> tem camada, termo em PT, termo em EN e o efeito que você viu — 3 termos novos por dia.</li>
+<li>
+<strong>Visual DNA</strong> = o que se repete em dois terços das referências, com palavras-chave, lista do NÃO e bloco de estilo.</li>
+<li>Use o assistente de IA como <strong>segundo olhar</strong>, nunca como juiz: revise cada linha contra as imagens.</li>
+<li>
+<strong>Meaning Map:</strong> elemento → função → meta-mensagem → emoção. Se a cadeia não fecha, o elemento está ali por acaso.</li>
+</ul>
+<div class="actions">
+<a class="button" href="index.html">Voltar para a trilha</a>
+<a class="button primary" href="../../curso/trilha2/modulo-2-1.html">Próximo módulo: As sete famílias estéticas</a>
+</div>
+</section>
+</article>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<span>Curso gratuito · INEMA.CLUB · v1.1.0</span>
+<a href="../../materiais.html">Materiais e referências</a>
+<a href="../../../index.html">Os três cursos</a>
+<a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>
+<a href="https://www.inema.club/cursos/">Todos os cursos</a>
+</div>
+</footer>
+<script src="../../assets/learn.js">
+</script>
+<script src="../../assets/course.js">
+</script>
+</body>
+</html>

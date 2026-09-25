@@ -1,23 +1,134 @@
-# Observe, selecione e descreva
+# Módulo 1-1 — Gosto é treinável
+## Molde do bloco de estilo
 
-Analise as referências que anexei. Para cada imagem, descreva apenas características visíveis de paleta, direção da luz, composição e textura. Separe observação de interpretação. Depois identifique três padrões recorrentes e proponha dez expressões concretas que eu possa usar para orientar imagens próprias. Não invente autoria, equipamento fotográfico nem intenção do criador. Se algo for incerto, indique a dúvida.
+<Assunto: quem ou o quê, fazendo o quê, onde — uma frase concreta>.
+STYLE BLOCK: <paleta de 3-4 cores> palette, <fonte e direção da luz>, <qualidade: soft/hard> light at <temperatura>K, <textura dominante: matte / glossy / grainy>, <composição: posição do sujeito + espaço negativo>, <lente> lens at <abertura>, <acabamento: film grain / clean digital>, <clima em 2-3 palavras> mood.
 
-Conferência: Este prompt é para um assistente que aceite imagens. Anexe referências próprias ou autorizadas. Confira cada observação na imagem; a análise automática pode errar.
+Como verificar: Cada uma das três imagens mostra a mesma direção de luz, a mesma paleta e o mesmo tipo de espaço vazio? Se não, a palavra daquela camada está fraca ou ambígua — troque por uma mais concreta.
 
-# Sete famílias estéticas, muitas possibilidades
+# Módulo 1-1 — Gosto é treinável
+## Exemplo pronto (para testar antes de escrever o seu)
 
-Crie uma imagem de uma caneca terracota de alça oval sobre mesa clara. Direção visual minimalista: poucos elementos, fundo creme uniforme, luz suave lateral e espaço negativo amplo. Preserve o produto inteiro e um ponto de atenção principal. Depois de avaliar esta versão, farei outra geração alterando somente a direção visual para retrô, com paleta terrosa e composição inspirada em impressos antigos. Gere apenas a primeira imagem agora, sem texto.
+Vertical photo of a woman selling tapioca from a small iron griddle at a street corner in Fortaleza, early evening, folding a tapioca with a spatula.
+STYLE BLOCK: muted terracotta and sage palette, warm low side light from the left at 3500K, soft long shadows, matte textures, subject on the left third with plain wall as negative space on the right, 50mm lens at f/2.8, subtle 35mm film grain, calm and dignified documentary mood.
 
-Conferência: Produza as duas versões separadamente. Compare paleta, luz, composição e textura. Não atribua diferenças apenas ao rótulo do estilo: registre tudo que mudou.
+Como verificar: A tapioqueira ficou no terço esquerdo com parede lisa à direita? A luz vem da esquerda, quente e baixa? Coloque ao lado das três imagens do tópico “Nomear”: parece a mesma série?
 
-# Desmonte referências e construa regras próprias
+# Módulo 1-1 — Gosto é treinável
+## Estudo de recriação (receita, não prato)
 
-Analise a imagem que anexei como um estudo de composição. Descreva: 1 o primeiro ponto de atenção; 2 os elementos que conduzem o olhar; 3 a distribuição de áreas claras e escuras; 4 a relação entre objeto e espaço vazio; 5 uma técnica que eu possa aplicar a uma imagem diferente. Separe sinais visíveis de hipóteses de interpretação. Não atribua intenção ao autor nem invente dados técnicos.
+Make a STUDY of the attached reference, not a copy. Keep only its recipe: <tipo e direção da luz>, <paleta>, <posição do sujeito e espaço negativo>, <textura / acabamento>, <clima>. Replace everything else: the subject is now <outra pessoa ou objeto>, in <outro lugar>, doing <outra ação>. Different person, different place, different objects — same recipe.
 
-Conferência: Confira se a análise aponta regiões realmente visíveis. Escolha apenas uma técnica e aplique a outro assunto, com composição e elementos próprios.
+Como verificar: Um amigo que visse as duas lado a lado diria “são parentes” e não “é a mesma foto”? Se a pessoa, o lugar ou a pose se parecem demais, troque mais elementos.
 
-# Projeto final: sua direção visual em prática
+# Módulo 1-2 — Nomeie o que você vê: vocabulário e Visual DNA
+## Prompt de teste do DNA
 
-Crie uma fotografia autoral de uma caneca terracota de alça oval sobre mesa clara, para a marca fictícia Aurora. A direção escolhida combina composição minimalista e paleta terrosa: fundo creme, objeto no terço direito, luz suave de janela à esquerda, esmalte fosco e poucos elementos. Reserve espaço negativo à esquerda. Não inclua texto. Mantenha essa linguagem nas próximas duas imagens, variando apenas a função do enquadramento: detalhe do material e cena de uso.
+<Formato: vertical / horizontal> photo of <assunto novo que NÃO aparece nas referências: quem ou o quê, fazendo o quê, onde>.
+VISUAL DNA: <cole aqui o STYLE BLOCK revisado>.
+Avoid: <cole aqui a lista do NÃO, separada por vírgulas>.
 
-Conferência: Gere cada imagem separadamente e compare a série. Confira se as palavras visuais escolhidas aparecem nos resultados e se a função de cada peça é diferente.
+Como verificar: Ao lado de três referências do board, a imagem nova parece da mesma família? Passe o teste de consistência de cinco perguntas e anote qual camada foi a mais difícil de segurar.
+
+# Módulo 1-2 — Nomeie o que você vê: vocabulário e Visual DNA
+## Exemplo pronto (DNA de praia deste módulo)
+
+Vertical photo of a lifeguard's wooden chair and a rolled red-and-white flag on an empty beach in the morning, a single seagull on the sand.
+VISUAL DNA: soft overcast daylight or open shade, no hard shadows; restrained palette of sea-glass green, faded coral, sand and chalk white; slightly overexposed airy highlights; flat frontal composition with generous empty space around the subject; everyday life treated with calm and dignity; faded 1990s point-and-shoot color film, fine grain.
+Avoid: saturated tropical colors, sunsets, HDR, glossy surfaces, dramatic angles.
+
+Como verificar: O vermelho da bandeira ficou contido (coral desbotado) ou saturado? Se saturou, reforce “faded” e “restrained” — é o tipo de cor que o modelo adora exagerar.
+
+# Módulo 2-1 — As sete famílias estéticas
+## Base neutra (gerar)
+
+Medium-wide shot of <pessoa: idade, aparência, roupa> <ação física concreta> at <lugar brasileiro específico>, <horário>. <2-3 objetos importantes da cena>. <O que aparece ao fundo>. Shot at eye level on a 35mm lens at f/4, subject on the left third. <Luz natural simples>. Neutral, straightforward documentary photograph, natural colors, no stylization. No text on signs.
+
+Como verificar: A base parece uma foto “sem opinião”? Se ela já saiu muito estilizada (pôr do sol dramático, grão forte), gere de novo pedindo luz mais neutra — senão as edições herdam essa estética.
+
+# Módulo 2-1 — As sete famílias estéticas
+## Re-render em uma família (editar a base)
+
+Fully re-render this ENTIRE image — subject AND background — as a <FAMÍLIA / SUBESTILO> image: <paleta com 3-4 cores>, <luz: fonte, direção, dureza>, <textura e suporte: grão / brilho / névoa / época / grau de realismo>, <o que muda no cenário, figurino e objetos>, <clima em 2-3 palavras>. Keep the same <pessoa>, the same <gesto> and <elemento-chave>. No text on signs.
+
+Como verificar: Em dois segundos dá para dizer qual é a família? A pessoa continua a mesma? O cenário combina com a estética, sem anacronismos?
+
+# Módulo 2-1 — As sete famílias estéticas
+## Exemplo pronto (a mesma base, estética retrô)
+
+Fully re-render this ENTIRE image — subject AND background — as an authentic RETRO / VINTAGE photograph from a 1970s Brazilian family album: warm faded Kodachrome-like colors with yellowed whites and orange-shifted skin, visible coarse film grain, soft slightly imperfect focus, light leak in the upper right corner, a faint vignette, rounded print corners and a thin white paper border, candid unposed feeling. Period-correct details: her clothes become a 1970s floral dress, the plastic bowl becomes an enamel cup, a wooden boat with painted stripes behind. Keep the same woman, headscarf, gesture of serving açaí and the customer's hand. No text on signs.
+
+Como verificar: Compare com a imagem “Retrô / vintage” do módulo: o que o seu gerador fez diferente? Se ficou tímido, repita “ENTIRE image” e aumente o peso do grão e da borda de papel.
+
+# Módulo 2-2 — Estética por objetivo: decidir, misturar, aplicar
+## Molde de prompt com bloco de estilo
+
+<Plano> of <assunto: quem ou o quê, aparência> <ação concreta>, in <lugar com 2-3 objetos>.
+In a <família ou híbrido: e.g. 'hybrid of cinematic structure and retro surface'> aesthetic.
+STYLE BLOCK: <luz: fonte, direção, qualidade, K>; <paleta: base + acento único>; <lente e profundidade de campo>; <textura e acabamento>; <clima em 2 palavras> mood. No text on signs.
+
+Como verificar: Nas três imagens a luz vem do mesmo lado, a paleta tem o mesmo acento e o grão/acabamento é igual? Se uma destoa, confira se o bloco foi colado sem alteração.
+
+# Módulo 2-2 — Estética por objetivo: decidir, misturar, aplicar
+## Exemplo pronto: híbrido para uma ONG
+
+Medium shot of a Brazilian riverside fisherwoman in her 50s with sun-weathered skin and a faded yellow T-shirt, mending a fishing net on the wooden deck of her stilt house over the river, in the Amazon delta.
+In a hybrid aesthetic: CINEMATIC structure with RETRO surface.
+STYLE BLOCK: low warm late-afternoon sun from the right as a hard key light, deep shadow on the left side of the frame, shallow depth of field on a 50mm lens at f/2; 1970s color negative film look with warm faded tones, lifted blacks, visible grain and a soft vignette; earthy palette of wood brown and river green with the yellow shirt as the only accent; dignified, quiet, remembered mood. No text.
+
+Como verificar: A luz tem direção clara e sombra profunda (estrutura de cinema)? A superfície parece filme antigo (grão, pretos lavados)? O amarelo é o único acento?
+
+# Módulo 2-2 — Estética por objetivo: decidir, misturar, aplicar
+## Pedir ajuda a um assistente para fechar a cadeia
+
+Você é diretor de arte. Projeto: <descreva em 3 frases: o que é, para quem, onde as imagens vão aparecer>.
+Objetivo principal: <vender / atrair clientes / gerar confiança / mobilizar>.
+1) Proponha a emoção-alvo em até 3 palavras.
+2) Proponha 3 rotas estéticas (uma família pura e dois híbridos). Para cada híbrido, diga qual família dá a ESTRUTURA (luz, composição) e qual dá a SUPERFÍCIE (paleta, textura).
+3) Para cada rota, escreva a cadeia Elemento → função → meta-mensagem → emoção para luz, paleta e textura.
+4) Para a rota que você recomendaria, escreva um STYLE BLOCK de 3–5 linhas em inglês, pronto para colar em prompts de imagem.
+Não use nomes de artistas nem de marcas reais.
+
+Como verificar: As três rotas são realmente diferentes? A recomendada tem justificativa ligada ao objetivo (não só “é bonita”)? O bloco tem luz com direção, paleta com acento único e textura?
+
+# Módulo 3-1 — Observação profissional: desmontar, estudar, criar regras
+## Desmontagem assistida de uma referência
+
+Analise a imagem anexada como um diretor de fotografia. Responda em seis camadas, com uma ou duas frases cada:
+1) Estrutura: onde o olho entra, por onde passa e onde descansa.
+2) Plano e ângulo: qual é e que trabalho faz.
+3) Ritmo: a imagem é calma ou empurra o olhar? Por quê?
+4) Foco e acentos: assunto principal e segundo ponto de atenção.
+5) Luz: fonte, direção, qualidade (dura/suave) e temperatura aproximada em Kelvin.
+6) Cor: cor de base e cor de acento.
+Depois, diga qual é a UMA decisão que mais faz esta imagem funcionar, no formato 'elemento → efeito'. Por fim, escreva essa decisão como uma frase de prompt em inglês.
+
+Como verificar: Compare com a sua desmontagem. Onde vocês discordam, volte à imagem e decida quem está certo — é nesse ponto que o olho treina.
+
+# Módulo 3-1 — Observação profissional: desmontar, estudar, criar regras
+## Molde de edição: um fator por vez
+
+Change ONLY the <fator: lighting / framing and composition / color palette> of this image: <descrição precisa da técnica da referência, com direção, qualidade e posição>. The difference must be obvious. Keep the same <pessoa ou objeto>, pose, camera position, background objects and <os outros fatores> identical.
+
+Como verificar: Só o fator pedido mudou? Se o rosto, a pose ou o fundo também mudaram, repita a lista do que deve ficar igual, mais explícita.
+
+# Módulo 4-1 — Projeto final: seu caderno de olhar aplicado
+## Molde de prompt da série (bloco v2)
+
+<Assunto e ação concreta, em 1 frase>. <It is / She is / He is> the only subject; <fundo fixo da série> behind; the <terço livre> of the frame is calm empty space.
+STYLE BLOCK: <estética e época>; <tons e contraste>; <luz: fonte e direção fixas>; <textura e acabamento>; <paleta base>, with <cor> as the only accent; <lente e altura da câmera>; <clima em 2-3 palavras> mood. No text.
+
+Como verificar: Passe a imagem pela grade regra × imagem. Se uma regra falhou, reforce só a frase dela (ex.: “the window light comes from the LEFT side of the frame”) e gere de novo.
+
+# Módulo 4-1 — Projeto final: seu caderno de olhar aplicado
+## Avaliação assistida com a rubrica
+
+Você é diretor de arte e vai avaliar uma série de imagens para uma marca. Objetivo da marca: <objetivo>. Emoção-alvo: <emoção>. Estética escolhida: <estética>.
+Minhas 5 regras visuais: 1) <regra> 2) <regra> 3) <regra> 4) <regra> 5) <regra>.
+Para as imagens anexadas (em ordem):
+a) Monte uma grade com as 5 regras nas linhas e as imagens nas colunas, marcando ✓ ou ✗ e explicando cada ✗ em uma frase.
+b) Diga qual imagem mais destoa da série e qual traço (luz, paleta, textura, composição, clima) causa isso.
+c) Diga se a série transmite a emoção-alvo e por quê.
+d) Sugira UMA alteração de prompt para a imagem mais fraca.
+
+Como verificar: A grade do assistente bate com a sua? Onde diverge, olhe de novo a imagem — e decida você.

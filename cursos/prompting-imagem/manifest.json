@@ -8,13 +8,13 @@
         {
           "id": "1-1",
           "title": "Escolha sua ferramenta e prepare o projeto",
-          "topics": 6,
+          "topics": 8,
           "href": "curso/trilha1/modulo-1-1.html"
         },
         {
           "id": "1-2",
           "title": "A fórmula do prompt",
-          "topics": 6,
+          "topics": 8,
           "href": "curso/trilha1/modulo-1-2.html"
         }
       ]
@@ -26,13 +26,13 @@
         {
           "id": "2-1",
           "title": "Controles e testes dentro das ferramentas",
-          "topics": 6,
+          "topics": 8,
           "href": "curso/trilha2/modulo-2-1.html"
         },
         {
           "id": "2-2",
           "title": "Personagem e campanha consistentes",
-          "topics": 6,
+          "topics": 7,
           "href": "curso/trilha2/modulo-2-2.html"
         }
       ]
@@ -44,13 +44,13 @@
         {
           "id": "3-1",
           "title": "Edite sem perder o que já funciona",
-          "topics": 6,
+          "topics": 8,
           "href": "curso/trilha3/modulo-3-1.html"
         },
         {
           "id": "3-2",
           "title": "Upscale, restauração e entrega",
-          "topics": 6,
+          "topics": 7,
           "href": "curso/trilha3/modulo-3-2.html"
         }
       ]
@@ -62,7 +62,7 @@
         {
           "id": "4-1",
           "title": "Projeto final: da intenção ao portfólio",
-          "topics": 6,
+          "topics": 7,
           "href": "curso/trilha4/modulo-4-1.html"
         }
       ]

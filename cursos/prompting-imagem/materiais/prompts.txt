@@ -1,41 +1,126 @@
-# Escolha sua ferramenta e prepare o projeto
+# Módulo 1-1 — Escolha sua ferramenta e prepare o projeto
+## O assistente de chat como roteirista de prompt
 
-Crie uma fotografia de produto de uma caneca de cerâmica sem marca, cor terracota, alça oval à direita. Coloque-a sobre uma mesa clara, diante de um fundo liso creme. Enquadramento quadrado, câmera na altura da caneca, luz suave de uma janela à esquerda. Preserve a borda circular e a alça inteira. Deixe espaço livre acima do objeto. Sem texto na imagem.
+Você é diretor de fotografia e especialista em prompts para geradores de imagem.
+Vou descrever uma imagem do jeito que eu falaria. Devolva UM prompt em inglês, em texto corrido, com estas camadas nesta ordem:
+1) tipo de plano + sujeito (aparência, roupa) + ação física concreta + lugar;
+2) lente em mm e abertura (f/), ângulo de câmera;
+3) luz: fonte, direção, qualidade (dura/suave) e temperatura em Kelvin;
+4) 2–3 materiais com dois adjetivos cada;
+5) composição (posição do sujeito, espaço negativo, fundo);
+6) referência de estilo (época, tipo de fotografia) e a emoção pretendida.
+Não cite nomes de artistas nem marcas reais. Termine com uma linha 'Evitar:' listando o que não deve aparecer.
 
-Conferência: Confira objeto, alça, direção da sombra e área livre. Salve a imagem e o nome exato do modelo, mesmo que o resultado não seja aprovado.
+Minha ideia: uma foto da barista da cafeteria de manhã cedo, com o torrador ao fundo, passando a sensação de que o dia está começando com calma. É para o post de abertura do Instagram (formato 4:5).
 
-# A fórmula do prompt
+Como verificar: O prompt devolvido tem as seis camadas? A luz tem direção e Kelvin? Existe uma linha do que evitar? Se faltar algo, peça: “reescreva incluindo a camada X”.
 
-Fotografia de uma caneca artesanal terracota com uma única alça oval à direita, sobre mesa de madeira clara. Plano de produto com a caneca inteira e margem ao redor, câmera na altura da borda. Luz de janela grande à esquerda, sombras suaves à direita. Esmalte fosco com pequenas irregularidades, sem rachaduras. Fundo creme simples, objeto no terço direito e espaço livre à esquerda para diagramação posterior. Atmosfera tranquila de manhã. Formato horizontal 4:3.
+# Módulo 1-1 — Escolha sua ferramenta e prepare o projeto
+## Prompt de teste: o retrato da Lia
 
-Conferência: Anote no resultado onde aparecem sujeito, enquadramento, luz, textura e composição. Se um pedido não apareceu, descreva o desvio sem acrescentar vários adjetivos.
+Waist-up portrait of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, standing in a rustic coffee roastery, arms relaxed, holding a speckled cream ceramic cup with both hands at chest height, looking straight into the camera with a calm, confident half-smile. Shot on an 85mm lens at f/2, eye level. Soft morning window light from the left, warm 3500K, gentle fill on the right side of her face. Natural skin with visible pores and freckles, linen texture on the apron. Background softly blurred: a vintage cast-iron coffee roaster and burlap sacks. No text, signs or lettering anywhere. Natural editorial portrait photography, subtle 35mm film grain, evoking warmth and craft.
 
-# Controles e testes dentro das ferramentas
+Como verificar: Cabelo cacheado preso, sardas e avental mostarda apareceram? A luz vem da esquerda? O fundo está desfocado? Surgiu algum letreiro mesmo com o pedido de “no text”? Anote cada falha: ela diz algo sobre o modelo.
 
-Use a imagem de referência anexada como guia da forma da caneca: uma alça oval à direita e corpo terracota. Crie uma nova cena sobre mesa creme, com luz suave à esquerda e fundo sem objetos. Preserve a proporção do corpo e da alça. Deixe a caneca inteira no quadro. Nesta versão, altere somente a posição do objeto para o terço direito. Não acrescente texto.
+# Módulo 1-2 — A fórmula do prompt
+## Molde do prompt-mestre
 
-Conferência: Antes de gerar, anexe a referência própria criada no módulo anterior. Depois compare forma e posição. Registre qualquer outra diferença que apareceu.
+<Plano> of <sujeito: quem, aparência, roupa> <ação física concreta>, in <lugar com 2-3 objetos>.
+Shot on a <lente> lens at <abertura>, <ângulo>.
+<Fonte de luz> from the <direção>, <qualidade> light, <temperatura>K.
+Detailed textures: <material 1 + 2 adjetivos>, <material 2 + 2 adjetivos>.
+<Composição: posição do sujeito, espaço negativo, camadas>.
+<Referência de estilo: época, gênero, suporte>, evoking <emoção pretendida>.
 
-# Personagem e campanha consistentes
+Como verificar: Cada linha do molde virou algo visível na imagem? Se uma camada não aparece (ex.: a luz veio da direita), reforce só essa linha e gere de novo.
 
-Crie uma cena para a marca fictícia Aurora. Uma ceramista adulta fictícia, cabelo curto grisalho, camisa azul simples e avental bege, segura uma caneca terracota de alça oval. Use a referência anexada da caneca para a forma e o material. Ambiente de ateliê com mesa clara, luz de janela à esquerda, enquadramento médio. A mão deve apoiar a caneca de modo plausível. Não inclua logotipos nem texto. Preserve a aparência da personagem nas próximas edições a partir desta imagem aprovada.
+# Módulo 1-2 — A fórmula do prompt
+## Exemplo pronto (Terra Alta — produto)
 
-Conferência: A referência obrigatória é a caneca aprovada. Após a primeira personagem, salve também seu retrato e use-o nas cenas seguintes; confira rosto, roupa, mãos e produto.
+Medium close-up of a kraft-paper coffee bag with a hand-stamped label reading 'TERRA ALTA' standing on a worn oak counter next to a speckled cream stoneware cup of black coffee, a few roasted beans scattered in front.
+Shot on an 85mm lens at f/2.8, slightly above eye level.
+Soft morning window light from the left, diffused, 4000K, gentle shadow to the right.
+Detailed textures: rough recycled kraft fibers, matte speckled glaze with a drip line, oily roasted beans with a center crease.
+Bag on the right third, clean negative space on the left for a headline, blurred café shelves in the background.
+Contemporary editorial product photography, natural color grade, evoking slow mornings in the mountains.
 
-# Edite sem perder o que já funciona
+Como verificar: O rótulo saiu legível? O espaço à esquerda está limpo o bastante para um título? A luz vem da esquerda (sombra à direita)?
 
-Edite a imagem anexada. Remova somente o pequeno objeto que aparece no fundo à direita e preencha a área com continuação do fundo creme. Preserve a caneca, sua alça, a mesa, a sombra, o enquadramento e a iluminação. Não acrescente novos objetos nem texto.
+# Módulo 2-1 — Controles e testes dentro das ferramentas
+## Baseline só com texto (Terra Alta)
 
-Conferência: Use uma cópia de uma imagem sua que contenha um elemento a remover. Se ela não tiver esse problema, escolha outra correção localizada e ajuste a frase. Compare também regiões fora da edição.
+Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, standing beside a vintage black cast-iron drum coffee roaster, scooping freshly roasted beans from the round cooling tray with a small metal trier and smelling them, eyes half-closed. Shot on a 35mm lens at f/2.8, eye level. Soft morning window light from the left, warm 3500K, thin smoke rising from the beans. Textures: oily roasted beans, aged iron with brass details, linen apron, rough plaster wall. Lia on the left third, the roaster filling the right side, burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking the ritual of the first roast of the day. No text, no signage, no logos.
 
-# Upscale, restauração e entrega
+Como verificar: Anote modelo, proporção, stylize/guidance e seed. Apareceram letreiros mesmo com o negativo? A Lia ficou no terço esquerdo?
 
-Use a imagem anexada como base. Faça uma restauração conservadora, reduzindo artefatos de compressão e mantendo o contorno da caneca, a alça e a posição da sombra. Preserve as pequenas irregularidades já visíveis no esmalte. Evite inventar inscrições, marcas ou novos padrões. Entregue a maior resolução disponível nesta ferramenta sem mudar a proporção.
+# Módulo 2-1 — Controles e testes dentro das ferramentas
+## Linha de composição para 9:16
 
-Conferência: Confira as dimensões reais do arquivo. Compare bordas, textura e detalhes com o original. O prompt não garante 4K, identidade perfeita nem recuperação de informação ausente.
+Vertical 9:16 composition: Lia and the cooling tray in the lower two-thirds of the frame, the tall roaster chimney and wooden ceiling beams rising into the top third, clean space at the top for a short caption.
 
-# Projeto final: da intenção ao portfólio
+Como verificar: Substitua só a frase de composição do baseline por esta. A cabeça ou o torrador foram cortados? Sobrou espaço limpo em cima?
 
-Crie uma fotografia para a campanha fictícia Aurora usando a referência anexada da caneca aprovada. Preserve o corpo terracota, a alça oval e o acabamento fosco. Mostre a caneca sobre mesa clara em um ateliê simples, com luz suave de janela à esquerda. Mantenha a paleta terracota, creme e azul discreto. Reserve espaço livre acima do produto. Gere apenas uma imagem; não faça colagem e não inclua texto.
+# Módulo 2-2 — Personagem e campanha consistentes
+## Referência neutra a partir de uma imagem aprovada
 
-Conferência: Produza três imagens separadas: produto inteiro, detalhe do esmalte e cena de uso. Registre a decisão alterada em cada uma e mantenha referências e configurações junto dos arquivos.
+Turn this into a clean CHARACTER REFERENCE photo of the SAME person. Medium shot from the waist up, body and face turned straight to the camera, neutral relaxed expression, looking into the lens, arms relaxed, hands empty. Even soft frontal studio light from a large softbox, neutral 5000K, no dramatic shadows. Plain light-grey seamless backdrop, no props, no text anywhere. Keep the exact face shape, skin tone and marks, hair color and hairstyle, and the signature outfit: <figurino-assinatura>. <Decisões da ficha: ex. remove the tattoo / keep the freckles>.
+
+Como verificar: Rosto inteiro e de frente? Fundo liso, mãos vazias, nenhum texto? As decisões da ficha (o que tirar, o que manter) aparecem?
+
+# Módulo 2-2 — Personagem e campanha consistentes
+## Meta-prompt: o assistente escreve os prompts da campanha
+
+You are an art director. I attached the reference image of my fictional character.
+Character identity block (use it verbatim in every prompt): <bloco de identidade>.
+Brand: <marca, o que faz, para quem>. Campaign concept: <2-3 frases de conceito>.
+Fixed visual world (use verbatim at the end of every prompt): <tipo de foto, paleta, grão, época>.
+Write 6 image prompts in English for a campaign, one per scene, as a sequence with a story arc (origin → craft → quality → encounter → community → emotional close). For each: start with 'Use the person in the attached image as the SAME character — keep her exact face...', then the scene and action, then shot type, lens and aperture, then light source, direction, quality and Kelvin. Vary shot types and lenses across the six. Do not describe the character's appearance differently from the identity block. Add 'No text on signs other than what is described.' Output: a table with scene number, role in the story, and the full prompt.
+
+Como verificar: Os seis prompts repetem o bloco de identidade e o de universo sem alterar uma palavra? Os planos e lentes variam? Cada cena tem um papel claro?
+
+# Módulo 3-1 — Edite sem perder o que já funciona
+## Instrução de limpeza (a primeira edição de quase toda geração)
+
+Remove ALL written text from this image, and change nothing else: <liste cada lugar com texto: the chalkboard sign on the left, the words painted on the wall, the label on the jar…>. Fill each area with what would naturally be there (<plain dark board / plain plaster wall / blank kraft label>). Keep the person, her face, pose and hands, every object, the lighting, the framing and the color grade identical.
+
+Como verificar: Todos os textos listados sumiram? Sobrou alguma letra fantasma? O rosto e a luz estão iguais à mestre quando você alterna entre as duas?
+
+# Módulo 3-2 — Upscale, restauração e entrega
+## Ampliação fiel para produto com texto
+
+Restore and enhance this product photo faithfully. Keep the exact product, label layout, framing, light direction and colors.
+The label text is known and must be reproduced exactly, letter by letter, in the same positions and typographic style:
+line 1 '<TEXTO DA LINHA 1>'
+line 2 '<TEXTO DA LINHA 2>'
+line 3 '<TEXTO DA LINHA 3>'
+Recover believable material detail: <material 1>, <material 2>, <superfície de apoio>.
+As if shot with a 100mm macro lens at f/5.6, label perfectly sharp.
+AVOID: new text, new logos, ornaments, extra objects, fake glow, oversharpened edges.
+
+Como verificar: Leia o rótulo em voz alta comparando com o texto do prompt. Uma letra trocada já reprova a peça — gere de novo ou corrija o texto num editor de imagem.
+
+# Módulo 4-1 — Projeto final: da intenção ao portfólio
+## Peça de série com referência de identidade
+
+Use the person in the attached image as a strict identity reference (same face, <traços marcantes>, <cabelo>, <figurino>) and completely re-shoot a NEW photo:
+<plano> of <ação física concreta> in <lugar com 2–3 objetos>.
+<lente> lens at <abertura>, <ângulo>.
+<CONSTANTE DE LUZ DO PRESET, colada idêntica>.
+<CONSTANTE DE TEXTURAS DO PRESET, colada idêntica>.
+<composição: posição do sujeito e espaço para texto, se houver>.
+<CONSTANTE DE ESTILO E PALETA DO PRESET, colada idêntica>.
+<NEGATIVOS DO PRESET>.
+
+Como verificar: Ponha a peça nova ao lado da imagem-mestre: o rosto e o figurino batem? A luz vem do mesmo lado? Se só uma constante falhou, reforce essa linha e gere de novo — não reescreva o resto.
+
+# Módulo 4-1 — Projeto final: da intenção ao portfólio
+## Rascunho do texto de apresentação com um assistente
+
+Você é diretor de arte e vai apresentar uma série de imagens a um cliente. Escreva um texto de apresentação em português, com no máximo 220 palavras, em cinco parágrafos curtos: o pedido, a direção visual, a série (uma frase por peça), o sistema entregue e um próximo passo sugerido. Tom: claro, confiante, sem jargão de marketing e sem adjetivos vazios. Use só as informações abaixo.
+
+BRIEFING: <cole o briefing>
+CONSTANTES VISUAIS: <luz, paleta, texturas, estilo>
+PEÇAS: <1 linha por peça: papel na história + formato de uso>
+ENTREGA: <formatos, preset, JSON>
+
+Como verificar: Todo fato do texto está no seu briefing ou no preset? Corte qualquer promessa que você não fez e troque palavras genéricas (“incrível”, “impactante”) por decisões concretas.

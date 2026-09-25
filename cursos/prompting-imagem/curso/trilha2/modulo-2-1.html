@@ -76,11 +76,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="inema-course" content="prompting-imagem">
-<meta name="description" content="Transforme uma ideia em decisões de enquadramento, luz e composição. Construa uma série de imagens que você consegue explicar e revisar.">
+<meta name="description" content="Ao terminar, você sabe o que fazem proporção, referências e seu peso, stylize, chaos, steps, CFG, denoise, seed e prompt negativo — e testa cada um com uma variável por vez, salvando o que funciona como preset.">
 <title>Controles e testes dentro das ferramentas · INEMA.CLUB</title>
 <link rel="stylesheet" href="../../assets/learn.css">
 <link rel="stylesheet" href="../../assets/course.css">
-<script type="application/json" data-inema-manifest>{"course": "prompting-imagem", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Escolha sua ferramenta e prepare o projeto", "topics": 6, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "A fórmula do prompt", "topics": 6, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controles e testes dentro das ferramentas", "topics": 6, "href": "curso/trilha2/modulo-2-1.html"}, {"id": "2-2", "title": "Personagem e campanha consistentes", "topics": 6, "href": "curso/trilha2/modulo-2-2.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Edite sem perder o que já funciona", "topics": 6, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Upscale, restauração e entrega", "topics": 6, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: da intenção ao portfólio", "topics": 6, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
+<script type="application/json" data-inema-manifest>{"course": "prompting-imagem", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Escolha sua ferramenta e prepare o projeto", "topics": 8, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "A fórmula do prompt", "topics": 8, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controles e testes dentro das ferramentas", "topics": 8, "href": "curso/trilha2/modulo-2-1.html"}, {"id": "2-2", "title": "Personagem e campanha consistentes", "topics": 7, "href": "curso/trilha2/modulo-2-2.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Edite sem perder o que já funciona", "topics": 8, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Upscale, restauração e entrega", "topics": 7, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: da intenção ao portfólio", "topics": 7, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -132,9 +132,9 @@
 <div class="breadcrumb">
 <a href="../../index.html">Prompting de Imagem</a> / <a href="index.html">Direção visual</a> / Módulo 2-1</div>
 <header class="intro">
-<h1>Controles e testes dentro das ferramentas</h1>
-<p>Você vai separar formato, referência e variação, registrando um teste sem confundir as causas.</p>
-<p class="meta">6 tópicos · explicação, observação e prática · avance no seu ritmo</p>
+<h1 class="text-2xl font-bold">Controles e testes dentro das ferramentas</h1>
+<p>Ao terminar, você sabe o que fazem proporção, referências e seu peso, stylize, chaos, steps, CFG, denoise, seed e prompt negativo — e testa cada um com uma variável por vez, salvando o que funciona como preset.</p>
+<p class="meta">8 tópicos · 75 min · exemplos com o prompt que gerou cada imagem</p>
 <div data-inema-meter="modulo:2-1">
 <span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span>
 <div class="inema-bar">
@@ -148,74 +148,151 @@
 <strong>Nesta aula</strong>
 <ol>
 <li>
-<a href="#topico-1">Proporção não é resolução</a>
+<a href="#topico-1">Prompt → modelo → controles: a pergunta certa</a>
 </li>
 <li>
-<a href="#topico-2">Referência de identidade e de estilo</a>
+<a href="#topico-2">Proporção: a forma do quadro muda a composição</a>
 </li>
 <li>
-<a href="#topico-3">Intensidade de estilo e exploração</a>
+<a href="#topico-3">Referências de imagem: uma referência, uma função</a>
 </li>
 <li>
-<a href="#topico-4">Steps, guidance e força de edição</a>
+<a href="#topico-4">Peso da referência: nem cópia, nem ignorada</a>
 </li>
 <li>
-<a href="#topico-5">Seed e comparação honesta</a>
+<a href="#topico-5">Stylize, chaos e variações</a>
 </li>
 <li>
-<a href="#topico-6">Um preset verificável</a>
+<a href="#topico-6">Steps, CFG, denoise e seed: os controles das agregadoras</a>
+</li>
+<li>
+<a href="#topico-7">Prompt negativo: o que não deve aparecer</a>
+</li>
+<li>
+<a href="#topico-8">Presets e testes A/B: transformar acerto em sistema</a>
 </li>
 </ol>
-<a href="#pratica">Prática do módulo</a>
+<a href="#pratica">Prática guiada</a>
+<a href="#licao">Lição de casa</a>
 <a href="#checagem">Teste sua decisão</a>
 </nav>
 <article class="lesson" data-inema-module="2-1" data-inema-track="2">
+<section class="abertura">
+<p class="inema-prose" data-inema-block="m2-1-b1">No módulo 1-2 você aprendeu a escrever um briefing de diretor. Agora esse briefing entra numa ferramenta de verdade — e a tela está cheia de botões, menus e controles deslizantes. A boa notícia: você não precisa mexer em todos. Com um prompt forte, <strong>uma ou duas referências boas, a proporção certa e um controle de “quão artístico ou literal”</strong>, você já chega a resultado profissional em quase qualquer gerador. O resto são ajustes finos que você adota aos poucos.</p>
+<div class="figure-wrap">
+<figure class="shot">
+<a href="../../assets/img/c1-m21-base.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-base.webp" alt="Lia ao lado do torrador antigo cheirando grãos recém-torrados tirados da bandeja de resfriamento, luz de janela quente à esquerda" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-1-p3">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, standing beside an unbranded vintage black cast-iron drum coffee roaster with a blank brass nameplate, scooping freshly roasted beans from the round cooling tray with a small metal trier and smelling them, eyes half-closed. Shot on a 35mm lens at f/2.8, eye level. Soft morning window light from the left, warm 3500K, thin smoke rising from the beans. Textures: oily roasted beans, aged iron with brass details, linen apron, rough plaster wall. Lia on the left third, the roaster filling the right side, burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking the ritual of the first roast of the day.</pre>
+<button data-copy="m2-1-p3">Copiar prompt</button>
+</details>
+</figure>
+<p class="caption" data-inema-block="m2-1-b2">A imagem-base deste módulo: Lia ao lado do torrador, cheirando os grãos recém-torrados. Quase todas as comparações a seguir são <strong>edições desta mesma imagem</strong>, para que só o controle estudado mude.</p>
+</div>
+<figure class="diagram">
+<svg role="img" aria-label="O modelo universal. Toda ferramenta de imagem tem estes três elos, com nomes e botões diferentes. Quando algo sai errado, ajuste um elo de cada vez." viewBox="0 0 760 270" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif">
+<defs>
+<marker id="m21-seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+<path d="M0,0 L10,5 L0,10 z" fill="#60a5fa"/>
+</marker>
+</defs>
+<rect width="760" height="270" rx="14" fill="var(--surface-2)"/>
+<g font-size="14" text-anchor="middle">
+<rect x="20" y="40" width="160" height="150" rx="10" fill="none" stroke="#60a5fa" stroke-width="2"/>
+<text x="100" y="72" font-size="17" font-weight="700" fill="#60a5fa">PROMPT</text>
+<text x="100" y="100" fill="var(--text)">texto em camadas</text>
+<text x="100" y="122" fill="var(--text)">+ referências</text>
+<text x="100" y="144" fill="var(--text)">+ prompt negativo</text>
+<rect x="220" y="40" width="160" height="150" rx="10" fill="none" stroke="#60a5fa" stroke-width="2"/>
+<text x="300" y="72" font-size="17" font-weight="700" fill="#60a5fa">MODELO</text>
+<text x="300" y="100" fill="var(--text)">o “cérebro”</text>
+<text x="300" y="122" fill="var(--text)">e a sua versão</text>
+<text x="300" y="144" fill="var(--text)">(escolha por tarefa)</text>
+<rect x="420" y="40" width="160" height="150" rx="10" fill="none" stroke="#38bdf8" stroke-width="2"/>
+<text x="500" y="72" font-size="17" font-weight="700" fill="#38bdf8">CONTROLES</text>
+<text x="500" y="100" fill="var(--text)">proporção · peso</text>
+<text x="500" y="122" fill="var(--text)">stylize · chaos · steps</text>
+<text x="500" y="144" fill="var(--text)">CFG · denoise · seed</text>
+<rect x="620" y="40" width="120" height="150" rx="10" fill="none" stroke="#38bdf8" stroke-width="2"/>
+<text x="680" y="72" font-size="17" font-weight="700" fill="#38bdf8">RESULTADO</text>
+<text x="680" y="100" fill="var(--text)">compare,</text>
+<text x="680" y="122" fill="var(--text)">nomeie,</text>
+<text x="680" y="144" fill="var(--text)">salve</text>
+</g>
+<g stroke="#60a5fa" stroke-width="2" marker-end="url(#m21-seta)">
+<line x1="182" y1="115" x2="216" y2="115"/>
+<line x1="382" y1="115" x2="416" y2="115"/>
+<line x1="582" y1="115" x2="616" y2="115"/>
+</g>
+<path d="M680 194 C680 245, 100 245, 100 196" fill="none" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#m21-seta)"/>
+<text x="390" y="232" font-size="14" text-anchor="middle" fill="var(--text-muted)">volte e mude UM elo — nunca os três ao mesmo tempo</text>
+</svg>
+<figcaption>O modelo universal. Toda ferramenta de imagem tem estes três elos, com nomes e botões diferentes. Quando algo sai errado, ajuste um elo de cada vez.</figcaption>
+</figure>
+</section>
 <section class="topic" id="topico-1" data-inema-topic="modulo-2-1#topico-1">
 <h2 class="text-2xl font-bold">
-<span class="number">1</span>Proporção não é resolução</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m2-1-t1-concept">Proporção é a relação entre largura e altura: 1:1 é quadrado, 4:3 é horizontal e 9:16 é vertical. Resolução é a quantidade de pixels. Duas imagens podem ter a mesma proporção e tamanhos muito diferentes.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m2-1-t1-why">Escolher a proporção antes ajuda a compor. Aumentar pixels depois não recupera uma alça cortada nem reserva espaço para um título.</p>
+<span class="number">1</span>Prompt → modelo → controles: a pergunta certa</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m2-1-b5">Diante de um resultado estranho, o iniciante pergunta “por que a ferramenta fez isso?”. O profissional pergunta duas coisas: <strong>qual modelo é o melhor para esta tarefa?</strong> e <strong>qual controle preciso ajustar?</strong>. Os elos são sempre os mesmos: o <strong>prompt</strong> (texto, referências e o que evitar), o <strong>modelo</strong> (e a versão dele) e os <strong>controles</strong> (proporção, força, estilização, seed…). Aprender uma ferramenta nova, a partir daqui, é só descobrir onde ela esconde esses mesmos blocos.</p>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m2-1-b6">Mexer em tudo ao mesmo tempo é o jeito mais rápido de não aprender nada: se você trocou o prompt, o modelo e dois controles e a imagem melhorou, não sabe o que funcionou. A tabela abaixo é um ponto de partida para o diagnóstico:</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<h4>Diagnóstico rápido</h4>
+<div class="table-scroll" data-inema-block="m2-1-b7">
+<table>
+<thead>
+<tr>
+<th>Sintoma</th>
+<th>Elo provável</th>
+<th>O que tentar primeiro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cena genérica, “de banco de imagem”</td>
+<td>prompt</td>
+<td>preencher as camadas vazias (plano, lente, luz, materiais)</td>
+</tr>
+<tr>
+<td>Texto com letras erradas</td>
+<td>modelo</td>
+<td>trocar para um modelo forte em texto; pedir o texto entre aspas</td>
+</tr>
+<tr>
+<td>Sujeito cortado ou espremido</td>
+<td>controle: proporção</td>
+<td>gerar já na proporção final, não cortar depois</td>
+</tr>
+<tr>
+<td>Saiu quase uma cópia da referência</td>
+<td>controle: peso da referência</td>
+<td>baixar o peso ou acrescentar texto descritivo</td>
+</tr>
+<tr>
+<td>Cores estouradas, bordas duras, pele de cera</td>
+<td>controle: CFG/guidance</td>
+<td>voltar ao valor padrão da ferramenta</td>
+</tr>
+<tr>
+<td>Letreiros e objetos que ninguém pediu</td>
+<td>prompt negativo</td>
+<td>listar o que não deve aparecer</td>
+</tr>
+<tr>
+<td>Não consigo repetir uma imagem boa</td>
+<td>controle: seed</td>
+<td>salvar e reutilizar a seed com o mesmo prompt</td>
+</tr>
+</tbody>
+</table>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t1-svgtitle" class="w-full h-auto">
-<title id="m2-1-t1-svgtitle">Proporção não é resolução — Formato altera a área disponível para organizar a cena. Estes quadros têm proporções diferentes, não uma escala de qualidade.</title>
-<rect x="35" y="45" width="155" height="155" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<rect x="235" y="85" width="195" height="110" fill="var(--surface-2)" stroke="var(--primary)"/>
-<rect x="490" y="20" width="104" height="184" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<g transform="translate(73 94) scale(0.7)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<g transform="translate(302 110) scale(0.65)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<g transform="translate(510 102) scale(0.55)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<text x="77" y="231" font-size="17" fill="currentColor">1:1</text>
-<text x="305" y="231" font-size="17" fill="currentColor">16:9</text>
-<text x="523" y="231" font-size="17" fill="currentColor">9:16</text>
-<text x="25" y="231" font-size="14" fill="currentColor">Diagrama de composição — exemplo autoral</text>
-</svg>
-<figcaption>Formato altera a área disponível para organizar a cena. Estes quadros têm proporções diferentes, não uma escala de qualidade.</figcaption>
-</figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m2-1-t1-practice">Alterne os formatos no laboratório e observe os recortes. Escolha o destino da peça antes da geração. Registre largura e altura do arquivo baixado, em vez de confiar apenas em palavras como HD.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m2-1-t1-caution">Recortar elimina informação; expandir a tela inventa novas áreas. São operações diferentes, mesmo quando entregam o mesmo formato final.</p>
+<aside class="tip" data-inema-block="m2-1-b8">
+<strong>Quando o problema é o modelo</strong>
+<p>Se você já preencheu todas as camadas do prompt, testou dois valores do controle suspeito e o defeito continua igual, a pergunta passa a ser de modelo: ele foi feito para essa tarefa? Nas agregadoras, rode o mesmo prompt em um segundo modelo antes de gastar mais créditos no primeiro. Um modelo forte em retrato pode ser fraco em texto, e vice-versa — o módulo 1-1 mostrou como testar isso com as tarefas do cliente.</p>
 </aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
@@ -224,43 +301,93 @@
 </section>
 <section class="topic" id="topico-2" data-inema-topic="modulo-2-1#topico-2">
 <h2 class="text-2xl font-bold">
-<span class="number">2</span>Referência de identidade e de estilo</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m2-1-t2-concept">Identidade trata da aparência reconhecível de um objeto ou pessoa. Estilo trata da linguagem visual. Uma foto pode conter os dois, mas a instrução deve separar aquilo que precisa permanecer do que pode variar.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m2-1-t2-why">O acervo mistura funções de referência. No Midjourney, Omni Reference pertence ao fluxo V7; a documentação atual aponta o Edit Model para V8.X. Não há um botão universal com o mesmo comportamento em toda versão.</p>
+<span class="number">2</span>Proporção: a forma do quadro muda a composição</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m2-1-b9">A proporção é o primeiro controle a decidir, porque ela vem do <strong>canal</strong> onde a imagem vai aparecer. No Midjourney ela é um parâmetro digitado no fim do prompt (<code>--ar 9:16</code>); nas agregadoras e nos assistentes de chat costuma ser um botão ou um pedido em texto (“formato vertical 9:16”).</p>
+<h4>Formato por canal</h4>
+<div class="table-scroll" data-inema-block="m2-1-b10">
+<table>
+<thead>
+<tr>
+<th>Proporção</th>
+<th>Forma</th>
+<th>Onde usar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9:16</td>
+<td>vertical alta</td>
+<td>Reels, Stories, Shorts, TikTok</td>
+</tr>
+<tr>
+<td>4:5</td>
+<td>vertical de feed</td>
+<td>post de Instagram que ocupa mais tela</td>
+</tr>
+<tr>
+<td>1:1</td>
+<td>quadrado</td>
+<td>post clássico, capa de playlist, rótulo</td>
+</tr>
+<tr>
+<td>3:2</td>
+<td>horizontal de foto</td>
+<td>blog, portfólio, impressão</td>
+</tr>
+<tr>
+<td>16:9</td>
+<td>horizontal de vídeo</td>
+<td>banner de site, YouTube, apresentação</td>
+</tr>
+</tbody>
+</table>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t2-svgtitle" class="w-full h-auto">
-<title id="m2-1-t2-svgtitle">Referência de identidade e de estilo — Atribua um papel a cada referência para evitar que produto, cenário e estilo se misturem.</title>
-<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="35" y="104" font-size="15" fill="currentColor">1</text>
-<text x="35" y="132" font-size="17" fill="currentColor">Produto</text>
-<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="245" y="104" font-size="15" fill="currentColor">2</text>
-<text x="245" y="132" font-size="17" fill="currentColor">Luz / estilo</text>
-<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="455" y="104" font-size="15" fill="currentColor">3</text>
-<text x="455" y="132" font-size="17" fill="currentColor">Cena</text>
-</svg>
-<figcaption>Atribua um papel a cada referência para evitar que produto, cenário e estilo se misturem.</figcaption>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m2-1-b11">Um prompt pensado para 16:9 quase sempre precisa de ajuste em 9:16: o que era “sujeito no terço esquerdo e máquina à direita” vira, na vertical, “sujeito embaixo e máquina subindo até o topo”. Se você gera horizontal e corta para vertical, perde metade da cena e a composição desmonta. <strong>Gere na proporção final</strong> e ajuste a frase de composição do prompt para a nova forma.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">16:9 (base)</span>
+<a href="../../assets/img/c1-m21-base.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-base.webp" alt="Lia ao lado do torrador antigo cheirando grãos recém-torrados tirados da bandeja de resfriamento, luz de janela quente à esquerda" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-1-p13">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, standing beside an unbranded vintage black cast-iron drum coffee roaster with a blank brass nameplate, scooping freshly roasted beans from the round cooling tray with a small metal trier and smelling them, eyes half-closed. Shot on a 35mm lens at f/2.8, eye level. Soft morning window light from the left, warm 3500K, thin smoke rising from the beans. Textures: oily roasted beans, aged iron with brass details, linen apron, rough plaster wall. Lia on the left third, the roaster filling the right side, burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking the ritual of the first roast of the day.</pre>
+<button data-copy="m2-1-p13">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m2-1-t2-practice">Na sua ferramenta, identifique o recurso correspondente a imagem de entrada ou edição. Anexe a caneca e diga para preservar a forma. Se acrescentar referência de estilo, explique que deseja apenas luz e paleta.</p>
-<div class="compare-grid">
-<div>
-<h3>✓ Faça a verificação</h3>
-<p>Na sua ferramenta, identifique o recurso correspondente a imagem de entrada ou edição. Anexe a caneca e diga para preservar a forma. Se acrescentar referência de estilo, explique que deseja apenas luz e paleta.</p>
+<figure class="shot">
+<span class="shot-label">9:16</span>
+<a href="../../assets/img/c1-m21-ar-916.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-ar-916.webp" alt="A mesma descrição de cena gerada em 9:16: Lia e a bandeja embaixo, a chaminé do torrador subindo até o topo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-1-p14">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, standing beside an unbranded vintage black cast-iron drum coffee roaster with a blank brass nameplate, scooping freshly roasted beans from the round cooling tray with a small metal trier and smelling them, eyes half-closed. Shot on a 35mm lens at f/2.8, eye level. Soft morning window light from the left, warm 3500K, thin smoke rising from the beans. Textures: oily roasted beans, aged iron with brass details, linen apron, rough plaster wall. Vertical composition: Lia and the cooling tray in the lower two-thirds of the frame, the tall roaster chimney and wooden ceiling beams rising into the top third, burlap sacks behind her. Natural documentary photography, subtle 35mm film grain, evoking the ritual of the first roast of the day.</pre>
+<button data-copy="m2-1-p14">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">1:1</span>
+<a href="../../assets/img/c1-m21-ar-11.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-ar-11.webp" alt="A mesma descrição de cena gerada em 1:1: recorte fechado no rosto, nas mãos e nos grãos" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-1-p15">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, standing beside an unbranded vintage black cast-iron drum coffee roaster with a blank brass nameplate, scooping freshly roasted beans from the round cooling tray with a small metal trier and smelling them, eyes half-closed. Shot on a 35mm lens at f/2.8, eye level. Soft morning window light from the left, warm 3500K, thin smoke rising from the beans. Textures: oily roasted beans, aged iron with brass details, linen apron, rough plaster wall. Square composition: tight on Lia&#x27;s face, hands and the trier full of beans in the center, only a slice of the roaster visible behind her. Natural documentary photography, subtle 35mm film grain, evoking the ritual of the first roast of the day.</pre>
+<button data-copy="m2-1-p15">Copiar prompt</button>
+</details>
+</figure>
 </div>
-<div>
-<h3>✗ Evite a conclusão automática</h3>
-<p>Confira a documentação vinculada nos materiais. Não aplique instruções de Omni Reference a outra versão sem verificar compatibilidade.</p>
+<p class="caption" data-inema-block="m2-1-b12">Três gerações com o mesmo prompt, mudando só o controle de proporção e a frase de composição (abra “Prompt usado” e compare: o resto é idêntico). É exatamente o que acontece numa ferramenta quando você troca o formato — o modelo gera de novo, não corta. Na horizontal, Lia e o torrador dividem o quadro lado a lado; na vertical, a composição empilha e a chaminé ocupa o alto; no quadrado, o recorte fecha no rosto, nas mãos e nos grãos. Por serem gerações novas, pequenos detalhes (fundo, gesto) variam — mais um motivo para decidir a proporção antes de refinar.</p>
 </div>
-</div>
+<aside class="tip" data-inema-block="m2-1-b16">
+<strong>Três proporções de uma vez</strong>
+<p>Se o cliente vai usar a mesma cena em Reels, feed e site, escreva <strong>três versões da linha de composição</strong> (uma por formato) e gere cada proporção com a sua. É muito mais rápido do que tentar salvar um corte ruim.</p>
+</aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
@@ -268,44 +395,99 @@
 </section>
 <section class="topic" id="topico-3" data-inema-topic="modulo-2-1#topico-3">
 <h2 class="text-2xl font-bold">
-<span class="number">3</span>Intensidade de estilo e exploração</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m2-1-t3-concept">Algumas interfaces oferecem controles que ampliam a interpretação estética ou a diversidade de resultados. Esses controles não são sinônimos: uma série pode manter o mesmo estilo e variar bastante a composição.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m2-1-t3-why">Entender a função do controle permite escolher entre explorar ideias e refinar uma decisão. O nome e a escala variam entre ferramentas.</p>
+<span class="number">3</span>Referências de imagem: uma referência, uma função</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m2-1-b17">Pense assim: <strong>a referência diz com o que a imagem deve se parecer; o texto explica o que você quer tirar dela.</strong> As ferramentas dão nomes diferentes (no Midjourney, referência de estilo, de personagem e “omni”; em outras, <em>style reference</em>, <em>subject</em>, <em>pose</em>, <em>image prompt</em>), mas os tipos são quatro:</p>
+<div class="table-scroll" data-inema-block="m2-1-b18">
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>O que transfere</th>
+<th>Exemplo na Terra Alta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<strong>Estilo</strong>
+</td>
+<td>cor, clima, textura, acabamento — a linguagem visual</td>
+<td>um slide antigo de cores quentes para toda a campanha de inverno</td>
+</tr>
+<tr>
+<td>
+<strong>Personagem / sujeito</strong>
+</td>
+<td>identidade: rosto, cabelo, roupa; ou um produto específico</td>
+<td>o retrato limpo da Lia; a foto do pacote kraft</td>
+</tr>
+<tr>
+<td>
+<strong>Pose / composição</strong>
+</td>
+<td>posição do corpo, enquadramento, onde fica o espaço vazio</td>
+<td>um layout aprovado com o produto à direita e título à esquerda</td>
+</tr>
+<tr>
+<td>
+<strong>Foto de partida</strong>
+</td>
+<td>a própria imagem, que deve continuar reconhecível mas estilizada</td>
+<td>uma foto real da torrefação transformada em ilustração</td>
+</tr>
+</tbody>
+</table>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t3-svgtitle" class="w-full h-auto">
-<title id="m2-1-t3-svgtitle">Intensidade de estilo e exploração — Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</title>
-<rect x="20" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
-<rect x="335" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
-<g transform="translate(110 80) scale(0.8)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<g transform="translate(430 80) scale(0.8)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<path d="M48 55L225 175" stroke="var(--accent-2)" stroke-dasharray="5 5"/>
-<path d="M358 55H570" stroke="var(--primary)" stroke-dasharray="5 5"/>
-<text x="30" y="227" font-size="17" fill="currentColor">A · versão de referência</text>
-<text x="345" y="227" font-size="17" fill="currentColor">B · hipótese de mudança</text>
-</svg>
-<figcaption>Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</figcaption>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m2-1-b19">Uma referência limpa e focada é entendida rápido; uma referência poluída, escura, pequena ou que mistura várias ideias gera resultados confusos — o modelo não sabe se era para copiar a cor, a pose ou o fundo. Por isso a regra: <strong>uma referência = uma função</strong>. Se precisa de estilo, rosto e pose, use três imagens, cada uma fazendo só o seu trabalho, e deixe o texto “colar” tudo com plano, lente, luz e composição.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Referência de personagem</span>
+<a href="../../assets/img/c1-m11-lia-retrato.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m11-lia-retrato.webp" alt="Retrato de Lia da cintura para cima, avental mostarda, segurando uma xícara de cerâmica salpicada, olhando para a câmera; torrador e sacas desfocados ao fundo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-1-p21">Waist-up portrait of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, standing in a rustic coffee roastery, arms relaxed, holding a speckled cream ceramic cup with both hands at chest height, looking straight into the camera with a calm, confident half-smile. Shot on an 85mm lens at f/2, eye level. Soft morning window light from the left, warm 3500K, gentle fill on the right side of her face. Natural skin with visible pores and freckles, linen texture on the apron. Background softly blurred: a vintage cast-iron coffee roaster and burlap sacks. No text, signs or lettering anywhere. Natural editorial portrait photography, subtle 35mm film grain, evoking warmth and craft.</pre>
+<button data-copy="m2-1-p21">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m2-1-t3-practice">Se o controle existir, faça duas rodadas com valores próximos do padrão e uma diferença moderada. Mantenha o restante. Registre quais partes mudaram: enquadramento, objetos, acabamento ou cor.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m2-1-t3-caution">Não ensine um número como receita universal. Um valor alto não significa mais qualidade; pode afastar a imagem do briefing.</p>
-</aside>
+<figure class="shot">
+<span class="shot-label">Resultado: nova cena</span>
+<a href="../../assets/img/c1-m21-ref-personagem.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-ref-personagem.webp" alt="A mesma Lia do retrato de referência, agora numa feira ao ar livre, entregando um copo de café a um cliente" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-1-p22">Use this image as a CHARACTER REFERENCE ONLY (face, hair, freckles, skin tone and outfit). Create a completely new scene: the same woman standing behind a small wooden cart at an outdoor Saturday farmers&#x27; market in a Brazilian mountain town, handing a paper cup of coffee to a customer whose arm enters from the right edge, colorful market stalls blurred behind her. Medium shot, 50mm lens, bright overcast daylight. Natural documentary photography. No text on signs.</pre>
+<button data-copy="m2-1-p22">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m2-1-b20">O retrato do módulo 1-1 entrou como referência de personagem (rosto, cabelo, sardas, avental) e o texto descreveu uma cena inteiramente nova: uma feira de sábado numa cidade da serra, Lia entregando um copo de café a um cliente. O fundo, a luz e a ação vieram do texto; a identidade veio da imagem.</p>
+</div>
+<p class="inema-prose" data-inema-block="m2-1-b23">Referências também se <strong>combinam</strong>: uma imagem para o estilo, uma para o rosto da personagem e uma para a pose. Para a Terra Alta, o kit básico de referências é curto — o retrato limpo da Lia (personagem), uma foto do pacote kraft de frente (produto) e uma imagem com a luz de janela quente que a marca usa (estilo). Guarde esse kit na pasta <code>01-referencias/</code> do projeto e use sempre as mesmas imagens: trocar a referência a cada post é o caminho mais curto para a Lia mudar de rosto.</p>
+<div class="compare-grid" data-inema-block="m2-1-b24">
+<div class="ok">
+<h4>✓ Boa referência</h4>
+<ul>
+<li>retrato de frente, luz suave, fundo simples, rosto grande no quadro</li>
+<li>uma única ideia por imagem (só a paleta, só a pose)</li>
+<li>resolução boa, sem filtro pesado</li>
+</ul>
+</div>
+<div class="no">
+<h4>✗ Referência que atrapalha</h4>
+<ul>
+<li>foto de grupo em que o rosto ocupa 5% do quadro</li>
+<li>print de tela com texto e interface por cima</li>
+<li>imagem que mistura estilo, pose e produto que você não quer</li>
+</ul>
+</div>
+</div>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
@@ -313,36 +495,73 @@
 </section>
 <section class="topic" id="topico-4" data-inema-topic="modulo-2-1#topico-4">
 <h2 class="text-2xl font-bold">
-<span class="number">4</span>Steps, guidance e força de edição</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m2-1-t4-concept">Steps são etapas de processamento em modelos que expõem esse controle. Guidance ou CFG ajusta a influência do texto em certos sistemas. Força de edição costuma controlar a transformação da imagem de entrada, mas a direção da escala precisa ser conferida.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m2-1-t4-why">Esses parâmetros pertencem à implementação. Modelos rápidos ou destilados podem ter faixas específicas; elevar tudo pode piorar o resultado ou apenas consumir recursos.</p>
+<span class="number">4</span>Peso da referência: nem cópia, nem ignorada</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m2-1-b25">Quase toda ferramenta que aceita referência tem um controle de <strong>influência</strong>. No Midjourney são parâmetros como <code>--sw</code> (peso da referência de estilo) e o peso da referência de personagem/omni; em outras ferramentas, um controle deslizante de “image weight”, “strength” ou “influence”. Faixas e valores padrão mudam entre versões — confira na documentação da sua ferramenta.</p>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m2-1-b26">Não existe número mágico. O trabalho é <strong>observar o padrão e ajustar</strong>, como um diretor com uma equipe flexível:</p>
+<div class="table-scroll" data-inema-block="m2-1-b27">
+<table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>O que fazer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parecido demais com a referência (quase uma cópia)</td>
+<td>baixar o peso · acrescentar texto descritivo · incluir uma segunda referência que traga contraste</td>
+</tr>
+<tr>
+<td>Longe demais da referência (ela foi ignorada)</td>
+<td>subir o peso · simplificar o texto · remover referências que brigam entre si</td>
+</tr>
+</tbody>
+</table>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t4-svgtitle" class="w-full h-auto">
-<title id="m2-1-t4-svgtitle">Steps, guidance e força de edição — Parta do padrão, altere um controle e registre o efeito observado antes da próxima mudança.</title>
-<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="35" y="104" font-size="15" fill="currentColor">1</text>
-<text x="35" y="132" font-size="17" fill="currentColor">Padrão</text>
-<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="245" y="104" font-size="15" fill="currentColor">2</text>
-<text x="245" y="132" font-size="17" fill="currentColor">Uma variável</text>
-<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="455" y="104" font-size="15" fill="currentColor">3</text>
-<text x="455" y="132" font-size="17" fill="currentColor">Observação</text>
-</svg>
-<figcaption>Parta do padrão, altere um controle e registre o efeito observado antes da próxima mudança.</figcaption>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">Referência de estilo</span>
+<a href="../../assets/img/c1-m21-ref-estilo.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-ref-estilo.webp" alt="Imagem de referência de estilo: natureza-morta com chaleira de cobre e xícara, cores quentes e azul-petróleo de slide dos anos 70, grão de filme" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-1-p29">Style reference image for a coffee brand: a still life of a copper kettle, a stoneware cup and a folded linen cloth on a dark wooden table, in the look of a 1970s Kodachrome slide — saturated warm oranges and teals, slightly faded blacks, soft halation around the highlights, visible film grain, low warm tungsten light from the right, deep shadows. No people, no text.</pre>
+<button data-copy="m2-1-p29">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m2-1-t4-practice">Comece no padrão do modelo. Leia a descrição de um único controle e faça um teste pequeno. Anote o valor, a mudança esperada e o efeito observado. Se a interface não expõe o parâmetro, prossiga sem ele.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m2-1-t4-caution">Não copie a regra mais passos e mais guidance é melhor. Nem todo modelo usa esses controles, e a interpretação da escala não é universal.</p>
+<figure class="shot">
+<span class="shot-label">Peso baixo</span>
+<a href="../../assets/img/c1-m21-peso-baixo.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-peso-baixo.webp" alt="Pacote TERRA ALTA num balcão claro, luz de dia limpa, só um leve tom quente lembrando a referência" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-1-p30">Use this image as a STYLE REFERENCE with LOW WEIGHT: borrow only a hint of its warm color palette. Create a completely new image: a bright, airy product photo of a kraft-paper coffee bag with a hand-stamped label reading &#x27;TERRA ALTA&#x27; on a light oak counter by a window, clean daylight 5000K, soft shadows, modern minimalist catalog look, only a faint warm tint recalling the reference. The copper kettle and dark table must NOT appear.</pre>
+<button data-copy="m2-1-p30">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Peso alto</span>
+<a href="../../assets/img/c1-m21-peso-alto.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-peso-alto.webp" alt="O mesmo pacote TERRA ALTA com o visual da referência dominando: cores de slide anos 70, sombra profunda, grão pesado" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-1-p31">Use this image as a STYLE REFERENCE with HIGH WEIGHT: fully adopt its look — saturated 1970s Kodachrome oranges and teals, faded blacks, halation, heavy film grain, low warm tungsten light from the right and deep shadows. Completely re-render as a new subject: a kraft-paper coffee bag with a hand-stamped label reading &#x27;TERRA ALTA&#x27; standing on a dark wooden table next to a stoneware cup.</pre>
+<button data-copy="m2-1-p31">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m2-1-b28">A mesma referência (natureza-morta com cores de slide dos anos 70) aplicada a um assunto novo, o pacote TERRA ALTA. Com peso baixo, sobra só um leve tom quente numa foto de catálogo clara. Com peso alto, a referência domina: cores saturadas, sombra profunda, grão pesado. Como o GPT Image não tem um controle de peso, simulamos o peso pela força da instrução de edição; nas ferramentas com o controle, é um número.</p>
+</div>
+<aside class="tip" data-inema-block="m2-1-b32">
+<strong>Dica de diretor</strong>
+<p>Comece no valor padrão, gere, e só então mova o peso <strong>numa direção</strong>, em passos grandes (por exemplo, metade ou o dobro do padrão). Passos pequenos demais produzem diferenças que você não consegue ver.</p>
 </aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
@@ -351,49 +570,89 @@
 </section>
 <section class="topic" id="topico-5" data-inema-topic="modulo-2-1#topico-5">
 <h2 class="text-2xl font-bold">
-<span class="number">5</span>Seed e comparação honesta</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m2-1-t5-concept">Seed é um ponto de partida numérico usado por determinados geradores. Ela pode ajudar a reduzir uma fonte de variação num teste, mas prompt, modelo e configurações também participam do resultado.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m2-1-t5-why">Usar a mesma seed não torna duas imagens uma experiência perfeitamente controlada. A comparação deve registrar o que efetivamente mudou, e não apenas o que você pretendia mudar.</p>
-</div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t5-svgtitle" class="w-full h-auto">
-<title id="m2-1-t5-svgtitle">Seed e comparação honesta — Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</title>
-<rect x="20" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
-<rect x="335" y="20" width="285" height="175" rx="10" fill="var(--surface-2)"/>
-<g transform="translate(110 80) scale(0.8)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<g transform="translate(430 80) scale(0.8)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<path d="M48 55L225 175" stroke="var(--accent-2)" stroke-dasharray="5 5"/>
-<path d="M358 55H570" stroke="var(--primary)" stroke-dasharray="5 5"/>
-<text x="30" y="227" font-size="17" fill="currentColor">A · versão de referência</text>
-<text x="345" y="227" font-size="17" fill="currentColor">B · hipótese de mudança</text>
-</svg>
-<figcaption>Compare versões com critérios explícitos. O par é um esquema de comparação, não evidência de desempenho de um modelo.</figcaption>
+<span class="number">5</span>Stylize, chaos e variações</h2>
+<h3 class="sec">O que é</h3>
+<aside class="novo" data-inema-block="m2-1-b33">
+<strong>Novo aqui? Stylize (estilização)</strong>
+<p>Controla o quanto o modelo aplica o próprio “gosto” estético. Valores baixos ficam mais próximos do texto literal; valores altos deixam a imagem mais expressiva, mais “bonita”, e às vezes menos fiel ao que você pediu. No Midjourney é o parâmetro <code>--s</code>; outras ferramentas oferecem algo parecido como “estilo” ou “criatividade”.</p>
+</aside>
+<aside class="novo" data-inema-block="m2-1-b34">
+<strong>Novo aqui? Chaos (variedade)</strong>
+<p>Controla o quanto as imagens de um mesmo lote podem ser diferentes entre si. Baixo = quatro versões parecidas e seguras. Alto = quatro caminhos bem diferentes, alguns estranhos. No Midjourney é <code>--c</code>; em outras ferramentas, os botões de variação “sutil” e “forte” fazem papel semelhante.</p>
+</aside>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m2-1-b35">Na <strong>exploração</strong> (primeiras gerações, moodboard, busca de direção), variedade alta ajuda a descobrir caminhos que você não imaginou. No <strong>refinamento</strong> (a imagem já está quase lá), você quer variações pequenas: outra expressão, outro gesto, o mesmo resto. Usar chaos alto na fase de refinamento é jogar fora o que já estava bom.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">Base</span>
+<a href="../../assets/img/c1-m21-base.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-base.webp" alt="Lia ao lado do torrador antigo cheirando grãos recém-torrados tirados da bandeja de resfriamento, luz de janela quente à esquerda" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-1-p37">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, standing beside an unbranded vintage black cast-iron drum coffee roaster with a blank brass nameplate, scooping freshly roasted beans from the round cooling tray with a small metal trier and smelling them, eyes half-closed. Shot on a 35mm lens at f/2.8, eye level. Soft morning window light from the left, warm 3500K, thin smoke rising from the beans. Textures: oily roasted beans, aged iron with brass details, linen apron, rough plaster wall. Lia on the left third, the roaster filling the right side, burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking the ritual of the first roast of the day.</pre>
+<button data-copy="m2-1-p37">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m2-1-t5-practice">Faça A com luz suave e B com luz dura. Se houver seed, registre-a e mantenha-a. Compare sombra, pose, fundo e forma. Separe a diferença de luz das mudanças adicionais.</p>
-<div class="compare-grid">
-<div>
-<h3>✓ Faça a verificação</h3>
-<p>Faça A com luz suave e B com luz dura. Se houver seed, registre-a e mantenha-a. Compare sombra, pose, fundo e forma. Separe a diferença de luz das mudanças adicionais.</p>
+<figure class="shot">
+<span class="shot-label">Variação sutil</span>
+<a href="../../assets/img/c1-m21-var-sutil.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-var-sutil.webp" alt="Variação sutil: mesma cena e enquadramento; a mão livre de Lia agora se apoia na borda da bandeja e a fumaça muda de desenho" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-1-p38">Make a SUBTLE VARIATION of this image, like a low-chaos reroll: keep the same woman, outfit, framing, lens, light, roaster and color grade, and change only small details — she now looks down at the beans in the trier with open eyes, her free hand rests on the edge of the cooling tray, and the smoke curls differently.</pre>
+<button data-copy="m2-1-p38">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Variação forte</span>
+<a href="../../assets/img/c1-m21-var-forte.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-var-forte.webp" alt="Variação forte: câmera baixa atrás da bandeja, grãos e pás em primeiro plano, Lia ao fundo em contraluz" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-1-p39">Make a STRONG VARIATION of this image, like a high-chaos reroll of the same prompt: completely re-shoot the scene with a different composition — a low-angle shot from behind the roaster&#x27;s cooling tray, the spinning paddles and beans large and sharp in the foreground, Lia seen across the tray in the background, turning the beans with her hand, backlit by the window with a golden rim light. Same woman, same outfit, same roastery.</pre>
+<button data-copy="m2-1-p39">Copiar prompt</button>
+</details>
+</figure>
 </div>
-<div>
-<h3>✗ Evite a conclusão automática</h3>
-<p>Não use seed como substituto de referência de personagem. A documentação do Midjourney explicita que seed não salva estilo, identidade ou aparência entre prompts.</p>
+<p class="caption" data-inema-block="m2-1-b36">Duas edições da mesma base simulando o que os botões de variação fazem. Na sutil, a cena é a mesma e mudam só pequenos detalhes — a mão livre agora se apoia na borda do resfriador e a fumaça faz outro desenho; é o que você pede quando a imagem está quase pronta. Na forte, o assunto e o lugar se mantêm, mas o ponto de vista e a composição mudam por completo — útil para achar um ângulo melhor.</p>
 </div>
+<h4>Quando usar cada controle (valores exatos: confira na ferramenta)</h4>
+<div class="table-scroll" data-inema-block="m2-1-b40">
+<table>
+<thead>
+<tr>
+<th>Controle</th>
+<th>Baixo</th>
+<th>Alto</th>
+<th>Use alto quando…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stylize</td>
+<td>literal, próximo do texto</td>
+<td>estético, interpretativo</td>
+<td>o visual importa mais que a fidelidade a cada detalhe</td>
+</tr>
+<tr>
+<td>Chaos / variedade</td>
+<td>lote parecido, seguro</td>
+<td>lote diverso, surpreendente</td>
+<td>você ainda está procurando a direção</td>
+</tr>
+<tr>
+<td>Variação</td>
+<td>sutil: muda detalhes</td>
+<td>forte: muda composição</td>
+<td>o assunto está certo mas o quadro não</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
@@ -402,82 +661,438 @@
 </section>
 <section class="topic" id="topico-6" data-inema-topic="modulo-2-1#topico-6">
 <h2 class="text-2xl font-bold">
-<span class="number">6</span>Um preset verificável</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m2-1-t6-concept">Preset é um conjunto salvo de configurações. Para ser útil ao seu trabalho, ele precisa vir acompanhado de referência e critério de aprovação. Um preset sem contexto só repete números.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m2-1-t6-why">A receita completa permite retomar o trabalho sem adivinhar e identificar mudanças de comportamento após atualizações da ferramenta.</p>
+<span class="number">6</span>Steps, CFG, denoise e seed: os controles das agregadoras</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m2-1-b41">Ao sair do Midjourney e entrar em plataformas que rodam modelos como Flux, Seedream ou Nano Banana, surgem controles mais técnicos. Você não precisa decorar números, só o modelo mental de cada um:</p>
+<h4>Os quatro controles técnicos</h4>
+<div class="table-scroll" data-inema-block="m2-1-b42">
+<table>
+<thead>
+<tr>
+<th>Controle</th>
+<th>O que faz</th>
+<th>Pouco demais</th>
+<th>Demais</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<strong>Steps</strong> (passos)</td>
+<td>quantas vezes o modelo refina a imagem</td>
+<td>imagem inacabada, borrada, com ruído</td>
+<td>tempo e créditos gastos sem ganho; às vezes aspecto “sobretrabalhado”</td>
+</tr>
+<tr>
+<td>
+<strong>CFG / guidance</strong>
+</td>
+<td>o quão ao pé da letra o modelo segue o texto</td>
+<td>ignora partes do prompt, resultados soltos</td>
+<td>cores estouradas, contraste duro, bordas com halo, pele de cera</td>
+</tr>
+<tr>
+<td>
+<strong>Denoise / image strength</strong>
+</td>
+<td>no image-to-image, o quanto o resultado pode se afastar da imagem de partida</td>
+<td>quase nada muda</td>
+<td>a imagem original some; só o layout sobrevive</td>
+</tr>
+<tr>
+<td>
+<strong>Seed</strong>
+</td>
+<td>o número do ruído inicial</td>
+<td>—</td>
+<td>—  (não é escala: é identidade; mesma seed = ponto de partida igual)</td>
+</tr>
+</tbody>
+</table>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m2-1-t6-svgtitle" class="w-full h-auto">
-<title id="m2-1-t6-svgtitle">Um preset verificável — Guarde o arquivo original, as decisões da receita e a versão aprovada como itens separados.</title>
-<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="35" y="104" font-size="15" fill="currentColor">1</text>
-<text x="35" y="132" font-size="17" fill="currentColor">Original</text>
-<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="245" y="104" font-size="15" fill="currentColor">2</text>
-<text x="245" y="132" font-size="17" fill="currentColor">Receita</text>
-<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="455" y="104" font-size="15" fill="currentColor">3</text>
-<text x="455" y="132" font-size="17" fill="currentColor">Aprovada</text>
-</svg>
-<figcaption>Guarde o arquivo original, as decisões da receita e a versão aprovada como itens separados.</figcaption>
+<aside class="limite" data-inema-block="m2-1-b43">
+<strong>Sobre as imagens deste tópico</strong>
+<p>O GPT Image, usado para gerar as imagens do curso, não expõe steps, CFG, denoise nem seed. As comparações abaixo <strong>reproduzem, por edição, o aspecto típico</strong> de cada ajuste para você reconhecer o sintoma; não são a saída real desses controles. Numa agregadora, faça o teste de verdade: mesma seed, mude só um controle.</p>
+</aside>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m2-1-b44">Regra prática: <strong>valores baixos para explorar rápido, valores padrão ou um pouco acima para finalizar</strong>. Quase todas as ferramentas vêm com um padrão sensato; saia dele só quando souber qual sintoma quer corrigir. E note a diferença de sentido: em algumas ferramentas “image strength” alto significa <em>seguir mais</em> a imagem de partida; em outras, “denoise” alto significa <em>mudar mais</em>. Leia o rótulo antes de mexer.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Equilíbrio (base)</span>
+<a href="../../assets/img/c1-m21-base.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-base.webp" alt="Lia ao lado do torrador antigo cheirando grãos recém-torrados tirados da bandeja de resfriamento, luz de janela quente à esquerda" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-1-p46">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, standing beside an unbranded vintage black cast-iron drum coffee roaster with a blank brass nameplate, scooping freshly roasted beans from the round cooling tray with a small metal trier and smelling them, eyes half-closed. Shot on a 35mm lens at f/2.8, eye level. Soft morning window light from the left, warm 3500K, thin smoke rising from the beans. Textures: oily roasted beans, aged iron with brass details, linen apron, rough plaster wall. Lia on the left third, the roaster filling the right side, burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking the ritual of the first roast of the day.</pre>
+<button data-copy="m2-1-p46">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m2-1-t6-practice">Preencha a ficha de geração nos materiais. Inclua o prompt aprovado, arquivo de referência, formato, modelo, controles disponíveis e observações. Faça uma segunda tentativa usando a ficha e compare os resultados.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m2-1-t6-caution">Reprodutibilidade aqui significa documentar o processo e reconhecer diferenças. Não prometa arquivos idênticos em plataformas ou versões diferentes.</p>
+<figure class="shot">
+<span class="shot-label">Sintoma de guidance alto demais</span>
+<a href="../../assets/img/c1-m21-cfg-alto.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-cfg-alto.webp" alt="A mesma cena com aspecto de guidance alto demais: cores saturadas, contraste duro, bordas com halo e pele de cera" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-1-p47">Fully re-render this ENTIRE image to reproduce the typical look of an OVER-GUIDED diffusion render (guidance/CFG pushed far too high): oversaturated orange and teal colors, crushed shadows and blown highlights, harsh over-sharpened edges with halos, waxy plastic skin with no pores, every texture exaggerated and crunchy. Keep the same woman, pose, framing and scene so only the rendering quality changes.</pre>
+<button data-copy="m2-1-p47">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m2-1-b45">À direita, o aspecto típico de um CFG/guidance empurrado ao máximo: saturação exagerada, sombras esmagadas, bordas com halo e pele sem poros. Se a sua imagem estiver assim, antes de reescrever o prompt, volte o guidance para o padrão.</p>
+</div>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">Imagem de partida</span>
+<a href="../../assets/img/c1-m21-base.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-base.webp" alt="Lia ao lado do torrador antigo cheirando grãos recém-torrados tirados da bandeja de resfriamento, luz de janela quente à esquerda" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-1-p49">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, standing beside an unbranded vintage black cast-iron drum coffee roaster with a blank brass nameplate, scooping freshly roasted beans from the round cooling tray with a small metal trier and smelling them, eyes half-closed. Shot on a 35mm lens at f/2.8, eye level. Soft morning window light from the left, warm 3500K, thin smoke rising from the beans. Textures: oily roasted beans, aged iron with brass details, linen apron, rough plaster wall. Lia on the left third, the roaster filling the right side, burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking the ritual of the first roast of the day.</pre>
+<button data-copy="m2-1-p49">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Denoise baixo (~0,3)</span>
+<a href="../../assets/img/c1-m21-denoise-baixo.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-denoise-baixo.webp" alt="Mesma composição e pose, mas agora no fim da tarde com luz de lâmpada quente e janela azul-escura" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-1-p50">Image-to-image at LOW strength/denoise (about 0.3): keep the composition, the woman, her pose, the roaster and every object exactly where they are, and change only the time of day to late evening — warm tungsten practical lights, dark blue window, deeper shadows.</pre>
+<button data-copy="m2-1-p50">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Denoise alto (~0,8)</span>
+<a href="../../assets/img/c1-m21-denoise-alto.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-denoise-alto.webp" alt="Só o layout geral sobrou: a cena virou uma aquarela solta, figura à esquerda e máquina escura à direita" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-1-p51">Image-to-image at HIGH strength/denoise (about 0.8): keep only the rough layout (a figure on the left, a large dark machine on the right) and completely re-render everything else as a loose watercolor illustration with visible brush strokes, paper texture and simplified shapes; the character and machine may change in details.</pre>
+<button data-copy="m2-1-p51">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m2-1-b48">Com pouca força de transformação, a composição, a pose e os objetos ficam onde estavam e só a hora do dia muda. Com muita força, sobra apenas o layout geral — figura à esquerda, máquina escura à direita — e todo o resto é reinventado em aquarela. Use baixo para ajustes, alto para reinterpretações.</p>
+</div>
+<figure class="diagram">
+<svg role="img" aria-label="A seed é o ponto de partida do ruído. Mesmo prompt + mesma seed + mesmas configurações tende a repetir a imagem; troque a seed e você ganha outra composição com o mesmo prompt." viewBox="0 0 790 200" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif">
+<rect width="790" height="200" rx="14" fill="var(--surface-2)"/>
+<defs>
+<pattern id="m21-ruido" width="8" height="8" patternUnits="userSpaceOnUse">
+<rect width="4" height="4" fill="#60a5fa" opacity="0.5"/>
+<rect x="4" y="4" width="4" height="4" fill="#38bdf8" opacity="0.35"/>
+</pattern>
+<pattern id="m21-ruido2" width="10" height="6" patternUnits="userSpaceOnUse">
+<rect width="6" height="3" fill="#38bdf8" opacity="0.45"/>
+<rect x="3" y="3" width="5" height="3" fill="#60a5fa" opacity="0.4"/>
+</pattern>
+</defs>
+<g font-size="14" fill="var(--text)">
+<text x="24" y="36" font-weight="700" fill="#60a5fa">seed 4821</text>
+<rect x="24" y="48" width="70" height="50" rx="6" fill="url(#m21-ruido)"/>
+<text x="110" y="78">+ prompt  →</text>
+<rect x="200" y="48" width="70" height="50" rx="6" fill="none" stroke="#60a5fa" stroke-width="2"/>
+<text x="235" y="78" text-anchor="middle">A</text>
+<text x="290" y="78" fill="var(--text-muted)">hoje</text>
+<text x="380" y="36" font-weight="700" fill="#60a5fa">seed 4821</text>
+<rect x="380" y="48" width="70" height="50" rx="6" fill="url(#m21-ruido)"/>
+<text x="466" y="78">+ prompt  →</text>
+<rect x="556" y="48" width="70" height="50" rx="6" fill="none" stroke="#60a5fa" stroke-width="2"/>
+<text x="591" y="78" text-anchor="middle">≈ A</text>
+<text x="640" y="78" fill="var(--text-muted)">semana que vem</text>
+<text x="24" y="130" font-weight="700" fill="#38bdf8">seed 1177</text>
+<rect x="24" y="140" width="70" height="40" rx="6" fill="url(#m21-ruido2)"/>
+<text x="110" y="165">+ mesmo prompt  →</text>
+<rect x="250" y="140" width="70" height="40" rx="6" fill="none" stroke="#38bdf8" stroke-width="2"/>
+<text x="285" y="165" text-anchor="middle">B</text>
+<text x="340" y="165" fill="var(--text-muted)">outra composição, mesmo clima</text>
+</g>
+</svg>
+<figcaption>A seed é o ponto de partida do ruído. Mesmo prompt + mesma seed + mesmas configurações tende a repetir a imagem; troque a seed e você ganha outra composição com o mesmo prompt.</figcaption>
+</figure>
+<aside class="tip" data-inema-block="m2-1-b53">
+<strong>Salve a seed junto com o prompt</strong>
+<p>Achou uma imagem que ama? Registre <strong>prompt + modelo + configurações + seed</strong>. Com a seed travada você mantém o visual de uma série inteira e testa um controle por vez; mudando só a seed, explora variações sem perder o clima. É isso que transforma um resultado de sorte num sistema repetível.</p>
 </aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
 </div>
 </section>
-<section id="pratica" class="codebox">
-<h2>Prática: um pedido completo</h2>
-<p>
-<strong>Objetivo:</strong> Você vai separar formato, referência e variação, registrando um teste sem confundir as causas.</p>
-<p>Use o texto abaixo na sua ferramenta de imagens. Quando houver referência, anexe o arquivo indicado antes de gerar.</p>
-<pre id="prompt-2-1">Use a imagem de referência anexada como guia da forma da caneca: uma alça oval à direita e corpo terracota. Crie uma nova cena sobre mesa creme, com luz suave à esquerda e fundo sem objetos. Preserve a proporção do corpo e da alça. Deixe a caneca inteira no quadro. Nesta versão, altere somente a posição do objeto para o terço direito. Não acrescente texto.</pre>
-<button data-copy="prompt-2-1">Copiar prompt</button>
-<h3>Como verificar</h3>
-<p>Antes de gerar, anexe a referência própria criada no módulo anterior. Depois compare forma e posição. Registre qualquer outra diferença que apareceu.</p>
-<ol class="timeline">
-<li>Prepare o arquivo ou briefing necessário.</li>
-<li>Faça uma tentativa e salve o resultado com as configurações.</li>
-<li>Compare com os critérios acima e localize um desvio.</li>
-<li>Corrija uma decisão e registre o efeito na nova versão.</li>
-</ol>
+<section class="topic" id="topico-7" data-inema-topic="modulo-2-1#topico-7">
+<h2 class="text-2xl font-bold">
+<span class="number">7</span>Prompt negativo: o que não deve aparecer</h2>
+<h3 class="sec">O que é</h3>
+<aside class="novo" data-inema-block="m2-1-b54">
+<strong>Novo aqui? Prompt negativo</strong>
+<p>O que você pede para o modelo <em>não</em> colocar na imagem. Algumas ferramentas têm um campo separado para isso; no Midjourney é o parâmetro <code>--no</code> (ex.: <code>--no text, logo, signs</code>); nos assistentes de chat, você escreve dentro do próprio prompt (“no text or lettering anywhere”).</p>
+</aside>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m2-1-b55">Os geradores atuais adoram preencher paredes, sacas e lousas com palavras inventadas. Numa peça de marca isso é um problema sério: a frase pode sair errada, em outro idioma, ou competir com o nome do cliente. Veja a própria imagem-base deste módulo — o prompt dela não dizia nada sobre texto:</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Sem prompt negativo</span>
+<a href="../../assets/img/c1-m21-base.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-base.webp" alt="Lia ao lado do torrador antigo cheirando grãos recém-torrados tirados da bandeja de resfriamento, luz de janela quente à esquerda" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-1-p57">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, standing beside an unbranded vintage black cast-iron drum coffee roaster with a blank brass nameplate, scooping freshly roasted beans from the round cooling tray with a small metal trier and smelling them, eyes half-closed. Shot on a 35mm lens at f/2.8, eye level. Soft morning window light from the left, warm 3500K, thin smoke rising from the beans. Textures: oily roasted beans, aged iron with brass details, linen apron, rough plaster wall. Lia on the left third, the roaster filling the right side, burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking the ritual of the first roast of the day.</pre>
+<button data-copy="m2-1-p57">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Com prompt negativo</span>
+<a href="../../assets/img/c1-m21-negativo.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-negativo.webp" alt="A mesma cena sem nenhuma letra: placas, sacas e paredes limpas" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-1-p58">Apply this negative prompt to the image: no text, no letters, no words, no signage, no chalkboards with writing, no logos, no labels on the sacks, no tattoos. Remove every piece of lettering from the whole scene and fill those areas naturally with the surface underneath (plain plaster, plain burlap, plain metal). Keep the same woman, pose, framing, light and everything else identical.</pre>
+<button data-copy="m2-1-p58">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m2-1-b56">À direita, a mesma imagem com a lista de exclusão aplicada: sem letras, palavras, placas, lousas escritas, logos, rótulos nas sacas ou tatuagens. As áreas foram preenchidas com a superfície que estava por baixo. Na prática, é melhor pôr essa lista já na primeira geração do que limpar depois.</p>
+</div>
+<div class="compare-grid" data-inema-block="m2-1-b59">
+<div class="ok">
+<h4>✓ Negativo que funciona</h4>
+<ul>
+<li>curto e concreto: no text, no logos, no watermark</li>
+<li>focado no problema que se repete com aquele modelo</li>
+<li>combinado com o positivo: plain plaster wall</li>
+</ul>
+</div>
+<div class="no">
+<h4>✗ Negativo que atrapalha</h4>
+<ul>
+<li>listas de 40 itens copiadas da internet</li>
+<li>“no ugly, no bad quality” (vago demais para agir)</li>
+<li>negar algo que você nem mencionou e o modelo nem ia pôr</li>
+</ul>
+</div>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
 </section>
-<section id="checagem" class="quiz" data-quiz="modulo-2-1#q1" data-correct="1" data-explain="Seed ajuda em determinados testes. Ela não substitui a referência nem garante identidade entre prompts, versões e configurações.">
+<section class="topic" id="topico-8" data-inema-topic="modulo-2-1#topico-8">
+<h2 class="text-2xl font-bold">
+<span class="number">8</span>Presets e testes A/B: transformar acerto em sistema</h2>
+<h3 class="sec">O que é</h3>
+<aside class="novo" data-inema-block="m2-1-b60">
+<strong>Novo aqui? Preset</strong>
+<p>Configuração salva para reutilizar: pode ser um preset da própria ferramenta (“cinematic”, “product”) ou — mais útil — o seu, com prompt-mestre, modelo, referências, proporção, controles e seed de uma série que deu certo.</p>
+</aside>
+<aside class="novo" data-inema-block="m2-1-b61">
+<strong>Novo aqui? Teste A/B</strong>
+<p>Gerar duas versões idênticas em tudo menos <strong>uma</strong> variável (o fundo, a lente, o peso da referência, o stylize) e comparar lado a lado. Com uma variável só, a diferença na imagem tem uma causa clara.</p>
+</aside>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m2-1-b62">Preset é o que permite dizer ao cliente “os próximos doze posts vão ter este visual” — e cumprir. Teste A/B é como você descobre, na sua ferramenta e no seu modelo, o que cada controle faz de verdade, em vez de confiar em tutorial.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">A: fundo de prateleira</span>
+<a href="../../assets/img/c1-m11-produto.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m11-produto.webp" alt="Pacote kraft com carimbo TERRA ALTA ao lado de duas xícaras de cerâmica salpicada, uma com café e crema, grãos na frente, sobre carvalho gasto" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m2-1-p64">Product photograph of a kraft-paper coffee bag with a folded top and a hand-stamped dark-brown ink label reading &#x27;TERRA ALTA&#x27;, standing on a worn oak counter next to two hand-thrown stoneware cups with a speckled matte cream glaze, one filled with black coffee with a thin golden crema. A few roasted beans with an oily sheen scattered in front. Shot on a 90mm lens at f/4, slightly above eye level. Soft side window light from the left, 4000K, gentle shadows falling to the right. Rough recycled kraft fibers, visible glaze speckles and drip line. Bag slightly right of center, softly blurred café shelves in the background. No other text or logos. Clean contemporary editorial product photography.</pre>
+<button data-copy="m2-1-p64">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">B: fundo de cafezal</span>
+<a href="../../assets/img/c1-m21-ab-b.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-ab-b.webp" alt="A mesma foto de produto, com o fundo trocado por pés de café verdes desfocados" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m2-1-p65">A/B test, variable = background only. Change ONLY the background behind the counter into a wall of lush green coffee plants with ripe red cherries, softly out of focus. Keep the kraft bag and its &#x27;TERRA ALTA&#x27; label, both ceramic cups, the beans, the oak counter, the lens, the window light from the left and the framing exactly identical.</pre>
+<button data-copy="m2-1-p65">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m2-1-b63">Teste A/B com uma variável: só o fundo mudou. Pacote, rótulo, xícaras, grãos, luz e enquadramento são os mesmos. A pergunta de negócio: qual fundo conta melhor a história da origem para o feed da Terra Alta? Com o teste, a decisão vira comparação, não gosto.</p>
+</div>
+<div class="codebox">
+<h4>Preset de geração — molde de uma página</h4>
+<pre id="m2-1-p67" data-lang="text">PRESET: Terra Alta — retrato de ofício (feed 4:5)
+CLIENTE     Torrefação artesanal da Mantiqueira; clima quente, manhã, honesto.
+USO         Posts de feed com a Lia trabalhando.
+PROMPT-MESTRE
+  Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair
+  tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over
+  a white t-shirt, &lt;AÇÃO&gt;, in a rustic coffee roastery. 35mm lens at f/2.8, eye
+  level. Soft morning window light from the left, 3500K. &lt;MATERIAIS&gt;. Lia on the
+  left third. Natural documentary photography, subtle 35mm film grain.
+NEGATIVO    no text, no signage, no logos, no tattoos
+REFERÊNCIAS personagem: lia-retrato.png (peso padrão)
+            estilo: nenhuma (o prompt já define)
+MODELO      &lt;ferramenta / modelo / versão&gt;
+CONTROLES   proporção 4:5 · stylize padrão · chaos baixo · seed &lt;número&gt;
+PODE MUDAR  a ação, os materiais, a seed
+NÃO MUDAR   descrição da Lia, luz, lente, estilo, negativo</pre>
+<button data-copy="m2-1-p67">Copiar</button>
+</div>
+<h4>Protocolo A/B</h4>
+<ol class="timeline" data-inema-block="m2-1-b68">
+<li>Trave tudo: mesmo prompt, mesmo modelo, mesma proporção, mesma seed (se houver).</li>
+<li>Escolha <strong>uma</strong> variável e dois valores bem diferentes (ex.: peso padrão vs dobro).</li>
+<li>Gere A e B. Coloque lado a lado, no mesmo tamanho.</li>
+<li>Nomeie a diferença com vocabulário técnico e anote no preset.</li>
+<li>Só então passe para a próxima variável.</li>
+</ol>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section id="pratica" class="pratica">
+<h2>Prática guiada: baseline, referência e dois controles</h2>
+<p class="inema-prose" data-inema-block="m2-1-b69">Você vai fazer, na sua ferramenta principal, o mesmo caminho deste módulo: uma geração só com texto, uma com referência e dois testes de controle — anotando tudo. Use o prompt-mestre do seu cliente ou o da Terra Alta abaixo.</p>
+<div class="codebox copyrun">
+<h4>Baseline só com texto (Terra Alta)</h4>
+<p>
+<strong>Objetivo:</strong> Gerar a linha de base sem referências, para depois medir o efeito de cada controle.</p>
+<pre id="m2-1-p71">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, standing beside a vintage black cast-iron drum coffee roaster, scooping freshly roasted beans from the round cooling tray with a small metal trier and smelling them, eyes half-closed. Shot on a 35mm lens at f/2.8, eye level. Soft morning window light from the left, warm 3500K, thin smoke rising from the beans. Textures: oily roasted beans, aged iron with brass details, linen apron, rough plaster wall. Lia on the left third, the roaster filling the right side, burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking the ritual of the first roast of the day. No text, no signage, no logos.</pre>
+<button data-copy="m2-1-p71">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> Anote modelo, proporção, stylize/guidance e seed. Apareceram letreiros mesmo com o negativo? A Lia ficou no terço esquerdo?</p>
+</div>
+<h4>Depois do baseline</h4>
+<ol class="timeline" data-inema-block="m2-1-b72">
+<li>
+<strong>Referência:</strong> anexe um retrato limpo da personagem como referência de personagem e gere de novo com o mesmo texto. O que mudou no rosto? E no resto?</li>
+<li>
+<strong>Proporção:</strong> gere em 9:16 reescrevendo só a linha de composição para a vertical.</li>
+<li>
+<strong>Controle 1:</strong> com a seed travada, gere com stylize (ou guidance) no padrão e no dobro. Compare.</li>
+<li>
+<strong>Controle 2:</strong> faça o mesmo com o peso da referência: padrão e metade.</li>
+<li>Monte uma folha com as 5–6 imagens lado a lado e uma linha de observação sob cada uma.</li>
+</ol>
+<div class="codebox copyrun">
+<h4>Linha de composição para 9:16</h4>
+<p>
+<strong>Objetivo:</strong> Adaptar o baseline à vertical sem reescrever o resto.</p>
+<pre id="m2-1-p74">Vertical 9:16 composition: Lia and the cooling tray in the lower two-thirds of the frame, the tall roaster chimney and wooden ceiling beams rising into the top third, clean space at the top for a short caption.</pre>
+<button data-copy="m2-1-p74">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> Substitua só a frase de composição do baseline por esta. A cabeça ou o torrador foram cortados? Sobrou espaço limpo em cima?</p>
+</div>
+</section>
+<section id="licao" class="licao">
+<h2>Lição de casa</h2>
+<p>Continue com o mesmo cliente do módulo 1-1 e o prompt-mestre do módulo 1-2. Defina para que é a imagem (post, anúncio, embalagem) antes de começar. O objetivo não é fazer imagens soltas, e sim um sistema visual repetível que você vai refinar no resto do curso.</p>
+<div class="levels">
+<div class="level">
+<h3>Nível básico <span class="fine">(obrigatório)</span>
+</h3>
+<ol>
+<li>
+<strong>Baseline:</strong> gere 2–3 imagens só com o prompt-mestre. Guarde a melhor e anote modelo, versão, proporção, stylize/guidance e seed.</li>
+<li>
+<strong>Referências:</strong> escolha uma referência de estilo, uma de personagem ou produto e uma de pose ou composição. Gere ao menos 2 imagens com o mesmo prompt + referências e anote qual referência fez o quê.</li>
+<li>
+<strong>Dois valores de controle:</strong> pegue a sua imagem favorita com referência e teste dois valores de stylize (ou variação) mantendo a seed. Observe o que muda mais: detalhe, clima, composição ou realismo.</li>
+<li>
+<strong>Segundo modelo:</strong> repita o baseline e a versão com referências em outro modelo (na mesma agregadora ou em outra ferramenta), com o mesmo texto e as mesmas imagens.</li>
+<li>
+<strong>Mini estudo de caso (até 10 frases):</strong> qual modelo reflete melhor a identidade do cliente, o que mudou com as referências e quais 1–2 controles mais influenciaram o resultado.</li>
+</ol>
+</div>
+<div class="level adv">
+<h3>Nível avançado <span class="fine">(desafio)</span>
+</h3>
+<ol>
+<li>
+<strong>Preset de uma página:</strong> preencha o molde deste módulo com o seu cliente — descrição, uso, prompt-mestre refinado, biblioteca de referências (com quando usar cada uma), modelo escolhido e por quê, controles e seed, o que pode e o que não pode mudar — e 2–4 imagens que mostram a direção.</li>
+<li>
+<strong>Bateria A/B:</strong> faça três testes A/B de uma variável cada (proporção, peso da referência, stylize ou guidance) e registre a conclusão de cada um em uma frase no preset.</li>
+</ol>
+</div>
+</div>
+<p>
+<strong>Entregue/guarde:</strong> Na pasta do projeto: as imagens com seus registros (prompt, modelo, controles, seed), a folha de comparação, o mini estudo de caso e, no avançado, o preset de uma página.</p>
+</section>
+<section id="checagem">
 <h2>Teste sua decisão</h2>
-<p>O que a seed consegue registrar?</p>
-<button data-answer="0" aria-pressed="false">A identidade permanente de uma personagem</button>
-<button data-answer="1" aria-pressed="false">Um ponto inicial de aleatoriedade do gerador</button>
+<div class="quiz" data-quiz="modulo-2-1#q1" data-correct="1" data-explain="Resultado perto demais da referência pede menos influência dela e mais texto (ou uma segunda referência que traga contraste). Subir o peso deixaria ainda mais parecido.">
+<figure class="shot">
+<a href="../../assets/img/c1-m21-peso-alto.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-peso-alto.webp" alt="O mesmo pacote TERRA ALTA com o visual da referência dominando: cores de slide anos 70, sombra profunda, grão pesado" loading="lazy" decoding="async">
+</a>
+</figure>
+<p>
+<strong>1.</strong> A imagem gerada com a referência de estilo ficou praticamente uma cópia da referência. Qual ajuste faz mais sentido?</p>
+<button data-answer="0" aria-pressed="false">Subir o peso da referência</button>
+<button data-answer="1" aria-pressed="false">Baixar o peso da referência e descrever mais no texto o que você quer diferente</button>
+<button data-answer="2" aria-pressed="false">Trocar a proporção para 9:16</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
 <summary>Consultar a explicação</summary>
-<p>Seed ajuda em determinados testes. Ela não substitui a referência nem garante identidade entre prompts, versões e configurações.</p>
+<p>Resultado perto demais da referência pede menos influência dela e mais texto (ou uma segunda referência que traga contraste). Subir o peso deixaria ainda mais parecido.</p>
 </details>
+</div>
+<div class="quiz" data-quiz="modulo-2-1#q2" data-correct="1" data-explain="Guidance muito alto força o modelo a obedecer o texto a qualquer custo e gera esse aspecto “passado do ponto”. Voltar para o valor padrão da ferramenta costuma resolver. A seed muda a composição, não a qualidade do acabamento.">
+<figure class="shot">
+<a href="../../assets/img/c1-m21-cfg-alto.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m21-cfg-alto.webp" alt="A mesma cena com aspecto de guidance alto demais: cores saturadas, contraste duro, bordas com halo e pele de cera" loading="lazy" decoding="async">
+</a>
+</figure>
+<p>
+<strong>2.</strong> As cores estouraram, as bordas ganharam halo e a pele virou cera. Qual controle é o suspeito principal?</p>
+<button data-answer="0" aria-pressed="false">Seed</button>
+<button data-answer="1" aria-pressed="false">CFG / guidance alto demais</button>
+<button data-answer="2" aria-pressed="false">Proporção</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>Guidance muito alto força o modelo a obedecer o texto a qualquer custo e gera esse aspecto “passado do ponto”. Voltar para o valor padrão da ferramenta costuma resolver. A seed muda a composição, não a qualidade do acabamento.</p>
+</details>
+</div>
+<div class="quiz" data-quiz="modulo-2-1#q3" data-correct="1" data-explain="Teste A/B = uma variável. Com a seed travada e o resto igual, a diferença entre as duas imagens só pode vir do stylize.">
+<p>
+<strong>3.</strong> Você quer testar se o stylize alto melhora o retrato da Lia. Como montar o teste?</p>
+<button data-answer="0" aria-pressed="false">Mudar o stylize, o prompt e a seed para ver o máximo de diferença</button>
+<button data-answer="1" aria-pressed="false">Manter prompt, modelo, proporção e seed iguais e mudar só o stylize</button>
+<button data-answer="2" aria-pressed="false">Gerar 20 imagens com stylize aleatório e escolher a mais bonita</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>Teste A/B = uma variável. Com a seed travada e o resto igual, a diferença entre as duas imagens só pode vir do stylize.</p>
+</details>
+</div>
 <p class="fine">Responder não marca a leitura nem bloqueia o próximo módulo.</p>
 </section>
 <section>
 <h2>O que levar desta aula</h2>
 <ul>
-<li>Proporção não é resolução</li>
-<li>Referência de identidade e de estilo</li>
-<li>Intensidade de estilo e exploração</li>
-<li>Steps, guidance e força de edição</li>
-<li>Seed e comparação honesta</li>
-<li>Um preset verificável</li>
+<li>Todo gerador é <strong>prompt → modelo → controles</strong>. Diagnostique o elo e mude um de cada vez.</li>
+<li>Gere na <strong>proporção final</strong> e reescreva a linha de composição para cada formato; cortar depois desmonta a cena.</li>
+<li>Referência: <strong>uma imagem, uma função</strong> (estilo, personagem, pose/composição ou foto). Ajuste o peso pelo resultado: cópia demais, baixe; ignorada, suba.</li>
+<li>Steps, CFG e denoise não são “quanto mais, melhor”: comece no padrão e só mude para corrigir um sintoma que você sabe nomear.</li>
+<li>Seed + prompt + modelo + configurações salvos = resultado repetível. Organize isso num <strong>preset</strong> e decida com <strong>testes A/B</strong>.</li>
 </ul>
-<p>Escolha uma decisão que você consegue explicar sem consultar o texto. Se ainda houver dúvida, marque o tópico e volte a ele pela jornada.</p>
 <div class="actions">
 <a class="button" href="index.html">Voltar para a trilha</a>
 <a class="button primary" href="../../curso/trilha2/modulo-2-2.html">Próximo módulo: Personagem e campanha consistentes</a>
@@ -488,7 +1103,7 @@
 </main>
 <footer class="footer">
 <div class="wrap">
-<span>Curso gratuito · INEMA.CLUB · v1.0.0</span>
+<span>Curso gratuito · INEMA.CLUB · v1.1.0</span>
 <a href="../../materiais.html">Materiais e referências</a>
 <a href="../../../index.html">Os três cursos</a>
 <a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>

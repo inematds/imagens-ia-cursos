@@ -76,11 +76,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="inema-course" content="prompting-imagem">
-<meta name="description" content="Transforme uma ideia em decisões de enquadramento, luz e composição. Construa uma série de imagens que você consegue explicar e revisar.">
+<meta name="description" content="Ao terminar, você escreve um prompt em camadas — plano, lente, luz, textura, composição e estilo — e sabe prever o que cada camada muda na imagem antes de gerar.">
 <title>A fórmula do prompt · INEMA.CLUB</title>
 <link rel="stylesheet" href="../../assets/learn.css">
 <link rel="stylesheet" href="../../assets/course.css">
-<script type="application/json" data-inema-manifest>{"course": "prompting-imagem", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Escolha sua ferramenta e prepare o projeto", "topics": 6, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "A fórmula do prompt", "topics": 6, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controles e testes dentro das ferramentas", "topics": 6, "href": "curso/trilha2/modulo-2-1.html"}, {"id": "2-2", "title": "Personagem e campanha consistentes", "topics": 6, "href": "curso/trilha2/modulo-2-2.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Edite sem perder o que já funciona", "topics": 6, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Upscale, restauração e entrega", "topics": 6, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: da intenção ao portfólio", "topics": 6, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
+<script type="application/json" data-inema-manifest>{"course": "prompting-imagem", "tracks": [{"n": "1", "title": "Fundamentos", "modules": [{"id": "1-1", "title": "Escolha sua ferramenta e prepare o projeto", "topics": 8, "href": "curso/trilha1/modulo-1-1.html"}, {"id": "1-2", "title": "A fórmula do prompt", "topics": 8, "href": "curso/trilha1/modulo-1-2.html"}]}, {"n": "2", "title": "Direção visual", "modules": [{"id": "2-1", "title": "Controles e testes dentro das ferramentas", "topics": 8, "href": "curso/trilha2/modulo-2-1.html"}, {"id": "2-2", "title": "Personagem e campanha consistentes", "topics": 7, "href": "curso/trilha2/modulo-2-2.html"}]}, {"n": "3", "title": "Produção", "modules": [{"id": "3-1", "title": "Edite sem perder o que já funciona", "topics": 8, "href": "curso/trilha3/modulo-3-1.html"}, {"id": "3-2", "title": "Upscale, restauração e entrega", "topics": 7, "href": "curso/trilha3/modulo-3-2.html"}]}, {"n": "4", "title": "Projeto", "modules": [{"id": "4-1", "title": "Projeto final: da intenção ao portfólio", "topics": 7, "href": "curso/trilha4/modulo-4-1.html"}]}]}</script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -132,9 +132,9 @@
 <div class="breadcrumb">
 <a href="../../index.html">Prompting de Imagem</a> / <a href="index.html">Fundamentos</a> / Módulo 1-2</div>
 <header class="intro">
-<h1>A fórmula do prompt</h1>
-<p>Você vai escrever um pedido em camadas e relacionar cada trecho a uma diferença visível.</p>
-<p class="meta">6 tópicos · explicação, observação e prática · avance no seu ritmo</p>
+<h1 class="text-2xl font-bold">A fórmula do prompt</h1>
+<p>Ao terminar, você escreve um prompt em camadas — plano, lente, luz, textura, composição e estilo — e sabe prever o que cada camada muda na imagem antes de gerar.</p>
+<p class="meta">8 tópicos · 75 min · exemplos com o prompt que gerou cada imagem</p>
 <div data-inema-meter="modulo:1-2">
 <span data-inema-meter-frac>0 de 0</span> · <span data-inema-meter-pct>0%</span>
 <div class="inema-bar">
@@ -148,59 +148,141 @@
 <strong>Nesta aula</strong>
 <ol>
 <li>
-<a href="#topico-1">Sujeito e ação: o que precisa existir</a>
+<a href="#topico-1">Sujeito e ação: o esqueleto do quadro</a>
 </li>
 <li>
-<a href="#topico-2">Enquadramento e ponto de vista</a>
+<a href="#topico-2">Tipo de plano: o que o espectador vê</a>
 </li>
 <li>
-<a href="#topico-3">Luz: fonte, direção e qualidade</a>
+<a href="#topico-3">Ângulo de câmera: de onde se olha</a>
 </li>
 <li>
-<a href="#topico-4">Textura: como a superfície responde</a>
+<a href="#topico-4">Lente e distância focal: a psicologia do espaço</a>
 </li>
 <li>
-<a href="#topico-5">Composição: conduza o olhar</a>
+<a href="#topico-5">Luz: fonte, direção, qualidade e temperatura</a>
 </li>
 <li>
-<a href="#topico-6">Estilo e estrutura sem palavras mágicas</a>
+<a href="#topico-6">Textura e material: fuja do “plástico de IA”</a>
+</li>
+<li>
+<a href="#topico-7">Composição: conduza o olhar</a>
+</li>
+<li>
+<a href="#topico-8">Estilo, referência e os 3 pilares</a>
 </li>
 </ol>
-<a href="#pratica">Prática do módulo</a>
+<a href="#pratica">Prática guiada</a>
+<a href="#licao">Lição de casa</a>
 <a href="#checagem">Teste sua decisão</a>
 </nav>
 <article class="lesson" data-inema-module="1-2" data-inema-track="1">
+<section class="abertura">
+<p class="inema-prose" data-inema-block="m1-2-b1">A maioria das pessoas escreve algo como “barista feliz fazendo café” e torce. Os modelos atuais entregam uma imagem <strong>bonita</strong> até com isso — o problema é que ela não é sua: o modelo preenche cada decisão que você não tomou com a média do que já viu. Um prompt profissional não é um desejo: é um <strong>briefing técnico</strong> para o fotógrafo, o diretor de fotografia, o iluminador e o produtor de objetos ao mesmo tempo.</p>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Prompt de 4 palavras</span>
+<a href="../../assets/img/c1-m12-vago.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-vago.webp" alt="Barista sorridente fazendo latte art numa cafeteria de catálogo com lousas em inglês — bonita, mas genérica" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p3">happy barista making coffee</pre>
+<button data-copy="m1-2-p3">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Prompt em camadas</span>
+<a href="../../assets/img/c1-m12-mestre.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-mestre.webp" alt="Lia, barista de avental mostarda, despeja água de uma chaleira de cobre no coador, luz de janela quente à esquerda, torrador desfocado ao fundo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p4">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, slowly pouring hot water from a copper gooseneck kettle into a ceramic pour-over dripper, focused and calm. Shot on a 50mm lens at f/2, eye level. Soft morning window light from the left, warm 3500K, gentle shadow falloff on the right side of her face. Visible steam, matte glazed ceramic, worn wooden counter with coffee grounds, linen texture on the apron. Subject on the left third, negative space on the right with a softly blurred vintage coffee roaster and burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking quiet craftsmanship at dawn.</pre>
+<button data-copy="m1-2-p4">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m1-2-b2">Duas gerações independentes. A da esquerda é competente, mas o modelo escolheu tudo: sorriso de banco de imagem, latte art, lousas em inglês, cafeteria de catálogo — nada ali pertence a uma marca específica. À direita, cada elemento — plano médio, 50 mm, janela à esquerda a 3500K, vapor, cerâmica fosca, avental mostarda, torrador ao fundo — foi pedido. Abra “Prompt usado” embaixo de cada uma e compare. O resto deste módulo desmonta a imagem da direita, camada por camada.</p>
+</div>
+<figure class="diagram">
+<svg role="img" aria-label="A fórmula em seis camadas. Use como checklist: se uma camada ficou vazia, o modelo vai preenchê-la por você." viewBox="0 0 760 250" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif">
+<rect width="760" height="250" rx="14" fill="var(--surface-2)"/>
+<text x="24" y="38" font-size="15" fill="var(--text-muted)">SUJEITO + AÇÃO  →  depois, seis camadas de direção</text>
+<g font-size="14" text-anchor="middle">
+<g>
+<rect x="20" y="64" width="112" height="118" rx="10" fill="none" stroke="#34d399" stroke-width="2"/>
+<text x="76" y="100" font-size="16" font-weight="700" fill="#34d399">PLANO</text>
+<text x="76" y="128" fill="var(--text)">close, médio,</text>
+<text x="76" y="148" fill="var(--text)">geral, ângulo</text>
+</g>
+<g>
+<rect x="144" y="64" width="112" height="118" rx="10" fill="none" stroke="#34d399" stroke-width="2"/>
+<text x="200" y="100" font-size="16" font-weight="700" fill="#34d399">LENTE</text>
+<text x="200" y="128" fill="var(--text)">24 · 50 · 85</text>
+<text x="200" y="148" fill="var(--text)">135 mm, f/</text>
+</g>
+<g>
+<rect x="268" y="64" width="112" height="118" rx="10" fill="none" stroke="#38bdf8" stroke-width="2"/>
+<text x="324" y="100" font-size="16" font-weight="700" fill="#38bdf8">LUZ</text>
+<text x="324" y="128" fill="var(--text)">fonte, direção,</text>
+<text x="324" y="148" fill="var(--text)">qualidade, K</text>
+</g>
+<g>
+<rect x="392" y="64" width="112" height="118" rx="10" fill="none" stroke="#38bdf8" stroke-width="2"/>
+<text x="448" y="100" font-size="16" font-weight="700" fill="#38bdf8">TEXTURA</text>
+<text x="448" y="128" fill="var(--text)">materiais,</text>
+<text x="448" y="148" fill="var(--text)">superfícies</text>
+</g>
+<g>
+<rect x="516" y="64" width="112" height="118" rx="10" fill="none" stroke="#34d399" stroke-width="2"/>
+<text x="572" y="100" font-size="16" font-weight="700" fill="#34d399">COMPOSIÇÃO</text>
+<text x="572" y="128" fill="var(--text)">terços, espaço,</text>
+<text x="572" y="148" fill="var(--text)">camadas</text>
+</g>
+<g>
+<rect x="640" y="64" width="100" height="118" rx="10" fill="none" stroke="#34d399" stroke-width="2"/>
+<text x="690" y="100" font-size="16" font-weight="700" fill="#34d399">ESTILO</text>
+<text x="690" y="128" fill="var(--text)">época, filme,</text>
+<text x="690" y="148" fill="var(--text)">+ emoção</text>
+</g>
+</g>
+<text x="24" y="222" font-size="14" fill="var(--text-muted)">Verde = câmera e quadro · Ciano = o que a luz revela · A emoção pretendida fecha o prompt.</text>
+</svg>
+<figcaption>A fórmula em seis camadas. Use como checklist: se uma camada ficou vazia, o modelo vai preenchê-la por você.</figcaption>
+</figure>
+</section>
 <section class="topic" id="topico-1" data-inema-topic="modulo-1-2#topico-1">
 <h2 class="text-2xl font-bold">
-<span class="number">1</span>Sujeito e ação: o que precisa existir</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m1-2-t1-concept">Sujeito é o elemento principal da imagem; ação é o que acontece com ele. Em uma cena estática, a relação com a superfície também importa: uma caneca apoiada na mesa é diferente de uma caneca suspensa. Quantidade e posição reduzem ambiguidades.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m1-2-t1-why">Um pedido como produto bonito não informa forma, material nem situação. A descrição deve priorizar características reconhecíveis e necessárias ao objetivo.</p>
+<span class="number">1</span>Sujeito e ação: o esqueleto do quadro</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m1-2-b6">O <strong>sujeito</strong> é quem ou o que ocupa o centro da atenção; a <strong>ação</strong> é o que ele faz naquele instante. Juntos são o esqueleto: todas as outras camadas (lente, luz, estilo) se penduram neles. Escreva como um romancista apresentaria o personagem na primeira página: idade aproximada, cabelo, pele, roupa, gesto, objeto na mão, lugar.</p>
+<div class="compare-grid" data-inema-block="m1-2-b7">
+<div class="ok">
+<h4>✓ Concreto e observável</h4>
+<ul>
+<li>Lia, barista de 30 e poucos anos, cabelo cacheado preso, sardas, avental de linho mostarda</li>
+<li>despejando devagar água de uma chaleira de cobre num coador de cerâmica</li>
+<li>balcão de madeira gasto, torrador antigo ao fundo</li>
+</ul>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m1-2-t1-svgtitle" class="w-full h-auto">
-<title id="m1-2-t1-svgtitle">Sujeito e ação: o que precisa existir — Use características observáveis para descrever e conferir a identidade do produto fictício Aurora.</title>
-<rect x="15" y="25" width="610" height="182" rx="12" fill="var(--surface-2)"/>
-<g transform="translate(80 90) scale(0.95)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<text x="280" y="80" font-size="17" fill="currentColor">1  Uma alça oval</text>
-<text x="280" y="120" font-size="17" fill="currentColor">2  Corpo terracota</text>
-<text x="280" y="160" font-size="17" fill="currentColor">3  Borda contínua</text>
-</svg>
-<figcaption>Use características observáveis para descrever e conferir a identidade do produto fictício Aurora.</figcaption>
-</figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m1-2-t1-practice">Comece com uma frase contendo objeto, quantidade, característica e posição. Depois acrescente uma ação, se ela ajudar: uma mão adulta segura a alça. Compare a dificuldade da cena com e sem a mão.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m1-2-t1-caution">Mais detalhes não significam automaticamente mais controle. Evite características contraditórias e mantenha a prioridade do objeto principal explícita.</p>
+<div class="no">
+<h4>✗ Abstrato ou emocional</h4>
+<ul>
+<li>uma pessoa feliz</li>
+<li>fazendo café</li>
+<li>numa cafeteria bonita</li>
+</ul>
+</div>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b8">“Feliz” não é algo que a câmera veja; “sorriso leve, olhos semicerrados para o vapor” é. Quando você troca adjetivos de sentimento por <strong>sinais visíveis</strong>, o modelo tem o que desenhar. E quando o personagem está bem descrito, você consegue repeti-lo em outras cenas — base de qualquer campanha (módulo 2-2).</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m1-2-b9">Um teste rápido: leia só a primeira frase do prompt. Se um ilustrador conseguiria esboçar a cena a partir dela, o esqueleto está bom. Uma ação física específica (“despejando água”, “ajustando o moedor”, “cheirando os grãos na palma da mão”) sempre rende mais do que uma pose (“posando”, “sorrindo para a câmera”).</p>
+<aside class="tip" data-inema-block="m1-2-b10">
+<strong>Ação dá vida</strong>
+<p>Prefira verbos com mãos e objetos. Eles criam gestos naturais e evitam a pose rígida de banco de imagem. Um objeto em uso também diz ao espectador qual é a profissão sem precisar de texto.</p>
 </aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
@@ -209,43 +291,104 @@
 </section>
 <section class="topic" id="topico-2" data-inema-topic="modulo-1-2#topico-2">
 <h2 class="text-2xl font-bold">
-<span class="number">2</span>Enquadramento e ponto de vista</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m1-2-t2-concept">Enquadramento é a parte da cena que aparece. Plano aberto mostra contexto; plano médio equilibra objeto e ambiente; detalhe mostra uma região. Ponto de vista descreve a posição da câmera: de cima, na altura do objeto ou de baixo.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m1-2-t2-why">A mesma caneca pode comunicar uso, forma ou acabamento conforme o corte. O tamanho do sujeito na imagem muda aquilo que o aluno e o público conseguem inspecionar.</p>
+<span class="number">2</span>Tipo de plano: o que o espectador vê</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m1-2-b11">A câmera no seu prompt é o olho de quem vê. O <strong>tipo de plano</strong> diz o quanto do sujeito e do ambiente entra no quadro. Os nomes vêm do cinema e os modelos os conhecem bem — em inglês, que é como vão no prompt:</p>
+<div class="table-scroll" data-inema-block="m1-2-b12">
+<table>
+<thead>
+<tr>
+<th>Plano (inglês no prompt)</th>
+<th>O que mostra</th>
+<th>O que comunica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plano-detalhe (<em>extreme close-up</em>)</td>
+<td>um olho, uma mão, um objeto</td>
+<td>intimidade, atenção ao detalhe</td>
+</tr>
+<tr>
+<td>Close (<em>close-up</em>)</td>
+<td>rosto e ombros</td>
+<td>emoção</td>
+</tr>
+<tr>
+<td>Plano médio (<em>medium shot</em>)</td>
+<td>da cintura para cima</td>
+<td>equilíbrio entre pessoa e contexto</td>
+</tr>
+<tr>
+<td>Plano inteiro (<em>full shot</em>)</td>
+<td>corpo inteiro + entorno imediato</td>
+<td>postura, figurino, ação completa</td>
+</tr>
+<tr>
+<td>Plano geral (<em>long / wide shot</em>)</td>
+<td>o ambiente todo, pessoa pequena</td>
+<td>atmosfera, escala, lugar</td>
+</tr>
+</tbody>
+</table>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m1-2-t2-svgtitle" class="w-full h-auto">
-<title id="m1-2-t2-svgtitle">Enquadramento e ponto de vista — O recorte muda quanto contexto aparece. Confira se o corte elimina alguma parte necessária do objeto.</title>
-<rect x="25" y="20" width="590" height="180" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
-<g transform="translate(270 70) scale(1)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<rect x="245" y="35" width="160" height="155" fill="none" stroke="var(--primary)" stroke-width="3"/>
-<text x="45" y="75" font-size="17" fill="currentColor">Plano aberto</text>
-<text x="425" y="125" font-size="17" fill="currentColor">Recorte fechado</text>
-<text x="25" y="231" font-size="14" fill="currentColor">Diagrama de composição — exemplo autoral</text>
-</svg>
-<figcaption>O recorte muda quanto contexto aparece. Confira se o corte elimina alguma parte necessária do objeto.</figcaption>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b13">Trocar só o plano muda a história que a mesma cena conta. O close fala da concentração de Lia; o plano geral fala da torrefação ao amanhecer. Veja a mesma imagem-base reenquadrada — só o plano mudou:</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Plano-detalhe</span>
+<a href="../../assets/img/c1-m12-plano-detalhe.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-plano-detalhe.webp" alt="Plano-detalhe do bico da chaleira de cobre, o fio de água e o vapor saindo do coador" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p15">Reframe this exact scene as an EXTREME CLOSE-UP (detail shot): only the copper kettle spout, the stream of hot water and the steam rising from the ceramic dripper fill the frame. Same warm window light from the left, same color grade, same materials.</pre>
+<button data-copy="m1-2-p15">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m1-2-t2-practice">Use o laboratório de enquadramento e observe o espaço ao redor. Escreva três versões do prompt mudando apenas o tipo de plano. Na geração, confira se a alça e a borda continuam visíveis quando isso for necessário.</p>
-<div class="compare-grid">
-<div>
-<h3>✓ Faça a verificação</h3>
-<p>Use o laboratório de enquadramento e observe o espaço ao redor. Escreva três versões do prompt mudando apenas o tipo de plano. Na geração, confira se a alça e a borda continuam visíveis quando isso for necessário.</p>
+<figure class="shot">
+<span class="shot-label">Close</span>
+<a href="../../assets/img/c1-m12-plano-close.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-plano-close.webp" alt="Close no rosto de Lia, olhos concentrados para baixo, fundo totalmente desfocado" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p16">Reframe this exact scene as a CLOSE-UP: only Lia&#x27;s face and shoulders fill the frame, her concentrated eyes looking down at the pour. Keep the same woman, same hair, freckles, apron, same warm window light from the left and same color grade. Background becomes an out-of-focus blur.</pre>
+<button data-copy="m1-2-p16">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Plano inteiro</span>
+<a href="../../assets/img/c1-m12-plano-inteiro.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-plano-inteiro.webp" alt="Plano inteiro: Lia de corpo inteiro atrás do balcão de madeira, com o chão da cafeteria visível" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p17">Reframe this exact scene as a FULL SHOT: pull the camera back so Lia is visible head to toe standing behind the wooden counter, with the whole counter and some of the café floor visible. Keep the same woman, outfit, action, warm window light from the left and color grade.</pre>
+<button data-copy="m1-2-p17">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Plano geral</span>
+<a href="../../assets/img/c1-m12-plano-geral.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-plano-geral.webp" alt="Plano geral: Lia pequena no quadro, a torrefação inteira visível com janela grande, torrador e sacas" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p18">Reframe this exact scene as a LONG SHOT (wide establishing shot): Lia is small in the frame, the entire rustic roastery café is visible — the big window, the vintage roaster, burlap coffee sacks, wooden tables — and the morning light fills the space. Keep the same woman, outfit and warm light direction.</pre>
+<button data-copy="m1-2-p18">Copiar prompt</button>
+</details>
+</figure>
 </div>
-<div>
-<h3>✗ Evite a conclusão automática</h3>
-<p>Nomear uma lente no prompt sugere uma aparência, mas não impõe uma simulação óptica exata. Na fotografia real, a perspectiva depende da posição da câmera; ao mudar a distância, as relações espaciais mudam.</p>
+<p class="caption" data-inema-block="m1-2-b14">Quatro edições da mesma imagem-base (o plano médio do topo do módulo). O plano-detalhe transforma o gesto em assunto; o close entrega emoção; o inteiro mostra o ofício; o geral vende o lugar. Pergunte-se sempre: <strong>qual destes o meu cliente precisa para esta peça?</strong>
+</p>
 </div>
-</div>
+<aside class="tip" data-inema-block="m1-2-b19">
+<strong>Dica de diretor</strong>
+<p>Coloque o tipo de plano <strong>no começo</strong> do prompt (“Medium shot of…”, “Extreme close-up of…”). Os modelos dão mais peso ao que vem primeiro.</p>
+</aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
@@ -253,38 +396,64 @@
 </section>
 <section class="topic" id="topico-3" data-inema-topic="modulo-1-2#topico-3">
 <h2 class="text-2xl font-bold">
-<span class="number">3</span>Luz: fonte, direção e qualidade</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m1-2-t3-concept">Fonte é de onde vem a luz, como uma janela. Direção é sua posição relativa ao objeto. Qualidade descreve a transição das sombras: dura, com borda marcada; suave, com transição gradual. Cor da iluminação é outra decisão e não substitui as anteriores.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m1-2-t3-why">Luz torna volume e material legíveis. Dizer apenas iluminação cinematográfica deixa em aberto onde estarão sombras, reflexos e separação do fundo.</p>
-</div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m1-2-t3-svgtitle" class="w-full h-auto">
-<title id="m1-2-t3-svgtitle">Luz: fonte, direção e qualidade — Observe a sombra do lado oposto à fonte. A posição da luz ajuda a explicar o volume. Esquema simplificado.</title>
-<rect x="15" y="25" width="610" height="182" rx="12" fill="var(--surface-2)"/>
-<path d="M40 50L300 155L40 125Z" fill="#f6d88b" opacity=".25"/>
-<rect x="35" y="45" width="30" height="100" fill="#f6d88b"/>
-<ellipse cx="368" cy="189" rx="86" ry="12" fill="#241810" opacity=".55"/>
-<g transform="translate(260 85) scale(0.95)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<text x="32" y="225" font-size="17" fill="currentColor">Janela à esquerda</text>
-<text x="350" y="225" font-size="17" fill="currentColor">Sombra à direita</text>
-</svg>
-<figcaption>Observe a sombra do lado oposto à fonte. A posição da luz ajuda a explicar o volume. Esquema simplificado.</figcaption>
-</figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m1-2-t3-practice">No esquema, alterne janela à esquerda e à direita. A sombra deve se deslocar para o lado oposto. Depois compare luz dura e suave. Escreva o pedido completo: janela grande à esquerda, sombra suave à direita.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m1-2-t3-caution">No desenho, a luz é uma simplificação didática. Em uma geração real, confira reflexos e sombras: o modelo pode produzir sinais contraditórios mesmo com uma instrução clara.</p>
+<span class="number">3</span>Ângulo de câmera: de onde se olha</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m1-2-b20">Plano é o <em>quanto</em>; ângulo é o <em>de onde</em>. Os principais: <strong>altura dos olhos</strong> (<em>eye level</em>, neutro), <strong>ângulo baixo / contra-plongée</strong> (<em>low angle, worm's-eye view</em>), <strong>zenital</strong> (<em>bird's-eye view, top-down</em>), <strong>sobre o ombro</strong> (<em>over-the-shoulder</em>) e <strong>ponto de vista</strong> (<em>POV</em>, a câmera como os olhos do personagem).</p>
+<aside class="novo" data-inema-block="m1-2-b21">
+<strong>Novo aqui? Contra-plongée e plongée</strong>
+<p>Termos franceses do cinema. <em>Plongée</em> (mergulho) é a câmera acima, olhando para baixo — o sujeito parece menor, mais frágil. <em>Contra-plongée</em> é a câmera abaixo, olhando para cima — o sujeito parece maior, mais forte.</p>
 </aside>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b22">Um ângulo baixo dá autoridade e monumentalidade — ótimo para retrato de marca que quer transmitir confiança. O zenital achata a profundidade e transforma objetos em desenho gráfico — perfeito para flat lay de produto e redes sociais.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Ângulo baixo (worm's-eye)</span>
+<a href="../../assets/img/c1-m12-angulo-baixo.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-angulo-baixo.webp" alt="Ângulo baixo: câmera abaixo do balcão olhando para cima, Lia parece imponente, vigas do teto aparecem" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p24">Completely re-shoot this scene from a dramatic LOW ANGLE (worm&#x27;s-eye view): the camera is placed below the counter edge, pointing steeply UP at Lia, so we see the underside of the kettle and her face from below, the wooden ceiling beams and hanging pendant lamps fill the top of the frame. Strong upward perspective. Keep the same woman, outfit, action, warm window light from the left and color grade.</pre>
+<button data-copy="m1-2-p24">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Zenital (bird's-eye)</span>
+<a href="../../assets/img/c1-m12-angulo-zenital.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-angulo-zenital.webp" alt="Vista zenital: de cima, o coador, a chaleira, as mãos de Lia e grãos formam uma composição gráfica sobre a madeira" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p25">Re-shoot this exact scene from a BIRD&#x27;S-EYE VIEW, straight down from above the counter: we see the top of the ceramic dripper, the kettle, Lia&#x27;s hands and forearms, cups and coffee beans arranged on the wooden counter as a graphic composition. Same warm window light, same materials and color grade.</pre>
+<button data-copy="m1-2-p25">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m1-2-b23">A mesma base, editada só no ângulo. Embaixo, Lia vira protagonista; de cima, o ritual do café vira padrão gráfico — mãos, chaleira e grãos organizados sobre a madeira. Note que o zenital praticamente elimina o rosto: escolha o ângulo pelo que a peça precisa mostrar.</p>
+</div>
+<div class="compare-grid" data-inema-block="m1-2-b26">
+<div class="ok">
+<h4>✓ Use quando…</h4>
+<ul>
+<li>
+<em>low angle</em>: retrato de liderança, produto “heroico”</li>
+<li>
+<em>bird's-eye</em>: mesa posta, flat lay, processo com as mãos</li>
+<li>
+<em>over-the-shoulder</em>: colocar o espectador dentro da conversa</li>
+</ul>
+</div>
+<div class="no">
+<h4>✗ Cuidado com…</h4>
+<ul>
+<li>ângulo baixo demais em rosto: queixo e narinas dominam</li>
+<li>zenital com pessoas em pé: vira topo de cabeça</li>
+<li>misturar dois ângulos no mesmo prompt (“low angle bird's-eye”)</li>
+</ul>
+</div>
+</div>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
@@ -292,63 +461,105 @@
 </section>
 <section class="topic" id="topico-4" data-inema-topic="modulo-1-2#topico-4">
 <h2 class="text-2xl font-bold">
-<span class="number">4</span>Textura: como a superfície responde</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m1-2-t4-concept">Textura é o padrão de pequenas variações de uma superfície. Material é aquilo de que o objeto parece feito. Cerâmica fosca, metal polido e tecido de linho pedem reflexos e detalhes diferentes; esses sinais ajudam a interpretar a imagem.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m1-2-t4-why">Adicionar ultra detalhado não resolve um material incoerente. Para Aurora, pequenas variações de esmalte são úteis; rachaduras e rugosidade exagerada mudariam a percepção do produto.</p>
+<span class="number">4</span>Lente e distância focal: a psicologia do espaço</h2>
+<h3 class="sec">O que é</h3>
+<aside class="novo" data-inema-block="m1-2-b27">
+<strong>Novo aqui? Distância focal</strong>
+<p>Número em milímetros que indica o “ângulo de visão” da lente. Números baixos (14–24 mm) enxergam muito espaço; números altos (135–200 mm) enxergam uma fatia estreita, como um binóculo. O olho humano fica perto dos 40–50 mm.</p>
+</aside>
+<h4>Guia de lentes para o prompt</h4>
+<div class="table-scroll" data-inema-block="m1-2-b28">
+<table>
+<thead>
+<tr>
+<th>Faixa</th>
+<th>Nome</th>
+<th>Efeito na imagem</th>
+<th>Bom para</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>14–24 mm</td>
+<td>ultra-grande-angular</td>
+<td>espaço exagerado, linhas esticadas nas bordas, dinamismo</td>
+<td>interiores, arquitetura, ação dramática</td>
+</tr>
+<tr>
+<td>24–35 mm</td>
+<td>grande-angular</td>
+<td>bastante ambiente, sensação de estar lá</td>
+<td>documental, lifestyle, rua</td>
+</tr>
+<tr>
+<td>35–50 mm</td>
+<td>normal</td>
+<td>perspectiva parecida com a do olho</td>
+<td>cenas naturais, plano médio</td>
+</tr>
+<tr>
+<td>85–135 mm</td>
+<td>retrato / tele curta</td>
+<td>compressão lisonjeira, fundo desfocado, sujeito isolado</td>
+<td>retratos, produto com fundo limpo</td>
+</tr>
+<tr>
+<td>200 mm +</td>
+<td>teleobjetiva</td>
+<td>compressão extrema, fundo “achatado”</td>
+<td>esporte, natureza, gráfico urbano</td>
+</tr>
+</tbody>
+</table>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m1-2-t4-svgtitle" class="w-full h-auto">
-<title id="m1-2-t4-svgtitle">Textura: como a superfície responde — Compare a distribuição do reflexo. O desenho exagera a diferença para tornar o material legível.</title>
-<rect x="15" y="25" width="610" height="182" rx="12" fill="var(--surface-2)"/>
-<g transform="translate(80 85) scale(0.9)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<g transform="translate(365 85) scale(0.9)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#a96b42" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#a96b42"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<path d="M387 103V157" stroke="#fff0d3" stroke-width="13" stroke-linecap="round"/>
-<circle cx="90" cy="98" r="1.3" fill="#895a42"/>
-<circle cx="107" cy="109" r="1.3" fill="#895a42"/>
-<circle cx="124" cy="120" r="1.3" fill="#895a42"/>
-<circle cx="141" cy="131" r="1.3" fill="#895a42"/>
-<circle cx="90" cy="142" r="1.3" fill="#895a42"/>
-<circle cx="107" cy="153" r="1.3" fill="#895a42"/>
-<circle cx="124" cy="107" r="1.3" fill="#895a42"/>
-<circle cx="141" cy="118" r="1.3" fill="#895a42"/>
-<circle cx="90" cy="129" r="1.3" fill="#895a42"/>
-<circle cx="107" cy="140" r="1.3" fill="#895a42"/>
-<circle cx="124" cy="151" r="1.3" fill="#895a42"/>
-<circle cx="141" cy="105" r="1.3" fill="#895a42"/>
-<circle cx="90" cy="116" r="1.3" fill="#895a42"/>
-<circle cx="107" cy="127" r="1.3" fill="#895a42"/>
-<circle cx="124" cy="138" r="1.3" fill="#895a42"/>
-<circle cx="141" cy="149" r="1.3" fill="#895a42"/>
-<circle cx="90" cy="103" r="1.3" fill="#895a42"/>
-<circle cx="107" cy="114" r="1.3" fill="#895a42"/>
-<circle cx="124" cy="125" r="1.3" fill="#895a42"/>
-<circle cx="141" cy="136" r="1.3" fill="#895a42"/>
-<circle cx="90" cy="147" r="1.3" fill="#895a42"/>
-<circle cx="107" cy="101" r="1.3" fill="#895a42"/>
-<text x="75" y="228" font-size="17" fill="currentColor">Fosco: reflexo discreto</text>
-<text x="347" y="228" font-size="17" fill="currentColor">Brilhante: reflexo marcado</text>
-</svg>
-<figcaption>Compare a distribuição do reflexo. O desenho exagera a diferença para tornar o material legível.</figcaption>
+<aside class="novo" data-inema-block="m1-2-b29">
+<strong>Novo aqui? Abertura (f/)</strong>
+<p>O “f/” é a abertura do diafragma. Números pequenos (f/1.4, f/2) = fundo muito desfocado (pouca profundidade de campo). Números grandes (f/8, f/11) = tudo nítido. No prompt, “f/1.8” funciona como pedido de fundo desfocado.</p>
+</aside>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b30">Quem fotografa sabe: a lente não é “zoom”. Ela muda a <strong>perspectiva</strong>. Com uma grande-angular você chega perto e o fundo parece distante e amplo; com uma tele você se afasta e o fundo parece colado no sujeito. Mesmo com o sujeito do mesmo tamanho no quadro, a sensação muda completamente.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">24 mm</span>
+<a href="../../assets/img/c1-m12-lente-24.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-lente-24.webp" alt="Mesma cena com lente 24 mm: Lia do mesmo tamanho, mas muito mais cafeteria no fundo, linhas esticadas nas bordas" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p32">Re-shoot this exact scene with a 24mm WIDE-ANGLE lens from closer to Lia, keeping her at roughly the same size in the frame: the background now shows much more of the café, lines of the counter and window stretch toward the edges, slight wide-angle perspective, deeper depth of field. Same woman, outfit, action, light and color grade.</pre>
+<button data-copy="m1-2-p32">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m1-2-t4-practice">Escolha dois atributos visíveis e um limite: esmalte fosco, pequenas irregularidades, sem fissuras. Compare com uma versão lisa e brilhante. Amplie as áreas de reflexo para verificar o efeito.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m1-2-t4-caution">Textura gerada não comprova características físicas. Não apresente um detalhe inventado como fotografia fiel de um produto real.</p>
+<figure class="shot">
+<span class="shot-label">50 mm (base)</span>
+<a href="../../assets/img/c1-m12-mestre.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-mestre.webp" alt="Lia, barista de avental mostarda, despeja água de uma chaleira de cobre no coador, luz de janela quente à esquerda, torrador desfocado ao fundo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p33">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, slowly pouring hot water from a copper gooseneck kettle into a ceramic pour-over dripper, focused and calm. Shot on a 50mm lens at f/2, eye level. Soft morning window light from the left, warm 3500K, gentle shadow falloff on the right side of her face. Visible steam, matte glazed ceramic, worn wooden counter with coffee grounds, linen texture on the apron. Subject on the left third, negative space on the right with a softly blurred vintage coffee roaster and burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking quiet craftsmanship at dawn.</pre>
+<button data-copy="m1-2-p33">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">135 mm</span>
+<a href="../../assets/img/c1-m12-lente-135.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-lente-135.webp" alt="Mesma cena com lente 135 mm: fundo comprimido e transformado em bokeh cremoso, Lia isolada" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p34">Re-shoot this exact scene with a 135mm TELEPHOTO lens from farther away, keeping Lia at roughly the same size in the frame: the background is compressed and much closer-looking, only a small slice of it visible, turned into creamy bokeh, very shallow depth of field. Same woman, outfit, action, light and color grade.</pre>
+<button data-copy="m1-2-p34">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m1-2-b31">Lia tem quase o mesmo tamanho nas três. Com 24 mm aparece a torrefação inteira e as linhas do balcão escapam para as bordas — energia, contexto. Com 50 mm, a visão natural. Com 135 mm o fundo vira uma mancha cremosa e “encosta” nela — foco total na pessoa. As duas laterais são edições da base pedindo a troca de lente.</p>
+</div>
+<aside class="limite" data-inema-block="m1-2-b35">
+<strong>Limite do modelo</strong>
+<p>O modelo não simula uma lente de verdade: “85mm” é um pedido de <em>aparência</em> (compressão, fundo desfocado), aprendido de milhões de fotos com essa legenda. Funciona bem como atalho de estilo, mas não espere geometria óptica exata — e não misture lente e plano contraditórios (“14mm extreme close-up portrait” deforma rostos).</p>
 </aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
@@ -357,40 +568,123 @@
 </section>
 <section class="topic" id="topico-5" data-inema-topic="modulo-1-2#topico-5">
 <h2 class="text-2xl font-bold">
-<span class="number">5</span>Composição: conduza o olhar</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m1-2-t5-concept">Composição é a organização dos elementos dentro do quadro. Espaço negativo é a área com pouca informação ao redor do assunto. A divisão em terços é uma referência de posicionamento, não uma obrigação para toda imagem.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m1-2-t5-why">Uma peça com título precisa reservar espaço antes da geração. Inserir o texto depois sem planejar costuma cobrir o produto ou criar uma hierarquia confusa.</p>
+<span class="number">5</span>Luz: fonte, direção, qualidade e temperatura</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m1-2-b36">Os modelos respondem muito bem a descrições específicas de luz. Pense nas quatro características, sempre nesta ordem:</p>
+<div class="table-scroll" data-inema-block="m1-2-b37">
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Pergunta</th>
+<th>Vocabulário para o prompt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<strong>Fonte</strong>
+</td>
+<td>o que emite a luz?</td>
+<td>window light, overcast daylight, softbox, neon sign, candlelight, practical lamp</td>
+</tr>
+<tr>
+<td>
+<strong>Direção</strong>
+</td>
+<td>de onde ela vem?</td>
+<td>front-lit, side-lit (Rembrandt), backlit, rim light, top light</td>
+</tr>
+<tr>
+<td>
+<strong>Qualidade</strong>
+</td>
+<td>a sombra tem borda?</td>
+<td>hard light (sombra recortada) · soft/diffused light (sombra gradual)</td>
+</tr>
+<tr>
+<td>
+<strong>Temperatura</strong>
+</td>
+<td>qual a cor?</td>
+<td>2700–3500K quente · 5000–5600K neutro/dia · 6500–7500K frio</td>
+</tr>
+</tbody>
+</table>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m1-2-t5-svgtitle" class="w-full h-auto">
-<title id="m1-2-t5-svgtitle">Composição: conduza o olhar — O produto ocupa o lado direito e deixa espaço negativo à esquerda. A grade orienta, sem obrigar, a composição.</title>
-<rect x="25" y="20" width="590" height="180" rx="10" fill="var(--surface-2)" stroke="var(--border)"/>
-<path d="M221 20V200M418 20V200M25 80H615M25 140H615" stroke="var(--accent-2)" stroke-dasharray="5 6" opacity=".6"/>
-<g transform="translate(408 75) scale(0.85)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<text x="55" y="110" font-size="17" fill="currentColor">Espaço para mensagem</text>
-<text x="25" y="231" font-size="14" fill="currentColor">Diagrama de composição — exemplo autoral</text>
-</svg>
-<figcaption>O produto ocupa o lado direito e deixa espaço negativo à esquerda. A grade orienta, sem obrigar, a composição.</figcaption>
+<aside class="novo" data-inema-block="m1-2-b38">
+<strong>Novo aqui? Kelvin (K)</strong>
+<p>Escala de temperatura de cor. Números baixos = luz alaranjada (vela ≈ 1900K, lâmpada incandescente ≈ 2700K). 5500K ≈ luz do sol ao meio-dia. Números altos = luz azulada (sombra em dia de céu azul ≈ 7000K+).</p>
+</aside>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b39">“Iluminação cinematográfica” não diz nada: cinematográfica como? A mesma pessoa, no mesmo lugar, conta histórias opostas dependendo da luz. Compare com a imagem-base (janela suave à esquerda, 3500K):</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Base: suave, lateral, 3500K</span>
+<a href="../../assets/img/c1-m12-mestre.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-mestre.webp" alt="Lia, barista de avental mostarda, despeja água de uma chaleira de cobre no coador, luz de janela quente à esquerda, torrador desfocado ao fundo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p41">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, slowly pouring hot water from a copper gooseneck kettle into a ceramic pour-over dripper, focused and calm. Shot on a 50mm lens at f/2, eye level. Soft morning window light from the left, warm 3500K, gentle shadow falloff on the right side of her face. Visible steam, matte glazed ceramic, worn wooden counter with coffee grounds, linen texture on the apron. Subject on the left third, negative space on the right with a softly blurred vintage coffee roaster and burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking quiet craftsmanship at dawn.</pre>
+<button data-copy="m1-2-p41">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m1-2-t5-practice">Ative a grade no laboratório. Posicione o produto em um terço e reserve o outro lado para um título. Depois compare com o objeto centralizado. Escolha com base no uso: catálogo ou anúncio com texto.</p>
-<div class="compare-grid">
-<div>
-<h3>✓ Faça a verificação</h3>
-<p>Ative a grade no laboratório. Posicione o produto em um terço e reserve o outro lado para um título. Depois compare com o objeto centralizado. Escolha com base no uso: catálogo ou anúncio com texto.</p>
+<figure class="shot">
+<span class="shot-label">Dura, fim de tarde</span>
+<a href="../../assets/img/c1-m12-luz-dura.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-luz-dura.webp" alt="Mesma cena com luz dura: sombras recortadas e contrastadas, desenho da janela projetado na parede" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p42">Change ONLY the lighting: hard direct late-afternoon sun coming through the window from the left, crisp high-contrast shadows with sharp edges across her face and the counter, window-frame shadow pattern on the wall. Keep the same woman, pose, framing, lens, background and objects identical.</pre>
+<button data-copy="m1-2-p42">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Contraluz com recorte</span>
+<a href="../../assets/img/c1-m12-luz-contra.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-luz-contra.webp" alt="Mesma cena em contraluz: contorno dourado no cabelo e no vapor, rosto em sombra suave" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p43">Change ONLY the lighting: strong BACKLIGHT from a window behind Lia, a golden rim light outlining her hair, shoulders and the rising steam, her face in soft shadow with gentle fill. Keep the same woman, pose, framing, lens, background and objects identical.</pre>
+<button data-copy="m1-2-p43">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Noite: 7000K + 2700K</span>
+<a href="../../assets/img/c1-m12-luz-neon.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-luz-neon.webp" alt="Mesma cena à noite: luz fria azulada da janela e um pendente quente sobre as mãos, temperaturas misturadas" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p44">Change ONLY the lighting to night: the room is dark, a cool blue 7000K light spills from the window on the left and a small warm 2700K pendant lamp above the counter lights her hands and the dripper. Mixed cool and warm color temperatures. Keep the same woman, pose, framing, lens, background and objects identical.</pre>
+<button data-copy="m1-2-p44">Copiar prompt</button>
+</details>
+</figure>
 </div>
-<div>
-<h3>✗ Evite a conclusão automática</h3>
-<p>Uma composição assimétrica não é automaticamente melhor. O critério é a leitura do produto e a função da peça, inclusive quando vista pequena.</p>
+<p class="caption" data-inema-block="m1-2-b40">Só a luz foi editada. A suave é acolhedora e artesanal; a dura cria drama e desenha a janela na parede; o contraluz transforma o vapor em protagonista e separa Lia do fundo; a mistura noturna de frio e quente dá clima de bar/cinema. <strong>Uma frase de luz troca o gênero da foto.</strong>
+</p>
+</div>
+<div class="compare-grid" data-inema-block="m1-2-b45">
+<div class="ok">
+<h4>✓ Técnico</h4>
+<ul>
+<li>soft window light from the left, warm 3500K</li>
+<li>hard backlight, golden rim light on hair</li>
+<li>cool 7000K moonlight + warm 2700K practical lamp</li>
+</ul>
+</div>
+<div class="no">
+<h4>✗ Vago</h4>
+<ul>
+<li>cinematic lighting</li>
+<li>beautiful light</li>
+<li>moody lighting</li>
+</ul>
 </div>
 </div>
 <div class="actions">
@@ -400,155 +694,395 @@
 </section>
 <section class="topic" id="topico-6" data-inema-topic="modulo-1-2#topico-6">
 <h2 class="text-2xl font-bold">
-<span class="number">6</span>Estilo e estrutura sem palavras mágicas</h2>
-<div class="inema-prose">
-<h3>O que é</h3>
-<p data-inema-block="m1-2-t6-concept">Estilo é um conjunto de escolhas recorrentes de cor, luz, textura e composição. Um prompt em camadas organiza essas escolhas. JSON é uma forma de representar dados em campos; pode organizar sua ficha, mas não garante maior obediência do gerador.</p>
-<h3>Por que aprender</h3>
-<p data-inema-block="m1-2-t6-why">Termos como premium e cinematográfico podem orientar, mas precisam de decisões observáveis. Uma ficha estruturada ajuda a revisar o que permaneceu fixo e o que foi alterado.</p>
+<span class="number">6</span>Textura e material: fuja do “plástico de IA”</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m1-2-b46">Textura é o padrão de pequenas variações de uma superfície; material é aquilo de que ela parece feita. Se você não diz, o modelo escolhe por você — acabamentos “de catálogo”, limpos e uniformes, que não contam nada sobre o produto.</p>
+<h4>Biblioteca inicial de texturas</h4>
+<div class="table-scroll" data-inema-block="m1-2-b47">
+<table>
+<thead>
+<tr>
+<th>Material</th>
+<th>Palavras que funcionam</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Metal</td>
+<td>brushed, polished, matte, scratched, patina, hammered copper</td>
+</tr>
+<tr>
+<td>Tecido</td>
+<td>linen with slubs, raw denim, wool knit, crumpled cotton, worn leather</td>
+</tr>
+<tr>
+<td>Pele</td>
+<td>visible pores, fine lines, freckles, natural tone variation, no retouching</td>
+</tr>
+<tr>
+<td>Cerâmica/vidro</td>
+<td>speckled matte glaze, drip line, crackle glaze, frosted glass, fingerprints</td>
+</tr>
+<tr>
+<td>Papel/madeira</td>
+<td>kraft paper fibers, embossed, oak grain, scratched, sanded, weathered</td>
+</tr>
+</tbody>
+</table>
 </div>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="m1-2-t6-svgtitle" class="w-full h-auto">
-<title id="m1-2-t6-svgtitle">Estilo e estrutura sem palavras mágicas — O pedido cresce em camadas que descrevem elementos observáveis.</title>
-<rect x="20" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="35" y="104" font-size="15" fill="currentColor">1</text>
-<text x="35" y="132" font-size="17" fill="currentColor">Sujeito</text>
-<path d="M200 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="230" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="245" y="104" font-size="15" fill="currentColor">2</text>
-<text x="245" y="132" font-size="17" fill="currentColor">Luz / câmera</text>
-<path d="M410 111h22l-6 -5m6 5l-6 5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-<rect x="440" y="70" width="175" height="83" rx="12" fill="var(--surface-2)" stroke="var(--accent-2)"/>
-<text x="455" y="104" font-size="15" fill="currentColor">3</text>
-<text x="455" y="132" font-size="17" fill="currentColor">Composição</text>
-</svg>
-<figcaption>O pedido cresce em camadas que descrevem elementos observáveis.</figcaption>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b48">Material é o que faz a imagem parecer tocável — e é o que dá identidade a uma foto de produto. Veja o mesmo assunto (xícara + pacote de café) pedido de duas formas. <strong>Aqui são duas gerações independentes</strong>, porque o ponto é justamente o que o prompt diz:</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-2">
+<figure class="shot">
+<span class="shot-label">Sem materiais</span>
+<a href="../../assets/img/c1-m12-textura-sem.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-textura-sem.webp" alt="Xícara branca lisa e pacote de uma marca inventada pelo modelo, cena genérica de catálogo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p50">a cup of coffee and a bag of coffee on a table</pre>
+<button data-copy="m1-2-p50">Copiar prompt</button>
+</details>
 </figure>
-<h3>Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m1-2-t6-practice">Reescreva premium como fundo simples, luz lateral suave, poucos objetos e acabamento fosco. Use o construtor de prompt para reunir suas decisões. Se sua ferramenta pede texto, envie texto; guarde a ficha JSON como registro.</p>
-<aside class="tip">
-<strong>O que conferir</strong>
-<p data-inema-block="m1-2-t6-caution">Não cole parâmetros de uma plataforma em outra esperando o mesmo efeito. A estrutura organiza o trabalho; o comportamento depende do modelo e da interface.</p>
+<figure class="shot">
+<span class="shot-label">Com materiais descritos</span>
+<a href="../../assets/img/c1-m12-textura-com.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-textura-com.webp" alt="Xícara de cerâmica salpicada com esmalte fosco e crema dourada, pacote kraft com fibras e carimbo TERRA ALTA, grãos oleosos sobre carvalho riscado" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p51">Close-up product photo of a hand-thrown stoneware coffee cup with a speckled matte cream glaze and a visible drip line, filled with black coffee with a thin golden crema and tiny bubbles, next to a kraft-paper coffee bag with a folded top, rough recycled paper fibers and a hand-stamped ink label reading &#x27;TERRA ALTA&#x27;, on a scratched oak table with a few scattered roasted beans showing their center crease and oily sheen. Soft side window light from the left, 4000K. 90mm macro look, f/4.</pre>
+<button data-copy="m1-2-p51">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m1-2-b49">À esquerda, com um prompt de nove palavras, o modelo inventou tudo: xícara branca lisa de catálogo, um pacote com uma marca que não existe (“Riverbend”), paisagem de pinheiros. Bonito e totalmente genérico. À direita: esmalte salpicado com escorrido, crema com bolhas, fibras do kraft, carimbo TERRA ALTA, grãos com brilho de óleo, carvalho riscado. Nenhum desses detalhes veio “de graça” — todos estão no prompt.</p>
+</div>
+<aside class="tip" data-inema-block="m1-2-b52">
+<strong>Dica de diretor</strong>
+<p>Descreva 2–3 materiais principais com <strong>dois adjetivos cada</strong> (“matte speckled glaze”, “rough recycled kraft”). Mais do que isso começa a competir com o resto do prompt. E se não quer texto inventado no fundo, diga: “no other text in the scene”.</p>
 </aside>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
 </div>
 </section>
-<section class="lab" data-lab>
-<h2>Laboratório de direção</h2>
-<p>Mude uma decisão e observe o esquema. O texto abaixo acompanha suas escolhas e pode ser levado ao gerador de imagens.</p>
-<div class="lab-controls">
-<label>Enquadramento<select name="frame">
-<option>médio</option>
-<option>aberto</option>
-<option>detalhe</option>
-</select>
-</label>
-<label>Luz<select name="light">
-<option>esquerda</option>
-<option>direita</option>
-</select>
-</label>
-<label>Posição<select name="position">
-<option>centro</option>
-<option>direita</option>
-</select>
-</label>
-<label>Grade de terços<select name="grid">
-<option>sim</option>
-<option>não</option>
-</select>
-</label>
+<section class="topic" id="topico-7" data-inema-topic="modulo-1-2#topico-7">
+<h2 class="text-2xl font-bold">
+<span class="number">7</span>Composição: conduza o olhar</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m1-2-b53">As ferramentas principais: <strong>centralizado/simétrico</strong> (formal, estável), <strong>regra dos terços</strong> (dinâmico, natural), <strong>espaço negativo</strong> (área vazia que dá respiro — e lugar para título), <strong>linhas guia</strong> (<em>leading lines</em>: bordas, estradas, prateleiras que levam o olho ao assunto) e <strong>camadas</strong> (<em>foreground, midground, background</em>) que criam profundidade.</p>
+<aside class="novo" data-inema-block="m1-2-b54">
+<strong>Novo aqui? Regra dos terços</strong>
+<p>Divida o quadro em 3×3 com duas linhas horizontais e duas verticais. Colocar o assunto sobre uma dessas linhas (ou num cruzamento) costuma parecer mais natural do que o centro exato. É uma orientação, não uma lei.</p>
+</aside>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b55">Numa peça de marca, a composição é decidida <strong>antes</strong> de gerar: se vai ter título, o espaço para ele precisa existir na foto. Colar o texto depois em cima do produto é o erro mais comum de iniciante.</p>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">Centralizado</span>
+<a href="../../assets/img/c1-m12-comp-centro.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-comp-centro.webp" alt="Pacote TERRA ALTA exatamente centralizado e simétrico na prateleira" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m1-2-p57">Product photograph of a kraft-paper coffee bag with a hand-stamped label reading &#x27;TERRA ALTA&#x27; standing on a rustic wooden shelf in a café, perfectly centered and symmetrical in the frame, soft window light from the left, 4000K, 50mm lens, realistic paper texture.</pre>
+<button data-copy="m1-2-p57">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Terço direito + espaço negativo</span>
+<a href="../../assets/img/c1-m12-comp-tercos.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-comp-tercos.webp" alt="O mesmo pacote no terço direito, com espaço negativo limpo à esquerda para um título" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p58">Recompose this exact product shot: move the coffee bag to the RIGHT THIRD of the frame and leave clean negative space of soft blurred wall on the left two-thirds (space for a headline). Keep the same bag, label, shelf, light and color grade.</pre>
+<button data-copy="m1-2-p58">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Camadas + linha guia</span>
+<a href="../../assets/img/c1-m12-comp-camadas.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-comp-camadas.webp" alt="O mesmo pacote com primeiro plano desfocado, linha diagonal da prateleira guiando o olho até ele e janela ao fundo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p59">Recompose this exact product shot with DEPTH LAYERS and a LEADING LINE: an out-of-focus ceramic cup in the near foreground on the left, the coffee bag sharp in the midground, and the edge of the wooden shelf running diagonally from the bottom-left corner toward the bag, with a soft blurred window in the background. Keep the same bag, label, light and color grade.</pre>
+<button data-copy="m1-2-p59">Copiar prompt</button>
+</details>
+</figure>
 </div>
-<svg viewBox="0 0 640 260" role="img" aria-label="Esquema interativo de enquadramento, posição do produto e direção da luz">
-<defs>
-<clipPath id="lab-1-2-clip">
-<rect width="640" height="230" rx="12"/>
-</clipPath>
-</defs>
-<g clip-path="url(#lab-1-2-clip)">
-<rect width="640" height="230" fill="var(--surface-2)"/>
-<g class="lab-light">
-<path d="M15 25L440 215L15 110Z" fill="#f6d88b" opacity=".18"/>
-<rect x="15" y="25" width="28" height="88" fill="#f6d88b"/>
-</g>
-<ellipse class="lab-shadow" cx="390" cy="203" rx="85" ry="13" fill="#20170f" opacity=".5"/>
-<g class="lab-object">
-<g transform="translate(0 0) scale(1)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-</g>
-<path class="lab-grid" d="M213 0V230M426 0V230M0 77H640M0 153H640" stroke="var(--accent-2)" stroke-dasharray="4 6" opacity=".7"/>
-</g>
-</svg>
-<p class="fine">Simulação geométrica didática. Não é uma geração de IA nem uma simulação óptica. Sem JavaScript, use os diagramas e o prompt do módulo.</p>
-<output id="lab-1-2-prompt" aria-live="polite">Fotografia de uma caneca terracota, plano médio, luz suave à esquerda, fundo creme.</output>
-<button data-copy="lab-1-2-prompt">Copiar prompt</button>
-</section>
-<section id="pratica" class="codebox">
-<h2>Prática: um pedido completo</h2>
+<p class="caption" data-inema-block="m1-2-b56">O mesmo pacote, a mesma luz — só a composição foi editada. O centro é estável, bom para catálogo. O terço direito libera a esquerda para uma manchete de anúncio. As camadas (xícara desfocada na frente, prateleira em diagonal) criam profundidade e levam o olho direto ao rótulo.</p>
+</div>
+<div class="codebox copyrun">
+<h4>Frases de composição para colar</h4>
 <p>
-<strong>Objetivo:</strong> Você vai escrever um pedido em camadas e relacionar cada trecho a uma diferença visível.</p>
-<p>Use o texto abaixo na sua ferramenta de imagens. Quando houver referência, anexe o arquivo indicado antes de gerar.</p>
-<pre id="prompt-1-2">Fotografia de uma caneca artesanal terracota com uma única alça oval à direita, sobre mesa de madeira clara. Plano de produto com a caneca inteira e margem ao redor, câmera na altura da borda. Luz de janela grande à esquerda, sombras suaves à direita. Esmalte fosco com pequenas irregularidades, sem rachaduras. Fundo creme simples, objeto no terço direito e espaço livre à esquerda para diagramação posterior. Atmosfera tranquila de manhã. Formato horizontal 4:3.</pre>
-<button data-copy="prompt-1-2">Copiar prompt</button>
-<h3>Como verificar</h3>
-<p>Anote no resultado onde aparecem sujeito, enquadramento, luz, textura e composição. Se um pedido não apareceu, descreva o desvio sem acrescentar vários adjetivos.</p>
-<ol class="timeline">
-<li>Prepare o arquivo ou briefing necessário.</li>
-<li>Faça uma tentativa e salve o resultado com as configurações.</li>
-<li>Compare com os critérios acima e localize um desvio.</li>
-<li>Corrija uma decisão e registre o efeito na nova versão.</li>
+<strong>Objetivo:</strong> Ter à mão as instruções que o modelo entende bem.</p>
+<pre id="m1-2-p61">subject placed on the right third, clean negative space on the left for a headline
+perfectly centered, symmetrical composition
+out-of-focus foreground element on the left, subject sharp in the midground, soft background
+leading line running diagonally from the bottom-left corner to the subject
+low horizon, sky filling the top two-thirds</pre>
+<button data-copy="m1-2-p61">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> Gere a mesma cena trocando só a frase de composição e confira se o assunto foi para onde você pediu.</p>
+</div>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section class="topic" id="topico-8" data-inema-topic="modulo-1-2#topico-8">
+<h2 class="text-2xl font-bold">
+<span class="number">8</span>Estilo, referência e os 3 pilares</h2>
+<h3 class="sec">O que é</h3>
+<p class="inema-prose" data-inema-block="m1-2-b62">Referências de estilo colocam a imagem dentro de um universo que o modelo reconhece: uma <strong>época</strong> (anos 70, anos 90), um <strong>tipo de fotografia</strong> (editorial de moda, documental, publicidade de revista), um <strong>suporte</strong> (filme 35 mm, Polaroid, Kodachrome), um <strong>meio</strong> (animação 3D, aquarela). Descreva a estética em vez de citar nomes de fotógrafos ou artistas vivos — além da questão ética, a descrição é mais controlável.</p>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">Anúncio de revista anos 70</span>
+<a href="../../assets/img/c1-m12-estilo-70.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-estilo-70.webp" alt="A mesma cena como anúncio de revista dos anos 70: cores quentes saturadas, pretos lavados, grão de filme" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p64">Fully re-render this entire image as an authentic 1970s printed magazine advertisement photograph: strong Kodachrome color shift toward saturated oranges, browns and olive greens, lifted faded blacks, soft halation glow around the window, heavy visible film grain, slightly soft focus, warm vintage color cast over everything, period 1970s wood-paneled café. The look must be unmistakably 1970s, clearly different from a modern photo. Keep the same woman, pose, framing and action.</pre>
+<button data-copy="m1-2-p64">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Documental P&amp;B anos 90</span>
+<a href="../../assets/img/c1-m12-estilo-pb.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-estilo-pb.webp" alt="A mesma cena como documental dos anos 90 em preto e branco: contraste alto e grão grosso" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p65">Restyle this exact scene as gritty 1990s black-and-white documentary photography: high-contrast monochrome, pushed-film coarse grain, deep blacks, slightly blown window highlights, raw and unpolished. Keep the same woman, pose, framing and action.</pre>
+<button data-copy="m1-2-p65">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Animação 3D estilizada</span>
+<a href="../../assets/img/c1-m12-estilo-3d.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c1-m12-estilo-3d.webp" alt="A mesma cena como frame de animação 3D estilizada: formas arredondadas, paleta pastel quente" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m1-2-p66">Fully re-render this ENTIRE image — character AND background — as a stylized 3D animated feature film still: Pixar-like toon shading, simplified rounded shapes, slightly exaggerated proportions (bigger eyes, smooth stylized hair clumps), clean plastic-free subsurface skin, stylized props and roaster, warm pastel palette, soft global illumination. Nothing should look photographic. Keep the same composition, light direction and character design (curly dark hair tied up, freckles, mustard apron), pose and action.</pre>
+<button data-copy="m1-2-p66">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m1-2-b63">Mesma base, mesmo enquadramento, três universos. Repare que o estilo muda cor, grão, contraste e até o grau de realismo — mas a direção (plano, luz vinda da esquerda, composição) continua lá. Estilo é a última camada, não um atalho para pular as outras.</p>
+</div>
+<h3 class="sec">Por que aprender</h3>
+<p class="inema-prose" data-inema-block="m1-2-b67">Um prompt forte se apoia em <strong>três pilares</strong>:</p>
+<div class="table-scroll" data-inema-block="m1-2-b68">
+<table>
+<thead>
+<tr>
+<th>Pilar</th>
+<th>O que é</th>
+<th>No prompt da Lia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<strong>Estrutura</strong>
+</td>
+<td>a base técnica: plano, lente, luz, materiais, composição</td>
+<td>medium shot, 50mm f/2, soft window light from the left 3500K, matte ceramic, left third</td>
+</tr>
+<tr>
+<td>
+<strong>Referência</strong>
+</td>
+<td>âncoras visuais: época, gênero, suporte</td>
+<td>natural documentary photography, subtle 35mm film grain</td>
+</tr>
+<tr>
+<td>
+<strong>Visão</strong>
+</td>
+<td>a intenção emocional: o que o espectador deve sentir</td>
+<td>evoking quiet craftsmanship at dawn</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote class="pull" data-inema-block="m1-2-b69">Use linguagem técnica, não emoções vagas: em vez de “retrato melancólico”, escreva “retrato 85 mm, f/1.4, luz lateral suave, tons quentes 3200K”. A emoção entra no fim, como destino — não como instrução.</blockquote>
+<h3 class="sec">Conceitos-chave em ação</h3>
+<p class="inema-prose" data-inema-block="m1-2-b70">
+<strong>Prompt em JSON.</strong> Modelos recentes (Nano Banana Pro, GPT Image, Veo, Kling, Sora) entendem instruções estruturadas em blocos rotulados. Isso ajuda quando você precisa de <strong>variações dentro do mesmo sistema visual</strong>: troca um campo, mantém o resto. O Midjourney não usa JSON — lá, só texto corrido.</p>
+<div class="codebox">
+<h4>A imagem-base da Lia, escrita como JSON</h4>
+<pre id="m1-2-p72" data-lang="json">{
+  &quot;subject&quot;: {
+    &quot;who&quot;: &quot;Lia, Brazilian barista, early 30s, curly dark hair tied up, light-brown skin, freckles&quot;,
+    &quot;wardrobe&quot;: &quot;mustard-yellow linen apron over a white t-shirt&quot;,
+    &quot;action&quot;: &quot;slowly pouring hot water from a copper gooseneck kettle into a ceramic pour-over dripper&quot;,
+    &quot;expression&quot;: &quot;focused and calm&quot;
+  },
+  &quot;camera&quot;: { &quot;shot&quot;: &quot;medium shot&quot;, &quot;angle&quot;: &quot;eye level&quot;, &quot;lens&quot;: &quot;50mm&quot;, &quot;aperture&quot;: &quot;f/2&quot; },
+  &quot;lighting&quot;: { &quot;source&quot;: &quot;morning window&quot;, &quot;direction&quot;: &quot;from the left&quot;, &quot;quality&quot;: &quot;soft&quot;, &quot;temperature&quot;: &quot;3500K&quot; },
+  &quot;materials&quot;: [&quot;visible steam&quot;, &quot;matte glazed ceramic&quot;, &quot;worn wooden counter with coffee grounds&quot;, &quot;linen apron texture&quot;],
+  &quot;composition&quot;: { &quot;placement&quot;: &quot;left third&quot;, &quot;negative_space&quot;: &quot;right&quot;, &quot;background&quot;: &quot;blurred vintage coffee roaster and burlap sacks&quot; },
+  &quot;style&quot;: &quot;natural documentary photography, subtle 35mm film grain&quot;,
+  &quot;mood&quot;: &quot;quiet craftsmanship at dawn&quot;
+}</pre>
+<button data-copy="m1-2-p72">Copiar</button>
+</div>
+<aside class="tip" data-inema-block="m1-2-b73">
+<strong>Atalho para montar o JSON</strong>
+<p>Cole o modelo acima num assistente (ChatGPT, Claude, Gemini) e dite em voz alta o que você quer em cada campo. Peça: “preencha este JSON com a minha cena e mantenha os campos”. Depois, para variar, peça só “troque lighting por contraluz dourado”.</p>
+</aside>
+<div class="actions">
+<button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
+<button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
+</div>
+</section>
+<section id="pratica" class="pratica">
+<h2>Prática guiada: o prompt-mestre e duas variações</h2>
+<p class="inema-prose" data-inema-block="m1-2-b74">Você vai fazer exatamente o que fizemos com a Lia, agora para o seu cliente (ou para a Terra Alta, se ainda não escolheu). O objetivo é sair com <strong>um prompt-mestre</strong> e <strong>duas variações controladas</strong> — e saber explicar o que mudou.</p>
+<h4>Roteiro</h4>
+<ol class="timeline" data-inema-block="m1-2-b75">
+<li>Escreva o sujeito e a ação em uma frase que um ilustrador conseguiria desenhar.</li>
+<li>Complete as seis camadas usando as tabelas deste módulo. Uma escolha por camada.</li>
+<li>Feche com a emoção pretendida (“evoking…”).</li>
+<li>Gere a versão 1 com o prompt “como está”. Salve a imagem <strong>e</strong> o prompt.</li>
+<li>Variação A: troque <strong>só</strong> o plano ou a lente. Variação B: troque <strong>só</strong> a luz ou a composição.</li>
+<li>Coloque as três lado a lado e anote o que mudou (ciclo de comparação, abaixo).</li>
+</ol>
+<div class="codebox copyrun">
+<h4>Molde do prompt-mestre</h4>
+<p>
+<strong>Objetivo:</strong> Montar um prompt com todas as camadas, trocando só o que está entre &lt; &gt;.</p>
+<pre id="m1-2-p77">&lt;Plano&gt; of &lt;sujeito: quem, aparência, roupa&gt; &lt;ação física concreta&gt;, in &lt;lugar com 2-3 objetos&gt;.
+Shot on a &lt;lente&gt; lens at &lt;abertura&gt;, &lt;ângulo&gt;.
+&lt;Fonte de luz&gt; from the &lt;direção&gt;, &lt;qualidade&gt; light, &lt;temperatura&gt;K.
+Detailed textures: &lt;material 1 + 2 adjetivos&gt;, &lt;material 2 + 2 adjetivos&gt;.
+&lt;Composição: posição do sujeito, espaço negativo, camadas&gt;.
+&lt;Referência de estilo: época, gênero, suporte&gt;, evoking &lt;emoção pretendida&gt;.</pre>
+<button data-copy="m1-2-p77">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> Cada linha do molde virou algo visível na imagem? Se uma camada não aparece (ex.: a luz veio da direita), reforce só essa linha e gere de novo.</p>
+</div>
+<div class="codebox copyrun">
+<h4>Exemplo pronto (Terra Alta — produto)</h4>
+<p>
+<strong>Objetivo:</strong> Testar o molde já preenchido para um produto, antes de escrever o seu.</p>
+<pre id="m1-2-p79">Medium close-up of a kraft-paper coffee bag with a hand-stamped label reading &#x27;TERRA ALTA&#x27; standing on a worn oak counter next to a speckled cream stoneware cup of black coffee, a few roasted beans scattered in front.
+Shot on an 85mm lens at f/2.8, slightly above eye level.
+Soft morning window light from the left, diffused, 4000K, gentle shadow to the right.
+Detailed textures: rough recycled kraft fibers, matte speckled glaze with a drip line, oily roasted beans with a center crease.
+Bag on the right third, clean negative space on the left for a headline, blurred café shelves in the background.
+Contemporary editorial product photography, natural color grade, evoking slow mornings in the mountains.</pre>
+<button data-copy="m1-2-p79">Copiar prompt</button>
+<p>
+<strong>Como verificar:</strong> O rótulo saiu legível? O espaço à esquerda está limpo o bastante para um título? A luz vem da esquerda (sombra à direita)?</p>
+</div>
+<h4>Ciclo de comparação (use em toda geração daqui para frente)</h4>
+<ol class="timeline" data-inema-block="m1-2-b80">
+<li>
+<strong>Gere</strong> a partir de um prompt salvo.</li>
+<li>
+<strong>Compare</strong> com a referência ou com a versão anterior, lado a lado.</li>
+<li>
+<strong>Nomeie</strong> a diferença com vocabulário técnico (“a sombra ficou dura”, “a lente comprimiu demais”).</li>
+<li>
+<strong>Refine</strong> uma camada só.</li>
+<li>
+<strong>Salve</strong> o prompt vencedor na sua biblioteca, com a imagem.</li>
 </ol>
 </section>
-<figure class="diagram" tabindex="0" aria-label="Ilustração com rolagem horizontal quando necessário">
-<p class="diagram-hint">Deslize a ilustração para ver os detalhes →</p>
-<svg viewBox="0 0 640 240" role="img" aria-labelledby="quiz-light-svgtitle" class="w-full h-auto">
-<title id="quiz-light-svgtitle">Observe a direção da sombra antes de responder — Observe a sombra do lado oposto à fonte. A posição da luz ajuda a explicar o volume. Esquema simplificado.</title>
-<rect x="15" y="25" width="610" height="182" rx="12" fill="var(--surface-2)"/>
-<path d="M40 50L300 155L40 125Z" fill="#f6d88b" opacity=".25"/>
-<rect x="35" y="45" width="30" height="100" fill="#f6d88b"/>
-<ellipse cx="368" cy="189" rx="86" ry="12" fill="#241810" opacity=".55"/>
-<g transform="translate(260 85) scale(0.95)">
-<path d="M85 22 C136 5 137 95 88 82" fill="none" stroke="#bf795a" stroke-width="15"/>
-<path d="M0 0H90V88Q45 112 0 88Z" fill="#bf795a"/>
-<ellipse cx="45" cy="0" rx="45" ry="10" fill="#eac0a0"/>
-<ellipse cx="45" cy="0" rx="34" ry="6" fill="#6d4334"/>
-</g>
-<text x="32" y="225" font-size="17" fill="currentColor">Janela à esquerda</text>
-<text x="350" y="225" font-size="17" fill="currentColor">Sombra à direita</text>
-</svg>
-<figcaption>Observe a sombra do lado oposto à fonte. A posição da luz ajuda a explicar o volume. Esquema simplificado.</figcaption>
-</figure>
-<section id="checagem" class="quiz" data-quiz="modulo-1-2#q1" data-correct="1" data-explain="No esquema simplificado, a luz vem da esquerda e a sombra se projeta para a direita. Em uma cena real, confira outras fontes e superfícies.">
+<section id="licao" class="licao">
+<h2>Lição de casa</h2>
+<p>Escolha <strong>um cliente</strong> (real, sua marca ou fictício, mas próximo do nicho em que você quer trabalhar). Ele vai te acompanhar no curso inteiro. Escreva um briefing de 5–7 frases: quem é, o que faz, para quem, qual a “vibe” visual, em que plataformas as imagens serão usadas.</p>
+<div class="levels">
+<div class="level">
+<h3>Nível básico <span class="fine">(obrigatório)</span>
+</h3>
+<ol>
+<li>Traduza o briefing em linguagem visual: 3–5 adjetivos de estilo, 2–3 referências de estética descritas (sem nomes de artistas), 1 uso principal (capa de Reels, banner do site, anúncio…).</li>
+<li>Escreva <strong>um</strong> prompt-mestre para a imagem-herói da marca, com as seis camadas e a emoção, em texto corrido (não em tópicos).</li>
+<li>Gere 3 imagens: o mestre, a Variação A (plano ou lente) e a Variação B (luz ou composição). Salve cada prompt exato.</li>
+<li>Faça o ciclo de comparação por escrito (máx. 10 frases): o que mudou no prompt, o que mudou na imagem, quais palavras tiveram mais efeito.</li>
+<li>Escreva a versão JSON do seu prompt-mestre.</li>
+</ol>
+</div>
+<div class="level adv">
+<h3>Nível avançado <span class="fine">(desafio)</span>
+</h3>
+<ol>
+<li>
+<strong>Grade lente × luz:</strong> mesmo sujeito e ação, 4 versões: 35 mm + luz de dia lateral suave · 85 mm + tungstênio quente em Rembrandt · 24 mm + neon duro · 50 mm + contraluz com recorte. Escreva 8–10 frases sobre como cada combinação muda clima, foco e “orçamento aparente” da foto.</li>
+<li>
+<strong>Sistema de prompts da marca:</strong> um documento de 1 página com a descrição da marca, o prompt-mestre e 3 moldes com [variáveis] (retrato, produto, cena de atmosfera) que você poderia entregar a um cliente.</li>
+</ol>
+</div>
+</div>
+<p>
+<strong>Entregue/guarde:</strong> Pasta do projeto com briefing, as 3 imagens + prompts, a análise e o JSON. Ela será reaproveitada nos módulos seguintes.</p>
+</section>
+<section id="checagem">
 <h2>Teste sua decisão</h2>
-<p>No esquema de iluminação, a janela está à esquerda. Onde você espera a sombra projetada principal?</p>
-<button data-answer="0" aria-pressed="false">Também à esquerda</button>
-<button data-answer="1" aria-pressed="false">No lado oposto, à direita</button>
+<div class="quiz" data-quiz="modulo-1-2#q1" data-correct="1" data-explain="Lentes longas (85–135 mm) comprimem o fundo e, com abertura grande (f/1.4–f/2.8), desfocam. 24 mm a f/11 faz o contrário: muito espaço e tudo nítido. Palavras genéricas como “cinematic” não dizem ao modelo o que fazer.">
+<p>
+<strong>1.</strong> Você quer que o fundo da foto de retrato vire um borrão e “encoste” na pessoa, isolando-a. O que acrescenta ao prompt?</p>
+<button data-answer="0" aria-pressed="false">24mm lens, f/11</button>
+<button data-answer="1" aria-pressed="false">135mm lens, f/2</button>
+<button data-answer="2" aria-pressed="false">cinematic, beautiful bokeh, ultra detailed</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
 <summary>Consultar a explicação</summary>
-<p>No esquema simplificado, a luz vem da esquerda e a sombra se projeta para a direita. Em uma cena real, confira outras fontes e superfícies.</p>
+<p>Lentes longas (85–135 mm) comprimem o fundo e, com abertura grande (f/1.4–f/2.8), desfocam. 24 mm a f/11 faz o contrário: muito espaço e tudo nítido. Palavras genéricas como “cinematic” não dizem ao modelo o que fazer.</p>
 </details>
+</div>
+<div class="quiz" data-quiz="modulo-1-2#q2" data-correct="1" data-explain="A borda da sombra é controlada pela qualidade da luz. Trocar só essa camada mantém tudo que já funcionava — é o princípio do ciclo de comparação: uma variável por vez.">
+<p>
+<strong>2.</strong> A imagem ficou com sombras recortadas e dramáticas, mas o cliente queria algo acolhedor. Qual é a única camada a mexer?</p>
+<button data-answer="0" aria-pressed="false">O tipo de plano</button>
+<button data-answer="1" aria-pressed="false">A qualidade da luz: de hard para soft/diffused</button>
+<button data-answer="2" aria-pressed="false">O estilo: trocar para anos 70</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>A borda da sombra é controlada pela qualidade da luz. Trocar só essa camada mantém tudo que já funcionava — é o princípio do ciclo de comparação: uma variável por vez.</p>
+</details>
+</div>
+<div class="quiz" data-quiz="modulo-1-2#q3" data-correct="1" data-explain="Composição é decidida antes: se o espaço para o texto não existir na foto, o título vai cobrir o produto ou exigir um corte que estraga o enquadramento.">
+<p>
+<strong>3.</strong> Numa peça de anúncio vai entrar um título grande do lado esquerdo. Quando você decide isso?</p>
+<button data-answer="0" aria-pressed="false">Depois de gerar, cortando a imagem</button>
+<button data-answer="1" aria-pressed="false">No prompt: sujeito no terço direito e espaço negativo limpo à esquerda</button>
+<button data-answer="2" aria-pressed="false">Não importa, o designer resolve</button>
+<div role="status" aria-live="polite">
+</div>
+<details>
+<summary>Consultar a explicação</summary>
+<p>Composição é decidida antes: se o espaço para o texto não existir na foto, o título vai cobrir o produto ou exigir um corte que estraga o enquadramento.</p>
+</details>
+</div>
 <p class="fine">Responder não marca a leitura nem bloqueia o próximo módulo.</p>
 </section>
 <section>
 <h2>O que levar desta aula</h2>
 <ul>
-<li>Sujeito e ação: o que precisa existir</li>
-<li>Enquadramento e ponto de vista</li>
-<li>Luz: fonte, direção e qualidade</li>
-<li>Textura: como a superfície responde</li>
-<li>Composição: conduza o olhar</li>
-<li>Estilo e estrutura sem palavras mágicas</li>
+<li>Prompt profissional = sujeito + ação + seis camadas: <strong>plano, lente, luz, textura, composição, estilo</strong> — e a emoção no fim.</li>
+<li>Três pilares: <strong>Estrutura</strong> (técnica), <strong>Referência</strong> (universo visual), <strong>Visão</strong> (o que o espectador sente).</li>
+<li>Linguagem técnica vence adjetivo vago: “85 mm, f/1.4, luz lateral suave, 3200K” em vez de “retrato moody”.</li>
+<li>Luz tem quatro controles: fonte, direção, qualidade e temperatura (K).</li>
+<li>Mude <strong>uma</strong> camada por vez e salve o prompt vencedor — o ciclo de comparação é como se treina o olho.</li>
+<li>JSON serve para variar dentro do mesmo sistema visual; o Midjourney só aceita texto.</li>
 </ul>
-<p>Escolha uma decisão que você consegue explicar sem consultar o texto. Se ainda houver dúvida, marque o tópico e volte a ele pela jornada.</p>
 <div class="actions">
 <a class="button" href="index.html">Voltar para a trilha</a>
 <a class="button primary" href="../../curso/trilha2/modulo-2-1.html">Próximo módulo: Controles e testes dentro das ferramentas</a>
@@ -559,7 +1093,7 @@
 </main>
 <footer class="footer">
 <div class="wrap">
-<span>Curso gratuito · INEMA.CLUB · v1.0.0</span>
+<span>Curso gratuito · INEMA.CLUB · v1.1.0</span>
 <a href="../../materiais.html">Materiais e referências</a>
 <a href="../../../index.html">Os três cursos</a>
 <a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>
