@@ -919,7 +919,7 @@ Background: solid &lt;nome da cor&gt; (&lt;#HEX&gt;) with a subtle glow behind t
 </section>
 <section id="checagem">
 <h2>Teste sua decisão</h2>
-<div class="quiz" data-quiz="modulo-2-1#q1" data-correct="1" data-explain="Sem o texto exato, o modelo inventa um provável. O pedido completo tem as palavras entre aspas, a família de letra, a cor em HEX, a posição e a proibição de outro texto.">
+<div class="quiz" data-quiz="modulo-2-1#q1" data-correct="2" data-explain="Sem o texto exato, o modelo inventa um provável. O pedido completo tem as palavras entre aspas, a família de letra, a cor em HEX, a posição e a proibição de outro texto.">
 <figure class="shot">
 <a href="../../assets/img/c2-m21-texto-vago.webp" target="_blank" rel="noopener">
 <img src="../../assets/img/c2-m21-texto-vago.webp" alt="A foto de Maíra com a lata e um slogan inventado pelo modelo, em posição e fonte que ninguém pediu" loading="lazy" decoding="async">
@@ -927,9 +927,9 @@ Background: solid &lt;nome da cor&gt; (&lt;#HEX&gt;) with a subtle glow behind t
 </figure>
 <p>
 <strong>1.</strong> Você pediu “coloque o slogan da marca” e apareceu uma frase em inglês que ninguém escreveu. Qual é a causa?</p>
-<button data-answer="0" aria-pressed="false">O modelo não sabe escrever em português</button>
-<button data-answer="1" aria-pressed="false">O prompt não deu as palavras exatas entre aspas, então o modelo completou a lacuna</button>
-<button data-answer="2" aria-pressed="false">Falta aumentar a resolução</button>
+<button data-answer="0" aria-pressed="false">A resolução era baixa demais para o modelo desenhar a frase certa do slogan</button>
+<button data-answer="1" aria-pressed="false">O modelo foi treinado mais em inglês e troca o português por uma frase equivalente</button>
+<button data-answer="2" aria-pressed="false">O prompt não trouxe as palavras exatas entre aspas, e o modelo completou a lacuna</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
@@ -937,25 +937,25 @@ Background: solid &lt;nome da cor&gt; (&lt;#HEX&gt;) with a subtle glow behind t
 <p>Sem o texto exato, o modelo inventa um provável. O pedido completo tem as palavras entre aspas, a família de letra, a cor em HEX, a posição e a proibição de outro texto.</p>
 </details>
 </div>
-<div class="quiz" data-quiz="modulo-2-1#q2" data-correct="1" data-explain="A edição por HEX troca só o que foi pedido e mantém produto, texto e layout aprovados. Gerar de novo arrisca tudo o que já estava certo, e um filtro muda também a lata e a pele.">
+<div class="quiz" data-quiz="modulo-2-1#q2" data-correct="1" data-explain="A edição por HEX troca só o que foi pedido e mantém produto, texto e layout aprovados. Gerar de novo arrisca tudo o que já estava certo, e um ajuste de matiz muda também a lata e a pele.">
 <p>
 <strong>2.</strong> O manual da marca mudou o fundo das peças para outra cor. Você já tem 10 peças aprovadas. O que faz?</p>
-<button data-answer="0" aria-pressed="false">Gera as 10 de novo com a cor nova</button>
-<button data-answer="1" aria-pressed="false">Edita cada peça: “change ONLY the background to &lt;nome&gt; &lt;#HEX&gt;, keep everything else identical”</button>
-<button data-answer="2" aria-pressed="false">Aplica um filtro de cor em todas</button>
+<button data-answer="0" aria-pressed="false">Gera as 10 peças de novo com o mesmo prompt, trocando só a cor do fundo no texto</button>
+<button data-answer="1" aria-pressed="false">Edita cada peça: “change ONLY the background to &lt;#HEX&gt;, keep everything else identical”</button>
+<button data-answer="2" aria-pressed="false">Aplica um ajuste de matiz em todas as peças até o fundo chegar à cor nova do manual</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
 <summary>Consultar a explicação</summary>
-<p>A edição por HEX troca só o que foi pedido e mantém produto, texto e layout aprovados. Gerar de novo arrisca tudo o que já estava certo, e um filtro muda também a lata e a pele.</p>
+<p>A edição por HEX troca só o que foi pedido e mantém produto, texto e layout aprovados. Gerar de novo arrisca tudo o que já estava certo, e um ajuste de matiz muda também a lata e a pele.</p>
 </details>
 </div>
 <div class="quiz" data-quiz="modulo-2-1#q3" data-correct="0" data-explain="A interface do aplicativo cobre as faixas de cima e de baixo. Reserve essas zonas no prompt e coloque a chamada acima da faixa inferior.">
 <p>
 <strong>3.</strong> No story 9:16, o botão de chamada ficou coberto pelo campo de resposta do app. O que faltou no prompt?</p>
 <button data-answer="0" aria-pressed="false">Pedir que os ~20% de baixo e ~14% de cima fiquem só com fundo (zonas seguras)</button>
-<button data-answer="1" aria-pressed="false">Usar um botão maior</button>
-<button data-answer="2" aria-pressed="false">Gerar em 16:9 e girar</button>
+<button data-answer="1" aria-pressed="false">Pedir um botão maior e com mais contraste, para ele aparecer mesmo sobre a interface</button>
+<button data-answer="2" aria-pressed="false">Gerar em 16:9 e girar depois, para ter mais área útil na vertical</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
@@ -985,7 +985,7 @@ Background: solid &lt;nome da cor&gt; (&lt;#HEX&gt;) with a subtle glow behind t
 </main>
 <footer class="footer">
 <div class="wrap">
-<span>Curso gratuito · INEMA.CLUB · v1.1.0</span>
+<span>Curso gratuito · INEMA.CLUB · v1.1.1</span>
 <a href="../../materiais.html">Materiais e referências</a>
 <a href="../../../index.html">Os três cursos</a>
 <a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>

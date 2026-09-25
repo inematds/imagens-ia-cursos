@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.1.1 — 2026-09-25
+
+Revisão completa pós-publicação.
+
+- **Páginas de trilha refeitas:** mosaico de imagens reais, diagrama do percurso com os módulos da trilha, cards com miniatura, faixa de imagens por módulo e imagem-chave dentro de cada tópico; prática e lição de casa resumidas.
+- **Todos os 140 tópicos ilustrados:** 32 tópicos que não tinham visual ganharam diagrama SVG próprio ou imagem do curso com legenda específica.
+- **Quizzes:** posição da resposta certa equilibrada (antes 52 de 57 na 2ª opção) e alternativas erradas reescritas com tamanho e plausibilidade parecidos (antes 52 de 57 com a certa sendo a mais longa; agora 14).
+- Landing com miniaturas nos cards dos módulos; alinhamento de texto corrigido; contraste do rótulo "Novo aqui?" no tema claro; escape duplo corrigido no Nano Banana Pro 1-2.
+
 ## v1.1.0 — 2026-09-25
 
 Reescrita completa dos três cursos após a v1.0.0 ser avaliada como fraca em imagens e conteúdo.

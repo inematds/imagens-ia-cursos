@@ -26,3 +26,18 @@ html:not(.dark){--primary:#92400e;--text-muted:#595b62}html[data-theme=sepia]{--
 @media(max-width:850px){.shots.cols-3,.shots.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}.levels{grid-template-columns:1fr}}
 @media(max-width:560px){.shots.cols-2,.shots.cols-3,.shots.cols-4{grid-template-columns:1fr}}
 .lesson .inema-prose{margin-left:0;margin-right:0}
+/* v1.1 — páginas de trilha */
+.track-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:2.5rem;align-items:center}.track-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.thumb{margin:0;position:relative;border-radius:10px;overflow:hidden;background:var(--surface);border:1px solid var(--border)}.thumb img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.thumb-label{position:absolute;left:.4rem;bottom:.4rem;background:rgba(10,12,18,.78);color:#f5f5f5;font-size:.75rem;font-weight:600;padding:.15rem .45rem;border-radius:6px}
+.module-card.with-thumb{padding:0;overflow:hidden}.module-card.with-thumb>*:not(.card-thumb){margin-left:1.2rem;margin-right:1.2rem}.module-card.with-thumb .card-top{margin-top:1rem}
+.card-thumb{margin:0}.card-thumb img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.module-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin:1rem 0 1.4rem}
+.topic-explanation.has-thumb{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:1.2rem;align-items:start}.topic-explanation.has-thumb:not([hidden]){display:grid}
+.topic-thumb{margin:1rem 0 0;position:relative;border-radius:10px;overflow:hidden}.topic-thumb img{display:block;width:100%;height:auto}
+.module-extras{margin:1.2rem 0}.module-extras h4{margin:.1rem 0 .4rem}
+@media(max-width:850px){.track-hero{grid-template-columns:1fr}.module-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.topic-explanation.has-thumb:not([hidden]){grid-template-columns:1fr}}
+main .inema-prose{margin-left:0;margin-right:0}
+/* revisão 2026-09-25: "Novo aqui?" em claro/sépia — accent-2 a 38% dá 4.09:1 no branco; escurece o rótulo p/ AA */
+html:not(.dark) .novo strong{color:#0369a1}
+@media(max-width:600px){.diagram.trilha-svg{display:none}}

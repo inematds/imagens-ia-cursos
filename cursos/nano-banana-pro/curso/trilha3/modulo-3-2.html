@@ -279,8 +279,51 @@
 </div>
 <h3 class="sec">Por que aprender</h3>
 <p class="inema-prose" data-inema-block="m3-2-b6">O modelo não sabe que a foto do píer é “só o lugar”: para ele, é mais um monte de informação visual. A frase de papel funciona como etiqueta. Algumas plataformas ajudam com mecanismos próprios — marcar a referência com @ dentro do prompt, ou um campo “personagem” que aproveita só a pessoa e descarta o fundo. Use esses recursos quando existirem (confira na sua ferramenta), mas <strong>escreva o papel mesmo assim</strong>: é o que funciona em qualquer lugar.</p>
+<figure class="diagram">
+<svg role="img" aria-label="Cada linha é uma referência. Tudo o que está na foto chega ao modelo; a frase de papel decide o que atravessa (coluna do meio) e o que deveria ficar de fora (coluna da direita). Quando algo da direita aparece na cena — o fundo cinza do retrato, o corpo de quem vestia a roupa, uma pessoa que estava no píer — foi vazamento: reforce o papel daquela referência e diga explicitamente o que ignorar." viewBox="0 0 760 322" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif">
+<rect width="760" height="322" rx="14" fill="var(--surface-2)"/>
+<text x="24" y="34" font-size="14" font-weight="700" fill="#c084fc">A FOTO CARREGA TUDO — A FRASE DE PAPEL FILTRA</text>
+<g font-size="13" font-weight="700" fill="var(--text-muted)">
+<text x="24" y="64">REFERÊNCIA ANEXADA</text>
+<text x="234" y="64">PASSA (o papel)</text>
+<text x="464" y="64">FICA DE FORA</text>
+</g>
+<g font-size="14">
+<rect x="24" y="76" width="180" height="44" rx="10" fill="none" stroke="#c084fc" stroke-width="2"/>
+<text x="38" y="103" font-weight="700" fill="var(--text)">1 · foto de rosto</text>
+<rect x="234" y="76" width="200" height="44" rx="10" fill="none" stroke="#c084fc" stroke-width="2"/>
+<text x="248" y="103" fill="var(--text)">rosto, pele, marcas</text>
+<rect x="464" y="76" width="272" height="44" rx="10" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="478" y="103" fill="var(--text-muted)">✗ fundo, luz e roupa da foto</text>
+<rect x="24" y="132" width="180" height="44" rx="10" fill="none" stroke="#c084fc" stroke-width="2"/>
+<text x="38" y="159" font-weight="700" fill="var(--text)">2 · foto da roupa</text>
+<rect x="234" y="132" width="200" height="44" rx="10" fill="none" stroke="#c084fc" stroke-width="2"/>
+<text x="248" y="159" fill="var(--text)">peças, cores, acessórios</text>
+<rect x="464" y="132" width="272" height="44" rx="10" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="478" y="159" fill="var(--text-muted)">✗ corpo e rosto de quem veste</text>
+<rect x="24" y="188" width="180" height="44" rx="10" fill="none" stroke="#38bdf8" stroke-width="2"/>
+<text x="38" y="215" font-weight="700" fill="var(--text)">3 · foto do lugar</text>
+<rect x="234" y="188" width="200" height="44" rx="10" fill="none" stroke="#38bdf8" stroke-width="2"/>
+<text x="248" y="215" fill="var(--text)">cenário, layout, objetos</text>
+<rect x="464" y="188" width="272" height="44" rx="10" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="478" y="215" fill="var(--text-muted)">✗ pessoas que estavam no lugar</text>
+<rect x="24" y="244" width="180" height="44" rx="10" fill="none" stroke="#38bdf8" stroke-width="2"/>
+<text x="38" y="271" font-weight="700" fill="var(--text)">4 · foto do produto</text>
+<rect x="234" y="244" width="200" height="44" rx="10" fill="none" stroke="#38bdf8" stroke-width="2"/>
+<text x="248" y="271" fill="var(--text)">forma, rótulo, cores</text>
+<rect x="464" y="244" width="272" height="44" rx="10" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="478" y="271" fill="var(--text-muted)">✗ escala e luz do estúdio</text>
+</g>
+<g stroke="var(--text-muted)" stroke-width="2">
+<path d="M204 98 H234 M204 154 H234 M204 210 H234 M204 266 H234"/>
+<path d="M434 98 H464 M434 154 H464 M434 210 H464 M434 266 H464" stroke-dasharray="3 4"/>
+</g>
+<text x="24" y="310" font-size="13" fill="var(--text-muted)">Sem a frase de papel, tudo o que está na foto concorre para entrar na cena.</text>
+</svg>
+<figcaption>Cada linha é uma referência. Tudo o que está na foto chega ao modelo; a frase de papel decide o que atravessa (coluna do meio) e o que deveria ficar de fora (coluna da direita). Quando algo da direita aparece na cena — o fundo cinza do retrato, o corpo de quem vestia a roupa, uma pessoa que estava no píer — foi vazamento: reforce o papel daquela referência e diga explicitamente o que ignorar.</figcaption>
+</figure>
 <h3 class="sec">Conceitos-chave em ação</h3>
-<div class="compare-grid" data-inema-block="m3-2-b7">
+<div class="compare-grid" data-inema-block="m3-2-b8">
 <div class="ok">
 <h4>✓ Referência bem escolhida</h4>
 <ul>
@@ -300,7 +343,7 @@
 </ul>
 </div>
 </div>
-<p class="inema-prose" data-inema-block="m3-2-b8">Quantas referências usar? Comece com o mínimo que resolve: uma para o rosto e uma para o produto já cobrem a maioria das peças de campanha. Cada referência a mais é uma fonte a mais de confusão. Suba para três ou quatro só quando o lugar ou a roupa <strong>precisam</strong> ser exatos (uma loja real do cliente, uma coleção de roupas que será vendida).</p>
+<p class="inema-prose" data-inema-block="m3-2-b9">Quantas referências usar? Comece com o mínimo que resolve: uma para o rosto e uma para o produto já cobrem a maioria das peças de campanha. Cada referência a mais é uma fonte a mais de confusão. Suba para três ou quatro só quando o lugar ou a roupa <strong>precisam</strong> ser exatos (uma loja real do cliente, uma coleção de roupas que será vendida).</p>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
@@ -310,7 +353,7 @@
 <h2 class="text-2xl font-bold">
 <span class="number">2</span>Exemplo com quatro referências</h2>
 <h3 class="sec">O que é</h3>
-<p class="inema-prose" data-inema-block="m3-2-b9">Montamos as quatro referências da Maíra numa <strong>prancha numerada</strong>: 1 ROSTO, 2 ROUPA, 3 LUGAR, 4 OBJETO. Em ferramentas que aceitam várias imagens, você anexaria as quatro separadas; aqui usamos a prancha como entrada única — o que também é uma técnica legítima, a <strong>colagem de referências</strong>, útil quando a ferramenta tem limite de imagens anexadas.</p>
+<p class="inema-prose" data-inema-block="m3-2-b10">Montamos as quatro referências da Maíra numa <strong>prancha numerada</strong>: 1 ROSTO, 2 ROUPA, 3 LUGAR, 4 OBJETO. Em ferramentas que aceitam várias imagens, você anexaria as quatro separadas; aqui usamos a prancha como entrada única — o que também é uma técnica legítima, a <strong>colagem de referências</strong>, útil quando a ferramenta tem limite de imagens anexadas.</p>
 <div class="figure-wrap">
 <figure class="shot">
 <a href="../../assets/img/c2-m32-prancha-refs.webp" target="_blank" rel="noopener">
@@ -318,24 +361,24 @@
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m3-2-p11">Turn this image into a REFERENCE BOARD for an AI shoot: a clean 2x2 grid on an off-white (#F6F0E1) background with thin gutters. Each panel has a small dark-green label in its top-left corner with a number and a word. Panel &#x27;1 ROSTO&#x27;: this exact woman, head-and-shoulders close-up, same face, deep brown skin, beauty mark on the left cheekbone, black wavy-curly hair, gold hoops, neutral expression, same studio light. Panel &#x27;2 ROUPA&#x27;: an outfit laid flat on white, seen from above — a leaf-green (#2F7D32) short-sleeve linen button-up shirt with a small yellow jambu-flower print, light-wash denim shorts, a woven straw tote bag and simple tan leather sandals. Panel &#x27;3 LUGAR&#x27;: an empty wooden riverside pier in Belém at golden hour, colorful wooden riverboats moored alongside, wide river behind. Panel &#x27;4 OBJETO&#x27;: a studio packshot on white of a slim matte leaf-green aluminum soda can with a yellow (#F2C200) top band, the cream wordmark &#x27;JAMBU&#x27; and a small yellow jambu-flower line drawing. No other text besides the four labels and the wordmark on the can.</pre>
-<button data-copy="m3-2-p11">Copiar prompt</button>
+<pre id="m3-2-p12">Turn this image into a REFERENCE BOARD for an AI shoot: a clean 2x2 grid on an off-white (#F6F0E1) background with thin gutters. Each panel has a small dark-green label in its top-left corner with a number and a word. Panel &#x27;1 ROSTO&#x27;: this exact woman, head-and-shoulders close-up, same face, deep brown skin, beauty mark on the left cheekbone, black wavy-curly hair, gold hoops, neutral expression, same studio light. Panel &#x27;2 ROUPA&#x27;: an outfit laid flat on white, seen from above — a leaf-green (#2F7D32) short-sleeve linen button-up shirt with a small yellow jambu-flower print, light-wash denim shorts, a woven straw tote bag and simple tan leather sandals. Panel &#x27;3 LUGAR&#x27;: an empty wooden riverside pier in Belém at golden hour, colorful wooden riverboats moored alongside, wide river behind. Panel &#x27;4 OBJETO&#x27;: a studio packshot on white of a slim matte leaf-green aluminum soda can with a yellow (#F2C200) top band, the cream wordmark &#x27;JAMBU&#x27; and a small yellow jambu-flower line drawing. No other text besides the four labels and the wordmark on the can.</pre>
+<button data-copy="m3-2-p12">Copiar prompt</button>
 </details>
 </figure>
-<p class="caption" data-inema-block="m3-2-b10">A prancha de referências: o rosto da Maíra (1), a roupa em flat lay (2), o píer com barcos (3) e a lata (4). Foi montada editando o retrato da Maíra com a lata-base anexada como segunda imagem, por isso o painel 4 repete o rótulo real. Repare que cada painel é “limpo”: o painel do lugar não tem gente, o da roupa não tem corpo.</p>
+<p class="caption" data-inema-block="m3-2-b11">A prancha de referências: o rosto da Maíra (1), a roupa em flat lay (2), o píer com barcos (3) e a lata (4). Foi montada editando o retrato da Maíra com a lata-base anexada como segunda imagem, por isso o painel 4 repete o rótulo real. Repare que cada painel é “limpo”: o painel do lugar não tem gente, o da roupa não tem corpo.</p>
 </div>
 <h3 class="sec">Por que aprender</h3>
-<p class="inema-prose" data-inema-block="m3-2-b12">O prompt da cena final segue sempre a mesma ordem: <strong>ação e cena</strong> primeiro, depois <strong>um bloco por referência</strong> com a frase de papel, depois os <strong>ajustes técnicos</strong>. Cada bloco termina com um reforço curto (“no changes to clothing”, “same pier and boats”).</p>
+<p class="inema-prose" data-inema-block="m3-2-b13">O prompt da cena final segue sempre a mesma ordem: <strong>ação e cena</strong> primeiro, depois <strong>um bloco por referência</strong> com a frase de papel, depois os <strong>ajustes técnicos</strong>. Cada bloco termina com um reforço curto (“no changes to clothing”, “same pier and boats”).</p>
 <div class="codebox">
 <h4>Esqueleto do prompt de 4 referências</h4>
-<pre id="m3-2-p14" data-lang="text">&lt;ação e cena em 1 frase&gt;
+<pre id="m3-2-p15" data-lang="text">&lt;ação e cena em 1 frase&gt;
 use the face from reference image 1 exactly, preserve identity and facial structure,
 use the full outfit from reference image 2 exactly, no changes to clothing,
 use the location from reference image 3 exactly, same layout,
 use the object from reference image 4 exactly, &lt;onde o objeto está&gt;,
 &lt;plano, lente, ângulo&gt;, &lt;luz&gt;, &lt;textura/estilo&gt;,
 NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
-<button data-copy="m3-2-p14">Copiar</button>
+<button data-copy="m3-2-p15">Copiar</button>
 </div>
 <h3 class="sec">Conceitos-chave em ação</h3>
 <div class="compare-shots">
@@ -347,8 +390,8 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m3-2-p16">Turn this image into a REFERENCE BOARD for an AI shoot: a clean 2x2 grid on an off-white (#F6F0E1) background with thin gutters. Each panel has a small dark-green label in its top-left corner with a number and a word. Panel &#x27;1 ROSTO&#x27;: this exact woman, head-and-shoulders close-up, same face, deep brown skin, beauty mark on the left cheekbone, black wavy-curly hair, gold hoops, neutral expression, same studio light. Panel &#x27;2 ROUPA&#x27;: an outfit laid flat on white, seen from above — a leaf-green (#2F7D32) short-sleeve linen button-up shirt with a small yellow jambu-flower print, light-wash denim shorts, a woven straw tote bag and simple tan leather sandals. Panel &#x27;3 LUGAR&#x27;: an empty wooden riverside pier in Belém at golden hour, colorful wooden riverboats moored alongside, wide river behind. Panel &#x27;4 OBJETO&#x27;: a studio packshot on white of a slim matte leaf-green aluminum soda can with a yellow (#F2C200) top band, the cream wordmark &#x27;JAMBU&#x27; and a small yellow jambu-flower line drawing. No other text besides the four labels and the wordmark on the can.</pre>
-<button data-copy="m3-2-p16">Copiar prompt</button>
+<pre id="m3-2-p17">Turn this image into a REFERENCE BOARD for an AI shoot: a clean 2x2 grid on an off-white (#F6F0E1) background with thin gutters. Each panel has a small dark-green label in its top-left corner with a number and a word. Panel &#x27;1 ROSTO&#x27;: this exact woman, head-and-shoulders close-up, same face, deep brown skin, beauty mark on the left cheekbone, black wavy-curly hair, gold hoops, neutral expression, same studio light. Panel &#x27;2 ROUPA&#x27;: an outfit laid flat on white, seen from above — a leaf-green (#2F7D32) short-sleeve linen button-up shirt with a small yellow jambu-flower print, light-wash denim shorts, a woven straw tote bag and simple tan leather sandals. Panel &#x27;3 LUGAR&#x27;: an empty wooden riverside pier in Belém at golden hour, colorful wooden riverboats moored alongside, wide river behind. Panel &#x27;4 OBJETO&#x27;: a studio packshot on white of a slim matte leaf-green aluminum soda can with a yellow (#F2C200) top band, the cream wordmark &#x27;JAMBU&#x27; and a small yellow jambu-flower line drawing. No other text besides the four labels and the wordmark on the can.</pre>
+<button data-copy="m3-2-p17">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -358,14 +401,14 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m3-2-p17">The attached image is a reference board with four numbered references. Create ONE single photorealistic photograph (no grid, no labels, no numbers): use the face from reference 1 exactly, preserve identity and facial structure, beauty mark and hair; use the full outfit from reference 2 exactly, no changes to clothing — green jambu-print linen shirt, denim shorts, straw tote beside her, sandals; use the location from reference 3 exactly, same wooden pier and colorful riverboats; use the object from reference 4 exactly, the green JAMBU can, held in her right hand with the wordmark facing the camera. She sits on the edge of the pier, legs dangling over the water, turning toward the camera with a relaxed laugh. Medium-full shot, 35mm lens at f/2.8, eye level, warm golden-hour sunlight from behind-right with a soft rim on her hair, river haze. Natural skin texture, no retouching. No other text in the scene.</pre>
-<button data-copy="m3-2-p17">Copiar prompt</button>
+<pre id="m3-2-p18">The attached image is a reference board with four numbered references. Create ONE single photorealistic photograph (no grid, no labels, no numbers): use the face from reference 1 exactly, preserve identity and facial structure, beauty mark and hair; use the full outfit from reference 2 exactly, no changes to clothing — green jambu-print linen shirt, denim shorts, straw tote beside her, sandals; use the location from reference 3 exactly, same wooden pier and colorful riverboats; use the object from reference 4 exactly, the green JAMBU can, held in her right hand with the wordmark facing the camera. She sits on the edge of the pier, legs dangling over the water, turning toward the camera with a relaxed laugh. Medium-full shot, 35mm lens at f/2.8, eye level, warm golden-hour sunlight from behind-right with a soft rim on her hair, river haze. Natural skin texture, no retouching. No other text in the scene.</pre>
+<button data-copy="m3-2-p18">Copiar prompt</button>
 </details>
 </figure>
 </div>
-<p class="caption" data-inema-block="m3-2-b15">A cena é uma edição da prancha. Confira papel por papel: o rosto e a pinta são os da referência 1? A camisa verde estampada e o short vieram da 2? O píer e os barcos são os da 3? A lata tem a faixa amarela e o nome JAMBU da 4? Onde um papel falhou, reforce só aquele bloco.</p>
+<p class="caption" data-inema-block="m3-2-b16">A cena é uma edição da prancha. Confira papel por papel: o rosto e a pinta são os da referência 1? A camisa verde estampada e o short vieram da 2? O píer e os barcos são os da 3? A lata tem a faixa amarela e o nome JAMBU da 4? Onde um papel falhou, reforce só aquele bloco.</p>
 </div>
-<aside class="tip" data-inema-block="m3-2-b18">
+<aside class="tip" data-inema-block="m3-2-b19">
 <strong>Dica de diretor</strong>
 <p>Em cenas seguidas (um vlog, uma sequência de posts), repita os <strong>mesmos quatro blocos</strong> em todos os prompts e mude só a ação. É assim que uma série de imagens parece ter sido fotografada no mesmo dia.</p>
 </aside>
@@ -378,17 +421,17 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 <h2 class="text-2xl font-bold">
 <span class="number">3</span>DNA fixo e contexto variável</h2>
 <h3 class="sec">O que é</h3>
-<p class="inema-prose" data-inema-block="m3-2-b19">Um personagem de marca é um <strong>ativo</strong>: quanto mais reconhecível, mais ele vale. A regra de trabalho é uma conta, um personagem — e o personagem tem um <em>prompt-mestre</em> dividido em duas partes. O <strong>DNA fixo</strong> (rosto, pele, idade, marcas) você copia e cola sempre, sem editar uma vírgula. O <strong>contexto variável</strong> (roupa, lugar, luz, pose, ação) é o que muda de peça para peça.</p>
+<p class="inema-prose" data-inema-block="m3-2-b20">Um personagem de marca é um <strong>ativo</strong>: quanto mais reconhecível, mais ele vale. A regra de trabalho é uma conta, um personagem — e o personagem tem um <em>prompt-mestre</em> dividido em duas partes. O <strong>DNA fixo</strong> (rosto, pele, idade, marcas) você copia e cola sempre, sem editar uma vírgula. O <strong>contexto variável</strong> (roupa, lugar, luz, pose, ação) é o que muda de peça para peça.</p>
 <div class="codebox">
 <h4>DNA fixo da Maíra (copie sempre igual)</h4>
-<pre id="m3-2-p21" data-lang="text">Maíra, 28, from Belém do Pará: deep brown skin with warm undertones, mixed Indigenous and Afro-Brazilian features, high cheekbones, thick dark eyebrows, warm dark-brown eyes, a small beauty mark on her left cheekbone, voluminous shoulder-length black wavy-curly hair with a middle part, small gold hoop earrings.</pre>
-<button data-copy="m3-2-p21">Copiar</button>
+<pre id="m3-2-p22" data-lang="text">Maíra, 28, from Belém do Pará: deep brown skin with warm undertones, mixed Indigenous and Afro-Brazilian features, high cheekbones, thick dark eyebrows, warm dark-brown eyes, a small beauty mark on her left cheekbone, voluminous shoulder-length black wavy-curly hair with a middle part, small gold hoop earrings.</pre>
+<button data-copy="m3-2-p22">Copiar</button>
 </div>
 <h3 class="sec">Por que aprender</h3>
-<p class="inema-prose" data-inema-block="m3-2-b22">Os detalhes pequenos — a pinta na maçã do rosto, as argolas, o repartido no meio — são os que o público usa para reconhecer, e os primeiros que o modelo “esquece”. Escritos no DNA, eles são pedidos em toda geração. Junto com a imagem de referência, texto e imagem se reforçam.</p>
-<p class="inema-prose" data-inema-block="m3-2-b23">Na prática, isso significa manter um arquivo de texto por personagem, com o DNA fixo no topo e, embaixo, uma lista de contextos já usados (roupas, lugares, luzes). Antes de cada peça, você copia o DNA inteiro e escolhe ou inventa um contexto. Esse arquivo, junto com a imagem de referência aprovada, é o que outra pessoa da equipe precisaria para continuar o personagem sem você.</p>
+<p class="inema-prose" data-inema-block="m3-2-b23">Os detalhes pequenos — a pinta na maçã do rosto, as argolas, o repartido no meio — são os que o público usa para reconhecer, e os primeiros que o modelo “esquece”. Escritos no DNA, eles são pedidos em toda geração. Junto com a imagem de referência, texto e imagem se reforçam.</p>
+<p class="inema-prose" data-inema-block="m3-2-b24">Na prática, isso significa manter um arquivo de texto por personagem, com o DNA fixo no topo e, embaixo, uma lista de contextos já usados (roupas, lugares, luzes). Antes de cada peça, você copia o DNA inteiro e escolhe ou inventa um contexto. Esse arquivo, junto com a imagem de referência aprovada, é o que outra pessoa da equipe precisaria para continuar o personagem sem você.</p>
 <h3 class="sec">Conceitos-chave em ação</h3>
-<div class="table-scroll" data-inema-block="m3-2-b24">
+<div class="table-scroll" data-inema-block="m3-2-b25">
 <table>
 <thead>
 <tr>
@@ -420,6 +463,44 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </tbody>
 </table>
 </div>
+<div class="compare-shots">
+<div class="shots cols-3">
+<figure class="shot">
+<span class="shot-label">Retrato-base (o DNA)</span>
+<a href="../../assets/img/c2-m12-heroina-base.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c2-m12-heroina-base.webp" alt="Maíra, mulher paraense de 28 anos, pele marrom-escura, cabelo preto ondulado nos ombros, pinta na maçã do rosto esquerda, argolas douradas, camiseta branca, fundo cinza-claro de estúdio" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Prompt usado</summary>
+<pre id="m3-2-p27">Waist-up studio portrait of Maíra, a fictional 28-year-old woman from Belém do Pará, Brazil: deep brown skin with warm undertones, mixed Indigenous and Afro-Brazilian features, high cheekbones, thick dark eyebrows, warm dark-brown eyes, a small beauty mark on her left cheekbone, and voluminous shoulder-length black wavy-curly hair with a middle part. Small gold hoop earrings. She wears a plain white crew-neck cotton t-shirt. Relaxed, confident expression with a slight closed-mouth smile, looking straight at the camera, shoulders slightly angled. Centered in the frame with space on both sides. Seamless warm light-grey studio background. Large soft key light from front-left, gentle fill, soft shadow on the right side of her face. 85mm lens at f/4, eye level. Natural skin texture with visible pores, no heavy retouching, neutral color grade. Clean character reference photograph.</pre>
+<button data-copy="m3-2-p27">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Contexto: barco, fim de tarde</span>
+<a href="../../assets/img/c2-m41-heroina-barco.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c2-m41-heroina-barco.webp" alt="Maíra sentada na proa de um barco de madeira colorido cruzando o rio, lata JAMBU apoiada no joelho, vento no cabelo" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-2-p28">Keep this exact woman — Maíra: same face, deep brown skin, beauty mark on her left cheekbone, voluminous black wavy-curly hair, gold hoop earrings and white t-shirt. Place her in a completely new scene: sitting on the bow of a colorful wooden riverboat crossing a wide brown river near Belém in the afternoon, wind moving her hair, holding a slim matte leaf-green (#2F7D32) aluminum can with a yellow (#F2C200) top band and the cream JAMBU wordmark resting on her knee, looking out at the river with a calm smile. Medium shot, 35mm lens at f/4, soft hazy afternoon light from the left, distant green forest line on the horizon. No other text.</pre>
+<button data-copy="m3-2-p28">Copiar prompt</button>
+</details>
+</figure>
+<figure class="shot">
+<span class="shot-label">Contexto: terraço, noite</span>
+<a href="../../assets/img/c2-m41-heroina-noite.webp" target="_blank" rel="noopener">
+<img src="../../assets/img/c2-m41-heroina-noite.webp" alt="À noite, de top amarelo: Maíra num terraço com varal de lâmpadas, bebendo da lata de olhos fechados, cidade desfocada atrás" loading="lazy" decoding="async">
+</a>
+<details class="prompt-used">
+<summary>Instrução de edição usada (sobre a imagem-base)</summary>
+<pre id="m3-2-p29">Keep this exact woman — Maíra: same face, deep brown skin, beauty mark on her left cheekbone, voluminous black wavy-curly hair and gold hoop earrings; she now wears a jambu-yellow (#F2C200) sleeveless top. Place her in a completely new scene at night: an extreme low-angle shot looking up at her on a rooftop terrace above Belém, string lights overhead, city lights bokeh behind, she drinks from a slim matte leaf-green JAMBU can with a yellow top band, eyes closed, smiling as her lips tingle. 24mm lens, slight Dutch angle, warm practical light from the string bulbs, cool blue night sky. No other text.</pre>
+<button data-copy="m3-2-p29">Copiar prompt</button>
+</details>
+</figure>
+</div>
+<p class="caption" data-inema-block="m3-2-b26">Três peças da mesma heroína, as duas da direita editadas a partir do retrato-base com o DNA fixo no prompt. Procure primeiro o que não mudou: a pinta na maçã do rosto, as argolas douradas pequenas, o cabelo preto cacheado repartido no meio, o tom de pele. Depois, o que mudou de propósito — a coluna “variável” da tabela: roupa (camiseta branca → top amarelo), lugar, luz (estúdio neutro → sol baixo → lâmpadas de varal), expressão e plano. Repare também que no terraço o rosto ficou mais fino e mais jovem que no retrato-base: é esse tipo de deriva que o DNA escrito e a referência anexada existem para puxar de volta.</p>
+</div>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
@@ -429,8 +510,8 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 <h2 class="text-2xl font-bold">
 <span class="number">4</span>Identidade fictícia a partir de dois rostos</h2>
 <h3 class="sec">O que é</h3>
-<p class="inema-prose" data-inema-block="m3-2-b25">Quando você quer um rosto que não existe, pode partir de duas (ou mais) referências e pedir ao modelo que as use como <strong>inspiração genética</strong>: um formato de olho de uma, a maçã do rosto da outra, uma assimetria natural que nenhuma das duas tem. O objetivo é uma terceira pessoa coerente, não uma mistura.</p>
-<aside class="novo" data-inema-block="m3-2-b26">
+<p class="inema-prose" data-inema-block="m3-2-b30">Quando você quer um rosto que não existe, pode partir de duas (ou mais) referências e pedir ao modelo que as use como <strong>inspiração genética</strong>: um formato de olho de uma, a maçã do rosto da outra, uma assimetria natural que nenhuma das duas tem. O objetivo é uma terceira pessoa coerente, não uma mistura.</p>
+<aside class="novo" data-inema-block="m3-2-b31">
 <strong>Novo aqui? Morphing</strong>
 <p>O efeito de “fusão” entre rostos: traços médios, pele lisa demais, simetria perfeita, olhos que não parecem de ninguém. É o que acontece quando o modelo tira a média das referências em vez de criar alguém novo. O prompt <em>anti-morphing</em> lista esses defeitos e pede o contrário.</p>
 </aside>
@@ -441,15 +522,15 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </a>
 <details class="prompt-used">
 <summary>Prompt usado</summary>
-<pre id="m3-2-p28">Reference sheet of two different fictional adult Brazilian women, side by side on a seamless neutral mid-grey background, both head-and-shoulders, facing the camera, neutral relaxed expression, identical soft frontal studio light, 85mm lens at f/5.6, wearing plain black crew-neck t-shirts. Left, labeled &#x27;A&#x27; in small grey letters below: early 30s, light-brown olive skin with freckles across the nose, narrow oval face, straight black hair pulled back into a low bun, thin arched eyebrows, dark almond-shaped eyes. Right, labeled &#x27;B&#x27; in small grey letters below: late 20s, dark brown skin, broad high cheekbones, full lips, short natural afro hair, strong straight eyebrows, a tiny gold nose stud. Natural skin texture, visible pores, no retouching. No other text.</pre>
-<button data-copy="m3-2-p28">Copiar prompt</button>
+<pre id="m3-2-p33">Reference sheet of two different fictional adult Brazilian women, side by side on a seamless neutral mid-grey background, both head-and-shoulders, facing the camera, neutral relaxed expression, identical soft frontal studio light, 85mm lens at f/5.6, wearing plain black crew-neck t-shirts. Left, labeled &#x27;A&#x27; in small grey letters below: early 30s, light-brown olive skin with freckles across the nose, narrow oval face, straight black hair pulled back into a low bun, thin arched eyebrows, dark almond-shaped eyes. Right, labeled &#x27;B&#x27; in small grey letters below: late 20s, dark brown skin, broad high cheekbones, full lips, short natural afro hair, strong straight eyebrows, a tiny gold nose stud. Natural skin texture, visible pores, no retouching. No other text.</pre>
+<button data-copy="m3-2-p33">Copiar prompt</button>
 </details>
 </figure>
-<p class="caption" data-inema-block="m3-2-b27">As duas referências, ambas fictícias e geradas: A e B, mesma luz e mesmo fundo para a comparação ser justa.</p>
+<p class="caption" data-inema-block="m3-2-b32">As duas referências, ambas fictícias e geradas: A e B, mesma luz e mesmo fundo para a comparação ser justa.</p>
 </div>
 <h3 class="sec">Por que aprender</h3>
-<p class="inema-prose" data-inema-block="m3-2-b29">O prompt longo não é enfeite. Ele faz três coisas que o curto não faz: diz <strong>quais traços</strong> combinar (olhos, sobrancelhas, nariz, lábios, mandíbula), pede <strong>imperfeições reais</strong> (assimetria leve, poros, linhas de expressão) e dá um <strong>contexto de foto comum</strong> (sala, celular, 26 mm) — porque um rosto “de estúdio” tende ao perfeito, e perfeito denuncia IA.</p>
-<p class="inema-prose" data-inema-block="m3-2-b30">Guarde as duas imagens de origem e o prompt exato junto com o resultado: se um dia alguém perguntar de onde veio o rosto do personagem, você mostra que ele nasceu de referências fictícias — e isso também é parte de trabalhar com ética.</p>
+<p class="inema-prose" data-inema-block="m3-2-b34">O prompt longo não é enfeite. Ele faz três coisas que o curto não faz: diz <strong>quais traços</strong> combinar (olhos, sobrancelhas, nariz, lábios, mandíbula), pede <strong>imperfeições reais</strong> (assimetria leve, poros, linhas de expressão) e dá um <strong>contexto de foto comum</strong> (sala, celular, 26 mm) — porque um rosto “de estúdio” tende ao perfeito, e perfeito denuncia IA.</p>
+<p class="inema-prose" data-inema-block="m3-2-b35">Guarde as duas imagens de origem e o prompt exato junto com o resultado: se um dia alguém perguntar de onde veio o rosto do personagem, você mostra que ele nasceu de referências fictícias — e isso também é parte de trabalhar com ética.</p>
 <h3 class="sec">Conceitos-chave em ação</h3>
 <div class="compare-shots">
 <div class="shots cols-2">
@@ -460,8 +541,8 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m3-2-p32">Merge these two faces into one person. Single portrait.</pre>
-<button data-copy="m3-2-p32">Copiar prompt</button>
+<pre id="m3-2-p37">Merge these two faces into one person. Single portrait.</pre>
+<button data-copy="m3-2-p37">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -471,14 +552,14 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m3-2-p33">Create a photorealistic image of a completely new fictional adult woman generated from the TWO reference individuals A and B, using them only as subtle genetic inspiration rather than direct likeness: blend believable facial structure elements — eye shape, brow geometry, nose bridge and tip, lip proportions, cheekbones, jawline contour — with mild natural asymmetry, a realistic skin undertone, natural pores, fine skin texture and tiny expression lines, into one cohesive person who does not strongly resemble either source. Medium shot from mid-torso up, seated casually on a sofa in a lived-in apartment living room in Belém, plants, a hammock hook on the wall, books, soft textiles. Natural daylight from a nearby window mixed with a warm practical lamp, neutral warm skin tones, gentle ambient shadows. Shot on a modern smartphone main camera, 26mm equivalent, eye level, realistic depth of field, subtle sensor noise, candid creator-style photo. Simple mustard-yellow cotton t-shirt. Avoid morphing artifacts, feature-averaging softness, uncanny symmetry, waxy or plastic skin, heavy beauty retouching, face-swap look, duplicate resemblance to A or B, distorted eyes, mismatched lighting. Single image, no labels, no text.</pre>
-<button data-copy="m3-2-p33">Copiar prompt</button>
+<pre id="m3-2-p38">Create a photorealistic image of a completely new fictional adult woman generated from the TWO reference individuals A and B, using them only as subtle genetic inspiration rather than direct likeness: blend believable facial structure elements — eye shape, brow geometry, nose bridge and tip, lip proportions, cheekbones, jawline contour — with mild natural asymmetry, a realistic skin undertone, natural pores, fine skin texture and tiny expression lines, into one cohesive person who does not strongly resemble either source. Medium shot from mid-torso up, seated casually on a sofa in a lived-in apartment living room in Belém, plants, a hammock hook on the wall, books, soft textiles. Natural daylight from a nearby window mixed with a warm practical lamp, neutral warm skin tones, gentle ambient shadows. Shot on a modern smartphone main camera, 26mm equivalent, eye level, realistic depth of field, subtle sensor noise, candid creator-style photo. Simple mustard-yellow cotton t-shirt. Avoid morphing artifacts, feature-averaging softness, uncanny symmetry, waxy or plastic skin, heavy beauty retouching, face-swap look, duplicate resemblance to A or B, distorted eyes, mismatched lighting. Single image, no labels, no text.</pre>
+<button data-copy="m3-2-p38">Copiar prompt</button>
 </details>
 </figure>
 </div>
-<p class="caption" data-inema-block="m3-2-b31">Duas edições da mesma imagem com A e B, mudando só o prompt. À esquerda, o pedido de uma linha: o modelo decidiu sozinho quanto tirar de cada rosto. À direita, o prompt que lista os traços, pede imperfeições e põe a pessoa numa sala real com luz de janela. Compare cada uma com A e B. A da esquerda não virou uma terceira pessoa: é basicamente o rosto de A (pele clara com sardas, rosto fino, sobrancelha arqueada) com o cabelo afro de B, no mesmo fundo e na mesma camiseta — uma colagem de traços. A da direita já é outra mulher, com traços dos dois lados diluídos, cabelo cacheado preso e a cena de foto de celular que o prompt pediu. Abra “Prompt usado” nas duas.</p>
+<p class="caption" data-inema-block="m3-2-b36">Duas edições da mesma imagem com A e B, mudando só o prompt. À esquerda, o pedido de uma linha: o modelo decidiu sozinho quanto tirar de cada rosto. À direita, o prompt que lista os traços, pede imperfeições e põe a pessoa numa sala real com luz de janela. Compare cada uma com A e B. A da esquerda não virou uma terceira pessoa: é basicamente o rosto de A (pele clara com sardas, rosto fino, sobrancelha arqueada) com o cabelo afro de B, no mesmo fundo e na mesma camiseta — uma colagem de traços. A da direita já é outra mulher, com traços dos dois lados diluídos, cabelo cacheado preso e a cena de foto de celular que o prompt pediu. Abra “Prompt usado” nas duas.</p>
 </div>
-<div class="compare-grid" data-inema-block="m3-2-b34">
+<div class="compare-grid" data-inema-block="m3-2-b39">
 <div class="ok">
 <h4>✓ Peça</h4>
 <ul>
@@ -507,7 +588,7 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 <h2 class="text-2xl font-bold">
 <span class="number">5</span>Reestilizar uma colagem: anime, pixel art, 3D</h2>
 <h3 class="sec">O que é</h3>
-<p class="inema-prose" data-inema-block="m3-2-b35">Geradores de vídeo que aceitam várias imagens (muitos aceitam até 9) funcionam melhor quando você entrega uma <strong>colagem limpa</strong>: personagem, lugar, objetos, cada um num espaço. O truque é que você não precisa refazer tudo para mudar o estilo: pega a mesma colagem, pede ao modelo de imagem para reestilizá-la inteira, e usa a colagem nova no vídeo, com uma nota curta de estilo no começo do prompt (“Anime style.”, “16-bit pixel art.”).</p>
+<p class="inema-prose" data-inema-block="m3-2-b40">Geradores de vídeo que aceitam várias imagens (muitos aceitam até 9) funcionam melhor quando você entrega uma <strong>colagem limpa</strong>: personagem, lugar, objetos, cada um num espaço. O truque é que você não precisa refazer tudo para mudar o estilo: pega a mesma colagem, pede ao modelo de imagem para reestilizá-la inteira, e usa a colagem nova no vídeo, com uma nota curta de estilo no começo do prompt (“Anime style.”, “16-bit pixel art.”).</p>
 <div class="compare-shots">
 <div class="shots cols-2">
 <figure class="shot">
@@ -517,8 +598,8 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m3-2-p37">Turn this image into a REFERENCE BOARD for an AI shoot: a clean 2x2 grid on an off-white (#F6F0E1) background with thin gutters. Each panel has a small dark-green label in its top-left corner with a number and a word. Panel &#x27;1 ROSTO&#x27;: this exact woman, head-and-shoulders close-up, same face, deep brown skin, beauty mark on the left cheekbone, black wavy-curly hair, gold hoops, neutral expression, same studio light. Panel &#x27;2 ROUPA&#x27;: an outfit laid flat on white, seen from above — a leaf-green (#2F7D32) short-sleeve linen button-up shirt with a small yellow jambu-flower print, light-wash denim shorts, a woven straw tote bag and simple tan leather sandals. Panel &#x27;3 LUGAR&#x27;: an empty wooden riverside pier in Belém at golden hour, colorful wooden riverboats moored alongside, wide river behind. Panel &#x27;4 OBJETO&#x27;: a studio packshot on white of a slim matte leaf-green aluminum soda can with a yellow (#F2C200) top band, the cream wordmark &#x27;JAMBU&#x27; and a small yellow jambu-flower line drawing. No other text besides the four labels and the wordmark on the can.</pre>
-<button data-copy="m3-2-p37">Copiar prompt</button>
+<pre id="m3-2-p42">Turn this image into a REFERENCE BOARD for an AI shoot: a clean 2x2 grid on an off-white (#F6F0E1) background with thin gutters. Each panel has a small dark-green label in its top-left corner with a number and a word. Panel &#x27;1 ROSTO&#x27;: this exact woman, head-and-shoulders close-up, same face, deep brown skin, beauty mark on the left cheekbone, black wavy-curly hair, gold hoops, neutral expression, same studio light. Panel &#x27;2 ROUPA&#x27;: an outfit laid flat on white, seen from above — a leaf-green (#2F7D32) short-sleeve linen button-up shirt with a small yellow jambu-flower print, light-wash denim shorts, a woven straw tote bag and simple tan leather sandals. Panel &#x27;3 LUGAR&#x27;: an empty wooden riverside pier in Belém at golden hour, colorful wooden riverboats moored alongside, wide river behind. Panel &#x27;4 OBJETO&#x27;: a studio packshot on white of a slim matte leaf-green aluminum soda can with a yellow (#F2C200) top band, the cream wordmark &#x27;JAMBU&#x27; and a small yellow jambu-flower line drawing. No other text besides the four labels and the wordmark on the can.</pre>
+<button data-copy="m3-2-p42">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -528,8 +609,8 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m3-2-p38">Fully re-render this ENTIRE reference board as hand-drawn 1990s Japanese cel-shaded anime: flat cel colors, clean black ink outlines, two-tone shading, painted watercolor-style backgrounds, large expressive anime eyes for the woman while keeping her deep brown skin, beauty mark, black wavy-curly hair and gold hoops. Keep exactly the same 2x2 layout, the same four subjects (face, outfit, pier with boats, green JAMBU can), the same colors and the same labels &#x27;1 ROSTO&#x27;, &#x27;2 ROUPA&#x27;, &#x27;3 LUGAR&#x27;, &#x27;4 OBJETO&#x27;. Nothing photographic may remain.</pre>
-<button data-copy="m3-2-p38">Copiar prompt</button>
+<pre id="m3-2-p43">Fully re-render this ENTIRE reference board as hand-drawn 1990s Japanese cel-shaded anime: flat cel colors, clean black ink outlines, two-tone shading, painted watercolor-style backgrounds, large expressive anime eyes for the woman while keeping her deep brown skin, beauty mark, black wavy-curly hair and gold hoops. Keep exactly the same 2x2 layout, the same four subjects (face, outfit, pier with boats, green JAMBU can), the same colors and the same labels &#x27;1 ROSTO&#x27;, &#x27;2 ROUPA&#x27;, &#x27;3 LUGAR&#x27;, &#x27;4 OBJETO&#x27;. Nothing photographic may remain.</pre>
+<button data-copy="m3-2-p43">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -539,8 +620,8 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m3-2-p39">Fully re-render this ENTIRE reference board as 16-bit retro video game pixel art: large clearly visible square pixels, a limited palette of about 32 colors, no anti-aliasing, dithered shading, sprite-like woman portrait keeping her deep brown skin, black curly hair and gold hoops, pixel-art outfit, pixel-art pier with boats and water tiles, pixel-art green can with a yellow band and the word JAMBU in blocky pixel letters. Keep exactly the same 2x2 layout, the same four subjects and the labels &#x27;1 ROSTO&#x27;, &#x27;2 ROUPA&#x27;, &#x27;3 LUGAR&#x27;, &#x27;4 OBJETO&#x27; in pixel font. Nothing photographic may remain.</pre>
-<button data-copy="m3-2-p39">Copiar prompt</button>
+<pre id="m3-2-p44">Fully re-render this ENTIRE reference board as 16-bit retro video game pixel art: large clearly visible square pixels, a limited palette of about 32 colors, no anti-aliasing, dithered shading, sprite-like woman portrait keeping her deep brown skin, black curly hair and gold hoops, pixel-art outfit, pixel-art pier with boats and water tiles, pixel-art green can with a yellow band and the word JAMBU in blocky pixel letters. Keep exactly the same 2x2 layout, the same four subjects and the labels &#x27;1 ROSTO&#x27;, &#x27;2 ROUPA&#x27;, &#x27;3 LUGAR&#x27;, &#x27;4 OBJETO&#x27; in pixel font. Nothing photographic may remain.</pre>
+<button data-copy="m3-2-p44">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -550,20 +631,20 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m3-2-p40">Fully re-render this ENTIRE reference board as a stylized 3D animated feature film look: soft rounded CG shapes, subsurface-scattered skin, slightly exaggerated friendly proportions with big eyes for the woman while keeping her deep brown skin, beauty mark, black wavy-curly hair and gold hoops, soft global illumination, plush fabric shading on the outfit, a toy-like 3D pier and riverboats, a glossy 3D green can with a yellow band and the JAMBU wordmark. Keep exactly the same 2x2 layout, the same four subjects and the labels &#x27;1 ROSTO&#x27;, &#x27;2 ROUPA&#x27;, &#x27;3 LUGAR&#x27;, &#x27;4 OBJETO&#x27;. Nothing photographic may remain.</pre>
-<button data-copy="m3-2-p40">Copiar prompt</button>
+<pre id="m3-2-p45">Fully re-render this ENTIRE reference board as a stylized 3D animated feature film look: soft rounded CG shapes, subsurface-scattered skin, slightly exaggerated friendly proportions with big eyes for the woman while keeping her deep brown skin, beauty mark, black wavy-curly hair and gold hoops, soft global illumination, plush fabric shading on the outfit, a toy-like 3D pier and riverboats, a glossy 3D green can with a yellow band and the JAMBU wordmark. Keep exactly the same 2x2 layout, the same four subjects and the labels &#x27;1 ROSTO&#x27;, &#x27;2 ROUPA&#x27;, &#x27;3 LUGAR&#x27;, &#x27;4 OBJETO&#x27;. Nothing photographic may remain.</pre>
+<button data-copy="m3-2-p45">Copiar prompt</button>
 </details>
 </figure>
 </div>
-<p class="caption" data-inema-block="m3-2-b36">Três edições da mesma prancha, cada uma com um estilo. Confira o que tinha de se manter: a grade 2×2, os números e palavras dos painéis, a pinta e as argolas da Maíra, a faixa amarela da lata. Nas três, a grade, os quatro rótulos, as argolas, a roupa, o píer e a lata com JAMBU sobreviveram; a pinta só aparece com clareza no anime (no 3D ela some entre as bochechas, na pixel art não há resolução para ela). O anime virou traço e cor chapada com fundo em aquarela; o 3D, personagem de olhos grandes e barcos de brinquedo; a pixel art mostra os pixels e o pontilhado, mas em resolução alta demais para um sprite de 16 bits de verdade — parece mais ilustração pixelada. Onde o estilo mudou pouco ou o conteúdo se perdeu, reforce a instrução daquele estilo (ex.: “very low resolution, about 64×64 pixels per panel”).</p>
+<p class="caption" data-inema-block="m3-2-b41">Três edições da mesma prancha, cada uma com um estilo. Confira o que tinha de se manter: a grade 2×2, os números e palavras dos painéis, a pinta e as argolas da Maíra, a faixa amarela da lata. Nas três, a grade, os quatro rótulos, as argolas, a roupa, o píer e a lata com JAMBU sobreviveram; a pinta só aparece com clareza no anime (no 3D ela some entre as bochechas, na pixel art não há resolução para ela). O anime virou traço e cor chapada com fundo em aquarela; o 3D, personagem de olhos grandes e barcos de brinquedo; a pixel art mostra os pixels e o pontilhado, mas em resolução alta demais para um sprite de 16 bits de verdade — parece mais ilustração pixelada. Onde o estilo mudou pouco ou o conteúdo se perdeu, reforce a instrução daquele estilo (ex.: “very low resolution, about 64×64 pixels per panel”).</p>
 </div>
 <h3 class="sec">Por que aprender</h3>
-<p class="inema-prose" data-inema-block="m3-2-b41">Instruções fracas de estilo (“make it anime”) costumam devolver algo parecido com a original, só com filtro. Para a conversão ser completa, diga <strong>“Fully re-render this ENTIRE image”</strong>, descreva as marcas do estilo (contorno de tinta e cor chapada no anime; pixels quadrados visíveis e paleta limitada no pixel art; pele com luz atravessando e formas arredondadas no 3D) e termine com <strong>“Nothing photographic may remain.”</strong>
+<p class="inema-prose" data-inema-block="m3-2-b46">Instruções fracas de estilo (“make it anime”) costumam devolver algo parecido com a original, só com filtro. Para a conversão ser completa, diga <strong>“Fully re-render this ENTIRE image”</strong>, descreva as marcas do estilo (contorno de tinta e cor chapada no anime; pixels quadrados visíveis e paleta limitada no pixel art; pele com luz atravessando e formas arredondadas no 3D) e termine com <strong>“Nothing photographic may remain.”</strong>
 </p>
-<p class="inema-prose" data-inema-block="m3-2-b42">No gerador de vídeo, a colagem reestilizada vai como referência e o prompt começa com uma <strong>nota curta de estilo</strong> (“Anime style, cel-shaded.”) seguida do mesmo roteiro de sempre. A história e os planos não mudam; só a pele visual. É assim que uma única ideia de comercial vira quatro versões para testar com públicos diferentes.</p>
+<p class="inema-prose" data-inema-block="m3-2-b47">No gerador de vídeo, a colagem reestilizada vai como referência e o prompt começa com uma <strong>nota curta de estilo</strong> (“Anime style, cel-shaded.”) seguida do mesmo roteiro de sempre. A história e os planos não mudam; só a pele visual. É assim que uma única ideia de comercial vira quatro versões para testar com públicos diferentes.</p>
 <h3 class="sec">Conceitos-chave em ação</h3>
 <h4>Marcas de estilo para escrever no prompt</h4>
-<div class="table-scroll" data-inema-block="m3-2-b43">
+<div class="table-scroll" data-inema-block="m3-2-b48">
 <table>
 <thead>
 <tr>
@@ -596,7 +677,7 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </tbody>
 </table>
 </div>
-<aside class="tip" data-inema-block="m3-2-b44">
+<aside class="tip" data-inema-block="m3-2-b49">
 <strong>Dica de diretor</strong>
 <p>Nenhum gerador acerta tudo de primeira. Rode 2–3 versões da conversão e fique com a melhor — ou use partes de cada uma. Isso é o normal do trabalho, não sinal de prompt ruim.</p>
 </aside>
@@ -609,7 +690,7 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 <h2 class="text-2xl font-bold">
 <span class="number">6</span>Trocar o personagem numa cena existente</h2>
 <h3 class="sec">O que é</h3>
-<p class="inema-prose" data-inema-block="m3-2-b45">Há dois caminhos para uma cena com o seu personagem: <strong>geração completa</strong> (tudo inventado — ótimo para lugares impossíveis) e <strong>realidade híbrida</strong> (você grava ou fotografa o ambiente de verdade e troca só o rosto). No segundo, você tira um quadro do seu vídeo, anexa junto com a referência do personagem e pede: substitua <strong>apenas</strong> o rosto.</p>
+<p class="inema-prose" data-inema-block="m3-2-b50">Há dois caminhos para uma cena com o seu personagem: <strong>geração completa</strong> (tudo inventado — ótimo para lugares impossíveis) e <strong>realidade híbrida</strong> (você grava ou fotografa o ambiente de verdade e troca só o rosto). No segundo, você tira um quadro do seu vídeo, anexa junto com a referência do personagem e pede: substitua <strong>apenas</strong> o rosto.</p>
 <div class="compare-shots">
 <div class="shots cols-2">
 <figure class="shot">
@@ -619,8 +700,8 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </a>
 <details class="prompt-used">
 <summary>Prompt usado</summary>
-<pre id="m3-2-p47">Candid smartphone photo, as if a frame grabbed from a phone video: a fictional woman in her early 40s with light skin, a narrow face and short straight ash-brown hair, wearing a rust-orange denim jacket over a white tank top, sitting at a small metal table of a sidewalk café in Belém under a big mango tree, holding a slim leaf-green aluminum soda can with a yellow top band and the cream word JAMBU, looking at the camera mid-sentence with a friendly expression. Colonial tiled facades and passing people softly blurred behind. Dappled afternoon sunlight through the leaves, slightly uneven exposure, 26mm smartphone lens, eye level, natural imperfect framing. No other text.</pre>
-<button data-copy="m3-2-p47">Copiar prompt</button>
+<pre id="m3-2-p52">Candid smartphone photo, as if a frame grabbed from a phone video: a fictional woman in her early 40s with light skin, a narrow face and short straight ash-brown hair, wearing a rust-orange denim jacket over a white tank top, sitting at a small metal table of a sidewalk café in Belém under a big mango tree, holding a slim leaf-green aluminum soda can with a yellow top band and the cream word JAMBU, looking at the camera mid-sentence with a friendly expression. Colonial tiled facades and passing people softly blurred behind. Dappled afternoon sunlight through the leaves, slightly uneven exposure, 26mm smartphone lens, eye level, natural imperfect framing. No other text.</pre>
+<button data-copy="m3-2-p52">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -630,25 +711,25 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m3-2-p48">Replace ONLY the woman&#x27;s face and hair with this character — Maíra, 28, from Belém: deep brown skin with warm undertones, mixed Indigenous and Afro-Brazilian features, high cheekbones, thick dark eyebrows, warm dark-brown eyes, a small beauty mark on her left cheekbone, voluminous shoulder-length black wavy-curly hair with a middle part, small gold hoop earrings. Match the skin tone of her neck and hands to the new face. Keep EVERYTHING else identical: the rust-orange denim jacket and white tank top, her pose, the hand holding the JAMBU can, the café table, the mango tree, the street, the dappled light, the framing and the smartphone look.</pre>
-<button data-copy="m3-2-p48">Copiar prompt</button>
+<pre id="m3-2-p53">Replace ONLY the woman&#x27;s face and hair with this character — Maíra, 28, from Belém: deep brown skin with warm undertones, mixed Indigenous and Afro-Brazilian features, high cheekbones, thick dark eyebrows, warm dark-brown eyes, a small beauty mark on her left cheekbone, voluminous shoulder-length black wavy-curly hair with a middle part, small gold hoop earrings. Match the skin tone of her neck and hands to the new face. Keep EVERYTHING else identical: the rust-orange denim jacket and white tank top, her pose, the hand holding the JAMBU can, the café table, the mango tree, the street, the dappled light, the framing and the smartphone look.</pre>
+<button data-copy="m3-2-p53">Copiar prompt</button>
 </details>
 </figure>
 </div>
-<p class="caption" data-inema-block="m3-2-b46">Uma edição da mesma foto — e aqui a “cena original” também foi gerada, no papel do quadro que você tiraria do seu vídeo. A jaqueta, a pose, a mão com a lata, a mesa e a mangueira deveriam continuar idênticas; só o rosto e o cabelo mudam. Além do DNA fixo escrito no prompt, o retrato-base da Maíra foi anexado como segunda imagem — e o rosto saiu reconhecível, com a pinta, as argolas e o cabelo. Confira o que escapou: a jaqueta ferrugem, a regata, a mangueira e os azulejos ficaram, mas o braço com a lata mudou de posição (agora ela estende a lata para a câmera) e o enquadramento aproximou. Troca de rosto por edição nunca é 100% cirúrgica; se o gesto importa, reforce “keep the exact same arm and hand position”.</p>
+<p class="caption" data-inema-block="m3-2-b51">Uma edição da mesma foto — e aqui a “cena original” também foi gerada, no papel do quadro que você tiraria do seu vídeo. A jaqueta, a pose, a mão com a lata, a mesa e a mangueira deveriam continuar idênticas; só o rosto e o cabelo mudam. Além do DNA fixo escrito no prompt, o retrato-base da Maíra foi anexado como segunda imagem — e o rosto saiu reconhecível, com a pinta, as argolas e o cabelo. Confira o que escapou: a jaqueta ferrugem, a regata, a mangueira e os azulejos ficaram, mas o braço com a lata mudou de posição (agora ela estende a lata para a câmera) e o enquadramento aproximou. Troca de rosto por edição nunca é 100% cirúrgica; se o gesto importa, reforce “keep the exact same arm and hand position”.</p>
 </div>
 <h3 class="sec">Por que aprender</h3>
-<p class="inema-prose" data-inema-block="m3-2-b49">Roupa, luz e lugar reais carregam milhares de detalhes que um gerador erra (dobras, sujeira, reflexos). Trocando só o rosto, você herda tudo isso de graça. O ponto crítico é a <strong>costura</strong>: tom de pele do rosto igual ao do pescoço e das mãos, e a luz do rosto vindo do mesmo lado da luz da cena.</p>
+<p class="inema-prose" data-inema-block="m3-2-b54">Roupa, luz e lugar reais carregam milhares de detalhes que um gerador erra (dobras, sujeira, reflexos). Trocando só o rosto, você herda tudo isso de graça. O ponto crítico é a <strong>costura</strong>: tom de pele do rosto igual ao do pescoço e das mãos, e a luz do rosto vindo do mesmo lado da luz da cena.</p>
 <h3 class="sec">Conceitos-chave em ação</h3>
 <h4>Realidade híbrida, do vídeo ao quadro pronto</h4>
-<ol class="timeline" data-inema-block="m3-2-b50">
+<ol class="timeline" data-inema-block="m3-2-b55">
 <li>Grave a cena com o celular <strong>parado</strong> (tripé, prateleira, apoiado na mesa). Se ela for animada depois, câmera tremida faz o rosto “flutuar”.</li>
 <li>Tire um quadro nítido (sem borrão de movimento, rosto de frente ou 3/4).</li>
 <li>Anexe o quadro + a referência do personagem e diga o papel de cada um.</li>
 <li>Prompt: “Replace ONLY the face and hair with the character from reference 2. Match the skin tone of the neck and hands. Keep everything else identical.”</li>
 <li>Confira a costura: pescoço, linha do cabelo, direção da luz no rosto.</li>
 </ol>
-<aside class="limite" data-inema-block="m3-2-b51">
+<aside class="limite" data-inema-block="m3-2-b56">
 <strong>Costura da troca</strong>
 <p>Com cabelo muito diferente do original ou rosto de perfil, a troca costuma deixar marcas na linha do cabelo e na mandíbula, e a luz do rosto pode não bater com a da cena. Prefira quadros frontais, com o rosto bem iluminado e sem borrão de movimento.</p>
 </aside>
@@ -661,8 +742,8 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 <h2 class="text-2xl font-bold">
 <span class="number">7</span>Uma peça, vários formatos</h2>
 <h3 class="sec">O que é</h3>
-<p class="inema-prose" data-inema-block="m3-2-b52">Toda campanha acaba em muitos tamanhos. O jeito amador é cortar a imagem principal; o jeito profissional é <strong>re-diagramar</strong>: o mesmo título, o mesmo produto e as mesmas cores, reposicionados para cada formato. Com um modelo que escreve texto bem, você pede a adaptação em linguagem comum — e, se precisar de outro país, pede os mesmos textos em outro idioma.</p>
-<div class="table-scroll" data-inema-block="m3-2-b53">
+<p class="inema-prose" data-inema-block="m3-2-b57">Toda campanha acaba em muitos tamanhos. O jeito amador é cortar a imagem principal; o jeito profissional é <strong>re-diagramar</strong>: o mesmo título, o mesmo produto e as mesmas cores, reposicionados para cada formato. Com um modelo que escreve texto bem, você pede a adaptação em linguagem comum — e, se precisar de outro país, pede os mesmos textos em outro idioma.</p>
+<div class="table-scroll" data-inema-block="m3-2-b58">
 <table>
 <thead>
 <tr>
@@ -701,8 +782,8 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </table>
 </div>
 <h3 class="sec">Por que aprender</h3>
-<p class="inema-prose" data-inema-block="m3-2-b54">A adaptação é onde mais aparece a diferença entre “imagem bonita” e “sistema de campanha”: o cliente não quer uma foto, quer a mesma ideia funcionando em todo lugar que ela vai aparecer.</p>
-<p class="inema-prose" data-inema-block="m3-2-b55">Na localização, o mesmo cuidado vale em dobro: peça os textos traduzidos <strong>escritos por você</strong>, entre aspas, e nunca “traduza para o inglês” de forma aberta — o modelo pode escolher palavras diferentes das que o cliente aprovou. Confira acentos e caracteres especiais (ç, ñ, ã), que são os primeiros a escapar.</p>
+<p class="inema-prose" data-inema-block="m3-2-b59">A adaptação é onde mais aparece a diferença entre “imagem bonita” e “sistema de campanha”: o cliente não quer uma foto, quer a mesma ideia funcionando em todo lugar que ela vai aparecer.</p>
+<p class="inema-prose" data-inema-block="m3-2-b60">Na localização, o mesmo cuidado vale em dobro: peça os textos traduzidos <strong>escritos por você</strong>, entre aspas, e nunca “traduza para o inglês” de forma aberta — o modelo pode escolher palavras diferentes das que o cliente aprovou. Confira acentos e caracteres especiais (ç, ñ, ã), que são os primeiros a escapar.</p>
 <h3 class="sec">Conceitos-chave em ação</h3>
 <div class="figure-wrap">
 <figure class="shot">
@@ -711,18 +792,18 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m3-2-p57">Create an AD ADAPTATION SHEET on a neutral mid-grey board: the same Jambu ad shown in three formats side by side at the same height, each one re-laid-out for its format, not just cropped. Each contains this exact can, the headline &#x27;O REFRI QUE FORMIGA&#x27; in a heavy condensed rounded uppercase sans-serif in cream (#F6F0E1), a small &#x27;JAMBU&#x27; wordmark, a leaf-green (#2F7D32) background with jambu-yellow (#F2C200) accents and a few yellow jambu flower buds. Left: a square 1:1 feed post, can centered, headline above. Middle: a tall 9:16 story, headline at the top, can in the middle, empty safe zones at the very top and bottom. Right: a wide 16:9 web banner, headline on the left half, can on the right. Small grey labels under each: &#x27;1:1 FEED&#x27;, &#x27;9:16 STORY&#x27;, &#x27;16:9 BANNER&#x27;. Keep the can design identical in all three. Every text spelled exactly as written, no other text.</pre>
-<button data-copy="m3-2-p57">Copiar prompt</button>
+<pre id="m3-2-p62">Create an AD ADAPTATION SHEET on a neutral mid-grey board: the same Jambu ad shown in three formats side by side at the same height, each one re-laid-out for its format, not just cropped. Each contains this exact can, the headline &#x27;O REFRI QUE FORMIGA&#x27; in a heavy condensed rounded uppercase sans-serif in cream (#F6F0E1), a small &#x27;JAMBU&#x27; wordmark, a leaf-green (#2F7D32) background with jambu-yellow (#F2C200) accents and a few yellow jambu flower buds. Left: a square 1:1 feed post, can centered, headline above. Middle: a tall 9:16 story, headline at the top, can in the middle, empty safe zones at the very top and bottom. Right: a wide 16:9 web banner, headline on the left half, can on the right. Small grey labels under each: &#x27;1:1 FEED&#x27;, &#x27;9:16 STORY&#x27;, &#x27;16:9 BANNER&#x27;. Keep the can design identical in all three. Every text spelled exactly as written, no other text.</pre>
+<button data-copy="m3-2-p62">Copiar prompt</button>
 </details>
 </figure>
-<p class="caption" data-inema-block="m3-2-b56">Uma edição da lata-base pedindo a mesma peça em três formatos lado a lado (a folha foi pedida em 16:9 para caber os três com folga). Confira: o título está escrito certo nos três? No story, o título fugiu das bordas? No banner, título e lata ficaram em metades diferentes? Aqui as três respostas são sim: “O REFRI QUE FORMIGA” sem erro, o story com faixa vazia em cima e embaixo, o banner com título à esquerda e lata à direita. Use a folha como rascunho para aprovação; cada formato final se gera separado, no tamanho real.</p>
+<p class="caption" data-inema-block="m3-2-b61">Uma edição da lata-base pedindo a mesma peça em três formatos lado a lado (a folha foi pedida em 16:9 para caber os três com folga). Confira: o título está escrito certo nos três? No story, o título fugiu das bordas? No banner, título e lata ficaram em metades diferentes? Aqui as três respostas são sim: “O REFRI QUE FORMIGA” sem erro, o story com faixa vazia em cima e embaixo, o banner com título à esquerda e lata à direita. Use a folha como rascunho para aprovação; cada formato final se gera separado, no tamanho real.</p>
 </div>
 <div class="codebox copyrun">
 <h4>Localizar uma peça para outro idioma</h4>
 <p>
 <strong>Objetivo:</strong> Trocar só os textos de uma peça pronta, mantendo layout e imagem.</p>
-<pre id="m3-2-p59">Translate ONLY the texts in this ad into &lt;idioma&gt;: &#x27;&lt;texto 1&gt;&#x27; becomes &#x27;&lt;tradução 1&gt;&#x27;, &#x27;&lt;texto 2&gt;&#x27; becomes &#x27;&lt;tradução 2&gt;&#x27;. Keep the same font style, size, color, position and everything else in the image identical.</pre>
-<button data-copy="m3-2-p59">Copiar prompt</button>
+<pre id="m3-2-p64">Translate ONLY the texts in this ad into &lt;idioma&gt;: &#x27;&lt;texto 1&gt;&#x27; becomes &#x27;&lt;tradução 1&gt;&#x27;, &#x27;&lt;texto 2&gt;&#x27; becomes &#x27;&lt;tradução 2&gt;&#x27;. Keep the same font style, size, color, position and everything else in the image identical.</pre>
+<button data-copy="m3-2-p64">Copiar prompt</button>
 <p>
 <strong>Como verificar:</strong> Todos os textos foram trocados, com a grafia exata? A tipografia e a posição são as mesmas? Nada mais na imagem mudou?</p>
 </div>
@@ -733,9 +814,9 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 </section>
 <section id="pratica" class="pratica">
 <h2>Prática guiada: uma cena com quatro papéis e três adaptações</h2>
-<p class="inema-prose" data-inema-block="m3-2-b60">Use a sua heroína e o seu produto (ou a Maíra e a lata Jambu). O objetivo é sair com uma cena feita de quatro referências, a mesma colagem em um estilo novo e a peça em três formatos.</p>
+<p class="inema-prose" data-inema-block="m3-2-b65">Use a sua heroína e o seu produto (ou a Maíra e a lata Jambu). O objetivo é sair com uma cena feita de quatro referências, a mesma colagem em um estilo novo e a peça em três formatos.</p>
 <h4>Roteiro</h4>
-<ol class="timeline" data-inema-block="m3-2-b61">
+<ol class="timeline" data-inema-block="m3-2-b66">
 <li>Separe 4 referências limpas: rosto, roupa (flat lay), lugar vazio, produto em packshot.</li>
 <li>Gere a cena com o prompt de 4 papéis abaixo e confira papel por papel.</li>
 <li>Monte uma colagem com as 4 referências (ou use a prancha) e reestilize para um estilo à sua escolha.</li>
@@ -745,14 +826,14 @@ NO &lt;o que não pode aparecer: texto, grade, rótulos, outra pessoa&gt;</pre>
 <h4>Cena com 4 referências (papéis explícitos)</h4>
 <p>
 <strong>Objetivo:</strong> Combinar rosto, roupa, lugar e objeto numa foto só, sem que os atributos se misturem.</p>
-<pre id="m3-2-p63">&lt;Ação e cena: quem faz o quê, onde&gt;.
+<pre id="m3-2-p68">&lt;Ação e cena: quem faz o quê, onde&gt;.
 Use the face from reference image 1 exactly, preserve identity and facial structure, &lt;marca distintiva&gt;.
 Use the full outfit from reference image 2 exactly, no changes to clothing.
 Use the location from reference image 3 exactly, same layout and objects.
 Use the object from reference image 4 exactly, &lt;onde o objeto está / como é segurado&gt;, label facing the camera.
 &lt;Plano&gt;, &lt;lente e abertura&gt;, &lt;ângulo&gt;, &lt;luz: fonte, direção, hora&gt;.
 Natural skin texture, no retouching. NO text, NO labels, NO grid, NO extra people.</pre>
-<button data-copy="m3-2-p63">Copiar prompt</button>
+<button data-copy="m3-2-p68">Copiar prompt</button>
 <p>
 <strong>Como verificar:</strong> Faça a checagem papel por papel. Se a roupa veio errada, reforce só a linha 3 (ex.: “the green shirt has a small yellow flower print”) e gere de novo.</p>
 </div>
@@ -760,8 +841,8 @@ Natural skin texture, no retouching. NO text, NO labels, NO grid, NO extra peopl
 <h4>Identidade fictícia a partir de 2 referências (anti-morphing)</h4>
 <p>
 <strong>Objetivo:</strong> Criar um rosto novo e crível, que não se pareça com nenhuma das fontes.</p>
-<pre id="m3-2-p65">Create a photorealistic image of a completely new fictional adult &lt;gênero&gt; generated from the TWO reference individuals, using them only as subtle genetic inspiration rather than direct likeness: blend believable facial structure elements — eye shape, brow geometry, nose bridge and tip, lip proportions, cheekbones, jawline — with mild natural asymmetry, realistic skin undertone, natural pores and tiny expression lines, into one cohesive person who does not strongly resemble either source. Medium shot from mid-torso up, &lt;lugar cotidiano com 3 objetos&gt;, natural window light mixed with a warm practical lamp. Shot on a modern smartphone main camera, 26mm equivalent, eye level, subtle sensor noise, candid photo. &lt;Roupa simples&gt;. Avoid morphing artifacts, feature-averaging softness, uncanny symmetry, waxy or plastic skin, heavy retouching, face-swap look, duplicate resemblance, distorted eyes, mismatched lighting.</pre>
-<button data-copy="m3-2-p65">Copiar prompt</button>
+<pre id="m3-2-p70">Create a photorealistic image of a completely new fictional adult &lt;gênero&gt; generated from the TWO reference individuals, using them only as subtle genetic inspiration rather than direct likeness: blend believable facial structure elements — eye shape, brow geometry, nose bridge and tip, lip proportions, cheekbones, jawline — with mild natural asymmetry, realistic skin undertone, natural pores and tiny expression lines, into one cohesive person who does not strongly resemble either source. Medium shot from mid-torso up, &lt;lugar cotidiano com 3 objetos&gt;, natural window light mixed with a warm practical lamp. Shot on a modern smartphone main camera, 26mm equivalent, eye level, subtle sensor noise, candid photo. &lt;Roupa simples&gt;. Avoid morphing artifacts, feature-averaging softness, uncanny symmetry, waxy or plastic skin, heavy retouching, face-swap look, duplicate resemblance, distorted eyes, mismatched lighting.</pre>
+<button data-copy="m3-2-p70">Copiar prompt</button>
 <p>
 <strong>Como verificar:</strong> Coloque o resultado ao lado das duas fontes: ele lembra claramente uma delas? Se sim, gere de novo. A pele tem poros e o rosto tem alguma assimetria?</p>
 </div>
@@ -769,8 +850,8 @@ Natural skin texture, no retouching. NO text, NO labels, NO grid, NO extra peopl
 <h4>Reestilizar a colagem inteira</h4>
 <p>
 <strong>Objetivo:</strong> Converter a colagem de referências para outro estilo, mantendo layout e conteúdo.</p>
-<pre id="m3-2-p67">Fully re-render this ENTIRE image as &lt;estilo&gt;: &lt;3-4 marcas visuais do estilo&gt;. Keep exactly the same layout, the same subjects in the same positions, the same colors and the same labels. Keep the character&#x27;s &lt;traços do DNA fixo&gt;. Nothing photographic may remain.</pre>
-<button data-copy="m3-2-p67">Copiar prompt</button>
+<pre id="m3-2-p72">Fully re-render this ENTIRE image as &lt;estilo&gt;: &lt;3-4 marcas visuais do estilo&gt;. Keep exactly the same layout, the same subjects in the same positions, the same colors and the same labels. Keep the character&#x27;s &lt;traços do DNA fixo&gt;. Nothing photographic may remain.</pre>
+<button data-copy="m3-2-p72">Copiar prompt</button>
 <p>
 <strong>Como verificar:</strong> O estilo mudou por completo (sem “foto com filtro”)? Layout, rótulos e traços do personagem se mantiveram?</p>
 </div>
@@ -808,7 +889,7 @@ Natural skin texture, no retouching. NO text, NO labels, NO grid, NO extra peopl
 </section>
 <section id="checagem">
 <h2>Teste sua decisão</h2>
-<div class="quiz" data-quiz="modulo-3-2#q1" data-correct="1" data-explain="Sem papel declarado, o modelo não sabe que a foto de rosto é só identidade e leva junto o fundo dela. “Use the face from reference 1… use the location from reference 3 exactly” resolve.">
+<div class="quiz" data-quiz="modulo-3-2#q1" data-correct="2" data-explain="Sem papel declarado, o modelo não sabe que a foto de rosto é só identidade e leva junto o fundo dela. “Use the face from reference 1… use the location from reference 3 exactly” resolve.">
 <figure class="shot">
 <a href="../../assets/img/c2-m32-cena-4refs.webp" target="_blank" rel="noopener">
 <img src="../../assets/img/c2-m32-cena-4refs.webp" alt="Maíra sentada na beira do píer, de camisa verde estampada e short jeans, segurando a lata JAMBU, barcos coloridos e rio ao fundo na luz dourada" loading="lazy" decoding="async">
@@ -816,9 +897,9 @@ Natural skin texture, no retouching. NO text, NO labels, NO grid, NO extra peopl
 </figure>
 <p>
 <strong>1.</strong> Nesta cena cada referência cumpriu seu papel. Mas imagine que a Maíra tivesse aparecido com a roupa certa e o fundo cinza da foto de rosto. O que faltou?</p>
-<button data-answer="0" aria-pressed="false">Anexar mais referências</button>
-<button data-answer="1" aria-pressed="false">Declarar o papel de cada referência (e que o lugar vem da referência 3)</button>
-<button data-answer="2" aria-pressed="false">Aumentar a resolução</button>
+<button data-answer="0" aria-pressed="false">Colocar a referência do lugar primeiro, porque a ordem define a prioridade</button>
+<button data-answer="1" aria-pressed="false">Anexar mais fotos da Maíra, para o modelo ter mais exemplos do rosto dela</button>
+<button data-answer="2" aria-pressed="false">Declarar o papel de cada referência (e que o lugar vem da referência 3)</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
@@ -829,9 +910,9 @@ Natural skin texture, no retouching. NO text, NO labels, NO grid, NO extra peopl
 <div class="quiz" data-quiz="modulo-3-2#q2" data-correct="1" data-explain="Marcas do rosto são o que o público usa para reconhecer o personagem e não mudam nunca. Roupa e ação são contexto variável.">
 <p>
 <strong>2.</strong> Qual destes trechos pertence ao DNA fixo de um personagem?</p>
-<button data-answer="0" aria-pressed="false">“wearing a yellow sleeveless top”</button>
+<button data-answer="0" aria-pressed="false">“wearing a yellow sleeveless top and jeans”</button>
 <button data-answer="1" aria-pressed="false">“a small beauty mark on her left cheekbone”</button>
-<button data-answer="2" aria-pressed="false">“laughing under the rain”</button>
+<button data-answer="2" aria-pressed="false">“laughing under the rain in a crowded street”</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
@@ -842,9 +923,9 @@ Natural skin texture, no retouching. NO text, NO labels, NO grid, NO extra peopl
 <div class="quiz" data-quiz="modulo-3-2#q3" data-correct="0" data-explain="Instruções de estilo fracas viram filtro. Descrever o estilo com força (contorno, cor chapada, sombra em dois tons) e proibir o fotográfico faz a conversão ser completa.">
 <p>
 <strong>3.</strong> Você pediu “make this collage anime” e recebeu quase a mesma imagem, com cores um pouco mais saturadas. Qual é o ajuste?</p>
-<button data-answer="0" aria-pressed="false">“Fully re-render this ENTIRE image as…” + marcas do estilo + “Nothing photographic may remain.”</button>
-<button data-answer="1" aria-pressed="false">Trocar de modelo</button>
-<button data-answer="2" aria-pressed="false">Pedir “more anime”</button>
+<button data-answer="0" aria-pressed="false">“Fully re-render this ENTIRE image as…” + traços do estilo + “Nothing photographic may remain.”</button>
+<button data-answer="1" aria-pressed="false">Trocar para outro modelo, porque este não faz conversão de estilo em imagens com pessoas</button>
+<button data-answer="2" aria-pressed="false">Repetir pedindo “more anime, strong anime style, vivid saturated colors, anime aesthetic”</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
@@ -874,7 +955,7 @@ Natural skin texture, no retouching. NO text, NO labels, NO grid, NO extra peopl
 </main>
 <footer class="footer">
 <div class="wrap">
-<span>Curso gratuito · INEMA.CLUB · v1.1.0</span>
+<span>Curso gratuito · INEMA.CLUB · v1.1.1</span>
 <a href="../../materiais.html">Materiais e referências</a>
 <a href="../../../index.html">Os três cursos</a>
 <a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>

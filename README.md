@@ -14,4 +14,4 @@ Cursos abertos e gratuitos do INEMA.CLUB. Cada conceito vem com a imagem que ele
 - [Guia: como aprender inteligência artificial](https://www.inema.club/aprender-inteligencia-artificial/)
 - [Todos os cursos](https://www.inema.club/cursos/)
 
-Publicação estática v1.1.0 (ver [CHANGELOG](CHANGELOG.md)). Apenas conteúdo autoral; nenhum vídeo, imagem ou apostila de terceiros. Pessoas e marcas nos exemplos são fictícias.
+Publicação estática v1.1.1 (ver [CHANGELOG](CHANGELOG.md)). Apenas conteúdo autoral; nenhum vídeo, imagem ou apostila de terceiros. Pessoas e marcas nos exemplos são fictícias.

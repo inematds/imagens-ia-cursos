@@ -388,9 +388,43 @@ over a white t-shirt. No tattoos.
 <strong>Novo aqui? Imagem de referência</strong>
 <p>Uma imagem anexada ao prompt para o modelo seguir: aparência de um rosto, uma roupa, um estilo, uma paleta. Cada ferramenta dá um nome — referência de personagem, referência de estilo, “omni reference”, imagem + prompt —, mas a ideia é a mesma: mostrar em vez de só descrever. Confira na sua ferramenta quantas referências ela aceita e com que peso.</p>
 </aside>
+<figure class="diagram">
+<svg role="img" aria-label="Dois pontos de partida, um único destino. Por texto (azul) você descreve e escolhe entre várias gerações; por referência (ciano) você parte de imagens e pede a descrição. Os dois terminam na **ficha de identidade** — o texto literal que acompanha cada cena. A linha de baixo mostra a terceira via: misturar traços de várias referências suas." viewBox="0 0 760 280" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif" id="m22-cam">
+<rect width="760" height="280" rx="14" fill="var(--surface-2)"/>
+<defs>
+<marker id="m22-cm-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0,0 L10,5 L0,10 z" fill="#60a5fa"/>
+</marker>
+</defs>
+<text x="20" y="30" font-size="14" fill="#60a5fa" font-weight="700">Por texto — quando o personagem ainda não existe</text>
+<rect x="20" y="42" width="150" height="40" rx="8" fill="#60a5fa" stroke="#60a5fa" stroke-width="1.5" fill-opacity="0.12"/>
+<text x="95" y="67" font-size="13" fill="var(--text)" text-anchor="middle">descrever o perfil</text>
+<line x1="172" y1="62" x2="196" y2="62" stroke="#60a5fa" stroke-width="2" marker-end="url(#m22-cm-a)"/>
+<rect x="200" y="42" width="150" height="40" rx="8" fill="#60a5fa" stroke="#60a5fa" stroke-width="1.5" fill-opacity="0.12"/>
+<text x="275" y="67" font-size="13" fill="var(--text)" text-anchor="middle">gerar e escolher</text>
+<text x="20" y="134" font-size="14" fill="#38bdf8" font-weight="700">Por referência — já existe imagem aprovada</text>
+<rect x="20" y="146" width="150" height="40" rx="8" fill="#38bdf8" stroke="#38bdf8" stroke-width="1.5" fill-opacity="0.12"/>
+<text x="95" y="171" font-size="13" fill="var(--text)" text-anchor="middle">anexar 1–3 imagens</text>
+<line x1="172" y1="166" x2="196" y2="166" stroke="#38bdf8" stroke-width="2" marker-end="url(#m22-cm-a)"/>
+<rect x="200" y="146" width="150" height="40" rx="8" fill="#38bdf8" stroke="#38bdf8" stroke-width="1.5" fill-opacity="0.12"/>
+<text x="275" y="171" font-size="13" fill="var(--text)" text-anchor="middle">assistente descreve</text>
+<line x1="352" y1="62" x2="440" y2="100" stroke="#60a5fa" stroke-width="2" marker-end="url(#m22-cm-a)"/>
+<line x1="352" y1="166" x2="440" y2="130" stroke="#38bdf8" stroke-width="2" marker-end="url(#m22-cm-a)"/>
+<rect x="446" y="80" width="140" height="70" rx="10" fill="#60a5fa" stroke="#60a5fa" stroke-width="2" fill-opacity="0.25"/>
+<text x="516" y="110" font-size="15" fill="var(--text)" font-weight="700" text-anchor="middle">ficha de</text>
+<text x="516" y="130" font-size="15" fill="var(--text)" font-weight="700" text-anchor="middle">identidade</text>
+<line x1="588" y1="115" x2="612" y2="115" stroke="#60a5fa" stroke-width="2" marker-end="url(#m22-cm-a)"/>
+<rect x="616" y="80" width="124" height="70" rx="10" fill="none" stroke="#60a5fa" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="678" y="110" font-size="14" fill="var(--text)" text-anchor="middle">cenas da</text>
+<text x="678" y="130" font-size="14" fill="var(--text)" text-anchor="middle">campanha</text>
+<text x="20" y="236" font-size="13" fill="var(--text)">Misturar: rosto e sardas da imagem 1 + cabelo da 2 + figurino da 3 = alguém novo.</text>
+<text x="20" y="260" font-size="13" fill="var(--text-muted)">Os dois caminhos terminam no mesmo lugar: uma descrição literal que vai em todo prompt.</text>
+</svg>
+<figcaption>Dois pontos de partida, um único destino. Por texto (azul) você descreve e escolhe entre várias gerações; por referência (ciano) você parte de imagens e pede a descrição. Os dois terminam na <strong>ficha de identidade</strong> — o texto literal que acompanha cada cena. A linha de baixo mostra a terceira via: misturar traços de várias referências suas.</figcaption>
+</figure>
 <h3 class="sec">Por que aprender</h3>
-<p class="inema-prose" data-inema-block="m2-2-b19">Quanto mais contexto você dá, mais o personagem deixa de ser genérico. “Foto de estúdio de uma moça” rende uma média estatística. “Foto de estúdio de uma moça com rosto fino e expressão altiva, inspirada em retratos de corte do século XVI mas com materiais contemporâneos e moda de passarela” rende alguém que prende o olho. A precisão do personagem é proporcional ao quanto você decidiu antes.</p>
-<div class="compare-grid" data-inema-block="m2-2-b20">
+<p class="inema-prose" data-inema-block="m2-2-b20">Quanto mais contexto você dá, mais o personagem deixa de ser genérico. “Foto de estúdio de uma moça” rende uma média estatística. “Foto de estúdio de uma moça com rosto fino e expressão altiva, inspirada em retratos de corte do século XVI mas com materiais contemporâneos e moda de passarela” rende alguém que prende o olho. A precisão do personagem é proporcional ao quanto você decidiu antes.</p>
+<div class="compare-grid" data-inema-block="m2-2-b21">
 <div class="ok">
 <h4>✓ Por texto, quando…</h4>
 <ul>
@@ -409,9 +443,9 @@ over a white t-shirt. No tattoos.
 </div>
 </div>
 <h3 class="sec">Conceitos-chave em ação</h3>
-<p class="inema-prose" data-inema-block="m2-2-b21">
+<p class="inema-prose" data-inema-block="m2-2-b22">
 <strong>Combinar aparências.</strong> Uma técnica útil para fugir do rosto “médio” é anexar duas ou três referências e dizer o que pegar de cada uma: “o formato de rosto e as sardas da imagem 1, o cabelo da imagem 2, a paleta de figurino da imagem 3”. O resultado é alguém novo, que não é cópia de nenhuma das fontes.</p>
-<aside class="limite" data-inema-block="m2-2-b22">
+<aside class="limite" data-inema-block="m2-2-b23">
 <strong>Pessoa real não é matéria-prima</strong>
 <p>Não use foto de pessoa real (famosa ou não) como referência de personagem sem autorização explícita e por escrito — é questão de direito de imagem, não só de ética. Para campanha de marca, o caminho seguro é um personagem <strong>fictício</strong> criado por texto ou por mistura de referências geradas por você. E mesmo com referência, nenhum modelo garante identidade perfeita: sempre haverá pequenas variações entre cenas (tópico 7).</p>
 </aside>
@@ -419,8 +453,8 @@ over a white t-shirt. No tattoos.
 <h4>Transformar uma imagem em ficha (para qualquer assistente com visão)</h4>
 <p>
 <strong>Objetivo:</strong> Extrair de uma imagem aprovada a descrição literal que vai virar o bloco de identidade.</p>
-<pre id="m2-2-p24">Analyze the attached image of a fictional character. Write a character description for an image-generation prompt, in English, in one paragraph of max. 60 words, covering only what is visible: apparent age, skin tone and marks, face shape, eyes, eyebrows, hair color/texture/hairstyle, clothing with fabric and color, accessories. No emotions, no background, no camera terms. Then list 3 details that are ambiguous or inconsistent and that I should decide explicitly (keep or remove).</pre>
-<button data-copy="m2-2-p24">Copiar prompt</button>
+<pre id="m2-2-p25">Analyze the attached image of a fictional character. Write a character description for an image-generation prompt, in English, in one paragraph of max. 60 words, covering only what is visible: apparent age, skin tone and marks, face shape, eyes, eyebrows, hair color/texture/hairstyle, clothing with fabric and color, accessories. No emotions, no background, no camera terms. Then list 3 details that are ambiguous or inconsistent and that I should decide explicitly (keep or remove).</pre>
+<button data-copy="m2-2-p25">Copiar prompt</button>
 <p>
 <strong>Como verificar:</strong> A descrição cabe em uma frase longa e bate com a imagem? A lista de ambiguidades pegou coisas como a tatuagem inventada da Lia?</p>
 </div>
@@ -433,7 +467,7 @@ over a white t-shirt. No tattoos.
 <h2 class="text-2xl font-bold">
 <span class="number">3</span>A imagem-base neutra de referência</h2>
 <h3 class="sec">O que é</h3>
-<p class="inema-prose" data-inema-block="m2-2-b25">A melhor referência de personagem é a mais <strong>sem graça</strong>: rosto de frente e inteiro, olhos para a câmera, expressão neutra, luz frontal suave (nada de sombra dura cortando o rosto), fundo cinza liso, mãos vazias, nenhum texto. É a imagem que um diretor de elenco colocaria na pasta do ator. Ela não vai para o Instagram; vai para a pasta do projeto.</p>
+<p class="inema-prose" data-inema-block="m2-2-b26">A melhor referência de personagem é a mais <strong>sem graça</strong>: rosto de frente e inteiro, olhos para a câmera, expressão neutra, luz frontal suave (nada de sombra dura cortando o rosto), fundo cinza liso, mãos vazias, nenhum texto. É a imagem que um diretor de elenco colocaria na pasta do ator. Ela não vai para o Instagram; vai para a pasta do projeto.</p>
 <div class="compare-shots">
 <div class="shots cols-2">
 <figure class="shot">
@@ -443,8 +477,8 @@ over a white t-shirt. No tattoos.
 </a>
 <details class="prompt-used">
 <summary>Prompt usado</summary>
-<pre id="m2-2-p27">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, slowly pouring hot water from a copper gooseneck kettle into a ceramic pour-over dripper, focused and calm. Shot on a 50mm lens at f/2, eye level. Soft morning window light from the left, warm 3500K, gentle shadow falloff on the right side of her face. Visible steam, matte glazed ceramic, worn wooden counter with coffee grounds, linen texture on the apron. Subject on the left third, negative space on the right with a softly blurred vintage coffee roaster and burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking quiet craftsmanship at dawn.</pre>
-<button data-copy="m2-2-p27">Copiar prompt</button>
+<pre id="m2-2-p28">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, slowly pouring hot water from a copper gooseneck kettle into a ceramic pour-over dripper, focused and calm. Shot on a 50mm lens at f/2, eye level. Soft morning window light from the left, warm 3500K, gentle shadow falloff on the right side of her face. Visible steam, matte glazed ceramic, worn wooden counter with coffee grounds, linen texture on the apron. Subject on the left third, negative space on the right with a softly blurred vintage coffee roaster and burlap sacks in the background. Natural documentary photography, subtle 35mm film grain, evoking quiet craftsmanship at dawn.</pre>
+<button data-copy="m2-2-p28">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -454,18 +488,18 @@ over a white t-shirt. No tattoos.
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m2-2-p28">Turn this into a clean CHARACTER REFERENCE photo of the SAME woman. Medium shot from the waist up, body and face turned straight to the camera, neutral relaxed expression with the hint of a smile, looking into the lens, arms relaxed at her sides, hands empty. Even soft frontal studio light from a large softbox, neutral 5000K, no dramatic shadows. Plain light-grey seamless backdrop, no props, no text anywhere. Keep her exact face shape, freckles, light-brown skin tone, curly dark hair tied up, and the mustard-yellow linen apron over a white t-shirt. Remove the written tattoo on her forearm: clean skin.</pre>
-<button data-copy="m2-2-p28">Copiar prompt</button>
+<pre id="m2-2-p29">Turn this into a clean CHARACTER REFERENCE photo of the SAME woman. Medium shot from the waist up, body and face turned straight to the camera, neutral relaxed expression with the hint of a smile, looking into the lens, arms relaxed at her sides, hands empty. Even soft frontal studio light from a large softbox, neutral 5000K, no dramatic shadows. Plain light-grey seamless backdrop, no props, no text anywhere. Keep her exact face shape, freckles, light-brown skin tone, curly dark hair tied up, and the mustard-yellow linen apron over a white t-shirt. Remove the written tattoo on her forearm: clean skin.</pre>
+<button data-copy="m2-2-p29">Copiar prompt</button>
 </details>
 </figure>
 </div>
-<p class="caption" data-inema-block="m2-2-b26">A referência foi feita <strong>editando</strong> a imagem aprovada, e não gerando do zero — assim o rosto de partida é o mesmo. A edição pediu: de frente, olhar na câmera, luz de softbox a 5000K, fundo cinza, sem objetos, sem texto e sem a tatuagem. Abra “Prompt usado” para ver a instrução completa.</p>
+<p class="caption" data-inema-block="m2-2-b27">A referência foi feita <strong>editando</strong> a imagem aprovada, e não gerando do zero — assim o rosto de partida é o mesmo. A edição pediu: de frente, olhar na câmera, luz de softbox a 5000K, fundo cinza, sem objetos, sem texto e sem a tatuagem. Abra “Prompt usado” para ver a instrução completa.</p>
 </div>
 <h3 class="sec">Por que aprender</h3>
-<p class="inema-prose" data-inema-block="m2-2-b29">Quando você anexa uma referência, o modelo não sabe o que nela é “personagem” e o que é “circunstância”. Se a referência tem luz dourada de fim de tarde, as cenas tendem a sair douradas. Se tem uma chaleira na mão, a chaleira aparece onde não devia. Se o rosto está de perfil ou em sombra, o modelo tem metade da informação e inventa a outra metade. A referência neutra entrega <strong>só a pessoa</strong>.</p>
+<p class="inema-prose" data-inema-block="m2-2-b30">Quando você anexa uma referência, o modelo não sabe o que nela é “personagem” e o que é “circunstância”. Se a referência tem luz dourada de fim de tarde, as cenas tendem a sair douradas. Se tem uma chaleira na mão, a chaleira aparece onde não devia. Se o rosto está de perfil ou em sombra, o modelo tem metade da informação e inventa a outra metade. A referência neutra entrega <strong>só a pessoa</strong>.</p>
 <h3 class="sec">Conceitos-chave em ação</h3>
 <h4>Checklist da referência neutra</h4>
-<div class="table-scroll" data-inema-block="m2-2-b30">
+<div class="table-scroll" data-inema-block="m2-2-b31">
 <table>
 <thead>
 <tr>
@@ -508,7 +542,7 @@ over a white t-shirt. No tattoos.
 </tbody>
 </table>
 </div>
-<aside class="tip" data-inema-block="m2-2-b31">
+<aside class="tip" data-inema-block="m2-2-b32">
 <strong>Salve no disco, não só na plataforma</strong>
 <p>Assim que a referência ficar boa, baixe o arquivo em resolução cheia. Plataformas mudam de modelo, apagam históricos, trocam de plano. Se a Lia só existe dentro de uma conta, a campanha do ano que vem começa do zero.</p>
 </aside>
@@ -521,7 +555,7 @@ over a white t-shirt. No tattoos.
 <h2 class="text-2xl font-bold">
 <span class="number">4</span>Folha de personagem: ângulos e expressões</h2>
 <h3 class="sec">O que é</h3>
-<aside class="novo" data-inema-block="m2-2-b32">
+<aside class="novo" data-inema-block="m2-2-b33">
 <strong>Novo aqui? Folha de personagem (character sheet / turnaround)</strong>
 <p>Prancha usada em animação, quadrinhos e jogos: o personagem desenhado de frente, em três quartos, de perfil e de costas, na mesma escala, mais uma linha de expressões. Com IA, você pede a prancha inteira numa geração, a partir da referência neutra.</p>
 </aside>
@@ -532,22 +566,22 @@ over a white t-shirt. No tattoos.
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m2-2-p34">Turn this photo into a professional CHARACTER REFERENCE SHEET of this exact same woman, on a plain light-grey background with even, flat studio lighting. Top row: full-body turnaround in four poses, standing neutral, labeled underneath in small clean capitals: FRENTE, 3/4, PERFIL, COSTAS. Bottom row: four head-and-shoulders expression studies labeled NEUTRA, SORRISO, CONCENTRADA, RISADA. In every view keep the same face, freckles, light-brown skin, curly dark hair tied up in a bun, mustard-yellow linen apron over a white t-shirt, dark straight-leg jeans and brown leather boots. Photographic realism, consistent scale, no other text.</pre>
-<button data-copy="m2-2-p34">Copiar prompt</button>
+<pre id="m2-2-p35">Turn this photo into a professional CHARACTER REFERENCE SHEET of this exact same woman, on a plain light-grey background with even, flat studio lighting. Top row: full-body turnaround in four poses, standing neutral, labeled underneath in small clean capitals: FRENTE, 3/4, PERFIL, COSTAS. Bottom row: four head-and-shoulders expression studies labeled NEUTRA, SORRISO, CONCENTRADA, RISADA. In every view keep the same face, freckles, light-brown skin, curly dark hair tied up in a bun, mustard-yellow linen apron over a white t-shirt, dark straight-leg jeans and brown leather boots. Photographic realism, consistent scale, no other text.</pre>
+<button data-copy="m2-2-p35">Copiar prompt</button>
 </details>
 </figure>
-<p class="caption" data-inema-block="m2-2-b33">A folha da Lia, gerada como edição da referência neutra. Em cima, a volta completa de corpo inteiro; embaixo, quatro expressões rotuladas. Repare que o corpo inteiro exigiu decidir calça e calçado — por isso a ficha ganhou “jeans escuro reto e botas marrons”.</p>
+<p class="caption" data-inema-block="m2-2-b34">A folha da Lia, gerada como edição da referência neutra. Em cima, a volta completa de corpo inteiro; embaixo, quatro expressões rotuladas. Repare que o corpo inteiro exigiu decidir calça e calçado — por isso a ficha ganhou “jeans escuro reto e botas marrons”.</p>
 </div>
 <h3 class="sec">Por que aprender</h3>
-<p class="inema-prose" data-inema-block="m2-2-b35">A campanha vai pedir a Lia de perfil no torrador, de três quartos no balcão, de olhos fechados na prova. Se o único registro dela é de frente, cada cena de perfil é um palpite. A folha também é o documento que você manda para quem vai trabalhar junto (designer, editor de vídeo, cliente): ninguém precisa adivinhar como é a nuca ou o coque dela.</p>
-<aside class="tip" data-inema-block="m2-2-b36">
+<p class="inema-prose" data-inema-block="m2-2-b36">A campanha vai pedir a Lia de perfil no torrador, de três quartos no balcão, de olhos fechados na prova. Se o único registro dela é de frente, cada cena de perfil é um palpite. A folha também é o documento que você manda para quem vai trabalhar junto (designer, editor de vídeo, cliente): ninguém precisa adivinhar como é a nuca ou o coque dela.</p>
+<aside class="tip" data-inema-block="m2-2-b37">
 <strong>Use a folha para conferir, a referência para gerar</strong>
 <p>Na hora de gerar cada cena, anexe a <strong>referência neutra</strong>, não a folha: uma prancha com oito Lias pode fazer o modelo desenhar várias pessoas na cena. A folha serve para você checar se o perfil, a expressão e o figurino da cena batem.</p>
 </aside>
 <h3 class="sec">Conceitos-chave em ação</h3>
 <div class="codebox">
 <h4>Pasta de referências do personagem (no seu disco)</h4>
-<pre id="m2-2-p38" data-lang="text">terra-alta/
+<pre id="m2-2-p39" data-lang="text">terra-alta/
   personagens/
     lia/
       00-ficha.txt              ← bloco de identidade + decisões (sem tatuagem, etc.)
@@ -555,9 +589,9 @@ over a white t-shirt. No tattoos.
       02-folha-personagem.png   ← ângulos e expressões, para conferência
       03-aprovadas/             ← cenas que o cliente aprovou (também servem de referência)
       prompts.txt               ← prompt exato de cada imagem acima</pre>
-<button data-copy="m2-2-p38">Copiar</button>
+<button data-copy="m2-2-p39">Copiar</button>
 </div>
-<p class="inema-prose" data-inema-block="m2-2-b39">Nomeie com número na frente para a ordem fazer sentido e guarde o <strong>prompt exato</strong> ao lado de cada imagem. Daqui a seis meses, “qual prompt fez aquela Lia boa?” só tem resposta se você anotou hoje.</p>
+<p class="inema-prose" data-inema-block="m2-2-b40">Nomeie com número na frente para a ordem fazer sentido e guarde o <strong>prompt exato</strong> ao lado de cada imagem. Daqui a seis meses, “qual prompt fez aquela Lia boa?” só tem resposta se você anotou hoje.</p>
 <div class="actions">
 <button data-inema-read-toggle aria-pressed="false">Marcar como lido</button>
 <button data-inema-doubt-toggle aria-pressed="false">Tenho uma dúvida</button>
@@ -567,9 +601,9 @@ over a white t-shirt. No tattoos.
 <h2 class="text-2xl font-bold">
 <span class="number">5</span>Roteiro de campanha: uma sequência com intenção</h2>
 <h3 class="sec">O que é</h3>
-<p class="inema-prose" data-inema-block="m2-2-b40">Aqui você deixa de pensar em imagens e passa a pensar em <strong>conceito, tom e estratégia</strong> — é o trabalho de direção de arte. O roteiro responde: qual história a campanha conta? Em que ordem? Qual é a função de cada cena (apresentar, mostrar o ofício, criar confiança, convidar)? E, só depois: com que plano, lente e luz cada uma é feita.</p>
+<p class="inema-prose" data-inema-block="m2-2-b41">Aqui você deixa de pensar em imagens e passa a pensar em <strong>conceito, tom e estratégia</strong> — é o trabalho de direção de arte. O roteiro responde: qual história a campanha conta? Em que ordem? Qual é a função de cada cena (apresentar, mostrar o ofício, criar confiança, convidar)? E, só depois: com que plano, lente e luz cada uma é feita.</p>
 <h4>Campanha Terra Alta — “do pé à xícara”</h4>
-<div class="table-scroll" data-inema-block="m2-2-b41">
+<div class="table-scroll" data-inema-block="m2-2-b42">
 <table>
 <thead>
 <tr>
@@ -627,9 +661,108 @@ over a white t-shirt. No tattoos.
 </table>
 </div>
 <h3 class="sec">Por que aprender</h3>
-<p class="inema-prose" data-inema-block="m2-2-b42">Repare no desenho: os planos alternam (aberto, médio, close, sobre o ombro, médio, close), as lentes também, e a luz caminha da manhã até o fim da tarde. Isso dá ritmo ao carrossel ou à sequência de posts. Se as seis cenas fossem plano médio, 50 mm, luz de janela, a campanha seria monótona — mesmo com a Lia perfeita em todas.</p>
+<p class="inema-prose" data-inema-block="m2-2-b43">Repare no desenho: os planos alternam (aberto, médio, close, sobre o ombro, médio, close), as lentes também, e a luz caminha da manhã até o fim da tarde. Isso dá ritmo ao carrossel ou à sequência de posts. Se as seis cenas fossem plano médio, 50 mm, luz de janela, a campanha seria monótona — mesmo com a Lia perfeita em todas.</p>
+<figure class="diagram">
+<svg role="img" aria-label="O roteiro da tabela acima desenhado como storyboard. Olhe três coisas: o tamanho da figura no quadro (plano) muda de uma cena para a outra; as lentes alternam entre 35, 50 e 85 mm; e a faixa de cor da luz caminha da manhã neutra ao contraluz dourado. Se todos os quadros tivessem a mesma figura e a mesma cor, a campanha seria monótona." viewBox="0 0 760 292" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif" id="m22-rot">
+<rect width="760" height="292" rx="14" fill="var(--surface-2)"/>
+<defs>
+<marker id="m22-rt-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0,0 L10,5 L0,10 z" fill="var(--text-muted)"/>
+</marker>
+<clipPath id="m22-rt-c0">
+<rect x="18" y="46" width="112" height="80" rx="4"/>
+</clipPath>
+<clipPath id="m22-rt-c1">
+<rect x="141" y="46" width="112" height="80" rx="4"/>
+</clipPath>
+<clipPath id="m22-rt-c2">
+<rect x="264" y="46" width="112" height="80" rx="4"/>
+</clipPath>
+<clipPath id="m22-rt-c3">
+<rect x="387" y="46" width="112" height="80" rx="4"/>
+</clipPath>
+<clipPath id="m22-rt-c4">
+<rect x="510" y="46" width="112" height="80" rx="4"/>
+</clipPath>
+<clipPath id="m22-rt-c5">
+<rect x="633" y="46" width="112" height="80" rx="4"/>
+</clipPath>
+</defs>
+<text x="18" y="34" font-size="14" fill="#60a5fa" font-weight="700">1 Colheita</text>
+<rect x="18" y="46" width="112" height="80" rx="4" fill="none" stroke="var(--text-muted)" stroke-width="1.5"/>
+<g clip-path="url(#m22-rt-c0)" fill="#60a5fa" fill-opacity="0.75">
+<circle cx="74" cy="66" r="5.4"/>
+<rect x="65.0" y="73.0" width="18.0" height="26.4" rx="3.6"/>
+</g>
+<text x="74" y="148" font-size="14" fill="var(--text)" font-weight="700" text-anchor="middle">35 mm</text>
+<text x="74" y="167" font-size="13" fill="var(--text-muted)" text-anchor="middle">médio-aberto</text>
+<text x="74" y="192" font-size="13" fill="#38bdf8" font-weight="600" text-anchor="middle">origem</text>
+<rect x="18" y="206" width="112" height="16" rx="3" fill="#fde68a"/>
+<text x="74" y="240" font-size="13" fill="var(--text-muted)" text-anchor="middle">4000K</text>
+<text x="141" y="34" font-size="14" fill="#60a5fa" font-weight="700">2 Torra</text>
+<rect x="141" y="46" width="112" height="80" rx="4" fill="none" stroke="var(--text-muted)" stroke-width="1.5"/>
+<g clip-path="url(#m22-rt-c1)" fill="#60a5fa" fill-opacity="0.75">
+<circle cx="197" cy="72" r="9.0"/>
+<rect x="182.0" y="83.0" width="30.0" height="44.0" rx="6.0"/>
+</g>
+<text x="197" y="148" font-size="14" fill="var(--text)" font-weight="700" text-anchor="middle">50 mm</text>
+<text x="197" y="167" font-size="13" fill="var(--text-muted)" text-anchor="middle">médio</text>
+<text x="197" y="192" font-size="13" fill="#38bdf8" font-weight="600" text-anchor="middle">ofício</text>
+<rect x="141" y="206" width="112" height="16" rx="3" fill="#fbbf24"/>
+<text x="197" y="240" font-size="13" fill="var(--text-muted)" text-anchor="middle">3500K</text>
+<text x="264" y="34" font-size="14" fill="#60a5fa" font-weight="700">3 Prova</text>
+<rect x="264" y="46" width="112" height="80" rx="4" fill="none" stroke="var(--text-muted)" stroke-width="1.5"/>
+<g clip-path="url(#m22-rt-c2)" fill="#60a5fa" fill-opacity="0.75">
+<circle cx="320" cy="90" r="20.7"/>
+<rect x="285.5" y="115.5" width="69.0" height="101.2" rx="13.8"/>
+</g>
+<text x="320" y="148" font-size="14" fill="var(--text)" font-weight="700" text-anchor="middle">85 mm</text>
+<text x="320" y="167" font-size="13" fill="var(--text-muted)" text-anchor="middle">close</text>
+<text x="320" y="192" font-size="13" fill="#38bdf8" font-weight="600" text-anchor="middle">critério</text>
+<rect x="264" y="206" width="112" height="16" rx="3" fill="#fde68a"/>
+<text x="320" y="240" font-size="13" fill="var(--text-muted)" text-anchor="middle">4000K</text>
+<text x="387" y="34" font-size="14" fill="#60a5fa" font-weight="700">4 Balcão</text>
+<rect x="387" y="46" width="112" height="80" rx="4" fill="none" stroke="var(--text-muted)" stroke-width="1.5"/>
+<g clip-path="url(#m22-rt-c3)" fill="#60a5fa" fill-opacity="0.75">
+<circle cx="443" cy="72" r="9.0"/>
+<rect x="428.0" y="83.0" width="30.0" height="44.0" rx="6.0"/>
+<circle cx="397" cy="126" r="40" fill="var(--text-muted)" fill-opacity="0.55"/>
+</g>
+<text x="443" y="148" font-size="14" fill="var(--text)" font-weight="700" text-anchor="middle">50 mm</text>
+<text x="443" y="167" font-size="13" fill="var(--text-muted)" text-anchor="middle">sobre o ombro</text>
+<text x="443" y="192" font-size="13" fill="#38bdf8" font-weight="600" text-anchor="middle">encontro</text>
+<rect x="387" y="206" width="112" height="16" rx="3" fill="#fbbf24"/>
+<text x="443" y="240" font-size="13" fill="var(--text-muted)" text-anchor="middle">3500K</text>
+<text x="510" y="34" font-size="14" fill="#60a5fa" font-weight="700">5 Feira</text>
+<rect x="510" y="46" width="112" height="80" rx="4" fill="none" stroke="var(--text-muted)" stroke-width="1.5"/>
+<g clip-path="url(#m22-rt-c4)" fill="#60a5fa" fill-opacity="0.75">
+<circle cx="566" cy="72" r="9.0"/>
+<rect x="551.0" y="83.0" width="30.0" height="44.0" rx="6.0"/>
+</g>
+<text x="566" y="148" font-size="14" fill="var(--text)" font-weight="700" text-anchor="middle">35 mm</text>
+<text x="566" y="167" font-size="13" fill="var(--text-muted)" text-anchor="middle">médio</text>
+<text x="566" y="192" font-size="13" fill="#38bdf8" font-weight="600" text-anchor="middle">comunidade</text>
+<rect x="510" y="206" width="112" height="16" rx="3" fill="#bae6fd"/>
+<text x="566" y="240" font-size="13" fill="var(--text-muted)" text-anchor="middle">5500K</text>
+<text x="633" y="34" font-size="14" fill="#60a5fa" font-weight="700">6 Pausa</text>
+<rect x="633" y="46" width="112" height="80" rx="4" fill="none" stroke="var(--text-muted)" stroke-width="1.5"/>
+<g clip-path="url(#m22-rt-c5)" fill="#60a5fa" fill-opacity="0.75">
+<circle cx="689" cy="79" r="13.5"/>
+<rect x="666.5" y="95.5" width="45.0" height="66.0" rx="9.0"/>
+</g>
+<text x="689" y="148" font-size="14" fill="var(--text)" font-weight="700" text-anchor="middle">85 mm</text>
+<text x="689" y="167" font-size="13" fill="var(--text-muted)" text-anchor="middle">médio-close</text>
+<text x="689" y="192" font-size="13" fill="#38bdf8" font-weight="600" text-anchor="middle">fecho</text>
+<rect x="633" y="206" width="112" height="16" rx="3" fill="#f59e0b"/>
+<text x="689" y="240" font-size="13" fill="var(--text-muted)" text-anchor="middle">dourado</text>
+<text x="18" y="276" font-size="13" fill="var(--text-muted)">manhã</text>
+<line x1="70" y1="272" x2="640" y2="272" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#m22-rt-a)"/>
+<text x="745" y="276" font-size="13" fill="var(--text-muted)" text-anchor="end">fim da tarde</text>
+</svg>
+<figcaption>O roteiro da tabela acima desenhado como storyboard. Olhe três coisas: o tamanho da figura no quadro (plano) muda de uma cena para a outra; as lentes alternam entre 35, 50 e 85 mm; e a faixa de cor da luz caminha da manhã neutra ao contraluz dourado. Se todos os quadros tivessem a mesma figura e a mesma cor, a campanha seria monótona.</figcaption>
+</figure>
 <h4>Do conceito aos prompts (o fluxo de trabalho)</h4>
-<ol class="timeline" data-inema-block="m2-2-b43">
+<ol class="timeline" data-inema-block="m2-2-b45">
 <li>Escreva o conceito em linguagem natural, em 2–3 frases: clima, valores, público. (Pode ditar por voz num assistente de texto — é mais rápido e mais rico.)</li>
 <li>Decida o universo visual fixo: tipo de fotografia, paleta, grão, época.</li>
 <li>Liste as cenas com o papel de cada uma na história (tabela acima).</li>
@@ -638,7 +771,7 @@ over a white t-shirt. No tattoos.
 <li>Revise lado a lado com a referência; refaça só as cenas que escorregaram.</li>
 </ol>
 <h3 class="sec">Conceitos-chave em ação</h3>
-<aside class="tip" data-inema-block="m2-2-b44">
+<aside class="tip" data-inema-block="m2-2-b46">
 <strong>Estilo de universo, não de obra</strong>
 <p>Você pode dar à campanha um universo emprestado de um gênero — “épico de fantasia medieval”, “ficção científica de deserto”, “documentário rural dos anos 70” — descrevendo a estética (cores, figurino, luz, textura). Evite citar filmes, franquias ou artistas pelo nome: além da questão de direitos, a descrição é mais controlável.</p>
 </aside>
@@ -660,8 +793,8 @@ over a white t-shirt. No tattoos.
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m2-2-p46">Use the woman in the attached image as the SAME character — keep her exact face, freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron over a white t-shirt. Completely re-shoot this person in a NEW scene with a new background, light and camera — campaign shot 1 of 6 (ORIGIN): medium-wide shot on a steep coffee farm in the Mantiqueira mountains at early morning, Lia picking ripe red coffee cherries into a woven straw basket, laughing with an older Brazilian farmer in a straw hat and plaid shirt beside her. Low mist over green hills behind them. 35mm lens, f/4, eye level. Soft low sun from the left, warm 4000K. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
-<button data-copy="m2-2-p46">Copiar prompt</button>
+<pre id="m2-2-p48">Use the woman in the attached image as the SAME character — keep her exact face, freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron over a white t-shirt. Completely re-shoot this person in a NEW scene with a new background, light and camera — campaign shot 1 of 6 (ORIGIN): medium-wide shot on a steep coffee farm in the Mantiqueira mountains at early morning, Lia picking ripe red coffee cherries into a woven straw basket, laughing with an older Brazilian farmer in a straw hat and plaid shirt beside her. Low mist over green hills behind them. 35mm lens, f/4, eye level. Soft low sun from the left, warm 4000K. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
+<button data-copy="m2-2-p48">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -671,8 +804,8 @@ over a white t-shirt. No tattoos.
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m2-2-p47">Use the woman in the attached image as the SAME character — keep her exact face, freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron over a white t-shirt. Completely re-shoot this person in a NEW scene with a new background, light and camera — campaign shot 2 of 6 (CRAFT): medium shot in a rustic roastery, Lia beside a vintage black cast-iron drum coffee roaster, pulling out the sample trier and smelling the beans, freshly roasted beans pouring into the round cooling tray with a little smoke. Big window light from the left, warm 3500K, dust in the air. 50mm lens, f/2.8, eye level. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
-<button data-copy="m2-2-p47">Copiar prompt</button>
+<pre id="m2-2-p49">Use the woman in the attached image as the SAME character — keep her exact face, freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron over a white t-shirt. Completely re-shoot this person in a NEW scene with a new background, light and camera — campaign shot 2 of 6 (CRAFT): medium shot in a rustic roastery, Lia beside a vintage black cast-iron drum coffee roaster, pulling out the sample trier and smelling the beans, freshly roasted beans pouring into the round cooling tray with a little smoke. Big window light from the left, warm 3500K, dust in the air. 50mm lens, f/2.8, eye level. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
+<button data-copy="m2-2-p49">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -682,8 +815,8 @@ over a white t-shirt. No tattoos.
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m2-2-p48">Use the woman in the attached image as the SAME character — keep her exact face, freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron over a white t-shirt. Completely re-shoot this person in a NEW scene with a new background, light and camera — campaign shot 3 of 6 (JUDGEMENT): close-up of Lia leaning over a row of white ceramic cupping bowls on a wooden table, breaking the coffee crust with a silver cupping spoon, eyes closed, smelling the aroma. Soft side window light from the left, 4000K, shallow depth of field. 85mm lens, f/2. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
-<button data-copy="m2-2-p48">Copiar prompt</button>
+<pre id="m2-2-p50">Use the woman in the attached image as the SAME character — keep her exact face, freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron over a white t-shirt. Completely re-shoot this person in a NEW scene with a new background, light and camera — campaign shot 3 of 6 (JUDGEMENT): close-up of Lia leaning over a row of white ceramic cupping bowls on a wooden table, breaking the coffee crust with a silver cupping spoon, eyes closed, smelling the aroma. Soft side window light from the left, 4000K, shallow depth of field. 85mm lens, f/2. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
+<button data-copy="m2-2-p50">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -693,8 +826,8 @@ over a white t-shirt. No tattoos.
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m2-2-p49">Use the woman in the attached image as the SAME character — keep her exact face, freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron over a white t-shirt. Completely re-shoot this person in a NEW scene with a new background, light and camera — campaign shot 4 of 6 (ENCOUNTER): over-the-shoulder shot from behind a middle-aged Brazilian male customer with grey hair (back of his head and shoulder softly out of focus in the foreground), Lia behind a worn wooden counter handing him a speckled cream ceramic cup of coffee with a warm smile. Morning window light from the left, 3500K. 50mm lens, f/2. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
-<button data-copy="m2-2-p49">Copiar prompt</button>
+<pre id="m2-2-p51">Use the woman in the attached image as the SAME character — keep her exact face, freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron over a white t-shirt. Completely re-shoot this person in a NEW scene with a new background, light and camera — campaign shot 4 of 6 (ENCOUNTER): over-the-shoulder shot from behind a middle-aged Brazilian male customer with grey hair (back of his head and shoulder softly out of focus in the foreground), Lia behind a worn wooden counter handing him a speckled cream ceramic cup of coffee with a warm smile. Morning window light from the left, 3500K. 50mm lens, f/2. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
+<button data-copy="m2-2-p51">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -704,8 +837,8 @@ over a white t-shirt. No tattoos.
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m2-2-p50">Use the woman in the attached image as the SAME character — keep her exact face, freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron over a white t-shirt. Completely re-shoot this person in a NEW scene with a new background, light and camera — campaign shot 5 of 6 (COMMUNITY): medium shot of Lia at a small weekend street-market stall in a Brazilian mountain town, behind a wooden crate table stacked with kraft-paper coffee bags hand-stamped &#x27;TERRA ALTA&#x27;, offering a small paper tasting cup to a young woman customer. Striped canvas awnings and other stalls softly blurred behind. Bright overcast daylight, 5500K. 35mm lens, f/2.8. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
-<button data-copy="m2-2-p50">Copiar prompt</button>
+<pre id="m2-2-p52">Use the woman in the attached image as the SAME character — keep her exact face, freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron over a white t-shirt. Completely re-shoot this person in a NEW scene with a new background, light and camera — campaign shot 5 of 6 (COMMUNITY): medium shot of Lia at a small weekend street-market stall in a Brazilian mountain town, behind a wooden crate table stacked with kraft-paper coffee bags hand-stamped &#x27;TERRA ALTA&#x27;, offering a small paper tasting cup to a young woman customer. Striped canvas awnings and other stalls softly blurred behind. Bright overcast daylight, 5500K. 35mm lens, f/2.8. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
+<button data-copy="m2-2-p52">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -715,19 +848,19 @@ over a white t-shirt. No tattoos.
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m2-2-p51">Use the woman in the attached image as the SAME character — keep her exact face, freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron over a white t-shirt. Completely re-shoot this person in a NEW scene with a new background, light and camera — campaign shot 6 of 6 (PAUSE): Lia sitting on a wooden bench by the big roastery window at golden hour after closing, holding a speckled cream ceramic cup with both hands, tired and content, looking out of the window. Strong warm backlight from the window, golden rim light on her hair and steam, face in soft shadow. 85mm lens, f/1.8. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
-<button data-copy="m2-2-p51">Copiar prompt</button>
+<pre id="m2-2-p53">Use the woman in the attached image as the SAME character — keep her exact face, freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron over a white t-shirt. Completely re-shoot this person in a NEW scene with a new background, light and camera — campaign shot 6 of 6 (PAUSE): Lia sitting on a wooden bench by the big roastery window at golden hour after closing, holding a speckled cream ceramic cup with both hands, tired and content, looking out of the window. Strong warm backlight from the window, golden rim light on her hair and steam, face in soft shadow. 85mm lens, f/1.8. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
+<button data-copy="m2-2-p53">Copiar prompt</button>
 </details>
 </figure>
 </div>
-<p class="caption" data-inema-block="m2-2-b45">As seis cenas, todas geradas com a referência neutra anexada (modo edição). Abra o “Prompt usado” de duas delas e compare: a primeira frase (quem é a Lia) e a última (universo visual) são idênticas; o meio muda.</p>
+<p class="caption" data-inema-block="m2-2-b47">As seis cenas, todas geradas com a referência neutra anexada (modo edição). Abra o “Prompt usado” de duas delas e compare: a primeira frase (quem é a Lia) e a última (universo visual) são idênticas; o meio muda.</p>
 </div>
 <h3 class="sec">Por que aprender</h3>
-<p class="inema-prose" data-inema-block="m2-2-b52">A referência segura o rosto; o texto segura o resto. Se você anexa a referência mas descreve o avental de outro jeito, o modelo recebe duas ordens contraditórias. Se repete o avental mas muda a paleta a cada cena, o personagem fica igual e a campanha não. Os dois blocos fixos existem para que <strong>só o que você quer variar</strong> varie.</p>
+<p class="inema-prose" data-inema-block="m2-2-b54">A referência segura o rosto; o texto segura o resto. Se você anexa a referência mas descreve o avental de outro jeito, o modelo recebe duas ordens contraditórias. Se repete o avental mas muda a paleta a cada cena, o personagem fica igual e a campanha não. Os dois blocos fixos existem para que <strong>só o que você quer variar</strong> varie.</p>
 <h3 class="sec">Conceitos-chave em ação</h3>
 <div class="codebox">
 <h4>Anatomia de um prompt de cena (com referência anexada)</h4>
-<pre id="m2-2-p54" data-lang="text">[FIXO · identidade]
+<pre id="m2-2-p56" data-lang="text">[FIXO · identidade]
 Use the woman in the attached image as the SAME character — keep her exact face,
 freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron
 over a white t-shirt.
@@ -745,9 +878,9 @@ Big window light from the left, warm 3500K. 50mm lens, f/2.8, eye level.
 Natural documentary photography, warm earthy palette of mustard, coffee brown
 and sage green, subtle 35mm film grain. No text on signs, boards or walls
 other than what is described.</pre>
-<button data-copy="m2-2-p54">Copiar</button>
+<button data-copy="m2-2-p56">Copiar</button>
 </div>
-<div class="compare-grid" data-inema-block="m2-2-b55">
+<div class="compare-grid" data-inema-block="m2-2-b57">
 <div class="ok">
 <h4>✓ Mantenha fixo</h4>
 <ul>
@@ -767,7 +900,7 @@ other than what is described.</pre>
 </ul>
 </div>
 </div>
-<aside class="tip" data-inema-block="m2-2-b56">
+<aside class="tip" data-inema-block="m2-2-b58">
 <strong>Dica de diretor</strong>
 <p>Numere as cenas dentro do prompt (“campaign shot 2 of 6”) e dê a cada uma um papel em maiúsculas (ORIGIN, CRAFT…). Não é mágica, mas ajuda você a manter a organização — e a achar o prompt certo meses depois.</p>
 </aside>
@@ -780,7 +913,7 @@ other than what is described.</pre>
 <h2 class="text-2xl font-bold">
 <span class="number">7</span>Deriva de identidade: como perceber e corrigir</h2>
 <h3 class="sec">O que é</h3>
-<p class="inema-prose" data-inema-block="m2-2-b57">Um texto descreve uma <strong>categoria</strong> de pessoa (“barista brasileira, 30 e poucos, cacheada, sardas”); milhares de rostos cabem nela. Cada geração só por texto sorteia um desses rostos. A referência anexada muda o problema: em vez de sortear, o modelo tenta <strong>reproduzir</strong> um rosto específico. Veja a mesma cena da feira feita dos dois jeitos.</p>
+<p class="inema-prose" data-inema-block="m2-2-b59">Um texto descreve uma <strong>categoria</strong> de pessoa (“barista brasileira, 30 e poucos, cacheada, sardas”); milhares de rostos cabem nela. Cada geração só por texto sorteia um desses rostos. A referência anexada muda o problema: em vez de sortear, o modelo tenta <strong>reproduzir</strong> um rosto específico. Veja a mesma cena da feira feita dos dois jeitos.</p>
 <div class="compare-shots">
 <div class="shots cols-2">
 <figure class="shot">
@@ -790,8 +923,8 @@ other than what is described.</pre>
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m2-2-p59">Turn this into a clean CHARACTER REFERENCE photo of the SAME woman. Medium shot from the waist up, body and face turned straight to the camera, neutral relaxed expression with the hint of a smile, looking into the lens, arms relaxed at her sides, hands empty. Even soft frontal studio light from a large softbox, neutral 5000K, no dramatic shadows. Plain light-grey seamless backdrop, no props, no text anywhere. Keep her exact face shape, freckles, light-brown skin tone, curly dark hair tied up, and the mustard-yellow linen apron over a white t-shirt. Remove the written tattoo on her forearm: clean skin.</pre>
-<button data-copy="m2-2-p59">Copiar prompt</button>
+<pre id="m2-2-p61">Turn this into a clean CHARACTER REFERENCE photo of the SAME woman. Medium shot from the waist up, body and face turned straight to the camera, neutral relaxed expression with the hint of a smile, looking into the lens, arms relaxed at her sides, hands empty. Even soft frontal studio light from a large softbox, neutral 5000K, no dramatic shadows. Plain light-grey seamless backdrop, no props, no text anywhere. Keep her exact face shape, freckles, light-brown skin tone, curly dark hair tied up, and the mustard-yellow linen apron over a white t-shirt. Remove the written tattoo on her forearm: clean skin.</pre>
+<button data-copy="m2-2-p61">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -801,8 +934,8 @@ other than what is described.</pre>
 </a>
 <details class="prompt-used">
 <summary>Instrução de edição usada (sobre a imagem-base)</summary>
-<pre id="m2-2-p60">Use the woman in the attached image as the SAME character — keep her exact face, freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron over a white t-shirt. Completely re-shoot this person in a NEW scene with a new background, light and camera — campaign shot 5 of 6 (COMMUNITY): medium shot of Lia at a small weekend street-market stall in a Brazilian mountain town, behind a wooden crate table stacked with kraft-paper coffee bags hand-stamped &#x27;TERRA ALTA&#x27;, offering a small paper tasting cup to a young woman customer. Striped canvas awnings and other stalls softly blurred behind. Bright overcast daylight, 5500K. 35mm lens, f/2.8. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
-<button data-copy="m2-2-p60">Copiar prompt</button>
+<pre id="m2-2-p62">Use the woman in the attached image as the SAME character — keep her exact face, freckles, skin tone, curly dark hair tied up, and her mustard-yellow linen apron over a white t-shirt. Completely re-shoot this person in a NEW scene with a new background, light and camera — campaign shot 5 of 6 (COMMUNITY): medium shot of Lia at a small weekend street-market stall in a Brazilian mountain town, behind a wooden crate table stacked with kraft-paper coffee bags hand-stamped &#x27;TERRA ALTA&#x27;, offering a small paper tasting cup to a young woman customer. Striped canvas awnings and other stalls softly blurred behind. Bright overcast daylight, 5500K. 35mm lens, f/2.8. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
+<button data-copy="m2-2-p62">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -812,8 +945,8 @@ other than what is described.</pre>
 </a>
 <details class="prompt-used">
 <summary>Prompt usado</summary>
-<pre id="m2-2-p61">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, at a small weekend street-market stall in a Brazilian mountain town, behind a wooden crate table stacked with kraft-paper coffee bags hand-stamped &#x27;TERRA ALTA&#x27;, offering a small paper tasting cup to a young woman customer. Striped canvas awnings and other stalls softly blurred behind. Bright overcast daylight, 5500K. 35mm lens, f/2.8. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
-<button data-copy="m2-2-p61">Copiar prompt</button>
+<pre id="m2-2-p63">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, at a small weekend street-market stall in a Brazilian mountain town, behind a wooden crate table stacked with kraft-paper coffee bags hand-stamped &#x27;TERRA ALTA&#x27;, offering a small paper tasting cup to a young woman customer. Striped canvas awnings and other stalls softly blurred behind. Bright overcast daylight, 5500K. 35mm lens, f/2.8. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
+<button data-copy="m2-2-p63">Copiar prompt</button>
 </details>
 </figure>
 <figure class="shot">
@@ -823,18 +956,18 @@ other than what is described.</pre>
 </a>
 <details class="prompt-used">
 <summary>Prompt usado</summary>
-<pre id="m2-2-p62">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, at a small weekend street-market stall in a Brazilian mountain town, behind a wooden crate table stacked with kraft-paper coffee bags hand-stamped &#x27;TERRA ALTA&#x27;, offering a small paper tasting cup to a young woman customer. Striped canvas awnings and other stalls softly blurred behind. Bright overcast daylight, 5500K. 35mm lens, f/2.8. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
-<button data-copy="m2-2-p62">Copiar prompt</button>
+<pre id="m2-2-p64">Medium shot of Lia, a Brazilian barista in her early 30s with curly dark hair tied up, light-brown skin and freckles, wearing a mustard-yellow linen apron over a white t-shirt, at a small weekend street-market stall in a Brazilian mountain town, behind a wooden crate table stacked with kraft-paper coffee bags hand-stamped &#x27;TERRA ALTA&#x27;, offering a small paper tasting cup to a young woman customer. Striped canvas awnings and other stalls softly blurred behind. Bright overcast daylight, 5500K. 35mm lens, f/2.8. Natural documentary photography, warm earthy palette of mustard, coffee brown and sage green, subtle 35mm film grain. No text on signs, boards or walls other than what is described.</pre>
+<button data-copy="m2-2-p64">Copiar prompt</button>
 </details>
 </figure>
 </div>
-<p class="caption" data-inema-block="m2-2-b58">As duas de baixo usam <strong>o mesmo prompt, palavra por palavra</strong> (a descrição da Lia do módulo 1-2), em duas gerações independentes, sem imagem anexada. A de cima à direita é a mesma cena feita como edição da referência. Compare com a referência: nas gerações só por texto o avental, os cachos presos e as sardas vieram, mas o rosto não é o mesmo — a A tem rosto mais redondo e jovem, a B parece mais velha, de maçãs mais largas. E as duas ganharam uma <strong>tatuagem de folha no antebraço</strong> que ninguém pediu: a descrição usada não dizia “no tattoos”, e o modelo preencheu a lacuna.</p>
+<p class="caption" data-inema-block="m2-2-b60">As duas de baixo usam <strong>o mesmo prompt, palavra por palavra</strong> (a descrição da Lia do módulo 1-2), em duas gerações independentes, sem imagem anexada. A de cima à direita é a mesma cena feita como edição da referência. Compare com a referência: nas gerações só por texto o avental, os cachos presos e as sardas vieram, mas o rosto não é o mesmo — a A tem rosto mais redondo e jovem, a B parece mais velha, de maçãs mais largas. E as duas ganharam uma <strong>tatuagem de folha no antebraço</strong> que ninguém pediu: a descrição usada não dizia “no tattoos”, e o modelo preencheu a lacuna.</p>
 </div>
 <h3 class="sec">Por que aprender</h3>
-<p class="inema-prose" data-inema-block="m2-2-b63">A deriva também acontece <strong>com</strong> referência, só que mais devagar: um rosto um pouco mais fino numa cena, sardas mais apagadas em outra, idade aparente oscilando com a luz. Em cenas abertas (plano geral, 35 mm) o rosto fica pequeno e o modelo tem menos pixels para acertar. Por isso a conferência é uma etapa do processo, não um cuidado opcional.</p>
+<p class="inema-prose" data-inema-block="m2-2-b65">A deriva também acontece <strong>com</strong> referência, só que mais devagar: um rosto um pouco mais fino numa cena, sardas mais apagadas em outra, idade aparente oscilando com a luz. Em cenas abertas (plano geral, 35 mm) o rosto fica pequeno e o modelo tem menos pixels para acertar. Por isso a conferência é uma etapa do processo, não um cuidado opcional.</p>
 <h3 class="sec">Conceitos-chave em ação</h3>
 <h4>Checklist de deriva (compare cada cena com a referência, lado a lado)</h4>
-<div class="table-scroll" data-inema-block="m2-2-b64">
+<div class="table-scroll" data-inema-block="m2-2-b66">
 <table>
 <thead>
 <tr>
@@ -878,7 +1011,7 @@ other than what is described.</pre>
 </table>
 </div>
 <h4>Quando uma cena escorregou</h4>
-<ol class="timeline" data-inema-block="m2-2-b65">
+<ol class="timeline" data-inema-block="m2-2-b67">
 <li>Coloque cena e referência lado a lado <strong>no mesmo tamanho</strong> (ou recorte só os rostos). Deriva não aparece com imagens em tamanhos diferentes.</li>
 <li>Nomeie o que mudou com o checklist (“sardas sumiram”, “rosto mais fino”).</li>
 <li>Refaça a cena com a referência e reforce só aquele marcador no texto (“keep her freckles clearly visible”).</li>
@@ -892,9 +1025,9 @@ other than what is described.</pre>
 </section>
 <section id="pratica" class="pratica">
 <h2>Prática guiada: o kit do personagem e a campanha de seis cenas</h2>
-<p class="inema-prose" data-inema-block="m2-2-b66">Você vai montar o kit completo de um personagem para o seu cliente (ou usar a Lia, se ainda não tem cliente) e gerar a campanha. Reserve uma pasta no disco antes de começar — tudo o que for aprovado vai para lá.</p>
+<p class="inema-prose" data-inema-block="m2-2-b68">Você vai montar o kit completo de um personagem para o seu cliente (ou usar a Lia, se ainda não tem cliente) e gerar a campanha. Reserve uma pasta no disco antes de começar — tudo o que for aprovado vai para lá.</p>
 <h4>Roteiro</h4>
-<ol class="timeline" data-inema-block="m2-2-b67">
+<ol class="timeline" data-inema-block="m2-2-b69">
 <li>Preencha a ficha (tabela do tópico 1). Escreva o bloco de identidade em inglês, em uma frase.</li>
 <li>Gere o personagem por texto até gostar de um rosto. Salve a imagem e o prompt.</li>
 <li>Faça a referência neutra editando a imagem aprovada (prompt abaixo). Confira o checklist do tópico 3.</li>
@@ -906,8 +1039,8 @@ other than what is described.</pre>
 <h4>Referência neutra a partir de uma imagem aprovada</h4>
 <p>
 <strong>Objetivo:</strong> Transformar a imagem que você gostou numa referência limpa, sem perder o rosto.</p>
-<pre id="m2-2-p69">Turn this into a clean CHARACTER REFERENCE photo of the SAME person. Medium shot from the waist up, body and face turned straight to the camera, neutral relaxed expression, looking into the lens, arms relaxed, hands empty. Even soft frontal studio light from a large softbox, neutral 5000K, no dramatic shadows. Plain light-grey seamless backdrop, no props, no text anywhere. Keep the exact face shape, skin tone and marks, hair color and hairstyle, and the signature outfit: &lt;figurino-assinatura&gt;. &lt;Decisões da ficha: ex. remove the tattoo / keep the freckles&gt;.</pre>
-<button data-copy="m2-2-p69">Copiar prompt</button>
+<pre id="m2-2-p71">Turn this into a clean CHARACTER REFERENCE photo of the SAME person. Medium shot from the waist up, body and face turned straight to the camera, neutral relaxed expression, looking into the lens, arms relaxed, hands empty. Even soft frontal studio light from a large softbox, neutral 5000K, no dramatic shadows. Plain light-grey seamless backdrop, no props, no text anywhere. Keep the exact face shape, skin tone and marks, hair color and hairstyle, and the signature outfit: &lt;figurino-assinatura&gt;. &lt;Decisões da ficha: ex. remove the tattoo / keep the freckles&gt;.</pre>
+<button data-copy="m2-2-p71">Copiar prompt</button>
 <p>
 <strong>Como verificar:</strong> Rosto inteiro e de frente? Fundo liso, mãos vazias, nenhum texto? As decisões da ficha (o que tirar, o que manter) aparecem?</p>
 </div>
@@ -915,12 +1048,12 @@ other than what is described.</pre>
 <h4>Meta-prompt: o assistente escreve os prompts da campanha</h4>
 <p>
 <strong>Objetivo:</strong> Fazer num assistente de texto (ChatGPT, Claude, Gemini) o papel de diretor de arte da campanha, com a referência anexada.</p>
-<pre id="m2-2-p71">You are an art director. I attached the reference image of my fictional character.
+<pre id="m2-2-p73">You are an art director. I attached the reference image of my fictional character.
 Character identity block (use it verbatim in every prompt): &lt;bloco de identidade&gt;.
 Brand: &lt;marca, o que faz, para quem&gt;. Campaign concept: &lt;2-3 frases de conceito&gt;.
 Fixed visual world (use verbatim at the end of every prompt): &lt;tipo de foto, paleta, grão, época&gt;.
 Write 6 image prompts in English for a campaign, one per scene, as a sequence with a story arc (origin → craft → quality → encounter → community → emotional close). For each: start with &#x27;Use the person in the attached image as the SAME character — keep her exact face...&#x27;, then the scene and action, then shot type, lens and aperture, then light source, direction, quality and Kelvin. Vary shot types and lenses across the six. Do not describe the character&#x27;s appearance differently from the identity block. Add &#x27;No text on signs other than what is described.&#x27; Output: a table with scene number, role in the story, and the full prompt.</pre>
-<button data-copy="m2-2-p71">Copiar prompt</button>
+<button data-copy="m2-2-p73">Copiar prompt</button>
 <p>
 <strong>Como verificar:</strong> Os seis prompts repetem o bloco de identidade e o de universo sem alterar uma palavra? Os planos e lentes variam? Cada cena tem um papel claro?</p>
 </div>
@@ -958,7 +1091,7 @@ Write 6 image prompts in English for a campaign, one per scene, as a sequence wi
 </section>
 <section id="checagem">
 <h2>Teste sua decisão</h2>
-<div class="quiz" data-quiz="modulo-2-2#q1" data-correct="1" data-explain="A referência neutra entrega só a pessoa, sem luz, fundo ou objetos para vazar. A folha pode fazer o modelo desenhar várias pessoas, e usar a última cena como referência acumula a deriva de cena em cena.">
+<div class="quiz" data-quiz="modulo-2-2#q1" data-correct="2" data-explain="A referência neutra entrega só a pessoa, sem luz, fundo ou objetos para vazar. A folha pode fazer o modelo desenhar várias pessoas, e usar a última cena como referência acumula a deriva de cena em cena.">
 <figure class="shot">
 <a href="../../assets/img/c1-m22-ref.webp" target="_blank" rel="noopener">
 <img src="../../assets/img/c1-m22-ref.webp" alt="Lia de frente para a câmera, da cintura para cima, expressão neutra, luz uniforme de estúdio e fundo cinza liso, sem objetos nem texto" loading="lazy" decoding="async">
@@ -966,9 +1099,9 @@ Write 6 image prompts in English for a campaign, one per scene, as a sequence wi
 </figure>
 <p>
 <strong>1.</strong> Você vai gerar seis cenas da campanha. O que deve ir anexado em cada geração?</p>
-<button data-answer="0" aria-pressed="false">A folha de personagem com todos os ângulos, para o modelo ter mais informação</button>
-<button data-answer="1" aria-pressed="false">A referência neutra (frente, luz uniforme, fundo liso)</button>
-<button data-answer="2" aria-pressed="false">A última cena gerada, para manter a continuidade</button>
+<button data-answer="0" aria-pressed="false">A última cena gerada, para manter a continuidade</button>
+<button data-answer="1" aria-pressed="false">A folha de personagem com todos os ângulos, para o modelo ter mais informação</button>
+<button data-answer="2" aria-pressed="false">A referência neutra (frente, luz uniforme, fundo liso)</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
@@ -985,8 +1118,8 @@ Write 6 image prompts in English for a campaign, one per scene, as a sequence wi
 <p>
 <strong>2.</strong> Duas gerações com exatamente o mesmo prompt descritivo da Lia, sem imagem anexada, saíram com rostos diferentes. Por quê?</p>
 <button data-answer="0" aria-pressed="false">O prompt estava mal escrito; com mais adjetivos o rosto seria sempre o mesmo</button>
-<button data-answer="1" aria-pressed="false">Um texto descreve uma categoria de pessoas; cada geração sorteia um rosto que cabe nela</button>
-<button data-answer="2" aria-pressed="false">O modelo estava com defeito naquele dia</button>
+<button data-answer="1" aria-pressed="false">O texto descreve uma categoria de pessoas; cada geração sorteia um rosto</button>
+<button data-answer="2" aria-pressed="false">O modelo muda de versão entre gerações e reinterpreta a descrição da Lia</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
@@ -994,12 +1127,12 @@ Write 6 image prompts in English for a campaign, one per scene, as a sequence wi
 <p>Descrição fixa aparência geral (cabelo, pele, roupa), mas não um rosto único. Para repetir a mesma pessoa, a imagem de referência precisa ir junto — e ainda assim você confere a deriva.</p>
 </details>
 </div>
-<div class="quiz" data-quiz="modulo-2-2#q3" data-correct="1" data-explain="Uma variável por vez: nomeie o que mudou, reforce só aquilo e mantenha a mesma referência neutra. Trocar a referência por uma cena gerada é o caminho mais curto para a deriva se somar.">
+<div class="quiz" data-quiz="modulo-2-2#q3" data-correct="0" data-explain="Uma variável por vez: nomeie o que mudou, reforce só aquilo e mantenha a mesma referência neutra. Trocar a referência por uma cena gerada é o caminho mais curto para a deriva se somar.">
 <p>
 <strong>3.</strong> Na cena 5 o avental da Lia saiu laranja em vez de mostarda. Qual é a correção mais econômica?</p>
-<button data-answer="0" aria-pressed="false">Reescrever o prompt inteiro da cena com outro estilo</button>
-<button data-answer="1" aria-pressed="false">Refazer a cena com a referência e reforçar só o marcador que escorregou (a cor do avental), sem mexer no resto</button>
-<button data-answer="2" aria-pressed="false">Trocar a referência pela cena 4, que saiu certa</button>
+<button data-answer="0" aria-pressed="false">Refazer a cena com a mesma referência reforçando só a cor do avental</button>
+<button data-answer="1" aria-pressed="false">Trocar a referência pela cena 4, que saiu certa, e gerar a 5 de novo</button>
+<button data-answer="2" aria-pressed="false">Reescrever o prompt inteiro da cena, descrevendo a Lia com mais detalhe</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
@@ -1029,7 +1162,7 @@ Write 6 image prompts in English for a campaign, one per scene, as a sequence wi
 </main>
 <footer class="footer">
 <div class="wrap">
-<span>Curso gratuito · INEMA.CLUB · v1.1.0</span>
+<span>Curso gratuito · INEMA.CLUB · v1.1.1</span>
 <a href="../../materiais.html">Materiais e referências</a>
 <a href="../../../index.html">Os três cursos</a>
 <a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>

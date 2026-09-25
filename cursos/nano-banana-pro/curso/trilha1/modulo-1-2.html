@@ -801,7 +801,7 @@ Medium shot, 50mm lens at f/2.8, warm late-afternoon sunlight from the right, na
 <h2 class="text-2xl font-bold">
 <span class="number">7</span>Editar por texto sem perder a identidade</h2>
 <h3 class="sec">O que é</h3>
-<p class="inema-prose" data-inema-block="m1-2-b56">Uma das maiores mudanças desses modelos é a <strong>edição por instrução</strong>: você escreve o que quer trocar e ele troca, mantendo o resto. A estrutura da frase é sempre a mesma: <code>Change ONLY &amp;lt;o quê&amp;gt; to &amp;lt;como&amp;gt;. Keep &amp;lt;lista do que fica&amp;gt; identical.</code>
+<p class="inema-prose" data-inema-block="m1-2-b56">Uma das maiores mudanças desses modelos é a <strong>edição por instrução</strong>: você escreve o que quer trocar e ele troca, mantendo o resto. A estrutura da frase é sempre a mesma: <code>Change ONLY &lt;o quê&gt; to &lt;como&gt;. Keep &lt;lista do que fica&gt; identical.</code>
 </p>
 <aside class="novo" data-inema-block="m1-2-b57">
 <strong>Novo aqui? Inpainting (edição com máscara)</strong>
@@ -939,12 +939,12 @@ Medium shot, 50mm lens at f/2.8, warm late-afternoon sunlight from the right, na
 </section>
 <section id="checagem">
 <h2>Teste sua decisão</h2>
-<div class="quiz" data-quiz="modulo-1-2#q1" data-correct="1" data-explain="Gerar do zero cria quatro latas parecidas, não a mesma. Editar a base com a trava mantém o rótulo; recortes limitam os ângulos a um só ponto de vista.">
+<div class="quiz" data-quiz="modulo-1-2#q1" data-correct="2" data-explain="Gerar do zero cria quatro latas parecidas, não a mesma. Editar a base com a trava mantém o rótulo; recortes limitam os ângulos a um só ponto de vista.">
 <p>
 <strong>1.</strong> Você precisa da mesma lata em quatro fotos para um carrossel. Qual é o caminho?</p>
-<button data-answer="0" aria-pressed="false">Quatro gerações do zero com o mesmo prompt descritivo da lata</button>
-<button data-answer="1" aria-pressed="false">Quatro edições da lata-base, cada uma com um enquadramento e a frase-trava no fim</button>
-<button data-answer="2" aria-pressed="false">Uma geração e quatro recortes dela</button>
+<button data-answer="0" aria-pressed="false">Uma geração em alta resolução e quatro recortes dela em enquadramentos diferentes</button>
+<button data-answer="1" aria-pressed="false">Quatro gerações do zero com o mesmo prompt descritivo da lata e a mesma seed</button>
+<button data-answer="2" aria-pressed="false">Quatro edições da lata-base, cada uma com um enquadramento e a frase-trava no fim</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
@@ -960,9 +960,9 @@ Medium shot, 50mm lens at f/2.8, warm late-afternoon sunlight from the right, na
 </figure>
 <p>
 <strong>2.</strong> Depois de 5 edições encadeadas, Maíra está com o cabelo mais liso e sem a pinta. O que fazer?</p>
-<button data-answer="0" aria-pressed="false">Pedir na sexta edição “volte a ser como antes”</button>
-<button data-answer="1" aria-pressed="false">Voltar à imagem-base e aplicar só a mudança final, com a trava citando a pinta e o cabelo</button>
-<button data-answer="2" aria-pressed="false">Aceitar, porque o cliente não vai notar</button>
+<button data-answer="0" aria-pressed="false">Pedir na sexta edição “volte a ter o cabelo ondulado e a pinta”, em cima da última versão</button>
+<button data-answer="1" aria-pressed="false">Voltar à base aprovada e aplicar só a mudança final, com a trava citando pinta e cabelo</button>
+<button data-answer="2" aria-pressed="false">Fazer mais uma edição encadeada só para devolver a pinta, e depois outra para o cabelo</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
@@ -970,12 +970,12 @@ Medium shot, 50mm lens at f/2.8, warm late-afternoon sunlight from the right, na
 <p>Cada edição encadeada degrada um pouco a identidade. A regra é editar a partir da base aprovada, com no máximo dois níveis, e citar o traço marcante na trava.</p>
 </details>
 </div>
-<div class="quiz" data-quiz="modulo-1-2#q3" data-correct="1" data-explain="Flare horizontal e bokeh oval são marcas da lente anamórfica: o termo técnico pede exatamente essa aparência. “Cinematic” é vago, e macro a f/11 faz o contrário.">
+<div class="quiz" data-quiz="modulo-1-2#q3" data-correct="0" data-explain="Flare horizontal e bokeh oval são marcas da lente anamórfica: o termo técnico pede exatamente essa aparência. “Cinematic” é vago, e macro a f/11 faz o contrário.">
 <p>
 <strong>3.</strong> O cliente quer uma peça “com cara de filme”, com reflexos horizontais e fundo em bolhas ovais. O que você acrescenta?</p>
-<button data-answer="0" aria-pressed="false">“cinematic, epic, 8k”</button>
-<button data-answer="1" aria-pressed="false">“Shot on a 35mm anamorphic lens at f/2.8, horizontal streak lens flares, oval bokeh, fine film grain”</button>
-<button data-answer="2" aria-pressed="false">“85mm macro, f/11”</button>
+<button data-answer="0" aria-pressed="false">“35mm anamorphic lens, f/2.8, horizontal streak lens flares, oval bokeh, fine film grain”</button>
+<button data-answer="1" aria-pressed="false">“Shot on an 85mm macro lens at f/11, sharp background, soft round bokeh, clean digital look”</button>
+<button data-answer="2" aria-pressed="false">“cinematic movie still, epic dramatic lighting, blockbuster look, 8k, ultra detailed”</button>
 <div role="status" aria-live="polite">
 </div>
 <details>
@@ -1005,7 +1005,7 @@ Medium shot, 50mm lens at f/2.8, warm late-afternoon sunlight from the right, na
 </main>
 <footer class="footer">
 <div class="wrap">
-<span>Curso gratuito · INEMA.CLUB · v1.1.0</span>
+<span>Curso gratuito · INEMA.CLUB · v1.1.1</span>
 <a href="../../materiais.html">Materiais e referências</a>
 <a href="../../../index.html">Os três cursos</a>
 <a href="https://www.inema.club/aprender-inteligencia-artificial/">Guia: como aprender inteligência artificial</a>
